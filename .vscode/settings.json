@@ -1,0 +1,10 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "mochaExplorer.files": "test/**/*.test.ts",
+  "mochaExplorer.require": "ts-node/register",
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "conventionalCommits.scopes": ["tools"]
+}

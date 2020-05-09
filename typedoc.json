@@ -1,0 +1,15 @@
+{
+  "inputFiles": ["./src"],
+  "mode": "modules",
+  "readme": "none",
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "hideGenerator": true,
+  "theme": "markdown",
+  "out": "./doc",
+  "disableSources": true,
+  "external-modulemap": ".*/src/([^\\./]+)/",
+  "stripInternal": true,
+  "preserveConstEnums": true,
+  "exclude": ["**/*Main.ts", "test/**/*"]
+}
