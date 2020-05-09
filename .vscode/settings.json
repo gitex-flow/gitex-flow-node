@@ -9,6 +9,7 @@
   },
   "conventionalCommits.scopes": [
     "tools",
-    "architecture"
+    "architecture",
+    "config"
   ]
 }
