@@ -7,3 +7,4 @@
 ### Modules
 
 * [api](modules/api.md)
+* [avh](modules/avh.md)

@@ -2,6 +2,7 @@
 node_modules/
 example/
 bin/
+test_repo/
 
 # Exclude js files from typescript folders
 test/**/*.js
