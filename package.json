@@ -11,7 +11,17 @@
     "lint": "eslint . --ext .ts",
     "test": "mocha -r ts-node/register test/**/*.test.ts",
     "docs": "typedoc --options typedoc.json",
-    "make": "npm run build && npm run lint && npm run test && npm run docs"
+    "make": "npm run build && npm run lint && npm run test && npm run docs",
+    "feature:start": "node build/src/Main.js feature start",
+    "feature:finish": "node build/src/Main.js feature finish",
+    "release:start": "node build/src/Main.js release start",
+    "release:finish": "node build/src/Main.js release finish",
+    "hotfix:start": "node build/src/Main.js hotfix start",
+    "hotfix:finish": "node build/src/Main.js hotfix finish",
+    "bugfix:start": "node build/src/Main.js bugfix start",
+    "bugfix:finish": "node build/src/Main.js bugfix finish",
+    "support:start": "node build/src/Main.js support start",
+    "support:finish": "node build/src/Main.js support finish"
   },
   "repository": {
     "type": "git",
@@ -32,7 +42,12 @@
     "url": "https://github.com/CuddlySheep/node-git-flow-workflow/issues"
   },
   "homepage": "https://github.com/CuddlySheep/node-git-flow-workflow#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@types/standard-version": "^7.0.0",
+    "commander": "^5.1.0",
+    "next-standard-version": "^2.1.2",
+    "standard-version": "^7.1.0"
+  },
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/fs-extra": "^8.1.0",
