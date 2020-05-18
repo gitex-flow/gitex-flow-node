@@ -1,4 +1,4 @@
-[node-git-flow-workflow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
+[node-gflow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
 
 # Interface: ConfigProvider <**T**>
 

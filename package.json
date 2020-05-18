@@ -1,5 +1,5 @@
 {
-  "name": "node-git-flow-workflow",
+  "name": "node-gflow",
   "version": "1.0.0",
   "description": "The aim of this project is to provide a complete process chain to organize the releases of your projects. It builds on the old and proven principles of git flow, semantic versioning (SemVer) and conventional commits. But offers a well-coordinated overall concept that integrates all of these principles.",
   "main": "build/main.js",
@@ -45,14 +45,14 @@
   "dependencies": {
     "@types/standard-version": "^7.0.0",
     "commander": "^5.1.0",
-    "next-standard-version": "^2.1.2",
+    "next-standard-version": "^2.1.3",
     "standard-version": "^7.1.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
-    "@types/fs-extra": "^8.1.0",
+    "@types/fs-extra": "^8.1.1",
     "@types/mocha": "^7.0.2",
-    "@types/nodegit": "^0.26.2",
+    "@types/nodegit": "^0.26.3",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "chai": "^4.2.0",
@@ -66,10 +66,10 @@
     "nodegit": "^0.26.5",
     "path": "^0.12.7",
     "prettier": "^2.0.5",
-    "ts-node": "^8.9.1",
-    "typedoc": "^0.17.6",
+    "ts-node": "^8.10.1",
+    "typedoc": "^0.17.7",
     "typedoc-plugin-external-module-map": "^1.2.1",
     "typedoc-plugin-markdown": "^2.2.17",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.2"
   }
 }

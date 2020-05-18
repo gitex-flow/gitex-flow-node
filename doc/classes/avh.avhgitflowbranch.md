@@ -1,4 +1,4 @@
-[node-git-flow-workflow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlowBranch](avh.avhgitflowbranch.md)
+[node-gflow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
 # Class: AvhGitFlowBranch
 

@@ -1,4 +1,4 @@
-[node-git-flow-workflow](../README.md) › [api](../modules/api.md) › [GitFlowBranch](api.gitflowbranch.md)
+[node-gflow](../README.md) › [api](../modules/api.md) › [GitFlowBranch](api.gitflowbranch.md)
 
 # Interface: GitFlowBranch
 

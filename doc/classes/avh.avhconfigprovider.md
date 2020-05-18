@@ -1,4 +1,4 @@
-[node-git-flow-workflow](../README.md) › [avh](../modules/avh.md) › [AvhConfigProvider](avh.avhconfigprovider.md)
+[node-gflow](../README.md) › [avh](../modules/avh.md) › [AvhConfigProvider](avh.avhconfigprovider.md)
 
 # Class: AvhConfigProvider
 

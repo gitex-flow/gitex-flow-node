@@ -1,6 +1,6 @@
-[node-git-flow-workflow](README.md)
+[node-gflow](README.md)
 
-# node-git-flow-workflow
+# node-gflow
 
 ## Index
 
