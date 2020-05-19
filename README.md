@@ -8,8 +8,8 @@ The framework offers automated tools that embed the release strategy in your dev
 - [gFlow](#gflow)
   - [Table of content](#table-of-content)
   - [Introduction](#introduction)
-    - [Criterias](#criterias)
-    - [Differentiation to other projects](#differentiation-to-other-projects)
+    - [Criterias of a deployment process](#criterias-of-a-deployment-process)
+    - [Differentiation from other projects](#differentiation-from-other-projects)
   - [User documentation](#user-documentation)
     - [Prerequisite](#prerequisite)
     - [Installation](#installation)
@@ -34,7 +34,7 @@ Transparency is important in increasing the acceptance of the software and to in
 When a project gets bigger and more complicated or several developers work on it, a defined release process becomes more and more important.
 For this reason, it's advisable to think about the release process as early as possible in the project.
 
-### Criterias
+### Criterias of a deployment process
 
 The following list defines some criterias of a release and deployment process:
 
@@ -46,7 +46,7 @@ The following list defines some criterias of a release and deployment process:
 6. All versions should have a standardized version number.
 7. Integration of release process in IDE.
 
-### Differentiation to other projects
+### Differentiation from other projects
 
 For any listed criterias exists some suitable solutions and principles:
 

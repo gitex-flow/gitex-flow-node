@@ -1,5 +1,5 @@
 {
-  "name": "node-gflow",
+  "name": "gflow",
   "version": "1.0.0",
   "description": "The aim of this project is to provide a complete process chain to organize the releases of your projects. It builds on the old and proven principles of git flow, semantic versioning (SemVer) and conventional commits. But offers a well-coordinated overall concept that integrates all of these principles.",
   "main": "build/main.js",
@@ -25,23 +25,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CuddlySheep/node-git-flow-workflow.git"
+    "url": "git+https://github.com/CuddlySheep/node-gflow.git"
   },
   "keywords": [
     "git",
     "git-flow",
     "standard-version",
-    "semantic",
-    "versioning",
+    "semantic versioning",
     "SemVer",
-    "conventional",
-    "commits"
+    "conventional commits"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CuddlySheep/node-git-flow-workflow/issues"
+    "url": "https://github.com/CuddlySheep/node-gflow/issues"
   },
-  "homepage": "https://github.com/CuddlySheep/node-git-flow-workflow#readme",
+  "homepage": "https://github.com/CuddlySheep/node-gflow#readme",
   "dependencies": {
     "@types/standard-version": "^7.0.0",
     "commander": "^5.1.0",
