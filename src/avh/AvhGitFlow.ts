@@ -62,7 +62,6 @@ export class AvhGitFlow implements GitFlow {
   public async version(): Promise<string> {
     return await GitFlowBashExecuter.execute({
       action: 'version',
-      repositoryPath: this.repositoryPath,
     });
   }
 }

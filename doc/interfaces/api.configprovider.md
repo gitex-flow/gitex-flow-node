@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
+[gflow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
 
 # Interface: ConfigProvider <**T**>
 

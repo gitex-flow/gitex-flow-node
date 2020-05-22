@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [api](../modules/api.md) › [GitFlowBranch](api.gitflowbranch.md)
+[gflow](../README.md) › [api](../modules/api.md) › [GitFlowBranch](api.gitflowbranch.md)
 
 # Interface: GitFlowBranch
 
@@ -11,6 +11,8 @@ This interface represents the basic functionality of a git flow branch.
 ## Implemented by
 
 * [AvhGitFlowBranch](../classes/avh.avhgitflowbranch.md)
+* [GFlowHotFixBranch](../classes/gflow.gflowhotfixbranch.md)
+* [GFlowReleaseBranch](../classes/gflow.gflowreleasebranch.md)
 * [GenericAvhGitFlowBranch](../classes/avh.genericavhgitflowbranch.md)
 
 ## Index
@@ -54,17 +56,17 @@ ___
 
 ###  list
 
-▸ **list**(): *Promise‹[GitFlowConfig](api.gitflowconfig.md)›*
+▸ **list**(): *Promise‹string[]›*
 
 Lists all branches of the type '[type](api.gitflowbranch.md#readonly-type)'.
 
-**Returns:** *Promise‹[GitFlowConfig](api.gitflowconfig.md)›*
+**Returns:** *Promise‹string[]›*
 
 ___
 
 ###  start
 
-▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹void›*
+▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹string›*
 
 Creates and starts a new branch of the type '[type](api.gitflowbranch.md#readonly-type)'.
 
@@ -73,6 +75,8 @@ Creates and starts a new branch of the type '[type](api.gitflowbranch.md#readonl
 Name | Type | Description |
 ------ | ------ | ------ |
 `name?` | undefined &#124; string | Name of the branch to be started. |
-`base?` | undefined &#124; string | Base of the branch should be started from.  |
+`base?` | undefined &#124; string | Base of the branch should be started from. |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise‹string›*
+
+The git reference of the create branch.

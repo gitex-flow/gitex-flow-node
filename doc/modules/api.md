@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [api](api.md)
+[gflow](../README.md) › [api](api.md)
 
 # Module: api
 

@@ -1,5 +1,4 @@
 import { GitFlowBranch, BranchType } from '../../api/branches/GitFlowBranch';
-import { GitFlowConfig } from '../../api/GitFlowConfig';
 import { GitFlowBashExecuter } from '../GitFlowBashExecuter';
 
 /**
@@ -25,7 +24,7 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
   /**
    * {@inheritdoc}
    */
-  public async list(): Promise<GitFlowConfig> {
+  public async list(): Promise<string[]> {
     throw new Error('Method not implemented.');
   }
 
@@ -34,8 +33,9 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
    *
    * @param name - Name of the branch to be started.
    * @param base - Base of the branch should be started from.
+   * @returns The git reference of the create branch.
    */
-  public async start(name?: string, base?: string): Promise<void> {
+  public async start(name?: string, base?: string): Promise<string> {
     let args: string[] | undefined = undefined;
     if (base) {
       args = [base];
@@ -48,6 +48,12 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
       args: args,
     });
     console.info(output);
+    let branchName = `${this.type}/${name}`;
+    const matches = output.match(/'([^']+)'/);
+    if (matches && matches.groups) {
+      branchName = matches.groups[0];
+    }
+    return `refs/heads/${branchName}`;
   }
 
   /**

@@ -12,6 +12,7 @@
     "architecture",
     "config",
     "docu",
-    "project"
+    "project",
+    "gflow"
   ]
 }

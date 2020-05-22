@@ -41,10 +41,10 @@
   },
   "homepage": "https://github.com/CuddlySheep/node-gflow#readme",
   "dependencies": {
+    "@types/semver": "^7.2.0",
     "@types/standard-version": "^7.0.0",
     "commander": "^5.1.0",
-    "next-standard-version": "^2.1.3",
-    "standard-version": "^7.1.0"
+    "semver": "^7.3.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",

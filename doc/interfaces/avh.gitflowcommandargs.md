@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [avh](../modules/avh.md) › [GitFlowCommandArgs](avh.gitflowcommandargs.md)
+[gflow](../README.md) › [avh](../modules/avh.md) › [GitFlowCommandArgs](avh.gitflowcommandargs.md)
 
 # Interface: GitFlowCommandArgs
 

@@ -1,12 +1,12 @@
-[gflow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlow](avh.avhgitflow.md)
+[gflow](../README.md) › [gflow](../modules/gflow.md) › [GFlow](gflow.gflow-1.md)
 
-# Class: AvhGitFlow
+# Class: GFlow
 
-Implementation of git flow by [gitflow-avh](https://github.com/petervanderdoes/gitflow-avh).
+GitFlow wrapper extending functionality to a common git flow implementation.
 
 ## Hierarchy
 
-* **AvhGitFlow**
+* **GFlow**
 
 ## Implements
 
@@ -16,27 +16,27 @@ Implementation of git flow by [gitflow-avh](https://github.com/petervanderdoes/g
 
 ### Constructors
 
-* [constructor](avh.avhgitflow.md#constructor)
+* [constructor](gflow.gflow-1.md#constructor)
 
 ### Properties
 
-* [bugfix](avh.avhgitflow.md#readonly-bugfix)
-* [config](avh.avhgitflow.md#readonly-config)
-* [feature](avh.avhgitflow.md#readonly-feature)
-* [hotfix](avh.avhgitflow.md#readonly-hotfix)
-* [release](avh.avhgitflow.md#readonly-release)
-* [support](avh.avhgitflow.md#readonly-support)
+* [bugfix](gflow.gflow-1.md#bugfix)
+* [config](gflow.gflow-1.md#config)
+* [feature](gflow.gflow-1.md#feature)
+* [hotfix](gflow.gflow-1.md#hotfix)
+* [release](gflow.gflow-1.md#release)
+* [support](gflow.gflow-1.md#support)
 
 ### Methods
 
-* [init](avh.avhgitflow.md#init)
-* [version](avh.avhgitflow.md#version)
+* [init](gflow.gflow-1.md#init)
+* [version](gflow.gflow-1.md#version)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new AvhGitFlow**(`repoPath?`: undefined | string): *[AvhGitFlow](avh.avhgitflow.md)*
+\+ **new GFlow**(`gitFlow`: [GitFlow](../interfaces/api.gitflow.md), `repoPath`: string): *[GFlow](gflow.gflow-1.md)*
 
 Initializes a new instance of this class.
 
@@ -44,13 +44,14 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`repoPath?` | undefined &#124; string | The path to the git repository.  |
+`gitFlow` | [GitFlow](../interfaces/api.gitflow.md) | GitFlow implementation. |
+`repoPath` | string | Path of the git repository.  |
 
-**Returns:** *[AvhGitFlow](avh.avhgitflow.md)*
+**Returns:** *[GFlow](gflow.gflow-1.md)*
 
 ## Properties
 
-### `Readonly` bugfix
+###  bugfix
 
 • **bugfix**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -58,7 +59,7 @@ Name | Type | Description |
 
 ___
 
-### `Readonly` config
+###  config
 
 • **config**: *[ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
 
@@ -66,7 +67,7 @@ ___
 
 ___
 
-### `Readonly` feature
+###  feature
 
 • **feature**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -74,7 +75,7 @@ ___
 
 ___
 
-### `Readonly` hotfix
+###  hotfix
 
 • **hotfix**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -82,7 +83,7 @@ ___
 
 ___
 
-### `Readonly` release
+###  release
 
 • **release**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -90,7 +91,7 @@ ___
 
 ___
 
-### `Readonly` support
+###  support
 
 • **support**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -104,7 +105,7 @@ ___
 
 *Implementation of [GitFlow](../interfaces/api.gitflow.md)*
 
-{@inheritdoc}
+Setup a git repository for git flow ussage.
 
 **Parameters:**
 
@@ -123,6 +124,6 @@ ___
 
 *Implementation of [GitFlow](../interfaces/api.gitflow.md)*
 
-{@inheritdoc}
+Provides the version of the git flow implementation.
 
 **Returns:** *Promise‹string›*
