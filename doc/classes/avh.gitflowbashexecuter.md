@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [avh](../modules/avh.md) › [GitFlowBashExecuter](avh.gitflowbashexecuter.md)
+[gflow](../README.md) › [avh](../modules/avh.md) › [GitFlowBashExecuter](avh.gitflowbashexecuter.md)
 
 # Class: GitFlowBashExecuter
 

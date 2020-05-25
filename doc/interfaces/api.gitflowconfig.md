@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [api](../modules/api.md) › [GitFlowConfig](api.gitflowconfig.md)
+[gflow](../README.md) › [api](../modules/api.md) › [GitFlowConfig](api.gitflowconfig.md)
 
 # Interface: GitFlowConfig
 

@@ -1,41 +1,41 @@
-import { assert } from 'chai';
-import { Repository, Commit, Reference, Signature, Oid } from 'nodegit';
 import { resolve, join } from 'path';
-import { copyFile, emptyDir, rmdir } from 'fs-extra';
 import { AvhGitFlow } from '../src/avh/AvhGitFlow';
+import { GitFlow } from '../src/api/GitFlow';
+import { GitFlowTester } from './GitFlowTester';
+import { assert } from 'chai';
 
 const testRepoPath = resolve(join('.', 'test_repo'));
-const fileFolderPath = resolve(join(__dirname, 'files'));
-const author = Signature.now('test', 'test@test.com');
 
-describe('Test overall git flow workflow', function () {
-  /**
-   * Before all unit tests are running, create a new test git repository.
-   */
-  before(async function () {
-    const repo = await createTestRepo(testRepoPath);
-    await copyAndCommitFile(repo, 'package.json', 'chore(project): Added package.json');
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.init();
-  });
-
-  /**
-   * After all unit tests have run, delete the test git repository.
-   */
-  this.afterAll(async function () {
-    await emptyDir(testRepoPath);
-    await rmdir(testRepoPath);
-  });
+describe('Test AVH git flow implementation', function () {
+  this.timeout(0);
 
   it('git flow version', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    const version = await gitFlow.version();
-    assert.match(version, /^[0-9]+.[0-9]+.[0-9]+.*/);
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.assertVersion();
+    await tester.dispose();
+  });
+
+  it('git flow init with defaults', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.assertInit();
+    await tester.dispose();
   });
 
   it('git flow init with custom settings', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.init(
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.assertInit({
+      featureBranchPrefix: 'feat/',
+      bugfixBranchPrefix: 'fix/',
+      supportBranchPrefix: 'supp/',
+      versionTagPrefix: 'v',
+    });
+    await tester.dispose();
+  });
+
+  it('git flow re-init', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.assertInit();
+    await tester.assertInit(
       {
         featureBranchPrefix: 'feat/',
         bugfixBranchPrefix: 'fix/',
@@ -44,131 +44,91 @@ describe('Test overall git flow workflow', function () {
       },
       true,
     );
-    const config = await gitFlow.config.get();
-    assert.equal(config.masterBranch, 'master');
-    assert.equal(config.developBranch, 'develop');
-    assert.equal(config.featureBranchPrefix, 'feat/');
-    assert.equal(config.bugfixBranchPrefix, 'fix/');
-    assert.equal(config.releaseBranchName, 'release/');
-    assert.equal(config.hotfixBranchPrefix, 'hotfix/');
-    assert.equal(config.supportBranchPrefix, 'supp/');
-    assert.equal(config.versionTagPrefix, 'v');
+    await tester.dispose();
   });
 
-  it('git flow init with defaults', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.init(undefined, true);
-    const config = await gitFlow.config.get();
-    assert.equal(config.masterBranch, 'master');
-    assert.equal(config.developBranch, 'develop');
-    assert.equal(config.featureBranchPrefix, 'feature/');
-    assert.equal(config.bugfixBranchPrefix, 'bugfix/');
-    assert.equal(config.releaseBranchName, 'release/');
-    assert.equal(config.hotfixBranchPrefix, 'hotfix/');
-    assert.equal(config.supportBranchPrefix, 'support/');
-    assert.isUndefined(config.versionTagPrefix);
+  it('git flow feature "#1"', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+    const branch = tester.selectBranch('feature');
+    const branchName = await branch.start('#1');
+    assert.equal(branchName, 'feature/#1');
+    await branch.commit('feature.txt', 'feat(scope): Added feature.txt');
+    await branch.finish();
+    await tester.dispose();
   });
 
-  it('git flow feature start "#1"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.feature.start('#1');
-    const repo = await openTestRepo(testRepoPath);
-    await copyAndCommitFile(repo, 'feature.txt', 'feat(scope): Added feature.txt', 'refs/heads/feature/#1');
+  it('git flow bugfix "#2', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+    const branch = tester.selectBranch('bugfix');
+    const branchName = await branch.start('#2');
+    assert.equal(branchName, 'bugfix/#2');
+    await branch.commit('bugfix.txt', 'fix(scope): Added bugfix.txt');
+    await branch.finish();
+    await tester.dispose();
   });
 
-  it('git flow bugfix start "#2"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.bugfix.start('#2');
-    const repo = await openTestRepo(testRepoPath);
-    await copyAndCommitFile(repo, 'bugfix.txt', 'fix(scope): Added bugfix.txt', 'refs/heads/bugfix/#2');
+  it('git flow release "1.0.0"', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+    const branch = tester.selectBranch('release');
+    const branchName = await branch.start('1.0.0');
+    assert.equal(branchName, 'release/1.0.0');
+    await branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await branch.finish('1.0.0', '1.0.0');
+    await tester.dispose();
   });
 
-  it('git flow feature finish "#1"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    if (!(await refExists(testRepoPath, 'refs/heads/feature/#1'))) {
-      await gitFlow.feature.start('#1');
-    }
-    await gitFlow.feature.finish('#1');
+  it('git flow hotfix "1.0.1"', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+    const branch = tester.selectBranch('hotfix');
+    const branchName = await branch.start('1.0.1');
+    assert.equal(branchName, 'hotfix/1.0.1');
+    await branch.commit('hotfix_bugfix.txt', 'fix(scope): Added hotfix_bugfix.txt');
+    await branch.finish('1.0.1', '1.0.1');
+    await tester.dispose();
   });
 
-  it('git flow bugfix finish "#2"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    if (!(await refExists(testRepoPath, 'refs/heads/bugfix/#2'))) {
-      await gitFlow.bugfix.start('#2');
-    }
-    await gitFlow.bugfix.finish('#2');
+  it('git flow support "1.0.0-lts"', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+    const branch = tester.selectBranch('support');
+    const branchName = await branch.start('1.0.0-lts', 'master');
+    assert.equal(branchName, 'support/1.0.0-lts');
+    await branch.commit('support_feature.txt', 'feat(scope): Added support_feature.txt');
+    await tester.dispose();
   });
 
-  it('git flow release start "1.0.0"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.release.start('1.0.0');
-    const repo = await openTestRepo(testRepoPath);
-    await copyAndCommitFile(
-      repo,
-      'release_bugfix.txt',
-      'fix(scope): Added release_bugfix.txt',
-      'refs/heads/release/1.0.0',
-    );
-  });
+  it('git flow integration run', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
 
-  it('git flow release finish "1.0.0"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    if (!(await refExists(testRepoPath, 'refs/heads/release/1.0.0'))) {
-      await gitFlow.release.start('1.0.0');
-    }
-    await gitFlow.release.finish('1.0.0', '1.0.0');
-  });
+    const feature1 = tester.selectBranch('feature');
+    await feature1.start('#1');
+    await feature1.commit('feature.txt', 'feat(scope): Added feature.txt');
 
-  it('git flow support start "1.0.0-lts"', async function () {
-    const gitFlow = new AvhGitFlow(testRepoPath);
-    await gitFlow.support.start('1.0.0-lts', 'master');
-    const repo = await openTestRepo(testRepoPath);
-    await copyAndCommitFile(
-      repo,
-      'support_feature.txt',
-      'feat(scope): Added support_feature.txt',
-      'refs/heads/support/1.0.0-lts',
-    );
+    const bugfix1 = tester.selectBranch('bugfix');
+    await bugfix1.start('#2');
+    await bugfix1.commit('bugfix.txt', 'fix(scope): Added bugfix.txt');
+
+    await feature1.finish('#1');
+    await bugfix1.finish('#2');
+
+    const release = tester.selectBranch('release');
+    await release.start('1.0.0');
+    await release.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release.finish('1.0.0', '1.0.0');
+
+    const support = tester.selectBranch('support');
+    await support.start('1.0.0-lts', 'master');
+    await support.commit('support_feature.txt', 'feat(scope): Added support_feature.txt');
+
+    await tester.dispose();
   });
 });
 
-async function createTestRepo(repoPath: string): Promise<Repository> {
-  await emptyDir(repoPath);
-  return await Repository.init(repoPath, 0);
-}
-
-async function openTestRepo(repoPath: string): Promise<Repository> {
-  return await Repository.open(repoPath);
-}
-
-async function refExists(repoPath: string, ref: string): Promise<boolean> {
-  const repo = await openTestRepo(testRepoPath);
-  const refList = await Reference.list(repo);
-  return refList.includes(ref);
-}
-
-async function copyAndCommitFile(
-  repo: Repository,
-  relSrcFilePath: string,
-  message: string,
-  updateRef?: string,
-): Promise<Oid> {
-  await copyFileToRepo(relSrcFilePath);
-  const index = await repo.refreshIndex();
-  await index.addByPath(relSrcFilePath);
-  await index.write();
-  const oid = await index.writeTree();
-  let parents: Commit[] = [];
-  if (updateRef) {
-    const commitID = await Reference.nameToId(repo, updateRef);
-    const commit = await repo.getCommit(commitID);
-    parents = [commit];
-  }
-  return await repo.createCommit(updateRef ?? 'HEAD', author, author, message, oid, parents);
-}
-
-async function copyFileToRepo(relSrcFilePath: string): Promise<void> {
-  const src = join(fileFolderPath, relSrcFilePath);
-  const dest = join(testRepoPath, relSrcFilePath);
-  await copyFile(src, dest);
+function createGitFlow(): GitFlow {
+  return new AvhGitFlow(testRepoPath);
 }

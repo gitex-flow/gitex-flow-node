@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [api](../modules/api.md) › [GitFlow](api.gitflow.md)
+[gflow](../README.md) › [api](../modules/api.md) › [GitFlow](api.gitflow.md)
 
 # Interface: GitFlow
 
@@ -11,6 +11,7 @@ Specification of the git flow API.
 ## Implemented by
 
 * [AvhGitFlow](../classes/avh.avhgitflow.md)
+* [GFlow](../classes/gflow.gflow-1.md)
 
 ## Index
 

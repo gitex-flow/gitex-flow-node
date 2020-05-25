@@ -1,4 +1,4 @@
-[node-gflow](../README.md) › [avh](../modules/avh.md) › [GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)
+[gflow](../README.md) › [avh](../modules/avh.md) › [GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)
 
 # Class: GenericAvhGitFlowBranch
 
@@ -84,7 +84,7 @@ ___
 
 ###  list
 
-▸ **list**(): *Promise‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
+▸ **list**(): *Promise‹string[]›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -92,13 +92,13 @@ ___
 
 {@inheritdoc}
 
-**Returns:** *Promise‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
+**Returns:** *Promise‹string[]›*
 
 ___
 
 ###  start
 
-▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹void›*
+▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹string›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
@@ -111,6 +111,8 @@ ___
 Name | Type | Description |
 ------ | ------ | ------ |
 `name?` | undefined &#124; string | Name of the branch to be started. |
-`base?` | undefined &#124; string | Base of the branch should be started from.  |
+`base?` | undefined &#124; string | Base of the branch should be started from. |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise‹string›*
+
+The git reference of the create branch.

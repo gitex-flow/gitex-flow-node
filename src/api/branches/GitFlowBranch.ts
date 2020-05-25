@@ -1,5 +1,3 @@
-import { GitFlowConfig } from '../GitFlowConfig';
-
 /**
  * Types of the git flow branches.
  */
@@ -17,15 +15,16 @@ export interface GitFlowBranch {
   /**
    * Lists all branches of the type '[[type]]'.
    */
-  list(): Promise<GitFlowConfig>;
+  list(): Promise<string[]>;
 
   /**
    * Creates and starts a new branch of the type '[[type]]'.
    *
    * @param name - Name of the branch to be started.
    * @param base - Base of the branch should be started from.
+   * @returns The git reference of the create branch.
    */
-  start(name?: string, base?: string): Promise<void>;
+  start(name?: string, base?: string): Promise<string>;
 
   /**
    * Merges and finishes the branch of the branch type '[[type]]'.

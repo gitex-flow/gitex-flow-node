@@ -82,12 +82,13 @@ If you like to use **gFlow** in your **node.js** project you can use **gFlow** a
 
 ### Prerequisite
 
+- [git](https://git-scm.com/downloads) is installed
 - [git-flow](https://github.com/petervanderdoes/gitflow-avh) is installed
 - [node.js](https://nodejs.org/en/) is installed
 
 ### Installation
 
-```shell
+```
 #> npm install --save-dev node-gflow
 ```
 
