@@ -23,7 +23,6 @@ Representing an API for handling git flow SemVer.
 
 * [commitVersion](ver.gitflowsemvers.md#commitversion)
 * [getBranchVersion](ver.gitflowsemvers.md#getbranchversion)
-* [getVersion](ver.gitflowsemvers.md#getversion)
 
 ## Constructors
 
@@ -82,15 +81,5 @@ Gets the version of the branch created from the current branch.
 Name | Type | Description |
 ------ | ------ | ------ |
 `type` | [BranchType](../modules/api.md#branchtype) | Type of the branch should be created.  |
-
-**Returns:** *Promise‹string›*
-
-___
-
-###  getVersion
-
-▸ **getVersion**(): *Promise‹string›*
-
-Gets the version of the current branch.
 
 **Returns:** *Promise‹string›*

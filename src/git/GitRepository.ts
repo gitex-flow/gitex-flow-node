@@ -61,12 +61,24 @@ export class GitRepository {
     return hash.commit;
   }
 
-  public async getLogsSinceLastRelease(): Promise<string[]> {
+  /**
+   * Returns the most recent released version tag (semantic version).
+   */
+  public async getLatestReleasedVersion(): Promise<string | undefined> {
     const repo = await this.createOrOpenRepo();
     const tags = await repo.tags();
+    return tags?.latest;
+  }
+
+  /**
+   * Collects all commit messages since the last release.
+   */
+  public async getLogsSinceLastRelease(): Promise<string[]> {
+    const repo = await this.createOrOpenRepo();
+    const latestVersion = await this.getLatestReleasedVersion();
     const logs = await repo.log({
       from: 'HEAD',
-      to: tags?.latest,
+      to: latestVersion,
       symmetric: true,
     });
     const messages = logs.all.map((log) => `${log.message}\n\n${log.body}`);

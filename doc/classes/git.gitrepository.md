@@ -23,6 +23,7 @@ A simple API with basic functionality of a git repository.
 * [checkout](git.gitrepository.md#checkout)
 * [commit](git.gitrepository.md#commit)
 * [ensure](git.gitrepository.md#ensure)
+* [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
 * [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
 * [remove](git.gitrepository.md#remove)
 
@@ -96,9 +97,21 @@ If it doesn't exist it will be created.
 
 ___
 
+###  getLatestReleasedVersion
+
+▸ **getLatestReleasedVersion**(): *Promise‹string | undefined›*
+
+Returns the most recent released version tag (semantic version).
+
+**Returns:** *Promise‹string | undefined›*
+
+___
+
 ###  getLogsSinceLastRelease
 
 ▸ **getLogsSinceLastRelease**(): *Promise‹string[]›*
+
+Collects all commit messages since the last release.
 
 **Returns:** *Promise‹string[]›*
 

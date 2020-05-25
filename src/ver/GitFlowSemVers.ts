@@ -25,15 +25,6 @@ export class GitFlowSemVers {
   }
 
   /**
-   * Gets the version of the current branch.
-   */
-  public async getVersion(): Promise<string> {
-    const packageJsonPath = join(this.basePath, GitFlowSemVers.packageJson);
-    const obj = await readJson(packageJsonPath);
-    return obj.version;
-  }
-
-  /**
    * Gets the version of the branch created from the current branch.
    *
    * @param type - Type of the branch should be created.
@@ -47,8 +38,12 @@ export class GitFlowSemVers {
         releaseType = 'minor';
       }
     }
-    const ver = await this.getVersion();
-    return inc(ver, releaseType) as string;
+    const gitRepository = new GitRepository(this.basePath);
+    const latestVersion = await gitRepository.getLatestReleasedVersion();
+    if (!latestVersion) {
+      return '1.0.0';
+    }
+    return inc(latestVersion, releaseType) as string;
   }
 
   /**

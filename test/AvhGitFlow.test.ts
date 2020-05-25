@@ -7,7 +7,7 @@ import { assert } from 'chai';
 const testRepoPath = resolve(join('.', 'test_repo'));
 
 describe('Test AVH git flow implementation', function () {
-  this.beforeAll(() => this.timeout(0));
+  this.timeout(0);
 
   it('git flow version', async function () {
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
@@ -102,7 +102,6 @@ describe('Test AVH git flow implementation', function () {
   });
 
   it('git flow integration run', async function () {
-    this.timeout(0);
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
     await tester.init();
 
