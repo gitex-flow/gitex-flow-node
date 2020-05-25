@@ -47,13 +47,12 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
       repositoryPath: this.repositoryPath,
       args: args,
     });
-    console.info(output);
     let branchName = `${this.type}/${name}`;
     const matches = output.match(/'([^']+)'/);
     if (matches && matches.groups) {
       branchName = matches.groups[0];
     }
-    return `refs/heads/${branchName}`;
+    return branchName;
   }
 
   /**

@@ -1,6 +1,6 @@
-import { Repository, Signature, Reference } from 'nodegit';
+import createRepository, { SimpleGit as Repository } from 'simple-git/promise';
 import { join } from 'path';
-import { pathExists, rmdir, emptyDir } from 'fs-extra';
+import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
 
 /**
  * A simple API with basic functionality of a git repository.
@@ -40,18 +40,8 @@ export class GitRepository {
    */
   public async checkout(branchName: string): Promise<void> {
     const repo = await this.createOrOpenRepo();
-    await repo.checkoutBranch(branchName);
-  }
-
-  /**
-   * Checks out a given git reference.
-   *
-   * @param ref - Git reference to be checked out.
-   */
-  public async checkoutRef(ref: string): Promise<void> {
-    const repo = await this.createOrOpenRepo();
-    const reference = await repo.getReference(ref);
-    await repo.checkoutRef(reference);
+    console.log(`Checkout branch '${branchName}'`);
+    await repo.checkout(branchName);
   }
 
   /**
@@ -64,26 +54,34 @@ export class GitRepository {
    */
   public async commit(fileNames: string[], authorName: string, authorMail: string, message: string): Promise<string> {
     const repo = await this.createOrOpenRepo();
-    const author = Signature.now(authorName, authorMail);
-    const hash = await repo.createCommitOnHead(fileNames, author, author, message);
-    return hash.tostrS();
+    for (const fileName of fileNames) {
+      await repo.add(fileName);
+    }
+    const hash = await repo.commit(message, fileNames, { '--author': `"${authorName} <${authorMail}>"` });
+    return hash.commit;
   }
 
-  /**
-   * Gets the existing references from the git repository.
-   */
-  public async getReferences(): Promise<string[]> {
+  public async getLogsSinceLastRelease(): Promise<string[]> {
     const repo = await this.createOrOpenRepo();
-    return await Reference.list(repo);
+    const tags = await repo.tags();
+    const logs = await repo.log({
+      from: 'HEAD',
+      to: tags?.latest,
+      symmetric: true,
+    });
+    const messages = logs.all.map((log) => `${log.message}\n\n${log.body}`);
+    return messages;
   }
 
   private async createOrOpenRepo(): Promise<Repository> {
     let repo: Repository;
     const gitFolder = join(this.repoPath, '.git');
+    await ensureDir(this.repoPath);
     if (await pathExists(gitFolder)) {
-      repo = await Repository.open(this.repoPath);
+      repo = createRepository(this.repoPath);
     } else {
-      repo = await Repository.init(this.repoPath, 0);
+      repo = createRepository(this.repoPath);
+      await repo.init();
     }
     return repo;
   }

@@ -21,10 +21,9 @@ A simple API with basic functionality of a git repository.
 ### Methods
 
 * [checkout](git.gitrepository.md#checkout)
-* [checkoutRef](git.gitrepository.md#checkoutref)
 * [commit](git.gitrepository.md#commit)
 * [ensure](git.gitrepository.md#ensure)
-* [getReferences](git.gitrepository.md#getreferences)
+* [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
 * [remove](git.gitrepository.md#remove)
 
 ## Constructors
@@ -67,22 +66,6 @@ Name | Type | Description |
 
 ___
 
-###  checkoutRef
-
-▸ **checkoutRef**(`ref`: string): *Promise‹void›*
-
-Checks out a given git reference.
-
-**Parameters:**
-
-Name | Type | Description |
------- | ------ | ------ |
-`ref` | string | Git reference to be checked out.  |
-
-**Returns:** *Promise‹void›*
-
-___
-
 ###  commit
 
 ▸ **commit**(`fileNames`: string[], `authorName`: string, `authorMail`: string, `message`: string): *Promise‹string›*
@@ -113,11 +96,9 @@ If it doesn't exist it will be created.
 
 ___
 
-###  getReferences
+###  getLogsSinceLastRelease
 
-▸ **getReferences**(): *Promise‹string[]›*
-
-Gets the existing references from the git repository.
+▸ **getLogsSinceLastRelease**(): *Promise‹string[]›*
 
 **Returns:** *Promise‹string[]›*
 

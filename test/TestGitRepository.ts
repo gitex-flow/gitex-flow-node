@@ -22,17 +22,6 @@ export class TestGitRepository extends GitRepository {
     return await this.commit([fileName], this.authorName, this.authorMail, message);
   }
 
-  /**
-   * Checks if a given git reference exists.
-   *
-   * @example await refExists('refs/heads/release/1.0.0'))
-   * @param ref - Git reference (ex. refs/heads/release/1.0.0) to be checked.
-   */
-  public async refExists(ref: string): Promise<boolean> {
-    const refList = await this.getReferences();
-    return refList.includes(ref);
-  }
-
   private async copyFileToRepo(fileName: string): Promise<void> {
     const src = join(this.fileFolderPath, fileName);
     const dest = join(this.repoPath, fileName);

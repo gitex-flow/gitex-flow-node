@@ -3,7 +3,9 @@ import { readJson, writeJson, pathExists } from 'fs-extra';
 import { BranchType } from '../api/branches/GitFlowBranch';
 import { inc, ReleaseType } from 'semver';
 import { GitRepository } from '../git/GitRepository';
-
+import { Readable } from 'stream';
+import concat from 'concat-stream';
+import conventionalCommitsParser, { Commit } from 'conventional-commits-parser';
 /**
  * Representing an API for handling git flow SemVer.
  */
@@ -71,7 +73,18 @@ export class GitFlowSemVers {
   }
 
   private async hasBreakingChanges(): Promise<boolean> {
-    // TODO: Recognizing breaking changes in commit messages.
-    return false;
+    const gitRepository = new GitRepository(this.basePath);
+    const messages = await gitRepository.getLogsSinceLastRelease();
+    const stream = Readable.from(messages);
+    return new Promise((resolve) => {
+      stream.pipe(conventionalCommitsParser()).pipe(
+        concat((data) => {
+          const commits = (data as unknown) as Commit[];
+          // There are BREAKING CHANGES if there is at least one note.
+          const hasBreakingChanges = commits.some((commit: Commit) => commit.notes.length > 0);
+          resolve(hasBreakingChanges);
+        }),
+      );
+    });
   }
 }

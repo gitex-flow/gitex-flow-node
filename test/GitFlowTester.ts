@@ -75,7 +75,7 @@ export class GitFlowTester {
 export class TestBranch implements GitFlowBranch {
   private branch: GitFlowBranch;
   private repo: TestGitRepository;
-  private ref?: string;
+  private branchName?: string;
 
   public type: BranchType;
 
@@ -96,9 +96,8 @@ export class TestBranch implements GitFlowBranch {
   }
 
   public async start(name?: string | undefined, base?: string | undefined): Promise<string> {
-    this.ref = await this.branch.start(name, base);
-    console.log(this.ref);
-    return this.ref;
+    this.branchName = await this.branch.start(name, base);
+    return this.branchName;
   }
 
   public async finish(name?: string | undefined, msg?: string | undefined): Promise<void> {
@@ -106,10 +105,10 @@ export class TestBranch implements GitFlowBranch {
   }
 
   public async commit(fileName: string, msg: string): Promise<void> {
-    if (!this.ref) {
+    if (!this.branchName) {
       throw new Error('Branch was not started.');
     }
-    await this.repo.checkout(this.ref);
+    await this.repo.checkout(this.branchName);
     await this.repo.commitTestFile(fileName, msg);
   }
 }

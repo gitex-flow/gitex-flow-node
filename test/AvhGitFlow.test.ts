@@ -52,7 +52,7 @@ describe('Test AVH git flow implementation', function () {
     await tester.init();
     const branch = tester.selectBranch('feature');
     const branchName = await branch.start('#1');
-    assert.equal(branchName, 'refs/heads/feature/#1');
+    assert.equal(branchName, 'feature/#1');
     await branch.commit('feature.txt', 'feat(scope): Added feature.txt');
     await branch.finish();
     await tester.dispose();
@@ -63,7 +63,7 @@ describe('Test AVH git flow implementation', function () {
     await tester.init();
     const branch = tester.selectBranch('bugfix');
     const branchName = await branch.start('#2');
-    assert.equal(branchName, 'refs/heads/bugfix/#2');
+    assert.equal(branchName, 'bugfix/#2');
     await branch.commit('bugfix.txt', 'fix(scope): Added bugfix.txt');
     await branch.finish();
     await tester.dispose();
@@ -74,7 +74,7 @@ describe('Test AVH git flow implementation', function () {
     await tester.init();
     const branch = tester.selectBranch('release');
     const branchName = await branch.start('1.0.0');
-    assert.equal(branchName, 'refs/heads/release/1.0.0');
+    assert.equal(branchName, 'release/1.0.0');
     await branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
     await branch.finish('1.0.0', '1.0.0');
     await tester.dispose();
@@ -85,7 +85,7 @@ describe('Test AVH git flow implementation', function () {
     await tester.init();
     const branch = tester.selectBranch('hotfix');
     const branchName = await branch.start('1.0.1');
-    assert.equal(branchName, 'refs/heads/hotfix/1.0.1');
+    assert.equal(branchName, 'hotfix/1.0.1');
     await branch.commit('hotfix_bugfix.txt', 'fix(scope): Added hotfix_bugfix.txt');
     await branch.finish('1.0.1', '1.0.1');
     await tester.dispose();
@@ -96,7 +96,7 @@ describe('Test AVH git flow implementation', function () {
     await tester.init();
     const branch = tester.selectBranch('support');
     const branchName = await branch.start('1.0.0-lts', 'master');
-    assert.equal(branchName, 'refs/heads/support/1.0.0-lts');
+    assert.equal(branchName, 'support/1.0.0-lts');
     await branch.commit('support_feature.txt', 'feat(scope): Added support_feature.txt');
     await tester.dispose();
   });
