@@ -1,52 +1,54 @@
 import { Command } from 'commander';
 import { AvhGitFlow } from './avh/AvhGitFlow';
+import { GFlow } from './gflow/GFlow';
 
 const command = new Command('git flow');
 const gitFlow = new AvhGitFlow();
+const gFlow = new GFlow(gitFlow);
 
 // Feature command
 const feature = command.command('feature');
 feature.command('start <name>').action(async (name: string) => {
-  await gitFlow.feature.start(name);
+  await gFlow.feature.start(name);
 });
 feature.command('finish [name]').action(async (name: string) => {
-  await gitFlow.feature.finish(name);
+  await gFlow.feature.finish(name);
 });
 
 // BugFix command
 const bugfix = command.command('bugfix');
 bugfix.command('start <name>').action(async (name: string) => {
-  await gitFlow.bugfix.start(name);
+  await gFlow.bugfix.start(name);
 });
 bugfix.command('finish [name]').action(async (name: string) => {
-  await gitFlow.bugfix.finish(name);
+  await gFlow.bugfix.finish(name);
 });
 
 // Release command
 const release = command.command('release');
 release.command('start').action(async () => {
-  await gitFlow.release.start();
+  await gFlow.release.start();
 });
 release.command('finish').action(async () => {
-  await gitFlow.release.finish();
+  await gFlow.release.finish();
 });
 
 // HotFix command
 const hotfix = command.command('hotfix');
 hotfix.command('start').action(async () => {
-  await gitFlow.hotfix.start(name);
+  await gFlow.hotfix.start(name);
 });
 hotfix.command('finish').action(async () => {
-  await gitFlow.hotfix.finish(name);
+  await gFlow.hotfix.finish(name);
 });
 
 // support command
 const support = command.command('support');
 support.command('start <name>').action(async (name: string) => {
-  await gitFlow.support.start(name);
+  await gFlow.support.start(name);
 });
 support.command('finish [name]').action(async (name: string) => {
-  await gitFlow.support.finish(name);
+  await gFlow.support.finish(name);
 });
 
 command.parse(process.argv);

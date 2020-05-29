@@ -24,7 +24,8 @@ export class GFlow implements GitFlow {
    * @param gitFlow - GitFlow implementation.
    * @param repoPath - Path of the git repository.
    */
-  constructor(gitFlow: GitFlow, repoPath: string) {
+  constructor(gitFlow: GitFlow, repoPath?: string) {
+    repoPath = repoPath ?? __dirname;
     this.gitFlow = gitFlow;
     this.feature = this.gitFlow.feature;
     this.bugfix = this.gitFlow.bugfix;
