@@ -4,6 +4,7 @@ import { GitFlow } from '../src/api/GitFlow';
 import { GitFlowTester } from './GitFlowTester';
 import { GFlow } from '../src/gflow/GFlow';
 import { assert } from 'chai';
+import { readFile } from 'fs-extra';
 
 const testRepoPath = resolve(join('.', 'test_repo'));
 
@@ -125,7 +126,10 @@ describe('Test gFlow implementation', function () {
     const feature1 = tester.selectBranch('feature');
     branchName = await feature1.start('#1');
     assert.equal(branchName, 'feature/#1');
-    await feature1.commit('feature_2.txt', 'feat(scope): Added feature_2.txt\n\nBREAKING CHANGE: API changes');
+    await feature1.commit(
+      'feature_2.txt',
+      'feat(scope): Added feature_2.txt\n\nBREAKING CHANGE: API changes\n\ncloses #42',
+    );
     await feature1.finish();
 
     await release110.finish('1.0.0', '1.0.0');
@@ -140,6 +144,7 @@ describe('Test gFlow implementation', function () {
     branchName = await release120.start();
     assert.equal(branchName, 'release/2.0.0');
     await release120.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await assertChangelog('release_changelog.md');
     await release120.finish(undefined, '2.0.0');
 
     await tester.dispose();
@@ -185,6 +190,8 @@ describe('Test gFlow implementation', function () {
     assert.equal(branchName, 'hotfix/1.0.2');
     await hotfix2.commit('hotfix_bugfix_2.txt', 'fix(scope): Added hotfix_bugfix_2.txt');
     await hotfix2.finish(undefined, '1.0.2');
+
+    await assertChangelog('hotfix_changelog.md');
 
     await tester.dispose();
   });
@@ -232,4 +239,12 @@ function createGitFlow(): GitFlow {
   const avhGitFlow = new AvhGitFlow(testRepoPath);
   const gFlow = new GFlow(avhGitFlow, testRepoPath);
   return gFlow;
+}
+
+async function assertChangelog(fileName: string): Promise<void> {
+  const changelog = await readFile(join(testRepoPath, 'CHANGELOG.md'), 'utf8');
+  // remove all text in brackets (hash values and dates are not unique)
+  const cleanedChangelog = changelog.replace(/(\([^)]+\)\)?)/g, '').trim();
+  const refChangelog = await readFile(join(__dirname, 'files', fileName), 'utf8');
+  assert.equal(cleanedChangelog, refChangelog);
 }

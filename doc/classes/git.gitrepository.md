@@ -109,11 +109,11 @@ ___
 
 ###  getLogsSinceLastRelease
 
-▸ **getLogsSinceLastRelease**(): *Promise‹string[]›*
+▸ **getLogsSinceLastRelease**(): *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
 
 Collects all commit messages since the last release.
 
-**Returns:** *Promise‹string[]›*
+**Returns:** *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
 
 ___
 

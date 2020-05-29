@@ -42,11 +42,16 @@
   "homepage": "https://github.com/CuddlySheep/node-gflow#readme",
   "dependencies": {
     "@types/concat-stream": "^1.6.0",
+    "@types/conventional-changelog-preset-loader": "^2.3.1",
+    "@types/conventional-changelog-writer": "^4.0.0",
     "@types/conventional-commits-parser": "^3.0.0",
     "@types/semver": "^7.2.0",
     "@types/standard-version": "^7.0.0",
+    "add-stream": "^1.0.0",
     "commander": "^5.1.0",
-    "concat-stream": "^2.0.0",
+    "conventional-changelog-angular": "^5.0.10",
+    "conventional-changelog-preset-loader": "^2.3.4",
+    "conventional-changelog-writer": "^4.0.16",
     "conventional-commits-parser": "^3.1.0",
     "semver": "^7.3.2",
     "simple-git": "^2.5.0"

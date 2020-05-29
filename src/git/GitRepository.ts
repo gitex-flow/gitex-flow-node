@@ -1,6 +1,10 @@
 import createRepository, { SimpleGit as Repository } from 'simple-git/promise';
 import { join } from 'path';
 import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
+import { DefaultLogFields } from 'simple-git/typings/response';
+import conventionalCommitsParser from 'conventional-commits-parser';
+import { GitLog } from './GitLog';
+import { Readable } from 'stream';
 
 /**
  * A simple API with basic functionality of a git repository.
@@ -73,7 +77,31 @@ export class GitRepository {
   /**
    * Collects all commit messages since the last release.
    */
-  public async getLogsSinceLastRelease(): Promise<string[]> {
+  public async getLogsSinceLastRelease(): Promise<GitLog[]> {
+    const gitLogs: GitLog[] = [];
+    const logs = await this.getDiffLogs();
+    const logMessages = logs.map((log) => `${log.message}\n\n${log.body}\n\n${log.refs}`);
+    const stream = Readable.from(logMessages);
+    let currIndex = 0;
+    return new Promise((resolve, reject) => {
+      stream
+        .pipe(conventionalCommitsParser())
+        .on('error', function (err) {
+          err.message = 'Error in conventional-commits-parser: ' + err.message;
+          reject(err);
+        })
+        .on('data', (data) => {
+          const log = data as GitLog;
+          log.hash = logs[currIndex++].hash;
+          gitLogs.push(log);
+        })
+        .on('end', () => {
+          resolve(gitLogs);
+        });
+    });
+  }
+
+  private async getDiffLogs(): Promise<readonly DefaultLogFields[]> {
     const repo = await this.createOrOpenRepo();
     const latestVersion = await this.getLatestReleasedVersion();
     const logs = await repo.log({
@@ -81,8 +109,7 @@ export class GitRepository {
       to: latestVersion,
       symmetric: true,
     });
-    const messages = logs.all.map((log) => `${log.message}\n\n${log.body}`);
-    return messages;
+    return logs.all;
   }
 
   private async createOrOpenRepo(): Promise<Repository> {

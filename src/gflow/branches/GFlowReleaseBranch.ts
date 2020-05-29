@@ -1,5 +1,6 @@
 import { GitFlowBranch, BranchType } from '../../api/branches/GitFlowBranch';
-import { GitFlowSemVers } from '../../ver/GitFlowSemVers';
+import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
+import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
 
 /**
  * This class extending a release branch with some helpful functionality.
@@ -36,15 +37,13 @@ export class GFlowReleaseBranch implements GitFlowBranch {
    */
   public async start(name?: string, base?: string): Promise<string> {
     const semVer = new GitFlowSemVers(this.repoPath);
-    let version: string;
-    if (!name) {
-      version = await semVer.getBranchVersion('release');
-    } else {
-      version = name;
-    }
-    const branch = await this.gitFlowBranch.start(version, base);
-    await semVer.commitVersion(version);
-    return branch;
+    const version = await semVer.calculateBranchVersion('release', name);
+    const branchName = await this.gitFlowBranch.start(version, base);
+    const project = new GitFlowNodeProject(this.repoPath);
+    await project.writeVersion(version);
+    await project.updateChangelog(version);
+    await project.commitChanges();
+    return branchName;
   }
 
   /**

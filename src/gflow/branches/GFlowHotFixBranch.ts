@@ -1,5 +1,6 @@
 import { GitFlowBranch, BranchType } from '../../api/branches/GitFlowBranch';
-import { GitFlowSemVers } from '../../ver/GitFlowSemVers';
+import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
+import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
 
 /**
  * This class extending a hotfix branch with some helpful functionality.
@@ -36,14 +37,11 @@ export class GFlowHotFixBranch implements GitFlowBranch {
    */
   public async start(name?: string, base?: string): Promise<string> {
     const semVer = new GitFlowSemVers(this.repoPath);
-    let version: string;
-    if (!name) {
-      version = await semVer.getBranchVersion('hotfix');
-    } else {
-      version = name;
-    }
+    const version = await semVer.calculateBranchVersion('hotfix', name);
     const branch = await this.gitFlowBranch.start(version, base);
-    await semVer.commitVersion(version);
+    const project = new GitFlowNodeProject(this.repoPath);
+    await project.writeVersion(version);
+    await project.commitChanges([GitFlowNodeProject.packageJson]);
     return branch;
   }
 
@@ -54,6 +52,9 @@ export class GFlowHotFixBranch implements GitFlowBranch {
    * @param msg - Message to be set for finishing the branch.
    */
   public async finish(name?: string, msg?: string): Promise<void> {
+    const project = new GitFlowNodeProject(this.repoPath);
+    await project.updateChangelog();
+    await project.commitChanges([GitFlowNodeProject.changelogFile]);
     await this.gitFlowBranch.finish(name, msg);
   }
 }
