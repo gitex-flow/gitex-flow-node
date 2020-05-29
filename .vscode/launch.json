@@ -11,7 +11,7 @@
       "program": "${workspaceFolder}/build/src/Main.js",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/build/**/*.js"],
-      "args": ["support", "start"],
+      "args": ["release", "start"],
       "autoAttachChildProcesses": true
     }
   ]

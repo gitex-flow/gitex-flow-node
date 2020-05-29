@@ -17,8 +17,8 @@ export class GitRepository {
    *
    * @param repoPath - Path of the git repository.
    */
-  constructor(repoPath: string) {
-    this.repoPath = repoPath;
+  constructor(repoPath?: string) {
+    this.repoPath = repoPath ?? process.cwd();
   }
 
   /**

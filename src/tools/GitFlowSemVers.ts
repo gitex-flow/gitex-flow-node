@@ -15,7 +15,8 @@ export class GitFlowSemVers {
    * @param basePath - Base path of the project folder.
    */
   constructor(basePath?: string) {
-    this.basePath = basePath ?? __dirname;
+    this.basePath = basePath ?? process.cwd();
+    console.log(this.basePath);
   }
 
   /**
@@ -32,19 +33,19 @@ export class GitFlowSemVers {
       }
       version = validatedVersion;
     } else {
-      let releaseType: ReleaseType = 'patch';
-      if (type == 'release') {
-        if (await this.hasBreakingChanges()) {
-          releaseType = 'major';
-        } else {
-          releaseType = 'minor';
-        }
-      }
       const gitRepository = new GitRepository(this.basePath);
       const latestVersion = await gitRepository.getLatestReleasedVersion();
       if (!latestVersion) {
         version = '1.0.0';
       } else {
+        let releaseType: ReleaseType = 'patch';
+        if (type == 'release') {
+          if (await this.hasBreakingChanges()) {
+            releaseType = 'major';
+          } else {
+            releaseType = 'minor';
+          }
+        }
         version = inc(latestVersion, releaseType) as string;
       }
     }
