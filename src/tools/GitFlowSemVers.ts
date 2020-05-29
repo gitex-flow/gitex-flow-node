@@ -16,7 +16,6 @@ export class GitFlowSemVers {
    */
   constructor(basePath?: string) {
     this.basePath = basePath ?? process.cwd();
-    console.log(this.basePath);
   }
 
   /**
