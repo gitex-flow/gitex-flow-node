@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from 'commander';
 import { AvhGitFlow } from './avh/AvhGitFlow';
 import { GFlow } from './gflow/GFlow';

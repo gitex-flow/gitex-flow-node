@@ -1,3 +1,12 @@
+## 1.0.3 (2020-05-31)
+
+
+### Bug Fixes
+
+* **project:** Added shebang in Cli.ts for unix execution ([65b8b10](https://github.com/CuddlySheep/gitex-flow-node/commits/65b8b10a9e92d4ab59f2ca368fb7d87499206ce8))
+
+
+
 ## 1.0.2 (2020-05-31)
 
 
