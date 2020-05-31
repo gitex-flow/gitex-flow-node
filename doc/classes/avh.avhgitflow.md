@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlow](avh.avhgitflow.md)
+[gitex-flow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlow](avh.avhgitflow.md)
 
 # Class: AvhGitFlow
 

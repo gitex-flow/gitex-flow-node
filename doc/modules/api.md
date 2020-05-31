@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [api](api.md)
+[gitex-flow](../README.md) › [api](api.md)
 
 # Module: api
 

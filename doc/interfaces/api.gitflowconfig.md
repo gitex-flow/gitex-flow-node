@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [api](../modules/api.md) › [GitFlowConfig](api.gitflowconfig.md)
+[gitex-flow](../README.md) › [api](../modules/api.md) › [GitFlowConfig](api.gitflowconfig.md)
 
 # Interface: GitFlowConfig
 

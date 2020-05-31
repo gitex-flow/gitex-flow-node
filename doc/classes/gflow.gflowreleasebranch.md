@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowReleaseBranch](gflow.gflowreleasebranch.md)
+[gitex-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowReleaseBranch](gflow.gflowreleasebranch.md)
 
 # Class: GFlowReleaseBranch
 

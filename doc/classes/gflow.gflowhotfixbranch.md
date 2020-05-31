@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowHotFixBranch](gflow.gflowhotfixbranch.md)
+[gitex-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowHotFixBranch](gflow.gflowhotfixbranch.md)
 
 # Class: GFlowHotFixBranch
 

@@ -1,11 +1,11 @@
-# g-flow
+# gitex-flow
 
-g-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
+gitex-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
 The framework offers automated tools that allow you to embed the release strategy in your development process.
 
 ## Table of content
 
-- [g-flow](#g-flow)
+- [gitex-flow](#gitex-flow)
   - [Table of content](#table-of-content)
   - [Introduction](#introduction)
     - [Criterias of a deployment process](#criterias-of-a-deployment-process)
@@ -80,7 +80,7 @@ The aim of this project is to offer a well-coordinated overall concept that inte
 
 ## User documentation
 
-If you like to use **g-flow** in your **node.js** project you can use **g-flow** as a npm script.
+If you like to use **gitex-flow** in your **node.js** project you can use **gitex-flow** as a npm script.
 
 ### Prerequisite
 
@@ -91,7 +91,7 @@ If you like to use **g-flow** in your **node.js** project you can use **g-flow**
 ### Installation
 
 ```
-#> npm install --save-dev g-flow
+#> npm install --save-dev gitex-flow
 ```
 
 After installation add the following lines to the `scripts` section in your `package.json` of your project:
@@ -99,23 +99,23 @@ After installation add the following lines to the `scripts` section in your `pac
 ```javascript
 "scripts": {
     ...
-    "feature:start": "g-flow feature start",
-    "feature:finish": "g-flow feature finish",
-    "release:start": "g-flow release start",
-    "release:finish": "g-flow release finish",
-    "hotfix:start": "g-flow hotfix start",
-    "hotfix:finish": "g-flow hotfix finish",
-    "bugfix:start": "g-flow bugfix start",
-    "bugfix:finish": "g-flow bugfix finish",
-    "support:start": "g-flow support start",
-    "support:finish": "g-flow support finish"
+    "feature:start": "gitex-flow feature start",
+    "feature:finish": "gitex-flow feature finish",
+    "release:start": "gitex-flow release start",
+    "release:finish": "gitex-flow release finish",
+    "hotfix:start": "gitex-flow hotfix start",
+    "hotfix:finish": "gitex-flow hotfix finish",
+    "bugfix:start": "gitex-flow bugfix start",
+    "bugfix:finish": "gitex-flow bugfix finish",
+    "support:start": "gitex-flow support start",
+    "support:finish": "gitex-flow support finish"
     ...
 }
 ```
 
 ### Usage / Workflow
 
-**g-flow** has mostly the same commands and API as **git flow**.
+**gitex-flow** has mostly the same commands and API as **git flow**.
 There are only some simplifying changens and functional extensions which are fully backward compatible.
 
 #### Feature
@@ -187,12 +187,12 @@ Support branches are based on a released version to provide long time support of
 
 ## Developer documentation (API)
 
-If you like to use **g-flow** in your code, you can use the typescript g-flow API.
+If you like to use **gitex-flow** in your code, you can use the typescript gitex-flow API.
 
-**g-flow** is implemented as a wrapper of a arbitary **git flow** implementation.
+**gitex-flow** is implemented as a wrapper of a arbitary **git flow** implementation.
 
 ```typescript
-import { AvhGitFlow, GFlow } from 'g-flow';
+import { AvhGitFlow, GFlow } from 'gitex-flow';
 
 const gitFlow = new AvhGitFlow();
 const gflow = new GFlow(gitFlow);
