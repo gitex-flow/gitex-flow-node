@@ -1,7 +1,7 @@
 # g-flow
 
 g-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
-The framework offers automated tools that embed the release strategy in your development process.
+The framework offers automated tools that allow you to embed the release strategy in your development process.
 
 ## Table of content
 
@@ -17,21 +17,21 @@ The framework offers automated tools that embed the release strategy in your dev
       - [Feature](#feature)
       - [BugFix](#bugfix)
       - [Release](#release)
-        - [g-flow Extension feature](#g-flow-extension-feature)
+        - [Extension features](#extension-features)
       - [HotFix](#hotfix)
-        - [g-flow Extension feature](#g-flow-extension-feature-1)
+        - [Extension features](#extension-features-1)
       - [Support](#support)
   - [Developer documentation (API)](#developer-documentation-api)
 
 ## Introduction
 
-In my experience as software developer, one of the most important part of a software project is a precisely defined and largely automated release and deployment process.
+In my experience as software developer, one of the most important parts of a software project is a precisely defined and largely automated release and deployment process.
 
-Continous deployments are mostly an essential part of the project requirement, especially for agile projects.
+Continous deployments are mostly an essential part of the project requirements, especially for agile projects.
 A deployment can be very error prune and time expensive.
 For this reason, it is worth investing in making the deployment process as simple as possible.
 Another common and important requirement is to notify the user of changes from one version to another.
-Transparency is important in increasing the acceptance of the software and to involve the user into the software project.
+Transparency is important in increasing the acceptance of the software and allows to participate the user into the software project.
 
 When a project gets bigger and more complicated or several developers work on it, a defined release process becomes more and more important.
 For this reason, it's advisable to think about the release process as early as possible in the project.
@@ -42,15 +42,15 @@ The following list defines some criterias of a release and deployment process:
 
 1. Deployed versions can be recovered.
 2. Deployed versions can be fixed.
-3. Deployed versions not influence each other.
+3. Deployed versions do not influence each other.
 4. Current development should not influence deployed versions.
-5. Changes between versions should be captured as a changelog.
-6. All versions should have a standardized version number.
-7. Integration of release process in IDE.
+5. Changes between versions should be captured in a changelog.
+6. All versions should have a standardized version numbers.
+7. Integration of the release process in the IDE.
 
 ### Differentiation from other projects
 
-For any listed criterias exists some suitable solutions and principles:
+For any listed criteria exist some suitable solutions and principles:
 
 **[git-flow](https://nvie.com/posts/a-successful-git-branching-model/)**: A git deployment strategy.
 
@@ -60,7 +60,7 @@ For any listed criterias exists some suitable solutions and principles:
 
 **[standard-version](https://github.com/conventional-changelog/standard-version)**: A tool providing automated versioning and changelog generation designed for [github flow](https://guides.github.com/introduction/flow/).
 
-Additionally there are some very helpful article about this topic:
+Additionally there are some very helpful articles about this topic:
 
 - [How to generate Changelog using Conventional Commits](https://medium.com/jobtome-engineering/how-to-generate-changelog-using-conventional-commits-10be40f5826c)
 - [Releasing JS library on GitHub with git-flow and conventional-commits](http://digital-cult.com/releasing-js-library-github-git-flow-conventional-commits/)
@@ -70,13 +70,13 @@ Additionally there are some very helpful article about this topic:
 | :-- | :---------------------------------------------------------- | :------: | :----: | :------------------: | :--------------: |
 | 1   | Deployed versions can be recovered.                         |    ✔     |        |                      |                  |
 | 2   | Deployed versions can be fixed.                             |    ✔     |        |                      |                  |
-| 3   | Deployed versions not influence each other.                 |    ✔     |        |                      |                  |
+| 3   | Deployed versions do not influence each other.              |    ✔     |        |                      |                  |
 | 4   | Current development should not influence deployed versions. |    ✔     |        |                      |                  |
 | 5   | Changes between versions should be captured as a changelog. |          |        |                      |        ✔         |
-| 6   | All versions should have a standardized version number.     |          |   ✔    |                      |        ✔         |
-| 7   | Integration of release process in IDE.                      |    ✔     |        |          ✔           |                  |
+| 6   | All versions should have a standardized version numbers.    |          |   ✔    |                      |        ✔         |
+| 7   | Integration of the release process in the IDE.              |    ✔     |        |          ✔           |                  |
 
-The aim of this project to offer a well-coordinated overall concept that integrates all of the listed principles and tools into the **git flow** workflow.
+The aim of this project is to offer a well-coordinated overall concept that integrates all of the listed principles and tools into the **git flow** workflow.
 
 ## User documentation
 
@@ -99,16 +99,16 @@ After installation add the following lines to the `scripts` section in your `pac
 ```javascript
 "scripts": {
     ...
-    "feature:start": "node g-flow feature start",
-    "feature:finish": "node g-flow feature finish",
-    "release:start": "node g-flow release start",
-    "release:finish": "node g-flow release finish",
-    "hotfix:start": "node g-flow hotfix start",
-    "hotfix:finish": "node g-flow hotfix finish",
-    "bugfix:start": "node g-flow bugfix start",
-    "bugfix:finish": "node g-flow bugfix finish",
-    "support:start": "node g-flow support start",
-    "support:finish": "node g-flow support finish"
+    "feature:start": "g-flow feature start",
+    "feature:finish": "g-flow feature finish",
+    "release:start": "g-flow release start",
+    "release:finish": "g-flow release finish",
+    "hotfix:start": "g-flow hotfix start",
+    "hotfix:finish": "g-flow hotfix finish",
+    "bugfix:start": "g-flow bugfix start",
+    "bugfix:finish": "g-flow bugfix finish",
+    "support:start": "g-flow support start",
+    "support:finish": "g-flow support finish"
     ...
 }
 ```
@@ -116,12 +116,12 @@ After installation add the following lines to the `scripts` section in your `pac
 ### Usage / Workflow
 
 **g-flow** has mostly the same commands and API as **git flow**.
-There are only some simplified changens and functional extensions which are fully backward compatible.
+There are only some simplifying changens and functional extensions which are fully backward compatible.
 
 #### Feature
 
-Features are branches that are based on the develop branch, which adds new functionality to the program.
-Feature branches can exist across many releases and can be updated regularly with the latest changes from develop.
+Features are branches that are based on the develop branch, which add new functionality to the program.
+Feature branches can exist across many releases and can be updated regularly with the latest changes the develop branch.
 
 ```shell
 #> npm run feature:start -- <name>
@@ -142,7 +142,7 @@ This is useful for bugs which are not fixable as a hotfix (breaking change, low 
 
 #### Release
 
-Releases are branches that are based on the develop branch, which freezes the current code and marks a function stop.
+Releases are branches that are based on the develop branch, which freezes the current code and mark a feature stop.
 The code from the release branch can be published to the consolidation (test) system.
 Only bugfixes are allowed to be commited on the release branch.
 If the release is stable, the release branch can be finished and merged into the master branch.
@@ -153,10 +153,10 @@ If the release is stable, the release branch can be finished and merged into the
 #> npm run release:finish -- [name]
 ```
 
-##### g-flow Extension feature
+##### Extension features
 
 - If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
-- If the release is started, the version from `package.json`
+- If the release is started, the version from `package.json` is updated
 - If the release is started, the `CHANGELOG.md` is updated with the changes since the last release
 
 #### HotFix
@@ -169,15 +169,15 @@ Hotfixes are bug fixes based on a released version.
 #> npm run hotfix:finish -- [name]
 ```
 
-##### g-flow Extension feature
+##### Extension features
 
 - If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
-- If the hotfix is started, the version from `package.json`
+- If the hotfix is started, the version from `package.json` is updated
 - Before the hotfix is finished, the `CHANGELOG.md` is updated with the bugfixs are mode on the hotfix branch
 
 #### Support
 
-Support branches based on a released version to provide long time support of a program version.
+Support branches are based on a released version to provide long time support of a program version.
 
 ```shell
 #> npm run support:start -- <name> <base>
