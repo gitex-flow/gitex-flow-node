@@ -53,6 +53,9 @@ export class GFlowReleaseBranch implements GitFlowBranch {
    * @param msg - Message to be set for finishing the branch.
    */
   public async finish(name?: string, msg?: string): Promise<void> {
-    await this.gitFlowBranch.finish(name, msg);
+    const project = new GitFlowNodeProject(this.repoPath);
+    const version = name ?? (await project.getVersion());
+    msg = msg ?? version;
+    await this.gitFlowBranch.finish(version, msg);
   }
 }

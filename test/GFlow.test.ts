@@ -78,7 +78,7 @@ describe('Test gFlow implementation', function () {
     const branchName = await branch.start();
     assert.equal(branchName, 'release/1.0.0');
     await branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
-    await branch.finish(undefined, '1.0.0');
+    await branch.finish();
     await tester.dispose();
   });
 
@@ -86,10 +86,10 @@ describe('Test gFlow implementation', function () {
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
     await tester.init();
 
-    const release110 = tester.selectBranch('release');
-    let branchName = await release110.start();
+    const release100 = tester.selectBranch('release');
+    let branchName = await release100.start();
     assert.equal(branchName, 'release/1.0.0');
-    await release110.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release100.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
 
     const feature1 = tester.selectBranch('feature');
     branchName = await feature1.start('#1');
@@ -97,7 +97,7 @@ describe('Test gFlow implementation', function () {
     await feature1.commit('feature_2.txt', 'feat(scope): Added feature_2.txt');
     await feature1.finish();
 
-    await release110.finish('1.0.0', '1.0.0');
+    await release100.finish();
 
     const feature2 = tester.selectBranch('feature');
     branchName = await feature2.start('#2');
@@ -105,11 +105,11 @@ describe('Test gFlow implementation', function () {
     await feature2.commit('feature_3.txt', 'feat(scope): Added feature_3.txt');
     await feature2.finish();
 
-    const release120 = tester.selectBranch('release');
-    branchName = await release120.start();
+    const release110 = tester.selectBranch('release');
+    branchName = await release110.start();
     assert.equal(branchName, 'release/1.1.0');
-    await release120.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
-    await release120.finish(undefined, '1.1.0');
+    await release110.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release110.finish();
 
     await tester.dispose();
   });
@@ -118,10 +118,10 @@ describe('Test gFlow implementation', function () {
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
     await tester.init();
 
-    const release110 = tester.selectBranch('release');
-    let branchName = await release110.start();
+    const release100 = tester.selectBranch('release');
+    let branchName = await release100.start();
     assert.equal(branchName, 'release/1.0.0');
-    await release110.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release100.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
 
     const feature1 = tester.selectBranch('feature');
     branchName = await feature1.start('#1');
@@ -132,7 +132,7 @@ describe('Test gFlow implementation', function () {
     );
     await feature1.finish();
 
-    await release110.finish('1.0.0', '1.0.0');
+    await release100.finish();
 
     const feature2 = tester.selectBranch('feature');
     branchName = await feature2.start('#2');
@@ -140,12 +140,12 @@ describe('Test gFlow implementation', function () {
     await feature2.commit('feature_3.txt', 'feat(scope): Added feature_3.txt');
     await feature2.finish();
 
-    const release120 = tester.selectBranch('release');
-    branchName = await release120.start();
+    const release200 = tester.selectBranch('release');
+    branchName = await release200.start();
     assert.equal(branchName, 'release/2.0.0');
-    await release120.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release200.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
     await assertChangelog('release_changelog.md');
-    await release120.finish(undefined, '2.0.0');
+    await release200.finish();
 
     await tester.dispose();
   });
@@ -158,13 +158,13 @@ describe('Test gFlow implementation', function () {
     let branchName = await release.start();
     assert.equal(branchName, 'release/1.0.0');
     await release.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
-    await release.finish(undefined, '1.0.0');
+    await release.finish();
 
     const hotfix = tester.selectBranch('hotfix');
     branchName = await hotfix.start();
     assert.equal(branchName, 'hotfix/1.0.1');
     await hotfix.commit('hotfix_bugfix.txt', 'fix(scope): Added hotfix_bugfix.txt');
-    await hotfix.finish(undefined, '1.0.1');
+    await hotfix.finish();
 
     await tester.dispose();
   });
@@ -177,19 +177,19 @@ describe('Test gFlow implementation', function () {
     let branchName = await release.start();
     assert.equal(branchName, 'release/1.0.0');
     await release.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
-    await release.finish(undefined, '1.0.0');
+    await release.finish();
 
     const hotfix1 = tester.selectBranch('hotfix');
     branchName = await hotfix1.start();
     assert.equal(branchName, 'hotfix/1.0.1');
     await hotfix1.commit('hotfix_bugfix.txt', 'fix(scope): Added hotfix_bugfix.txt');
-    await hotfix1.finish(undefined, '1.0.1');
+    await hotfix1.finish();
 
     const hotfix2 = tester.selectBranch('hotfix');
     branchName = await hotfix2.start();
     assert.equal(branchName, 'hotfix/1.0.2');
     await hotfix2.commit('hotfix_bugfix_2.txt', 'fix(scope): Added hotfix_bugfix_2.txt');
-    await hotfix2.finish(undefined, '1.0.2');
+    await hotfix2.finish();
 
     await assertChangelog('hotfix_changelog.md');
 
@@ -225,7 +225,7 @@ describe('Test gFlow implementation', function () {
     const branchName = await release.start('1.0.0');
     assert.equal(branchName, 'release/1.0.0');
     await release.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
-    await release.finish('1.0.0', '1.0.0');
+    await release.finish();
 
     const support = tester.selectBranch('support');
     await support.start('1.0.0-lts', 'master');

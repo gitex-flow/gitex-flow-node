@@ -1,4 +1,4 @@
-[gflow](../README.md) › [git](../modules/git.md) › [GitReference](git.gitreference.md)
+[g-flow](../README.md) › [git](../modules/git.md) › [GitReference](git.gitreference.md)
 
 # Interface: GitReference
 

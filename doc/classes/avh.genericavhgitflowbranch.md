@@ -1,4 +1,4 @@
-[gflow](../README.md) › [avh](../modules/avh.md) › [GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)
+[g-flow](../README.md) › [avh](../modules/avh.md) › [GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)
 
 # Class: GenericAvhGitFlowBranch
 

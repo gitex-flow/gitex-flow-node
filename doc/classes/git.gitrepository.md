@@ -1,4 +1,4 @@
-[gflow](../README.md) › [git](../modules/git.md) › [GitRepository](git.gitrepository.md)
+[g-flow](../README.md) › [git](../modules/git.md) › [GitRepository](git.gitrepository.md)
 
 # Class: GitRepository
 
@@ -31,7 +31,7 @@ A simple API with basic functionality of a git repository.
 
 ###  constructor
 
-\+ **new GitRepository**(`repoPath`: string): *[GitRepository](git.gitrepository.md)*
+\+ **new GitRepository**(`repoPath?`: undefined | string): *[GitRepository](git.gitrepository.md)*
 
 Initializes a new instance of this class.
 
@@ -39,7 +39,7 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`repoPath` | string | Path of the git repository.  |
+`repoPath?` | undefined &#124; string | Path of the git repository.  |
 
 **Returns:** *[GitRepository](git.gitrepository.md)*
 

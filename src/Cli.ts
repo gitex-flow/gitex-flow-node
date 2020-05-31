@@ -6,6 +6,11 @@ const command = new Command('git flow');
 const gitFlow = new AvhGitFlow();
 const gFlow = new GFlow(gitFlow);
 
+// Init command
+command.command('init').action(async () => {
+  await gFlow.init();
+});
+
 // Feature command
 const feature = command.command('feature');
 feature.command('start <name>').action(async (name: string) => {

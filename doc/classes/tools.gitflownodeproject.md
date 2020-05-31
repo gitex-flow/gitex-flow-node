@@ -1,4 +1,4 @@
-[gflow](../README.md) › [tools](../modules/tools.md) › [GitFlowNodeProject](tools.gitflownodeproject.md)
+[g-flow](../README.md) › [tools](../modules/tools.md) › [GitFlowNodeProject](tools.gitflownodeproject.md)
 
 # Class: GitFlowNodeProject
 

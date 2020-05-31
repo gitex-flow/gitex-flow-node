@@ -1,4 +1,4 @@
-[gflow](../README.md) › [git](../modules/git.md) › [GitNote](git.gitnote.md)
+[g-flow](../README.md) › [git](../modules/git.md) › [GitNote](git.gitnote.md)
 
 # Interface: GitNote
 

@@ -1,4 +1,4 @@
-[gflow](../README.md) › [tools](../modules/tools.md) › [Utils](tools.utils.md)
+[g-flow](../README.md) › [tools](../modules/tools.md) › [Utils](tools.utils.md)
 
 # Class: Utils
 

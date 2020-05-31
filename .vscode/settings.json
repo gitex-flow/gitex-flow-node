@@ -7,12 +7,5 @@
   "files.exclude": {
     "**/node_modules": true
   },
-  "conventionalCommits.scopes": [
-    "tools",
-    "architecture",
-    "config",
-    "docu",
-    "project",
-    "gflow"
-  ]
+  "conventionalCommits.scopes": ["tools", "architecture", "config", "docu", "project", "gflow"]
 }

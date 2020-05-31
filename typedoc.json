@@ -11,5 +11,5 @@
   "external-modulemap": ".*/src/([^\\./]+)/",
   "stripInternal": true,
   "preserveConstEnums": true,
-  "exclude": ["**/*Main.ts", "test/**/*"]
+  "exclude": ["**/*Cli.ts", "**/*Index.ts", "test/**/*"]
 }

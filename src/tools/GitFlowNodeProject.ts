@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { join, basename } from 'path';
+import { join } from 'path';
 import { GitRepository } from '../git/GitRepository';
 import { Readable, Transform } from 'stream';
 import conventionalChangelogWriter, { Context } from 'conventional-changelog-writer';
@@ -111,7 +111,11 @@ export class GitFlowNodeProject {
     const packageJson = await readJson(join(this.basePath, GitFlowNodeProject.packageJson));
     const repoUrl = packageJson?.repository?.url ? new URL(packageJson.repository.url) : undefined;
     const host = repoUrl ? `https://${repoUrl.host}` : undefined;
-    const url = repoUrl ? `https://${repoUrl.host}/${basename(repoUrl.pathname, '.git')}` : undefined;
+    let path = repoUrl?.pathname;
+    if (path?.endsWith('.git')) {
+      path = path.substring(0, path.length - 4);
+    }
+    const url = repoUrl ? `https://${repoUrl.host}${path}` : undefined;
 
     return {
       version: version,

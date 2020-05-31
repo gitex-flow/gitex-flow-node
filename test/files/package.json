@@ -4,6 +4,6 @@
   "description": "This is a test repository for unit tests.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/test.git"
+    "url": "git+https://github.com/username/test.git"
   }
 }
