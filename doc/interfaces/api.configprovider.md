@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
+[gitex-flow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
 
 # Interface: ConfigProvider <**T**>
 

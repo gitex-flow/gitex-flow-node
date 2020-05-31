@@ -1,6 +1,6 @@
-[g-flow](README.md)
+[gitex-flow](README.md)
 
-# g-flow
+# gitex-flow
 
 ## Index
 

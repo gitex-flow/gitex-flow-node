@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [git](../modules/git.md) › [GitLog](git.gitlog.md)
+[gitex-flow](../README.md) › [git](../modules/git.md) › [GitLog](git.gitlog.md)
 
 # Interface: GitLog
 

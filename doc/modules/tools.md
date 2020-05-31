@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [tools](tools.md)
+[gitex-flow](../README.md) › [tools](tools.md)
 
 # Module: tools
 

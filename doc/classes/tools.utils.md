@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [tools](../modules/tools.md) › [Utils](tools.utils.md)
+[gitex-flow](../README.md) › [tools](../modules/tools.md) › [Utils](tools.utils.md)
 
 # Class: Utils
 
