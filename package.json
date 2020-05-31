@@ -1,8 +1,8 @@
 {
   "name": "gflow",
   "version": "1.0.0",
-  "description": "The aim of this project is to provide a complete process chain to organize the releases of your projects. It builds on the old and proven principles of git flow, semantic versioning (SemVer) and conventional commits. But offers a well-coordinated overall concept that integrates all of these principles.",
-  "main": "build/main.js",
+  "description": "gFlow is a extention of git flow which  The aim of this project is to provide a complete process chain to organize the releases of your projects. It builds on the old and proven principles of git flow, semantic versioning (SemVer) and conventional commits. But offers a well-coordinated overall concept that integrates all of these principles.",
+  "main": "build/src/main.js",
   "scripts": {
     "start": "node build/src/Main.js",
     "compile": "tsc",
