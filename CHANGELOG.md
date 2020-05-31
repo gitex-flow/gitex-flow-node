@@ -1,3 +1,12 @@
+## 1.0.1 (2020-05-31)
+
+
+### Bug Fixes
+
+* **gflow:** Remove undefined 'name' variable in Cli.ts ([d9c8261](https://github.com/CuddlySheep/gitex-flow-node/commits/d9c8261f5411b1d5092ecafc8b8f30761821ecec))
+
+
+
 # 1.0.0 (2020-05-29)
 
 ### Features
