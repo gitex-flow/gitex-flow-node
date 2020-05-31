@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { join, basename } from 'path';
+import { join } from 'path';
 import { GitRepository } from '../git/GitRepository';
 import { Readable, Transform } from 'stream';
 import conventionalChangelogWriter, { Context } from 'conventional-changelog-writer';

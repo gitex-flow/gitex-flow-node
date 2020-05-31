@@ -1,6 +1,6 @@
 # gFlow
 
-gFlow is a [node.js](https://nodejs.org/en/) framework based on [git-flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
+gFlow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
 The framework offers automated tools that embed the release strategy in your development process.
 
 ## Table of content
@@ -13,11 +13,13 @@ The framework offers automated tools that embed the release strategy in your dev
   - [User documentation](#user-documentation)
     - [Prerequisite](#prerequisite)
     - [Installation](#installation)
-    - [Usage](#usage)
+    - [Usage / Workflow](#usage--workflow)
       - [Feature](#feature)
-      - [Release](#release)
-      - [HotFix](#hotfix)
       - [BugFix](#bugfix)
+      - [Release](#release)
+        - [gFlow Extension feature](#gflow-extension-feature)
+      - [HotFix](#hotfix)
+        - [gFlow Extension feature](#gflow-extension-feature-1)
       - [Support](#support)
   - [Developer documentation (API)](#developer-documentation-api)
 
@@ -56,7 +58,7 @@ For any listed criterias exists some suitable solutions and principles:
 
 **[conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)**: A git commit message standard.
 
-**[standard-version](https://github.com/conventional-changelog/standard-version)**: A tool providing automated versioning and changelog generation.
+**[standard-version](https://github.com/conventional-changelog/standard-version)**: A tool providing automated versioning and changelog generation designed for [github flow](https://guides.github.com/introduction/flow/).
 
 Additionally there are some very helpful article about this topic:
 
@@ -74,7 +76,7 @@ Additionally there are some very helpful article about this topic:
 | 6   | All versions should have a standardized version number.     |          |   ✔    |                      |        ✔         |
 | 7   | Integration of release process in IDE.                      |    ✔     |        |          ✔           |                  |
 
-The aim of this project to offer a well-coordinated overall concept that integrates all of the listed principles and tools.
+The aim of this project to offer a well-coordinated overall concept that integrates all of the listed principles and tools into the **git flow** workflow.
 
 ## User documentation
 
@@ -89,7 +91,7 @@ If you like to use **gFlow** in your **node.js** project you can use **gFlow** a
 ### Installation
 
 ```
-#> npm install --save-dev node-gflow
+#> npm install --save-dev gflow
 ```
 
 After installation add the following lines to the `scripts` section in your `package.json` of your project:
@@ -111,50 +113,91 @@ After installation add the following lines to the `scripts` section in your `pac
 }
 ```
 
-### Usage
+### Usage / Workflow
+
+**gFlow** has mostly the same commands and API as **git flow**.
+There are only some simplified changens and functional extensions which are fully backward compatible.
 
 #### Feature
 
-```shell
-#> npm run feature:start -- "<name>"
-...
-#> npm run feature:finish -- "<name>"
-```
-
-#### Release
+Features are branches that are based on the develop branch, which adds new functionality to the program.
+Feature branches can exist across many releases and can be updated regularly with the latest changes from develop.
 
 ```shell
-#> npm run release:start
+#> npm run feature:start -- <name>
 ...
-#> npm run release:finish
-```
-
-#### HotFix
-
-```shell
-#> npm run hotfix:start
-...
-#> npm run hotfix:finish
+#> npm run feature:finish -- <name>
 ```
 
 #### BugFix
 
+Bugfix branches are similar to feature branches, but are used for fixing bugs.
+This is useful for bugs which are not fixable as a hotfix (breaking change, low prio bug).
+
 ```shell
-#> npm run bugfix:start -- "<name>"
+#> npm run bugfix:start -- <name>
 ...
-#> npm run bugfix:finish -- "<name>"
+#> npm run bugfix:finish -- <name>
 ```
+
+#### Release
+
+Releases are branches that are based on the develop branch, which freezes the current code and marks a function stop.
+The code from the release branch can be published to the consolidation (test) system.
+Only bugfixes are allowed to be commited on the release branch.
+If the release is stable, the release branch can be finished and merged into the master branch.
+
+```shell
+#> npm run release:start -- [name]
+...
+#> npm run release:finish -- [name]
+```
+
+##### gFlow Extension feature
+
+- If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
+- If the release is started, the version from `package.json`
+- If the release is started, the `CHANGELOG.md` is updated with the changes since the last release
+
+#### HotFix
+
+Hotfixes are bug fixes based on a released version.
+
+```shell
+#> npm run hotfix:start -- [name]
+...
+#> npm run hotfix:finish -- [name]
+```
+
+##### gFlow Extension feature
+
+- If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
+- If the hotfix is started, the version from `package.json`
+- Before the hotfix is finished, the `CHANGELOG.md` is updated with the bugfixs are mode on the hotfix branch
 
 #### Support
 
+Support branches based on a released version to provide long time support of a program version.
+
 ```shell
-#> npm run support:start -- "<name>" "<base>"
+#> npm run support:start -- <name> <base>
 ...
-#> npm run support:finish -- "<name>" "<base>"
+#> npm run support:finish -- <name> <base>
 ```
 
 ## Developer documentation (API)
 
 If you like to use **gFlow** in your code, you can use the typescript gFlow API.
 
-The API documentation can be found [here](doc/README.md).
+**gFlow** is implemented as a wrapper of a arbitary **git flow** implementation.
+
+```typescript
+import { AvhGitFlow } from './avh/AvhGitFlow';
+import { GFlow } from './gflow/GFlow';
+
+const gitFlow = new AvhGitFlow();
+const gFlow = new GFlow(gitFlow);
+// ...
+```
+
+The full API documentation can be found [here](doc/README.md).
