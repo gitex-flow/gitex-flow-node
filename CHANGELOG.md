@@ -1,9 +1,18 @@
+## 1.0.2 (2020-05-31)
+
+
+### Bug Fixes
+
+* **project:** Added build files to the npm package content ([c266680](https://github.com/CuddlySheep/gitex-flow-node/commits/c26668024e0e0459421414596f7004f1e9da26dd))
+
+
+
 ## 1.0.1 (2020-05-31)
 
 
 ### Bug Fixes
 
-* **gflow:** Remove undefined 'name' variable in Cli.ts ([d9c8261](https://github.com/CuddlySheep/gitex-flow-node/commits/d9c8261f5411b1d5092ecafc8b8f30761821ecec))
+* **gitex-flow:** Remove undefined 'name' variable in Cli.ts ([d9c8261](https://github.com/CuddlySheep/gitex-flow-node/commits/d9c8261f5411b1d5092ecafc8b8f30761821ecec))
 
 
 
