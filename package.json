@@ -28,6 +28,9 @@
     "type": "git",
     "url": "git+https://github.com/CuddlySheep/g-flow-node.git"
   },
+  "engines": {
+    "node": ">=8.9"
+  },
   "keywords": [
     "git",
     "git-flow",

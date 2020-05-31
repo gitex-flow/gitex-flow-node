@@ -1,5 +1,5 @@
-export * as api from './api/Index';
-export * as avh from './avh/Index';
-export * as gflow from './gflow/Index';
-export * as git from './git/Index';
-export * as tools from './tools/Index';
+export * from './api/Index';
+export * from './avh/Index';
+export * from './gflow/Index';
+export * from './git/Index';
+export * from './tools/Index';

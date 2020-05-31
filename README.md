@@ -192,11 +192,10 @@ If you like to use **g-flow** in your code, you can use the typescript g-flow AP
 **g-flow** is implemented as a wrapper of a arbitary **git flow** implementation.
 
 ```typescript
-import { AvhGitFlow } from './avh/AvhGitFlow';
-import { g-flow } from './g-flow/g-flow';
+import { AvhGitFlow, GFlow } from 'g-flow';
 
 const gitFlow = new AvhGitFlow();
-const g-flow = new g-flow(gitFlow);
+const gflow = new GFlow(gitFlow);
 // ...
 ```
 
