@@ -41,10 +41,10 @@ release.command('finish').action(async () => {
 // HotFix command
 const hotfix = command.command('hotfix');
 hotfix.command('start').action(async () => {
-  await gFlow.hotfix.start(name);
+  await gFlow.hotfix.start();
 });
 hotfix.command('finish').action(async () => {
-  await gFlow.hotfix.finish(name);
+  await gFlow.hotfix.finish();
 });
 
 // support command

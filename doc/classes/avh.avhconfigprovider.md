@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [avh](../modules/avh.md) › [AvhConfigProvider](avh.avhconfigprovider.md)
+[gitex-flow](../README.md) › [avh](../modules/avh.md) › [AvhConfigProvider](avh.avhconfigprovider.md)
 
 # Class: AvhConfigProvider
 

@@ -1,4 +1,4 @@
-[g-flow](../README.md) › [tools](../modules/tools.md) › [GitFlowSemVers](tools.gitflowsemvers.md)
+[gitex-flow](../README.md) › [tools](../modules/tools.md) › [GitFlowSemVers](tools.gitflowsemvers.md)
 
 # Class: GitFlowSemVers
 
