@@ -55,6 +55,9 @@ export class GFlowHotFixBranch implements GitFlowBranch {
     const project = new GitFlowNodeProject(this.repoPath);
     await project.updateChangelog();
     await project.commitChanges([GitFlowNodeProject.changelogFile]);
-    await this.gitFlowBranch.finish(name, msg);
+
+    const version = name ?? (await project.getVersion());
+    msg = msg ?? version;
+    await this.gitFlowBranch.finish(version, msg);
   }
 }
