@@ -46,6 +46,9 @@
   "bin": {
     "gitex-flow": "build/src/Cli.js"
   },
+  "files": [
+    "build/**/*"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CuddlySheep/gitex-flow-node/issues"
