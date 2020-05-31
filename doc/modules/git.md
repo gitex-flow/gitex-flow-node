@@ -1,4 +1,4 @@
-[gflow](../README.md) › [git](git.md)
+[g-flow](../README.md) › [git](git.md)
 
 # Module: git
 

@@ -1,11 +1,11 @@
-# gFlow
+# g-flow
 
-gFlow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
+g-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
 The framework offers automated tools that embed the release strategy in your development process.
 
 ## Table of content
 
-- [gFlow](#gflow)
+- [g-flow](#g-flow)
   - [Table of content](#table-of-content)
   - [Introduction](#introduction)
     - [Criterias of a deployment process](#criterias-of-a-deployment-process)
@@ -17,9 +17,9 @@ The framework offers automated tools that embed the release strategy in your dev
       - [Feature](#feature)
       - [BugFix](#bugfix)
       - [Release](#release)
-        - [gFlow Extension feature](#gflow-extension-feature)
+        - [g-flow Extension feature](#g-flow-extension-feature)
       - [HotFix](#hotfix)
-        - [gFlow Extension feature](#gflow-extension-feature-1)
+        - [g-flow Extension feature](#g-flow-extension-feature-1)
       - [Support](#support)
   - [Developer documentation (API)](#developer-documentation-api)
 
@@ -80,7 +80,7 @@ The aim of this project to offer a well-coordinated overall concept that integra
 
 ## User documentation
 
-If you like to use **gFlow** in your **node.js** project you can use **gFlow** as a npm script.
+If you like to use **g-flow** in your **node.js** project you can use **g-flow** as a npm script.
 
 ### Prerequisite
 
@@ -91,7 +91,7 @@ If you like to use **gFlow** in your **node.js** project you can use **gFlow** a
 ### Installation
 
 ```
-#> npm install --save-dev gflow
+#> npm install --save-dev g-flow
 ```
 
 After installation add the following lines to the `scripts` section in your `package.json` of your project:
@@ -99,23 +99,23 @@ After installation add the following lines to the `scripts` section in your `pac
 ```javascript
 "scripts": {
     ...
-    "feature:start": "node gflow feature start",
-    "feature:finish": "node gflow feature finish",
-    "release:start": "node gflow release start",
-    "release:finish": "node gflow release finish",
-    "hotfix:start": "node gflow hotfix start",
-    "hotfix:finish": "node gflow hotfix finish",
-    "bugfix:start": "node gflow bugfix start",
-    "bugfix:finish": "node gflow bugfix finish",
-    "support:start": "node gflow support start",
-    "support:finish": "node gflow support finish"
+    "feature:start": "node g-flow feature start",
+    "feature:finish": "node g-flow feature finish",
+    "release:start": "node g-flow release start",
+    "release:finish": "node g-flow release finish",
+    "hotfix:start": "node g-flow hotfix start",
+    "hotfix:finish": "node g-flow hotfix finish",
+    "bugfix:start": "node g-flow bugfix start",
+    "bugfix:finish": "node g-flow bugfix finish",
+    "support:start": "node g-flow support start",
+    "support:finish": "node g-flow support finish"
     ...
 }
 ```
 
 ### Usage / Workflow
 
-**gFlow** has mostly the same commands and API as **git flow**.
+**g-flow** has mostly the same commands and API as **git flow**.
 There are only some simplified changens and functional extensions which are fully backward compatible.
 
 #### Feature
@@ -153,7 +153,7 @@ If the release is stable, the release branch can be finished and merged into the
 #> npm run release:finish -- [name]
 ```
 
-##### gFlow Extension feature
+##### g-flow Extension feature
 
 - If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
 - If the release is started, the version from `package.json`
@@ -169,7 +169,7 @@ Hotfixes are bug fixes based on a released version.
 #> npm run hotfix:finish -- [name]
 ```
 
-##### gFlow Extension feature
+##### g-flow Extension feature
 
 - If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
 - If the hotfix is started, the version from `package.json`
@@ -187,16 +187,16 @@ Support branches based on a released version to provide long time support of a p
 
 ## Developer documentation (API)
 
-If you like to use **gFlow** in your code, you can use the typescript gFlow API.
+If you like to use **g-flow** in your code, you can use the typescript g-flow API.
 
-**gFlow** is implemented as a wrapper of a arbitary **git flow** implementation.
+**g-flow** is implemented as a wrapper of a arbitary **git flow** implementation.
 
 ```typescript
 import { AvhGitFlow } from './avh/AvhGitFlow';
-import { GFlow } from './gflow/GFlow';
+import { g-flow } from './g-flow/g-flow';
 
 const gitFlow = new AvhGitFlow();
-const gFlow = new GFlow(gitFlow);
+const g-flow = new g-flow(gitFlow);
 // ...
 ```
 

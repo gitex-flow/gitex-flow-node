@@ -1,4 +1,4 @@
-[gflow](../README.md) › [git](../modules/git.md) › [GitRepository](git.gitrepository.md)
+[g-flow](../README.md) › [git](../modules/git.md) › [GitRepository](git.gitrepository.md)
 
 # Class: GitRepository
 
