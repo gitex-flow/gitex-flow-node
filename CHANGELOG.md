@@ -1,3 +1,12 @@
+## 1.0.4 (2020-05-31)
+
+
+### Bug Fixes
+
+* **project:** Fix some project references ([b3e039b](https://github.com/CuddlySheep/gitex-flow-node/commits/b3e039b03d6dbb9556a07e52be6ce0554d99b32d))
+
+
+
 ## 1.0.3 (2020-05-31)
 
 
