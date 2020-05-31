@@ -1,3 +1,12 @@
+## 1.0.2 (2020-05-31)
+
+
+### Bug Fixes
+
+* **project:** Added build files to the npm package content ([c266680](https://github.com/CuddlySheep/gitex-flow-node/commits/c26668024e0e0459421414596f7004f1e9da26dd))
+
+
+
 ## 1.0.1 (2020-05-31)
 
 
