@@ -7,5 +7,13 @@
   "files.exclude": {
     "**/node_modules": true
   },
-  "conventionalCommits.scopes": ["tools", "architecture", "config", "docu", "project", "gitex-flow"]
+  "conventionalCommits.scopes": [
+    "tools",
+    "architecture",
+    "config",
+    "docu",
+    "project",
+    "gitex-flow",
+    "logging"
+  ]
 }

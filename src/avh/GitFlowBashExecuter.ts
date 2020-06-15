@@ -63,12 +63,7 @@ export class GitFlowBashExecuter {
       cmd += ` "${args.args.join('" "')}"`;
     }
     console.info(`Executing '${cmd}'`);
-    try {
-      return await GitFlowBashExecuter.execViaShell(cmd);
-    } catch (error) {
-      console.error(`Failed to execute '${cmd}': ${error}`);
-      throw error;
-    }
+    return await GitFlowBashExecuter.execViaShell(cmd);
   }
 
   /**
