@@ -1,7 +1,7 @@
 # gitex-flow
 
 gitex-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
-The framework offers automated tools that allow you to embed the release strategy in your development process.
+The framework offers automated tools that allows you to embed the release strategy in your development process.
 
 ## Table of content
 
@@ -25,10 +25,10 @@ The framework offers automated tools that allow you to embed the release strateg
 
 ## Introduction
 
-In my experience as software developer, one of the most important parts of a software project is a precisely defined and largely automated release and deployment process.
+In my experience as a software developer, one of the most important parts of a software project is a precisely defined and largely automated release and deployment process.
 
 Continous deployments are mostly an essential part of the project requirements, especially for agile projects.
-A deployment can be very error prune and time expensive.
+A deployment can be very error prune and time intense.
 For this reason, it is worth investing in making the deployment process as simple as possible.
 Another common and important requirement is to notify the user of changes from one version to another.
 Transparency is important in increasing the acceptance of the software and allows to participate the user into the software project.
@@ -37,8 +37,6 @@ When a project gets bigger and more complicated or several developers work on it
 For this reason, it's advisable to think about the release process as early as possible in the project.
 
 ### Features
-
-The following list defines some criterias of a release and deployment process:
 
 1. Deployed versions can be recovered (Tag).
 2. Deployed versions can be fixed (Hotfix).
@@ -186,7 +184,7 @@ Hotfixes are bug fixes based on a released version.
 
 #### Support
 
-Support branches are based on a released version to provide long time support of a program version.
+Support branches are based on a released version to provide long term support of a program version.
 
 ```shell
 #> npm run support:start -- <name> <base>
