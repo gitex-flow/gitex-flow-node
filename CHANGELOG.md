@@ -1,3 +1,12 @@
+## 1.0.5 (2020-06-16)
+
+
+### Bug Fixes
+
+* **logging:** Suppressed call stack on console error output ([478bba9](https://github.com/CuddlySheep/gitex-flow-node/commits/478bba9a8e96251643486212269d7387cec62ec4)), closes [#12](https://github.com/CuddlySheep/gitex-flow-node/issues/12)
+
+
+
 ## 1.0.4 (2020-05-31)
 
 
