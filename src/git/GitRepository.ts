@@ -22,6 +22,15 @@ export class GitRepository {
   }
 
   /**
+   * Gets the folder path of the git repository.
+   *
+   * @returns The path to the git repository.
+   */
+  public getRepoPath(): string {
+    return this.repoPath;
+  }
+
+  /**
    * Gets the path of the git repository.
    */
   public async remove(): Promise<void> {

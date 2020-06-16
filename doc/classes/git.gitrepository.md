@@ -25,6 +25,7 @@ A simple API with basic functionality of a git repository.
 * [ensure](git.gitrepository.md#ensure)
 * [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
 * [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
+* [getRepoPath](git.gitrepository.md#getrepopath)
 * [remove](git.gitrepository.md#remove)
 
 ## Constructors
@@ -114,6 +115,18 @@ ___
 Collects all commit messages since the last release.
 
 **Returns:** *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+
+___
+
+###  getRepoPath
+
+▸ **getRepoPath**(): *string*
+
+Gets the folder path of the git repository.
+
+**Returns:** *string*
+
+The path to the git repository.
 
 ___
 
