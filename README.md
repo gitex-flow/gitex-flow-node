@@ -1,19 +1,20 @@
 # gitex-flow
 
 gitex-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
-The framework offers automated tools that allow you to embed the release strategy in your development process.
+The framework offers automated tools that allows you to embed the release strategy in your development process.
 
 ## Table of content
 
 - [gitex-flow](#gitex-flow)
   - [Table of content](#table-of-content)
   - [Introduction](#introduction)
-    - [Criterias of a deployment process](#criterias-of-a-deployment-process)
+    - [Features](#features)
     - [Differentiation from other projects](#differentiation-from-other-projects)
   - [User documentation](#user-documentation)
     - [Prerequisite](#prerequisite)
     - [Installation](#installation)
     - [Usage / Workflow](#usage--workflow)
+      - [Commit message convention](#commit-message-convention)
       - [Feature](#feature)
       - [BugFix](#bugfix)
       - [Release](#release)
@@ -25,10 +26,10 @@ The framework offers automated tools that allow you to embed the release strateg
 
 ## Introduction
 
-In my experience as software developer, one of the most important parts of a software project is a precisely defined and largely automated release and deployment process.
+In my experience as a software developer, one of the most important parts of a software project is a precisely defined and largely automated release and deployment process.
 
 Continous deployments are mostly an essential part of the project requirements, especially for agile projects.
-A deployment can be very error prune and time expensive.
+A deployment can be very error prune and time intense.
 For this reason, it is worth investing in making the deployment process as simple as possible.
 Another common and important requirement is to notify the user of changes from one version to another.
 Transparency is important in increasing the acceptance of the software and allows to participate the user into the software project.
@@ -36,17 +37,17 @@ Transparency is important in increasing the acceptance of the software and allow
 When a project gets bigger and more complicated or several developers work on it, a defined release process becomes more and more important.
 For this reason, it's advisable to think about the release process as early as possible in the project.
 
-### Criterias of a deployment process
+### Features
 
-The following list defines some criterias of a release and deployment process:
-
-1. Deployed versions can be recovered.
-2. Deployed versions can be fixed.
-3. Deployed versions do not influence each other.
-4. Current development should not influence deployed versions.
-5. Changes between versions should be captured in a changelog.
-6. All versions should have a standardized version numbers.
-7. Integration of the release process in the IDE.
+1. Deployed versions can be recovered (Tag).
+2. Deployed versions can be fixed (Hotfix).
+3. Features can be developed without affecting the development process.
+4. Deployed versions can be used for long term support.
+5. Deployed versions do not influence each other.
+6. Current development should not influence deployed versions.
+7. Changes between versions should be captured in a changelog.
+8. All versions should have a standardized version numbers.
+9. Integration of the release process in the IDE (coming soon).
 
 ### Differentiation from other projects
 
@@ -60,21 +61,28 @@ For any listed criteria exist some suitable solutions and principles:
 
 **[standard-version](https://github.com/conventional-changelog/standard-version)**: A tool providing automated versioning and changelog generation designed for [github flow](https://guides.github.com/introduction/flow/).
 
-Additionally there are some very helpful articles about this topic:
+**[ngitflow](https://github.com/xbranch/ngitflow)**: A simple node.js [git-flow (AVH edition)](https://github.com/petervanderdoes/gitflow-avh) wrapper written in javascript with version bumping.
+
+**[release-flow](https://github.com/mcasimir/release-flow)**: Simliar idea to **gitex-flow** but only for git flow releases.
+The program comes with its own git flow implementation and does not extend an existing implementation like [git-flow (AVH edition)](https://github.com/petervanderdoes/gitflow-avh).
+
+Additionally there are some very helpful articles about ideas of git flow extensions and concepts:
 
 - [How to generate Changelog using Conventional Commits](https://medium.com/jobtome-engineering/how-to-generate-changelog-using-conventional-commits-10be40f5826c)
 - [Releasing JS library on GitHub with git-flow and conventional-commits](http://digital-cult.com/releasing-js-library-github-git-flow-conventional-commits/)
 - [Using standard-version in git-flow](https://github.com/devdigital/git-flow-standard-version)
 
-| No. | Criteria                                                    | git-flow | SemVer | Conventional commits | standard-version |
-| :-- | :---------------------------------------------------------- | :------: | :----: | :------------------: | :--------------: |
-| 1   | Deployed versions can be recovered.                         |    ✔     |        |                      |                  |
-| 2   | Deployed versions can be fixed.                             |    ✔     |        |                      |                  |
-| 3   | Deployed versions do not influence each other.              |    ✔     |        |                      |                  |
-| 4   | Current development should not influence deployed versions. |    ✔     |        |                      |                  |
-| 5   | Changes between versions should be captured as a changelog. |          |        |                      |        ✔         |
-| 6   | All versions should have a standardized version numbers.    |          |   ✔    |                      |        ✔         |
-| 7   | Integration of the release process in the IDE.              |    ✔     |        |          ✔           |                  |
+| No. | Feature                                                             | git-flow | ngitflow | release-flow | SemVer | Conventional commits | standard-version |
+| :-- | :------------------------------------------------------------------ | :------: | :------: | :----------: | :----: | :------------------: | :--------------: |
+| 1   | Deployed versions can be recovered (Tag)                            |    ✔     |    ✔     |      ✔       |        |                      |        ✔         |
+| 2   | Features can be developed without affecting the development process |    ✔     |    ✔     |      ✔       |        |                      |                  |
+| 3   | Deployed versions can be fixed (Hotfix)                             |    ✔     |          |              |        |                      |                  |
+| 4   | Deployed versions can be used for long term support                 |    ✔     |          |              |        |                      |                  |
+| 5   | Deployed versions do not influence each other                       |    ✔     |    ✔     |      ✔       |        |                      |                  |
+| 6   | Current development should not influence deployed versions          |    ✔     |    ✔     |      ✔       |        |                      |                  |
+| 7   | Changes between versions should be captured as a changelog          |          |          |      ✔       |        |                      |        ✔         |
+| 8   | All versions should have a standardized version numbers             |          |    ✔     |      ✔       |   ✔    |                      |        ✔         |
+| 9   | Integration of the release process in the IDE                       |    ✔     |          |              |        |          ✔           |                  |
 
 The aim of this project is to offer a well-coordinated overall concept that integrates all of the listed principles and tools into the **git flow** workflow.
 
@@ -85,7 +93,7 @@ If you like to use **gitex-flow** in your **node.js** project you can use **gite
 ### Prerequisite
 
 - [git](https://git-scm.com/downloads) is installed
-- [git-flow](https://github.com/petervanderdoes/gitflow-avh) is installed
+- [git-flow (AVH edition)](https://github.com/petervanderdoes/gitflow-avh) is installed
 - [node.js](https://nodejs.org/en/) is installed
 
 ### Installation
@@ -117,6 +125,22 @@ After installation add the following lines to the `scripts` section in your `pac
 
 **gitex-flow** has mostly the same commands and API as **git flow**.
 There are only some simplifying changens and functional extensions which are fully backward compatible.
+
+#### Commit message convention
+
+Behind the scenes **gitex-flow** uses parts of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) library to generate its changelogs.
+Currently the commits must match the [angular's commit message guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit).
+For more information you can check out the [conventional-changelog-angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) present.
+
+Example for a matching conventional angular commit message:
+
+```
+feat(gflow): Implemented automatic naming when creating branches
+
+The name of the release and hotfix branch is set automatically when it is created.
+
+closes #5
+```
 
 #### Feature
 
@@ -177,7 +201,7 @@ Hotfixes are bug fixes based on a released version.
 
 #### Support
 
-Support branches are based on a released version to provide long time support of a program version.
+Support branches are based on a released version to provide long term support of a program version.
 
 ```shell
 #> npm run support:start -- <name> <base>

@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import { AvhGitFlow } from './avh/AvhGitFlow';
 import { GFlow } from './gflow/GFlow';
+import { Utils } from './tools/Utils';
 
 const command = new Command('git flow');
 const gitFlow = new AvhGitFlow();
@@ -16,46 +17,46 @@ command.command('init').action(async () => {
 // Feature command
 const feature = command.command('feature');
 feature.command('start <name>').action(async (name: string) => {
-  await gFlow.feature.start(name);
+  await Utils.exec(() => gFlow.feature.start(name));
 });
 feature.command('finish [name]').action(async (name: string) => {
-  await gFlow.feature.finish(name);
+  await Utils.exec(() => gFlow.feature.finish(name));
 });
 
 // BugFix command
 const bugfix = command.command('bugfix');
 bugfix.command('start <name>').action(async (name: string) => {
-  await gFlow.bugfix.start(name);
+  await Utils.exec(() => gFlow.bugfix.start(name));
 });
 bugfix.command('finish [name]').action(async (name: string) => {
-  await gFlow.bugfix.finish(name);
+  await Utils.exec(() => gFlow.bugfix.finish(name));
 });
 
 // Release command
 const release = command.command('release');
 release.command('start').action(async () => {
-  await gFlow.release.start();
+  await Utils.exec(() => gFlow.release.start());
 });
 release.command('finish').action(async () => {
-  await gFlow.release.finish();
+  await Utils.exec(() => gFlow.release.finish());
 });
 
 // HotFix command
 const hotfix = command.command('hotfix');
 hotfix.command('start').action(async () => {
-  await gFlow.hotfix.start();
+  await Utils.exec(() => gFlow.hotfix.start());
 });
 hotfix.command('finish').action(async () => {
-  await gFlow.hotfix.finish();
+  await Utils.exec(() => gFlow.hotfix.finish());
 });
 
 // support command
 const support = command.command('support');
 support.command('start <name>').action(async (name: string) => {
-  await gFlow.support.start(name);
+  await Utils.exec(() => gFlow.support.start(name));
 });
 support.command('finish [name]').action(async (name: string) => {
-  await gFlow.support.finish(name);
+  await Utils.exec(() => gFlow.support.finish(name));
 });
 
 command.parse(process.argv);

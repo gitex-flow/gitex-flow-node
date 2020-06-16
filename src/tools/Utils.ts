@@ -20,4 +20,17 @@ export class Utils {
     }
     return `${yyyy}-${mm}-${dd}`;
   }
+
+  /**
+   * Executes a command and suppresses errors if they are thrown.
+   *
+   * @param command - Command to be executed.
+   */
+  public static async exec(command: () => Promise<string | void>): Promise<void> {
+    try {
+      await command();
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 }

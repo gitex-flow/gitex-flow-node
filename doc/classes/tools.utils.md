@@ -12,9 +12,28 @@ Provides some utility functions.
 
 ### Methods
 
+* [exec](tools.utils.md#static-exec)
 * [getCurrDate](tools.utils.md#static-getcurrdate)
 
 ## Methods
+
+### `Static` exec
+
+▸ **exec**(`command`: function): *Promise‹void›*
+
+Executes a command and suppresses errors if they are thrown.
+
+**Parameters:**
+
+▪ **command**: *function*
+
+Command to be executed.
+
+▸ (): *Promise‹string | void›*
+
+**Returns:** *Promise‹void›*
+
+___
 
 ### `Static` getCurrDate
 
