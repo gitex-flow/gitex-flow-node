@@ -14,6 +14,7 @@ The framework offers automated tools that allows you to embed the release strate
     - [Prerequisite](#prerequisite)
     - [Installation](#installation)
     - [Usage / Workflow](#usage--workflow)
+      - [Commit message convention](#commit-message-convention)
       - [Feature](#feature)
       - [BugFix](#bugfix)
       - [Release](#release)
@@ -124,6 +125,22 @@ After installation add the following lines to the `scripts` section in your `pac
 
 **gitex-flow** has mostly the same commands and API as **git flow**.
 There are only some simplifying changens and functional extensions which are fully backward compatible.
+
+#### Commit message convention
+
+Behind the scenes **gitex-flow** uses parts of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) library to generate its changelogs.
+Currently the commits must match the [angular's commit message guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit).
+For more information you can check out the [conventional-changelog-angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) present.
+
+Example for a matching conventional angular commit message:
+
+```
+feat(gflow): Implemented automatic naming when creating branches
+
+The name of the release and hotfix branch is set automatically when it is created.
+
+closes #5
+```
 
 #### Feature
 
