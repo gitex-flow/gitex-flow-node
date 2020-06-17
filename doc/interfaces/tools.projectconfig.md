@@ -16,6 +16,7 @@ Options of the git flow node project.
 * [changelogFileName](tools.projectconfig.md#optional-changelogfilename)
 * [conventionalChangelogPresent](tools.projectconfig.md#optional-conventionalchangelogpresent)
 * [projectPath](tools.projectconfig.md#projectpath)
+* [storeLatestChangelog](tools.projectconfig.md#optional-storelatestchangelog)
 * [versionFile](tools.projectconfig.md#optional-versionfile)
 
 ## Properties
@@ -62,6 +63,15 @@ ___
 • **projectPath**: *string*
 
 Path to the node project folder / git repository.
+
+___
+
+### `Optional` storeLatestChangelog
+
+• **storeLatestChangelog**? : *undefined | false | true*
+
+Set this flag to keep the changelog of the latest release as [changelogFileName](tools.projectconfig.md#optional-changelogfilename).latest.md.
+This file can be useful for some other tools which processes the release information (ex. gitlab).
 
 ___
 

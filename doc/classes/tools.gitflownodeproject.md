@@ -18,6 +18,7 @@ Representing an API for handling git flow SemVer.
 
 * [DefaultBumpVersionFiles](tools.gitflownodeproject.md#static-readonly-defaultbumpversionfiles)
 * [DefaultChangelogFile](tools.gitflownodeproject.md#static-readonly-defaultchangelogfile)
+* [DefaultLatestChangelogFile](tools.gitflownodeproject.md#static-readonly-defaultlatestchangelogfile)
 * [DefaultVersionFile](tools.gitflownodeproject.md#static-readonly-defaultversionfile)
 
 ### Methods
@@ -54,6 +55,12 @@ ___
 ### `Static` `Readonly` DefaultChangelogFile
 
 ▪ **DefaultChangelogFile**: *"CHANGELOG.md"* = "CHANGELOG.md"
+
+___
+
+### `Static` `Readonly` DefaultLatestChangelogFile
+
+▪ **DefaultLatestChangelogFile**: *"CHANGELOG.latest.md"* = "CHANGELOG.latest.md"
 
 ___
 

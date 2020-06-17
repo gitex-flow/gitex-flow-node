@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { join } from 'path';
+import { join, dirname, basename } from 'path';
 import { GitRepository } from '../git/GitRepository';
 import { Readable, Transform } from 'stream';
 import conventionalChangelogWriter, { Context } from 'conventional-changelog-writer';
 import conventionalChangelogPresetLoader from 'conventional-changelog-preset-loader';
-import { readJson, writeJson, pathExists, ensureFile, createWriteStream, createReadStream, moveSync } from 'fs-extra';
+import {
+  readJson,
+  writeJson,
+  pathExists,
+  ensureFile,
+  createWriteStream,
+  createReadStream,
+  moveSync,
+  copySync,
+} from 'fs-extra';
 import { Utils } from './Utils';
 
 /**
@@ -21,6 +30,12 @@ export interface ProjectConfig {
    * *DEFAULTS*: CHANGELOG.md
    */
   changelogFileName?: string;
+
+  /**
+   * Set this flag to keep the changelog of the latest release as [[changelogFileName]].latest.md.
+   * This file can be useful for some other tools which processes the release information (ex. gitlab).
+   */
+  storeLatestChangelog?: boolean;
 
   /**
    * Specifies the conventional commit format.
@@ -58,6 +73,7 @@ export class GitFlowNodeProject {
   public static readonly DefaultVersionFile = 'package.json';
   public static readonly DefaultBumpVersionFiles = [GitFlowNodeProject.DefaultVersionFile, 'package-lock.json'];
   public static readonly DefaultChangelogFile = 'CHANGELOG.md';
+  public static readonly DefaultLatestChangelogFile = 'CHANGELOG.latest.md';
 
   private options: ProjectConfig;
   private gitRepository: GitRepository;
@@ -74,6 +90,7 @@ export class GitFlowNodeProject {
     this.options.bumpVersionFiles = options.bumpVersionFiles ?? GitFlowNodeProject.DefaultBumpVersionFiles;
     this.options.conventionalChangelogPresent = options.conventionalChangelogPresent ?? 'angular';
     this.options.changelogFileName = options.changelogFileName ?? GitFlowNodeProject.DefaultChangelogFile;
+    this.options.storeLatestChangelog = options.storeLatestChangelog ?? true;
     this.gitRepository = new GitRepository(this.options.projectPath);
   }
 
@@ -139,6 +156,10 @@ export class GitFlowNodeProject {
       if (await pathExists(changelogPath)) {
         files.push(changelog);
       }
+      const latestChangelogPath = join(this.options.projectPath, GitFlowNodeProject.DefaultLatestChangelogFile);
+      if (await pathExists(latestChangelogPath)) {
+        files.push(latestChangelogPath);
+      }
     }
 
     const commitMsg = `chore(release): Update ${updateDescs.join(' and ')}`;
@@ -191,20 +212,26 @@ export class GitFlowNodeProject {
     context: Context,
     config?: any,
   ): Promise<void> {
-    const changelogFilePathTmp = `${changelogFilePath}.tmp`;
+    const dir = dirname(changelogFilePath);
+    const fileName = basename(changelogFilePath, '.md');
+    const tmpChangelogFilePath = join(dir, `${fileName}.tmp.md`);
+    const latestChangelogFilePath = join(dir, `${fileName}.latest.md`);
     return new Promise((resolve, reject) => {
       this.createChangelogStream(commitStream, context, config)
         .on('error', (err: Error) => {
           err.message = 'Error in conventional-changelog-writer: ' + err.message;
           reject(err);
         })
-        .pipe(createWriteStream(changelogFilePathTmp))
+        .pipe(createWriteStream(tmpChangelogFilePath))
         .on('error', (err: Error) => {
           err.message = 'Error on writing CHANGELOG.md: ' + err.message;
           reject(err);
         })
         .on('finish', () => {
-          this.mergeFiles(changelogFilePath, changelogFilePathTmp).then(resolve).catch(reject);
+          if (this.options.storeLatestChangelog) {
+            copySync(tmpChangelogFilePath, latestChangelogFilePath, { overwrite: true });
+          }
+          this.mergeFiles(changelogFilePath, tmpChangelogFilePath).then(resolve).catch(reject);
         });
     });
   }
