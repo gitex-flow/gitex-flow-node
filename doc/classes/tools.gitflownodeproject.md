@@ -16,9 +16,9 @@ Representing an API for handling git flow SemVer.
 
 ### Properties
 
-* [changelogFile](tools.gitflownodeproject.md#static-readonly-changelogfile)
-* [packageJson](tools.gitflownodeproject.md#static-readonly-packagejson)
-* [packageLockJson](tools.gitflownodeproject.md#static-readonly-packagelockjson)
+* [DefaultBumpVersionFiles](tools.gitflownodeproject.md#static-readonly-defaultbumpversionfiles)
+* [DefaultChangelogFile](tools.gitflownodeproject.md#static-readonly-defaultchangelogfile)
+* [DefaultVersionFile](tools.gitflownodeproject.md#static-readonly-defaultversionfile)
 
 ### Methods
 
@@ -31,7 +31,7 @@ Representing an API for handling git flow SemVer.
 
 ###  constructor
 
-\+ **new GitFlowNodeProject**(`basePath?`: undefined | string): *[GitFlowNodeProject](tools.gitflownodeproject.md)*
+\+ **new GitFlowNodeProject**(`options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GitFlowNodeProject](tools.gitflownodeproject.md)*
 
 Initializes a new instance of this class.
 
@@ -39,41 +39,42 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`basePath?` | undefined &#124; string | Base path of the project folder.  |
+`options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Options of the git flow node project instance.  |
 
 **Returns:** *[GitFlowNodeProject](tools.gitflownodeproject.md)*
 
 ## Properties
 
-### `Static` `Readonly` changelogFile
+### `Static` `Readonly` DefaultBumpVersionFiles
 
-▪ **changelogFile**: *"CHANGELOG.md"* = "CHANGELOG.md"
-
-___
-
-### `Static` `Readonly` packageJson
-
-▪ **packageJson**: *"package.json"* = "package.json"
+▪ **DefaultBumpVersionFiles**: *string[]* = [GitFlowNodeProject.DefaultVersionFile, 'package-lock.json']
 
 ___
 
-### `Static` `Readonly` packageLockJson
+### `Static` `Readonly` DefaultChangelogFile
 
-▪ **packageLockJson**: *"package-lock.json"* = "package-lock.json"
+▪ **DefaultChangelogFile**: *"CHANGELOG.md"* = "CHANGELOG.md"
+
+___
+
+### `Static` `Readonly` DefaultVersionFile
+
+▪ **DefaultVersionFile**: *"package.json"* = "package.json"
 
 ## Methods
 
 ###  commitChanges
 
-▸ **commitChanges**(`commitFiles?`: string[]): *Promise‹void›*
+▸ **commitChanges**(`commitVersionFiles`: boolean, `commitChangelog`: boolean): *Promise‹void›*
 
 Commits the changes of the git repository.
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`commitFiles?` | string[] | Files to be commited.  |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`commitVersionFiles` | boolean | true | Indicates if the defined version files should be committed if they exists. |
+`commitChangelog` | boolean | true | Indicates if the changelog should be committed.  |
 
 **Returns:** *Promise‹void›*
 

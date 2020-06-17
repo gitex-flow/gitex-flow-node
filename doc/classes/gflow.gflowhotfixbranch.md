@@ -32,7 +32,7 @@ This class extending a hotfix branch with some helpful functionality.
 
 ###  constructor
 
-\+ **new GFlowHotFixBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `repoPath`: string): *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
+\+ **new GFlowHotFixBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
 
 Initializes a new instance of this class.
 
@@ -41,7 +41,7 @@ Initializes a new instance of this class.
 Name | Type | Description |
 ------ | ------ | ------ |
 `gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped. |
-`repoPath` | string | Path of the git repository.  |
+`options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Git flow node project options.  |
 
 **Returns:** *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
 

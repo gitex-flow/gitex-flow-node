@@ -6,7 +6,7 @@ export interface GitFlowConfig {
   developBranch?: string;
   featureBranchPrefix?: string;
   bugfixBranchPrefix?: string;
-  releaseBranchName?: string;
+  releaseBranchPrefix?: string;
   hotfixBranchPrefix?: string;
   supportBranchPrefix?: string;
   versionTagPrefix?: string;

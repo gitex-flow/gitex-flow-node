@@ -54,7 +54,7 @@ export class GitFlowTester {
     assert.equal(activeConfig.developBranch, config?.developBranch ?? 'develop');
     assert.equal(activeConfig.featureBranchPrefix, config?.featureBranchPrefix ?? 'feature/');
     assert.equal(activeConfig.bugfixBranchPrefix, config?.bugfixBranchPrefix ?? 'bugfix/');
-    assert.equal(activeConfig.releaseBranchName, config?.releaseBranchName ?? 'release/');
+    assert.equal(activeConfig.releaseBranchPrefix, config?.releaseBranchPrefix ?? 'release/');
     assert.equal(activeConfig.hotfixBranchPrefix, config?.hotfixBranchPrefix ?? 'hotfix/');
     assert.equal(activeConfig.supportBranchPrefix, config?.supportBranchPrefix ?? 'support/');
     assert.equal(activeConfig.versionTagPrefix, config?.versionTagPrefix);

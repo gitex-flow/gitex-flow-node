@@ -17,7 +17,7 @@ Configuration of a git flow instance.
 * [featureBranchPrefix](api.gitflowconfig.md#optional-featurebranchprefix)
 * [hotfixBranchPrefix](api.gitflowconfig.md#optional-hotfixbranchprefix)
 * [masterBranch](api.gitflowconfig.md#optional-masterbranch)
-* [releaseBranchName](api.gitflowconfig.md#optional-releasebranchname)
+* [releaseBranchPrefix](api.gitflowconfig.md#optional-releasebranchprefix)
 * [supportBranchPrefix](api.gitflowconfig.md#optional-supportbranchprefix)
 * [versionTagPrefix](api.gitflowconfig.md#optional-versiontagprefix)
 
@@ -53,9 +53,9 @@ ___
 
 ___
 
-### `Optional` releaseBranchName
+### `Optional` releaseBranchPrefix
 
-• **releaseBranchName**? : *undefined | string*
+• **releaseBranchPrefix**? : *undefined | string*
 
 ___
 

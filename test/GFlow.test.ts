@@ -241,7 +241,11 @@ describe('Test gFlow implementation', function () {
 
 function createGitFlow(): GitFlow {
   const avhGitFlow = new AvhGitFlow(testRepoPath);
-  const gFlow = new GFlow(avhGitFlow, testRepoPath);
+  const gFlow = new GFlow(avhGitFlow, {
+    projectConfig: {
+      projectPath: testRepoPath,
+    },
+  });
   return gFlow;
 }
 
