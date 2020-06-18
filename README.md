@@ -142,7 +142,7 @@ The following JSON shows the schema and the default values of the configuration:
   "projectConfig": {
     "projectPath": "./",
     "changelogFileName": "CHANGELOG.md",
-    "storeLatestChangelog": true,
+    "storeLatestChangelog": false,
     "conventionalChangelogPresent": "angular",
     "versionFile": "package.json",
     "bumpVersionFiles": [
@@ -279,7 +279,7 @@ const gFlowOptions: GFlowOptions = {
   projectConfig: {
     projectPath: './',
     changelogFileName: 'CHANGELOG.md',
-    storeLatestChangelog: true,
+    storeLatestChangelog: false,
     conventionalChangelogPresent: 'angular',
     versionFile: 'package.json',
     bumpVersionFiles: ['package.json', 'package-lock.json'],

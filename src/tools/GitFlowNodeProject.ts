@@ -90,7 +90,6 @@ export class GitFlowNodeProject {
     this.options.bumpVersionFiles = options.bumpVersionFiles ?? GitFlowNodeProject.DefaultBumpVersionFiles;
     this.options.conventionalChangelogPresent = options.conventionalChangelogPresent ?? 'angular';
     this.options.changelogFileName = options.changelogFileName ?? GitFlowNodeProject.DefaultChangelogFile;
-    this.options.storeLatestChangelog = options.storeLatestChangelog ?? true;
     this.gitRepository = new GitRepository(this.options.projectPath);
   }
 
