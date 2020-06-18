@@ -70,7 +70,7 @@ ___
 
 ###  commit
 
-▸ **commit**(`fileNames`: string[], `authorName`: string, `authorMail`: string, `message`: string): *Promise‹string›*
+▸ **commit**(`fileNames`: string[], `message`: string, `authorName?`: undefined | string, `authorMail?`: undefined | string): *Promise‹string›*
 
 Adds and commits the given file names to the current branch.
 
@@ -79,9 +79,9 @@ Adds and commits the given file names to the current branch.
 Name | Type | Description |
 ------ | ------ | ------ |
 `fileNames` | string[] | Relative file paths to be added before commit. |
-`authorName` | string | The name of the author. |
-`authorMail` | string | Mail address of the author. |
-`message` | string | Commit message.  |
+`message` | string | Commit message. |
+`authorName?` | undefined &#124; string | The name of the author. |
+`authorMail?` | undefined &#124; string | Mail address of the author.  |
 
 **Returns:** *Promise‹string›*
 

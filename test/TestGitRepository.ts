@@ -8,9 +8,6 @@ import { GitRepository } from '../src/git/GitRepository';
 export class TestGitRepository extends GitRepository {
   private readonly fileFolderPath = resolve(join(__dirname, 'files'));
 
-  private readonly authorName = 'test';
-  private readonly authorMail = 'test@test.com';
-
   /**
    * Commits a given file (from folder 'files') to the test repo.
    *
@@ -19,7 +16,7 @@ export class TestGitRepository extends GitRepository {
    */
   public async commitTestFile(fileName: string, message: string): Promise<string> {
     await this.copyFileToRepo(fileName);
-    return await this.commit([fileName], this.authorName, this.authorMail, message);
+    return await this.commit([fileName], message);
   }
 
   private async copyFileToRepo(fileName: string): Promise<void> {
