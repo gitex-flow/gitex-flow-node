@@ -262,10 +262,10 @@ If you like to use **gitex-flow** in your code, you can use the typescript gitex
 **gitex-flow** is implemented as a wrapper of an arbitary **git flow** implementation.
 
 ```typescript
-import { AvhGitFlow, GFlow } from 'gitex-flow';
+import { AvhGitFlow, GFlow, GFlowConfig } from 'gitex-flow';
 
 // Options with default values
-const gFlowOptions: GFlowOptions = {
+const gFlowConfig: GFlowConfig = {
   gitFlowConfig: {
     masterBranch: 'master',
     developBranch: 'develop',
@@ -287,7 +287,7 @@ const gFlowOptions: GFlowOptions = {
 };
 
 const gitFlow = new AvhGitFlow();
-const gFlow = new GFlow(gitFlow, gFlowOptions);
+const gFlow = new GFlow(gitFlow, gFlowConfig);
 // ...
 ```
 
