@@ -1,3 +1,13 @@
+## 2.0.1 (2020-06-18)
+
+
+### Bug Fixes
+
+* **config:** Implemented other possible config file names and ensure projectPath is set ([583a012](https://github.com/CuddlySheep/gitex-flow-node/commits/583a012f7f9e0387492b2fd5ae4a4fd807ea75d7)), closes [#18](https://github.com/CuddlySheep/gitex-flow-node/issues/18) [#17](https://github.com/CuddlySheep/gitex-flow-node/issues/17)
+* **docu:** Corrected example code for API usage ([69581c9](https://github.com/CuddlySheep/gitex-flow-node/commits/69581c9779dcd55bf44642644ad4c7bc1cca88a3)), closes [#19](https://github.com/CuddlySheep/gitex-flow-node/issues/19)
+
+
+
 # 2.0.0 (2020-06-18)
 
 ### Bug Fixes
