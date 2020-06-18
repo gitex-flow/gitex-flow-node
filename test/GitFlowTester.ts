@@ -1,13 +1,18 @@
 import { GitFlow } from '../src/api/GitFlow';
+import { tmpdir } from 'os';
 import { assert } from 'chai';
 import { TestGitRepository } from './TestGitRepository';
 import { GitFlowConfig } from '../src/api/GitFlowConfig';
 import { BranchType, GitFlowBranch } from '../src/api/branches/GitFlowBranch';
+import { join } from 'path';
+import { pathExists, copy, ensureDir, emptyDir, rmdir } from 'fs-extra';
 
 /**
  * Tester for some standard git flow tests.
  */
 export class GitFlowTester {
+  private static readonly CachedGitFlowRepo = join(tmpdir(), 'GitFlowRepoTemplate');
+
   private readonly gitFlow: GitFlow;
   private readonly repo: TestGitRepository;
 
@@ -23,13 +28,17 @@ export class GitFlowTester {
   }
 
   public async init(): Promise<void> {
-    await this.repo.remove();
-    await this.repo.commitTestFile('package.json', 'chore(project): Added package.json');
-    await this.gitFlow.init();
+    await this.dispose();
+    await GitFlowTester.ensureGitFlowRepo(this.gitFlow, this.repo);
   }
 
   public async dispose(): Promise<void> {
     await this.repo.remove();
+  }
+
+  public static async clearCache(): Promise<void> {
+    await emptyDir(GitFlowTester.CachedGitFlowRepo);
+    await rmdir(GitFlowTester.CachedGitFlowRepo);
   }
 
   public async assertVersion(): Promise<void> {
@@ -45,7 +54,7 @@ export class GitFlowTester {
     assert.equal(activeConfig.developBranch, config?.developBranch ?? 'develop');
     assert.equal(activeConfig.featureBranchPrefix, config?.featureBranchPrefix ?? 'feature/');
     assert.equal(activeConfig.bugfixBranchPrefix, config?.bugfixBranchPrefix ?? 'bugfix/');
-    assert.equal(activeConfig.releaseBranchName, config?.releaseBranchName ?? 'release/');
+    assert.equal(activeConfig.releaseBranchPrefix, config?.releaseBranchPrefix ?? 'release/');
     assert.equal(activeConfig.hotfixBranchPrefix, config?.hotfixBranchPrefix ?? 'hotfix/');
     assert.equal(activeConfig.supportBranchPrefix, config?.supportBranchPrefix ?? 'support/');
     assert.equal(activeConfig.versionTagPrefix, config?.versionTagPrefix);
@@ -65,6 +74,18 @@ export class GitFlowTester {
         return new TestBranch(this.gitFlow.support, this.repo);
       default:
         throw new Error(`Type ${type} is not supported.`);
+    }
+  }
+
+  private static async ensureGitFlowRepo(gitFlow: GitFlow, repo: TestGitRepository): Promise<void> {
+    const cachePath = GitFlowTester.CachedGitFlowRepo;
+    if (await pathExists(cachePath)) {
+      await copy(cachePath, repo.getRepoPath());
+    } else {
+      await repo.commitTestFile('package.json', 'chore(project): Added package.json');
+      await gitFlow.init();
+      await ensureDir(cachePath);
+      await copy(repo.getRepoPath(), cachePath);
     }
   }
 }

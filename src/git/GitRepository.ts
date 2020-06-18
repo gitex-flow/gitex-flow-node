@@ -22,6 +22,15 @@ export class GitRepository {
   }
 
   /**
+   * Gets the folder path of the git repository.
+   *
+   * @returns The path to the git repository.
+   */
+  public getRepoPath(): string {
+    return this.repoPath;
+  }
+
+  /**
    * Gets the path of the git repository.
    */
   public async remove(): Promise<void> {
@@ -52,16 +61,20 @@ export class GitRepository {
    * Adds and commits the given file names to the current branch.
    *
    * @param fileNames - Relative file paths to be added before commit.
+   * @param message - Commit message.
    * @param authorName - The name of the author.
    * @param authorMail - Mail address of the author.
-   * @param message - Commit message.
    */
-  public async commit(fileNames: string[], authorName: string, authorMail: string, message: string): Promise<string> {
+  public async commit(fileNames: string[], message: string, authorName?: string, authorMail?: string): Promise<string> {
     const repo = await this.createOrOpenRepo();
     for (const fileName of fileNames) {
       await repo.add(fileName);
     }
-    const hash = await repo.commit(message, fileNames, { '--author': `"${authorName} <${authorMail}>"` });
+    let options = undefined;
+    if (authorName && authorMail) {
+      options = { '--author': `"${authorName} <${authorMail}>"` };
+    }
+    const hash = await repo.commit(message, fileNames, options);
     return hash.commit;
   }
 

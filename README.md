@@ -13,6 +13,7 @@ The framework offers automated tools that allows you to embed the release strate
   - [User documentation](#user-documentation)
     - [Prerequisite](#prerequisite)
     - [Installation](#installation)
+    - [Configuation](#configuation)
     - [Usage / Workflow](#usage--workflow)
       - [Commit message convention](#commit-message-convention)
       - [Feature](#feature)
@@ -121,6 +122,40 @@ After installation add the following lines to the `scripts` section in your `pac
 }
 ```
 
+### Configuation
+
+To configure **gitex-flow** you can create a configuration file `.gitex`.
+The following JSON shows the schema and the default values of the configuration:
+
+```JSON
+{
+  "gitFlowConfig": {
+    "masterBranch": "master",
+    "developBranch": "develop",
+    "featureBranchPrefix": "feature",
+    "bugfixBranchPrefix": "bugfix",
+    "releaseBranchPrefix": "release",
+    "hotfixBranchPrefix": "hotfix",
+    "supportBranchPrefix": "support",
+    "versionTagPrefix": null
+  },
+  "projectConfig": {
+    "projectPath": "./",
+    "changelogFileName": "CHANGELOG.md",
+    "storeLatestChangelog": false,
+    "conventionalChangelogPresent": "angular",
+    "versionFile": "package.json",
+    "bumpVersionFiles": [
+      "package.json",
+      "package-lock.json"
+    ]
+  }
+}
+
+```
+
+Further information on the [available configurations](doc/interfaces/gflow.gflowconfig.md) can be found in the API documentation.
+
 ### Usage / Workflow
 
 **gitex-flow** has mostly the same commands and API as **git flow**.
@@ -129,9 +164,8 @@ There are only some simplifying changens and functional extensions which are ful
 #### Commit message convention
 
 Behind the scenes **gitex-flow** uses parts of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) library to generate its changelogs.
-Currently the commits must match the [angular's commit message guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit).
-For more information you can check out the [conventional-changelog-angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) present.
-
+You can select the desired present by setting the option `conventionalChangelogPresent` of the [project settings](doc/interfaces/tools.projectconfig.md).
+The default present is `angular`.
 Example for a matching conventional angular commit message:
 
 ```
@@ -140,6 +174,18 @@ feat(gflow): Implemented automatic naming when creating branches
 The name of the release and hotfix branch is set automatically when it is created.
 
 closes #5
+```
+
+or
+
+```
+feat(config): Made gitex-flow configurable
+
+Added configuration data structure and introduced optional config file '.gitex'.
+
+BREAKING CHANGE: Adapted API by adding an options to the affected modules (classes).
+
+closes #10
 ```
 
 #### Feature
@@ -213,13 +259,35 @@ Support branches are based on a released version to provide long term support of
 
 If you like to use **gitex-flow** in your code, you can use the typescript gitex-flow API.
 
-**gitex-flow** is implemented as a wrapper of a arbitary **git flow** implementation.
+**gitex-flow** is implemented as a wrapper of an arbitary **git flow** implementation.
 
 ```typescript
 import { AvhGitFlow, GFlow } from 'gitex-flow';
 
+// Options with default values
+const gFlowOptions: GFlowOptions = {
+  gitFlowConfig: {
+    masterBranch: 'master',
+    developBranch: 'develop',
+    featureBranchPrefix: 'feature',
+    bugfixBranchPrefix: 'bugfix',
+    releaseBranchPrefix: 'release',
+    hotfixBranchPrefix: 'hotfix',
+    supportBranchPrefix: 'support',
+    versionTagPrefix: undefined,
+  },
+  projectConfig: {
+    projectPath: './',
+    changelogFileName: 'CHANGELOG.md',
+    storeLatestChangelog: false,
+    conventionalChangelogPresent: 'angular',
+    versionFile: 'package.json',
+    bumpVersionFiles: ['package.json', 'package-lock.json'],
+  },
+};
+
 const gitFlow = new AvhGitFlow();
-const gflow = new GFlow(gitFlow);
+const gFlow = new GFlow(gitFlow, gFlowOptions);
 // ...
 ```
 

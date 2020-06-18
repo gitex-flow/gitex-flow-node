@@ -9,6 +9,10 @@ const testRepoPath = resolve(join('.', 'test_repo'));
 describe('Test AVH git flow implementation', function () {
   this.timeout(0);
 
+  this.afterAll(async () => {
+    await GitFlowTester.clearCache();
+  });
+
   it('git flow version', async function () {
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
     await tester.assertVersion();

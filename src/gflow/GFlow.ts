@@ -4,6 +4,23 @@ import { ConfigProvider } from '../api/ConfigProvider';
 import { GitFlowConfig } from '../api/GitFlowConfig';
 import { GFlowReleaseBranch } from './branches/GFlowReleaseBranch';
 import { GFlowHotFixBranch } from './branches/GFlowHotFixBranch';
+import { ProjectConfig } from '../tools/GitFlowNodeProject';
+
+/**
+ * Options of the GFlow implementation.
+ */
+export interface GFlowConfig {
+  /**
+   * The git flow config can be directly set in the GFlow options.
+   * This config will be taken if no other git flow config is given on calling the `init` method.
+   */
+  gitFlowConfig?: GitFlowConfig;
+
+  /**
+   * The configuration of the node project.
+   */
+  projectConfig: ProjectConfig;
+}
 
 /**
  * GitFlow wrapper extending functionality to a common git flow implementation.
@@ -17,20 +34,29 @@ export class GFlow implements GitFlow {
   public config: ConfigProvider<GitFlowConfig>;
 
   private gitFlow: GitFlow;
+  private options: GFlowConfig;
 
   /**
    * Initializes a new instance of this class.
    *
    * @param gitFlow - GitFlow implementation.
-   * @param repoPath - Path of the git repository.
+   * @param options - Options for configuring the GFlow.
    */
-  constructor(gitFlow: GitFlow, repoPath?: string) {
-    repoPath = repoPath ?? process.cwd();
+  constructor(gitFlow: GitFlow, options?: GFlowConfig) {
+    if (!options) {
+      options = {
+        projectConfig: {
+          projectPath: process.cwd(),
+        },
+      };
+    }
+
     this.gitFlow = gitFlow;
+    this.options = options;
     this.feature = this.gitFlow.feature;
     this.bugfix = this.gitFlow.bugfix;
-    this.release = new GFlowReleaseBranch(this.gitFlow.release, repoPath);
-    this.hotfix = new GFlowHotFixBranch(this.gitFlow.hotfix, repoPath);
+    this.release = new GFlowReleaseBranch(this.gitFlow.release, options.projectConfig);
+    this.hotfix = new GFlowHotFixBranch(this.gitFlow.hotfix, options.projectConfig);
     this.support = this.gitFlow.support;
     this.config = this.gitFlow.config;
   }
@@ -42,7 +68,7 @@ export class GFlow implements GitFlow {
    * @param force - Force reinitialisation if git flow already initialized.
    */
   public async init(config?: GitFlowConfig, force?: boolean): Promise<void> {
-    await this.gitFlow.init(config, force);
+    await this.gitFlow.init(config ?? this.options.gitFlowConfig, force);
   }
 
   /**

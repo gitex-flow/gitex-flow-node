@@ -36,7 +36,7 @@ GitFlow wrapper extending functionality to a common git flow implementation.
 
 ###  constructor
 
-\+ **new GFlow**(`gitFlow`: [GitFlow](../interfaces/api.gitflow.md), `repoPath?`: undefined | string): *[GFlow](gflow.gflow-1.md)*
+\+ **new GFlow**(`gitFlow`: [GitFlow](../interfaces/api.gitflow.md), `options?`: [GFlowConfig](../interfaces/gflow.gflowconfig.md)): *[GFlow](gflow.gflow-1.md)*
 
 Initializes a new instance of this class.
 
@@ -45,7 +45,7 @@ Initializes a new instance of this class.
 Name | Type | Description |
 ------ | ------ | ------ |
 `gitFlow` | [GitFlow](../interfaces/api.gitflow.md) | GitFlow implementation. |
-`repoPath?` | undefined &#124; string | Path of the git repository.  |
+`options?` | [GFlowConfig](../interfaces/gflow.gflowconfig.md) | Options for configuring the GFlow.  |
 
 **Returns:** *[GFlow](gflow.gflow-1.md)*
 

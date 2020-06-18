@@ -27,7 +27,7 @@ export class AvhConfigProvider implements ConfigProvider<GitFlowConfig> {
     if (config?.developBranch != undefined) await this.setConfig('develop', config.developBranch);
     if (config?.featureBranchPrefix != undefined) await this.setConfig('feature', config.featureBranchPrefix);
     if (config?.bugfixBranchPrefix != undefined) await this.setConfig('bugfix', config.bugfixBranchPrefix);
-    if (config?.releaseBranchName != undefined) await this.setConfig('release', config.releaseBranchName);
+    if (config?.releaseBranchPrefix != undefined) await this.setConfig('release', config.releaseBranchPrefix);
     if (config?.hotfixBranchPrefix != undefined) await this.setConfig('hotfix', config.hotfixBranchPrefix);
     if (config?.supportBranchPrefix != undefined) await this.setConfig('support', config.supportBranchPrefix);
     if (config?.versionTagPrefix != undefined) await this.setConfig('versiontagprefix', config.versionTagPrefix);
@@ -49,7 +49,7 @@ export class AvhConfigProvider implements ConfigProvider<GitFlowConfig> {
       developBranch: this.extractConfig(lines[1]),
       featureBranchPrefix: this.extractConfig(lines[2]),
       bugfixBranchPrefix: this.extractConfig(lines[3]),
-      releaseBranchName: this.extractConfig(lines[4]),
+      releaseBranchPrefix: this.extractConfig(lines[4]),
       hotfixBranchPrefix: this.extractConfig(lines[5]),
       supportBranchPrefix: this.extractConfig(lines[6]),
       versionTagPrefix: this.extractConfig(lines[7]),

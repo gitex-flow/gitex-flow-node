@@ -25,6 +25,7 @@ A simple API with basic functionality of a git repository.
 * [ensure](git.gitrepository.md#ensure)
 * [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
 * [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
+* [getRepoPath](git.gitrepository.md#getrepopath)
 * [remove](git.gitrepository.md#remove)
 
 ## Constructors
@@ -69,7 +70,7 @@ ___
 
 ###  commit
 
-▸ **commit**(`fileNames`: string[], `authorName`: string, `authorMail`: string, `message`: string): *Promise‹string›*
+▸ **commit**(`fileNames`: string[], `message`: string, `authorName?`: undefined | string, `authorMail?`: undefined | string): *Promise‹string›*
 
 Adds and commits the given file names to the current branch.
 
@@ -78,9 +79,9 @@ Adds and commits the given file names to the current branch.
 Name | Type | Description |
 ------ | ------ | ------ |
 `fileNames` | string[] | Relative file paths to be added before commit. |
-`authorName` | string | The name of the author. |
-`authorMail` | string | Mail address of the author. |
-`message` | string | Commit message.  |
+`message` | string | Commit message. |
+`authorName?` | undefined &#124; string | The name of the author. |
+`authorMail?` | undefined &#124; string | Mail address of the author.  |
 
 **Returns:** *Promise‹string›*
 
@@ -114,6 +115,18 @@ ___
 Collects all commit messages since the last release.
 
 **Returns:** *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+
+___
+
+###  getRepoPath
+
+▸ **getRepoPath**(): *string*
+
+Gets the folder path of the git repository.
+
+**Returns:** *string*
+
+The path to the git repository.
 
 ___
 

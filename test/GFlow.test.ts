@@ -11,6 +11,10 @@ const testRepoPath = resolve(join('.', 'test_repo'));
 describe('Test gFlow implementation', function () {
   this.timeout(0);
 
+  this.afterAll(async () => {
+    await GitFlowTester.clearCache();
+  });
+
   it('git flow version', async function () {
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
     await tester.assertVersion();
@@ -237,7 +241,11 @@ describe('Test gFlow implementation', function () {
 
 function createGitFlow(): GitFlow {
   const avhGitFlow = new AvhGitFlow(testRepoPath);
-  const gFlow = new GFlow(avhGitFlow, testRepoPath);
+  const gFlow = new GFlow(avhGitFlow, {
+    projectConfig: {
+      projectPath: testRepoPath,
+    },
+  });
   return gFlow;
 }
 

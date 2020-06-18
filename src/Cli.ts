@@ -2,12 +2,21 @@
 
 import { Command } from 'commander';
 import { AvhGitFlow } from './avh/AvhGitFlow';
-import { GFlow } from './gflow/GFlow';
+import { GFlow, GFlowConfig } from './gflow/GFlow';
 import { Utils } from './tools/Utils';
+import { pathExistsSync, readJsonSync } from 'fs-extra';
+import { join } from 'path';
 
 const command = new Command('git flow');
 const gitFlow = new AvhGitFlow();
-const gFlow = new GFlow(gitFlow);
+
+let gFlowConfig: GFlowConfig | undefined;
+const configFilePath = join(process.cwd(), '.gitex');
+if (pathExistsSync(configFilePath)) {
+  gFlowConfig = readJsonSync(configFilePath) as GFlowConfig;
+}
+
+const gFlow = new GFlow(gitFlow, gFlowConfig);
 
 // Init command
 command.command('init').action(async () => {
