@@ -108,6 +108,7 @@ After installation add the following lines to the `scripts` section in your `pac
 ```javascript
 "scripts": {
     ...
+    "init": "gitex-flow init",
     "feature:start": "gitex-flow feature start",
     "feature:finish": "gitex-flow feature finish",
     "release:start": "gitex-flow release start",
@@ -120,6 +121,12 @@ After installation add the following lines to the `scripts` section in your `pac
     "support:finish": "gitex-flow support finish"
     ...
 }
+```
+
+The very first time after installation you have to initialize git-flow by following command:
+
+```
+#> npm run init
 ```
 
 ### Configuation
