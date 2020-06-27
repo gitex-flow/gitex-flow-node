@@ -1,3 +1,12 @@
+## 2.0.2 (2020-06-27)
+
+
+### Reverts
+
+* **project:** Changed postinstall to common init script due to problems on installation ([796994a](https://github.com/CuddlySheep/gitex-flow-node/commits/796994a59e612b405060e88e462531f263fa2a89)), closes [#20](https://github.com/CuddlySheep/gitex-flow-node/issues/20)
+
+
+
 ## 2.0.1 (2020-06-18)
 
 
