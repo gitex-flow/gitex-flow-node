@@ -18,7 +18,7 @@
     "test": "mocha -r ts-node/register test/**/*.test.ts",
     "docs": "typedoc --options typedoc.json",
     "make": "npm run build && npm run lint && npm run test && npm run docs",
-    "postinstall": "node build/src/Cli.js init",
+    "init": "node build/src/Cli.js init",
     "feature:start": "node build/src/Cli.js feature start",
     "feature:finish": "node build/src/Cli.js feature finish",
     "release:start": "node build/src/Cli.js release start",
