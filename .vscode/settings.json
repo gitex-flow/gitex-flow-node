@@ -15,6 +15,7 @@
     "project",
     "gitex-flow",
     "logging",
-    "tests"
+    "tests",
+    "security"
   ]
 }
