@@ -1,6 +1,6 @@
 [gitex-flow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
 
-# Interface: ConfigProvider <**T**>
+# Interface: ConfigProvider ‹**T**›
 
 Configuration provider.
 
