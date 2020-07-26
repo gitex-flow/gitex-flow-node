@@ -1,3 +1,12 @@
+## 2.0.3 (2020-07-26)
+
+
+### Bug Fixes
+
+* **security:** Updated project dependencies due to security issues in lib 'lodash'closes [#21](https://github.com/CuddlySheep/gitex-flow-node/issues/21) ([fcc1e7c](https://github.com/CuddlySheep/gitex-flow-node/commits/fcc1e7cbfe773e8c08c91f6b71f3fef9813f24a8))
+
+
+
 ## 2.0.2 (2020-06-27)
 
 
