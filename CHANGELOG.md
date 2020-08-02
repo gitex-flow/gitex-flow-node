@@ -1,3 +1,12 @@
+## 2.0.4 (2020-08-02)
+
+
+### Bug Fixes
+
+* **security:** Updated project dependencies due to a security issue in lib dot-prop ([744110f](https://github.com/CuddlySheep/gitex-flow-node/commits/744110ffa22720153e9c4caf8fd140fcc9131201)), closes [#22](https://github.com/CuddlySheep/gitex-flow-node/issues/22)
+
+
+
 ## 2.0.3 (2020-07-26)
 
 
