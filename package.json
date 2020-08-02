@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/Index.js",
   "typings": "build/src/Index.d.ts",
@@ -68,9 +68,9 @@
     "@types/semver": "^7.3.1",
     "@types/standard-version": "^7.0.0",
     "commander": "^5.1.0",
-    "conventional-changelog-angular": "^5.0.10",
+    "conventional-changelog-angular": "^5.0.11",
     "conventional-changelog-preset-loader": "^2.3.4",
-    "conventional-changelog-writer": "^4.0.16",
+    "conventional-changelog-writer": "^4.0.17",
     "conventional-commits-parser": "^3.1.0",
     "fs-extra": "^9.0.1",
     "path": "^0.12.7",
@@ -93,7 +93,7 @@
     "ts-node": "^8.10.2",
     "typedoc": "^0.17.8",
     "typedoc-plugin-external-module-map": "^1.2.1",
-    "typedoc-plugin-markdown": "^2.3.1",
+    "typedoc-plugin-markdown": "^2.4.0",
     "typescript": "^3.9.7"
   }
 }
