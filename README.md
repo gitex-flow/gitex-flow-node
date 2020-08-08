@@ -1,29 +1,28 @@
-# gitex-flow
+![logo-banner](./assets/gitex-flow-logo-banner.svg)
 
 gitex-flow is a [node.js](https://nodejs.org/en/) framework extending [git flow](https://nvie.com/posts/a-successful-git-branching-model/) that provides an all-in-one approach to a release and deployment strategy and process.
 The framework offers automated tools that allows you to embed the release strategy in your development process.
 
 ## Table of content
 
-- [gitex-flow](#gitex-flow)
-  - [Table of content](#table-of-content)
-  - [Introduction](#introduction)
-    - [Features](#features)
-    - [Differentiation from other projects](#differentiation-from-other-projects)
-  - [User documentation](#user-documentation)
-    - [Prerequisite](#prerequisite)
-    - [Installation](#installation)
-    - [Configuation](#configuation)
-    - [Usage / Workflow](#usage--workflow)
-      - [Commit message convention](#commit-message-convention)
-      - [Feature](#feature)
-      - [BugFix](#bugfix)
-      - [Release](#release)
-        - [Extension features](#extension-features)
-      - [HotFix](#hotfix)
-        - [Extension features](#extension-features-1)
-      - [Support](#support)
-  - [Developer documentation (API)](#developer-documentation-api)
+- [Table of content](#table-of-content)
+- [Introduction](#introduction)
+  - [Features](#features)
+  - [Differentiation from other projects](#differentiation-from-other-projects)
+- [User documentation](#user-documentation)
+  - [Prerequisite](#prerequisite)
+  - [Installation](#installation)
+  - [Configuation](#configuation)
+  - [Usage / Workflow](#usage--workflow)
+    - [Commit message convention](#commit-message-convention)
+    - [Feature](#feature)
+    - [BugFix](#bugfix)
+    - [Release](#release)
+      - [Extension features](#extension-features)
+    - [HotFix](#hotfix)
+      - [Extension features](#extension-features-1)
+    - [Support](#support)
+- [Developer documentation (API)](#developer-documentation-api)
 
 ## Introduction
 

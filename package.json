@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CuddlySheep/gitex-flow-node.git"
+    "url": "git+https://github.com/gitex-flow/gitex-flow-node.git"
   },
   "engines": {
     "node": ">=8.9"
@@ -57,9 +57,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CuddlySheep/gitex-flow-node/issues"
+    "url": "https://github.com/gitex-flow/gitex-flow-node/issues"
   },
-  "homepage": "https://github.com/CuddlySheep/gitex-flow-node#readme",
+  "homepage": "https://github.com/gitex-flow/gitex-flow-node#readme",
   "dependencies": {
     "@types/conventional-changelog-preset-loader": "^2.3.1",
     "@types/conventional-changelog-writer": "^4.0.0",
