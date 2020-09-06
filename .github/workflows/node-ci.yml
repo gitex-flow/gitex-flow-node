@@ -1,0 +1,39 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - '*.*'
+    tags-ignore:
+      - '[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    branches:
+      - '*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install git-flow (AVH)
+        run: sudo apt install git-flow
+      - run: git config --global user.email "example@example.com"
+      - run: git config --global user.name "example"
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build --if-present
+      - name: Analyse project
+        run: npm run lint
+      - name: Test project
+        run: npm test

@@ -1,0 +1,64 @@
+name: Node.js NPM Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js '12.x'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install git-flow (AVH)
+        run: sudo apt install git-flow
+      - run: git config --global user.email "example@example.com"
+      - run: git config --global user.name "example"
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build --if-present
+      - name: Analyse project
+        run: npm run lint
+      - name: Test project
+        run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js '12.x'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: https://registry.npmjs.org/
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Publish npm package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  #
+  # A github publish is not possible due to the package name (from package.json) is not scoped
+  # publish-gpr:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup Node.js '12.x'
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '12.x'
+  #         registry-url: https://npm.pkg.github.com/
+  #         scope: '@gitex-flow'
+  #     - name: Install npm dependencies
+  #       run: npm ci
+  #     - name: Publish npm package
+  #       run: npm publish
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
