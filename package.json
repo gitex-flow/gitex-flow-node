@@ -75,7 +75,8 @@
     "fs-extra": "^9.0.1",
     "path": "^0.12.7",
     "semver": "^7.3.2",
-    "simple-git": "^2.15.0"
+    "simple-git": "^2.15.0",
+    "write-json-file": "^4.3.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",

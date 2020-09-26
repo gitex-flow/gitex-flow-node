@@ -288,6 +288,27 @@ describe('Test gFlow implementation', function () {
 
     await tester.dispose();
   });
+
+  it('[bugfix #27] git flow release "1.0.0" (auto-version, rewritten package.json)', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+
+    const release1Branch = tester.selectBranch('release');
+    const release1BranchName = await release1Branch.start();
+    assert.equal(release1BranchName, 'release/1.0.0');
+    await release1Branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release1Branch.finish();
+    await assertPackageJson('package.json');
+
+    const release2Branch = tester.selectBranch('release');
+    const release2BranchName = await release2Branch.start();
+    assert.equal(release2BranchName, 'release/1.1.0');
+    await release2Branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release2Branch.finish();
+    await assertPackageJson('package_1_1_0.json');
+
+    await tester.dispose();
+  });
 });
 
 function createGitFlow(): GitFlow {
@@ -298,6 +319,12 @@ function createGitFlow(): GitFlow {
     },
   });
   return gFlow;
+}
+
+async function assertPackageJson(fileName: string): Promise<void> {
+  const changelog = await readFile(join(testRepoPath, 'package.json'), 'utf8');
+  const refChangelog = await readFile(join(__dirname, 'files', fileName), 'utf8');
+  assert.equal(changelog, refChangelog);
 }
 
 async function assertChangelog(fileName: string): Promise<void> {
