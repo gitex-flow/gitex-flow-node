@@ -23,6 +23,7 @@ Representing an API for handling git flow SemVer.
 
 ### Methods
 
+* [checkoutBranch](tools.gitflownodeproject.md#checkoutbranch)
 * [commitChanges](tools.gitflownodeproject.md#commitchanges)
 * [getVersion](tools.gitflownodeproject.md#getversion)
 * [updateChangelog](tools.gitflownodeproject.md#updatechangelog)
@@ -69,6 +70,22 @@ ___
 ▪ **DefaultVersionFile**: *"package.json"* = "package.json"
 
 ## Methods
+
+###  checkoutBranch
+
+▸ **checkoutBranch**(`branchName`: string): *Promise‹void›*
+
+Checks out the given branch of the project.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`branchName` | string | Name of the branch to be checked out.  |
+
+**Returns:** *Promise‹void›*
+
+___
 
 ###  commitChanges
 

@@ -7,6 +7,7 @@ import { BranchType } from '../api/branches/GitFlowBranch';
 export type GitFlowAction =
   | 'start'
   | 'finish'
+  | 'list'
   | 'publish'
   | 'track'
   | 'diff'

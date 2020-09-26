@@ -94,6 +94,15 @@ export class GitFlowNodeProject {
   }
 
   /**
+   * Checks out the given branch of the project.
+   *
+   * @param branchName - Name of the branch to be checked out.
+   */
+  public async checkoutBranch(branchName: string): Promise<void> {
+    await this.gitRepository.checkout(branchName);
+  }
+
+  /**
    *  Writes the version and commits the changes in the git repository.
    *
    * @param version - Version to commit.

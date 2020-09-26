@@ -1,11 +1,13 @@
 import { GitFlowBranch, BranchType } from '../../api/branches/GitFlowBranch';
+import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
+import { AvhBranchListParser } from '../AvhBranchListParser';
 import { GitFlowBashExecuter } from '../GitFlowBashExecuter';
 
 /**
  * This class implements the basic functionality of a git flow branch.
  */
 export abstract class AvhGitFlowBranch implements GitFlowBranch {
-  private repositoryPath?: string;
+  private readonly repositoryPath?: string;
 
   /**
    * Initializes a new instance of this class.
@@ -24,8 +26,18 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
   /**
    * {@inheritdoc}
    */
+  public abstract getConfig(): Promise<GitFlowBranchConfig>;
+
+  /**
+   * {@inheritdoc}
+   */
   public async list(): Promise<string[]> {
-    throw new Error('Method not implemented.');
+    const output = await GitFlowBashExecuter.execute({
+      type: this.type,
+      action: 'list',
+      repositoryPath: this.repositoryPath,
+    });
+    return AvhBranchListParser.parse(output);
   }
 
   /**
@@ -47,9 +59,15 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
       repositoryPath: this.repositoryPath,
       args: args,
     });
-    let branchName = `${this.type}/${name}`;
+
+    let branchName = await this.getBranchNameFromConfig(name);
     const matches = output.match(/'([^']+)'/);
     if (matches && matches.groups) {
+      if (branchName !== matches.groups[0]) {
+        console.warn(
+          `WARNING: The expected branch name "${branchName}" does not match the actual branch name '${matches.groups[0]}'`,
+        );
+      }
       branchName = matches.groups[0];
     }
     return branchName;
@@ -74,5 +92,14 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
       options: options,
     });
     console.info(output);
+  }
+
+  private async getBranchNameFromConfig(name?: string): Promise<string> {
+    const config = await this.getConfig();
+    let prefix = config.prefix ?? this.type;
+    if (prefix.endsWith('/')) {
+      prefix = prefix.slice(0, -1);
+    }
+    return `${prefix}/${name}`;
   }
 }

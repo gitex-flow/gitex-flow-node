@@ -6,11 +6,16 @@
 
 ### Classes
 
+* [AvhBranchListParser](../classes/avh.avhbranchlistparser.md)
 * [AvhConfigProvider](../classes/avh.avhconfigprovider.md)
 * [AvhGitFlow](../classes/avh.avhgitflow.md)
 * [AvhGitFlowBranch](../classes/avh.avhgitflowbranch.md)
-* [GenericAvhGitFlowBranch](../classes/avh.genericavhgitflowbranch.md)
+* [BugfixGitFlowBranch](../classes/avh.bugfixgitflowbranch.md)
+* [FeatureGitFlowBranch](../classes/avh.featuregitflowbranch.md)
 * [GitFlowBashExecuter](../classes/avh.gitflowbashexecuter.md)
+* [HotfixGitFlowBranch](../classes/avh.hotfixgitflowbranch.md)
+* [ReleaseGitFlowBranch](../classes/avh.releasegitflowbranch.md)
+* [SupportGitFlowBranch](../classes/avh.supportgitflowbranch.md)
 
 ### Interfaces
 
@@ -24,6 +29,6 @@
 
 ###  GitFlowAction
 
-Ƭ **GitFlowAction**: *"start" | "finish" | "publish" | "track" | "diff" | "rebase" | "checkout" | "pull" | "delete" | "init" | "version" | "config"*
+Ƭ **GitFlowAction**: *"start" | "finish" | "list" | "publish" | "track" | "diff" | "rebase" | "checkout" | "pull" | "delete" | "init" | "version" | "config"*
 
 All possible git flow actions can be applied.
