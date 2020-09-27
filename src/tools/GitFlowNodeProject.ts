@@ -162,7 +162,7 @@ export class GitFlowNodeProject {
       }
     }
 
-    const commitMsg = `chore(release): Update ${updateDescs.join(' and ')}`;
+    const commitMsg = `chore(release): Updated ${updateDescs.join(' and ')}`;
     await this.gitRepository.commit(files, commitMsg);
   }
 
