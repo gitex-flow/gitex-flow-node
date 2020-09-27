@@ -25,6 +25,7 @@ This class extending a release branch with some helpful functionality.
 ### Methods
 
 * [finish](gflow.gflowreleasebranch.md#finish)
+* [getConfig](gflow.gflowreleasebranch.md#getconfig)
 * [list](gflow.gflowreleasebranch.md#list)
 * [start](gflow.gflowreleasebranch.md#start)
 
@@ -71,6 +72,18 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  getConfig
+
+▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+Gets the git flow branch config.
+
+**Returns:** *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
 
 ___
 

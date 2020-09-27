@@ -1,3 +1,14 @@
+## 2.0.5 (2020-09-27)
+
+
+### Bug Fixes
+
+* **gitex-flow:** Corrected automatic commit message (Update -> Updated) ([7d71a6e](https://github.com/CuddlySheep/gitex-flow-node/commits/7d71a6e88139ca232d0bc19d8b1925e71d924948))
+* **hotfix:** Fixed the problem finishing a hotfix branch from another branch ([43ff471](https://github.com/CuddlySheep/gitex-flow-node/commits/43ff4717b89fa27f3b3e3039e084eacde81516ff)), closes [#26](https://github.com/CuddlySheep/gitex-flow-node/issues/26) [#23](https://github.com/CuddlySheep/gitex-flow-node/issues/23)
+* **versioning:** Activated indent detection when writting version files ([813bc64](https://github.com/CuddlySheep/gitex-flow-node/commits/813bc64cef9e58524725c3a65c1d4b0e69c49963)), closes [#27](https://github.com/CuddlySheep/gitex-flow-node/issues/27)
+
+
+
 ## 2.0.4 (2020-08-02)
 
 

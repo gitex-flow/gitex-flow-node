@@ -16,6 +16,8 @@
     "gitex-flow",
     "logging",
     "tests",
-    "security"
+    "security",
+    "hotfix",
+    "versioning"
   ]
 }

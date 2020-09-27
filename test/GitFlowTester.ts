@@ -6,6 +6,7 @@ import { GitFlowConfig } from '../src/api/GitFlowConfig';
 import { BranchType, GitFlowBranch } from '../src/api/branches/GitFlowBranch';
 import { join } from 'path';
 import { pathExists, copy, ensureDir, emptyDir, rmdir } from 'fs-extra';
+import { GitFlowBranchConfig } from '../src/api/GitFlowBranchConfig';
 
 /**
  * Tester for some standard git flow tests.
@@ -60,6 +61,10 @@ export class GitFlowTester {
     assert.equal(activeConfig.versionTagPrefix, config?.versionTagPrefix);
   }
 
+  public async checkoutDevelopBranch(): Promise<void> {
+    await this.repo.checkout('develop');
+  }
+
   public selectBranch(type: BranchType): TestBranch {
     switch (type) {
       case 'bugfix':
@@ -110,6 +115,10 @@ export class TestBranch implements GitFlowBranch {
     this.branch = branch;
     this.repo = repo;
     this.type = branch.type;
+  }
+
+  public getConfig(): Promise<GitFlowBranchConfig> {
+    return this.branch.getConfig();
   }
 
   public list(): Promise<string[]> {

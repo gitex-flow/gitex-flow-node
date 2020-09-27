@@ -4,17 +4,9 @@ import { GitRepository } from '../git/GitRepository';
 import { Readable, Transform } from 'stream';
 import conventionalChangelogWriter, { Context } from 'conventional-changelog-writer';
 import conventionalChangelogPresetLoader from 'conventional-changelog-preset-loader';
-import {
-  readJson,
-  writeJson,
-  pathExists,
-  ensureFile,
-  createWriteStream,
-  createReadStream,
-  moveSync,
-  copySync,
-} from 'fs-extra';
+import { readJson, pathExists, ensureFile, createWriteStream, createReadStream, moveSync, copySync } from 'fs-extra';
 import { Utils } from './Utils';
+import writeJsonFile from 'write-json-file';
 
 /**
  * Options of the git flow node project.
@@ -94,6 +86,15 @@ export class GitFlowNodeProject {
   }
 
   /**
+   * Checks out the given branch of the project.
+   *
+   * @param branchName - Name of the branch to be checked out.
+   */
+  public async checkoutBranch(branchName: string): Promise<void> {
+    await this.gitRepository.checkout(branchName);
+  }
+
+  /**
    *  Writes the version and commits the changes in the git repository.
    *
    * @param version - Version to commit.
@@ -161,7 +162,7 @@ export class GitFlowNodeProject {
       }
     }
 
-    const commitMsg = `chore(release): Update ${updateDescs.join(' and ')}`;
+    const commitMsg = `chore(release): Updated ${updateDescs.join(' and ')}`;
     await this.gitRepository.commit(files, commitMsg);
   }
 
@@ -177,9 +178,9 @@ export class GitFlowNodeProject {
   private async writeVersionToFile(fileName: string, version: string): Promise<void> {
     const filePath = join(this.options.projectPath, fileName);
     if (await pathExists(filePath)) {
-      const obj = await readJson(filePath);
-      obj.version = version;
-      await writeJson(filePath, obj, { spaces: 2 });
+      const packageJson = await readJson(filePath);
+      packageJson.version = version;
+      await writeJsonFile(filePath, packageJson, { detectIndent: true });
     }
   }
 

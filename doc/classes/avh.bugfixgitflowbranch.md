@@ -1,14 +1,14 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)
+[gitex-flow](../README.md) › [avh](../modules/avh.md) › [BugfixGitFlowBranch](avh.bugfixgitflowbranch.md)
 
-# Class: GenericAvhGitFlowBranch
+# Class: BugfixGitFlowBranch
 
-This class implements a generic AVH git flow branch.
+This class wraps the bugfix branch of the AVH implementation.
 
 ## Hierarchy
 
 * [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
-  ↳ **GenericAvhGitFlowBranch**
+  ↳ **BugfixGitFlowBranch**
 
 ## Implements
 
@@ -18,23 +18,24 @@ This class implements a generic AVH git flow branch.
 
 ### Constructors
 
-* [constructor](avh.genericavhgitflowbranch.md#constructor)
+* [constructor](avh.bugfixgitflowbranch.md#constructor)
 
 ### Properties
 
-* [type](avh.genericavhgitflowbranch.md#readonly-type)
+* [type](avh.bugfixgitflowbranch.md#readonly-type)
 
 ### Methods
 
-* [finish](avh.genericavhgitflowbranch.md#finish)
-* [list](avh.genericavhgitflowbranch.md#list)
-* [start](avh.genericavhgitflowbranch.md#start)
+* [finish](avh.bugfixgitflowbranch.md#finish)
+* [getConfig](avh.bugfixgitflowbranch.md#getconfig)
+* [list](avh.bugfixgitflowbranch.md#list)
+* [start](avh.bugfixgitflowbranch.md#start)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new GenericAvhGitFlowBranch**(`type`: [BranchType](../modules/api.md#branchtype), `repoPath?`: undefined | string): *[GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)*
+\+ **new BugfixGitFlowBranch**(`repoPath?`: undefined | string, `configProvider?`: [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›): *[BugfixGitFlowBranch](avh.bugfixgitflowbranch.md)*
 
 *Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[constructor](avh.avhgitflowbranch.md#constructor)*
 
@@ -44,20 +45,22 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`type` | [BranchType](../modules/api.md#branchtype) | The type of the branch. |
-`repoPath?` | undefined &#124; string | The path to the git repository.  |
+`repoPath?` | undefined &#124; string | The path to the git repository. |
+`configProvider?` | [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)› | Git flow config provider.  |
 
-**Returns:** *[GenericAvhGitFlowBranch](avh.genericavhgitflowbranch.md)*
+**Returns:** *[BugfixGitFlowBranch](avh.bugfixgitflowbranch.md)*
 
 ## Properties
 
 ### `Readonly` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)*
+• **type**: *[BranchType](../modules/api.md#branchtype)* = "bugfix"
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
 
 *Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[type](avh.avhgitflowbranch.md#readonly-abstract-type)*
+
+{@inheritdoc}
 
 ## Methods
 
@@ -79,6 +82,20 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  getConfig
+
+▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[getConfig](avh.avhgitflowbranch.md#abstract-getconfig)*
+
+{@inheritdoc}
+
+**Returns:** *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
 
 ___
 

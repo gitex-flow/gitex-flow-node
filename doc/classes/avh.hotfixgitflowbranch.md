@@ -1,22 +1,14 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlowBranch](avh.avhgitflowbranch.md)
+[gitex-flow](../README.md) › [avh](../modules/avh.md) › [HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)
 
-# Class: AvhGitFlowBranch
+# Class: HotfixGitFlowBranch
 
-This class implements the basic functionality of a git flow branch.
+This class wraps the hotfix branch of the AVH implementation.
 
 ## Hierarchy
 
-* **AvhGitFlowBranch**
+* [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
-  ↳ [FeatureGitFlowBranch](avh.featuregitflowbranch.md)
-
-  ↳ [BugfixGitFlowBranch](avh.bugfixgitflowbranch.md)
-
-  ↳ [ReleaseGitFlowBranch](avh.releasegitflowbranch.md)
-
-  ↳ [HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)
-
-  ↳ [SupportGitFlowBranch](avh.supportgitflowbranch.md)
+  ↳ **HotfixGitFlowBranch**
 
 ## Implements
 
@@ -26,24 +18,26 @@ This class implements the basic functionality of a git flow branch.
 
 ### Constructors
 
-* [constructor](avh.avhgitflowbranch.md#constructor)
+* [constructor](avh.hotfixgitflowbranch.md#constructor)
 
 ### Properties
 
-* [type](avh.avhgitflowbranch.md#readonly-abstract-type)
+* [type](avh.hotfixgitflowbranch.md#readonly-type)
 
 ### Methods
 
-* [finish](avh.avhgitflowbranch.md#finish)
-* [getConfig](avh.avhgitflowbranch.md#abstract-getconfig)
-* [list](avh.avhgitflowbranch.md#list)
-* [start](avh.avhgitflowbranch.md#start)
+* [finish](avh.hotfixgitflowbranch.md#finish)
+* [getConfig](avh.hotfixgitflowbranch.md#getconfig)
+* [list](avh.hotfixgitflowbranch.md#list)
+* [start](avh.hotfixgitflowbranch.md#start)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new AvhGitFlowBranch**(`repoPath?`: undefined | string): *[AvhGitFlowBranch](avh.avhgitflowbranch.md)*
+\+ **new HotfixGitFlowBranch**(`repoPath?`: undefined | string, `configProvider?`: [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›): *[HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)*
+
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[constructor](avh.avhgitflowbranch.md#constructor)*
 
 Initializes a new instance of this class.
 
@@ -51,17 +45,20 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`repoPath?` | undefined &#124; string | The path to the git repository.  |
+`repoPath?` | undefined &#124; string | The path to the git repository. |
+`configProvider?` | [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)› | Git flow config provider.  |
 
-**Returns:** *[AvhGitFlowBranch](avh.avhgitflowbranch.md)*
+**Returns:** *[HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)*
 
 ## Properties
 
-### `Readonly` `Abstract` type
+### `Readonly` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)*
+• **type**: *[BranchType](../modules/api.md#branchtype)* = "hotfix"
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
+
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[type](avh.avhgitflowbranch.md#readonly-abstract-type)*
 
 {@inheritdoc}
 
@@ -72,6 +69,8 @@ Name | Type | Description |
 ▸ **finish**(`name?`: undefined | string, `msg?`: undefined | string): *Promise‹void›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[finish](avh.avhgitflowbranch.md#finish)*
 
 {@inheritdoc}
 
@@ -86,11 +85,13 @@ Name | Type | Description |
 
 ___
 
-### `Abstract` getConfig
+###  getConfig
 
 ▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[getConfig](avh.avhgitflowbranch.md#abstract-getconfig)*
 
 {@inheritdoc}
 
@@ -104,6 +105,8 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
+*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[list](avh.avhgitflowbranch.md#list)*
+
 {@inheritdoc}
 
 **Returns:** *Promise‹string[]›*
@@ -115,6 +118,8 @@ ___
 ▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹string›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[start](avh.avhgitflowbranch.md#start)*
 
 {@inheritdoc}
 
