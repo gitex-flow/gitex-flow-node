@@ -1,6 +1,7 @@
 import { GitFlowBranch, BranchType } from '../../api/branches/GitFlowBranch';
 import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
 import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
+import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
 
 /**
  * This class extending a hotfix branch with some helpful functionality.
@@ -23,6 +24,13 @@ export class GFlowHotFixBranch implements GitFlowBranch {
   }
 
   /**
+   * Gets the git flow branch config.
+   */
+  public async getConfig(): Promise<GitFlowBranchConfig> {
+    return await this.gitFlowBranch.getConfig();
+  }
+
+  /**
    * Lists all branches of the type '[[type]]'.
    */
   public async list(): Promise<string[]> {
@@ -37,7 +45,7 @@ export class GFlowHotFixBranch implements GitFlowBranch {
    */
   public async start(name?: string, base?: string): Promise<string> {
     const semVer = new GitFlowSemVers(this.options?.projectPath);
-    const version = await semVer.calculateBranchVersion('hotfix', name);
+    const version = await semVer.calculateBranchVersion(this.type, name);
     const branch = await this.gitFlowBranch.start(version, base);
     const project = new GitFlowNodeProject(this.options);
     await project.writeVersion(version);
@@ -53,11 +61,33 @@ export class GFlowHotFixBranch implements GitFlowBranch {
    */
   public async finish(name?: string, msg?: string): Promise<void> {
     const project = new GitFlowNodeProject(this.options);
+    const version = await this.getVersion(project, name);
+    const branchName = await this.getBranchNameFromConfig(version);
+    await project.checkoutBranch(branchName);
     await project.updateChangelog();
     await project.commitChanges(false);
+    await this.gitFlowBranch.finish(version, msg ?? version);
+  }
 
-    const version = name ?? (await project.getVersion());
-    msg = msg ?? version;
-    await this.gitFlowBranch.finish(version, msg);
+  private async getVersion(project: GitFlowNodeProject, name?: string): Promise<string> {
+    let version = name;
+    if (!version) {
+      const hotfixBranches = await this.list();
+      if (hotfixBranches.length == 0) {
+        version = await project.getVersion();
+      }
+      // There is only one hotfix branch
+      version = hotfixBranches[0];
+    }
+    return version;
+  }
+
+  private async getBranchNameFromConfig(name?: string): Promise<string> {
+    const config = await this.getConfig();
+    let prefix = config.prefix ?? this.type;
+    if (prefix.endsWith('/')) {
+      prefix = prefix.slice(0, -1);
+    }
+    return `${prefix}/${name}`;
   }
 }

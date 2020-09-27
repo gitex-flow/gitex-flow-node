@@ -25,6 +25,7 @@ This class extending a hotfix branch with some helpful functionality.
 ### Methods
 
 * [finish](gflow.gflowhotfixbranch.md#finish)
+* [getConfig](gflow.gflowhotfixbranch.md#getconfig)
 * [list](gflow.gflowhotfixbranch.md#list)
 * [start](gflow.gflowhotfixbranch.md#start)
 
@@ -71,6 +72,18 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  getConfig
+
+▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+Gets the git flow branch config.
+
+**Returns:** *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
 
 ___
 

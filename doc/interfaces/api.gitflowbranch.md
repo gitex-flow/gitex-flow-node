@@ -11,9 +11,13 @@ This interface represents the basic functionality of a git flow branch.
 ## Implemented by
 
 * [AvhGitFlowBranch](../classes/avh.avhgitflowbranch.md)
+* [BugfixGitFlowBranch](../classes/avh.bugfixgitflowbranch.md)
+* [FeatureGitFlowBranch](../classes/avh.featuregitflowbranch.md)
 * [GFlowHotFixBranch](../classes/gflow.gflowhotfixbranch.md)
 * [GFlowReleaseBranch](../classes/gflow.gflowreleasebranch.md)
-* [GenericAvhGitFlowBranch](../classes/avh.genericavhgitflowbranch.md)
+* [HotfixGitFlowBranch](../classes/avh.hotfixgitflowbranch.md)
+* [ReleaseGitFlowBranch](../classes/avh.releasegitflowbranch.md)
+* [SupportGitFlowBranch](../classes/avh.supportgitflowbranch.md)
 
 ## Index
 
@@ -24,6 +28,7 @@ This interface represents the basic functionality of a git flow branch.
 ### Methods
 
 * [finish](api.gitflowbranch.md#finish)
+* [getConfig](api.gitflowbranch.md#getconfig)
 * [list](api.gitflowbranch.md#list)
 * [start](api.gitflowbranch.md#start)
 
@@ -51,6 +56,16 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  getConfig
+
+▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](api.gitflowbranchconfig.md)›*
+
+Gets the git flow branch config.
+
+**Returns:** *Promise‹[GitFlowBranchConfig](api.gitflowbranchconfig.md)›*
 
 ___
 

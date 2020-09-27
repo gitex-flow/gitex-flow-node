@@ -1,3 +1,5 @@
+import { GitFlowBranchConfig } from '../GitFlowBranchConfig';
+
 /**
  * Types of the git flow branches.
  */
@@ -11,6 +13,11 @@ export interface GitFlowBranch {
    * Specifies the git flow branch type.
    */
   readonly type: BranchType;
+
+  /**
+   * Gets the git flow branch config.
+   */
+  getConfig(): Promise<GitFlowBranchConfig>;
 
   /**
    * Lists all branches of the type '[[type]]'.
