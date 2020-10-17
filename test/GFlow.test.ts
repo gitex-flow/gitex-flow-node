@@ -309,6 +309,32 @@ describe('Test gFlow implementation', function () {
 
     await tester.dispose();
   });
+
+  it('[bugfix #28] git flow release "1.0.0" (auto-version, from other branch)', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+
+    const release1Branch = tester.selectBranch('release');
+    const release1BranchName = await release1Branch.start();
+    assert.equal(release1BranchName, 'release/1.0.0');
+    await release1Branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release1Branch.finish();
+
+    const feature1 = tester.selectBranch('feature');
+    await feature1.start('#1');
+    await feature1.commit('feature.txt', 'feat(scope): Added feature.txt');
+
+    const release2Branch = tester.selectBranch('release');
+    const release2BranchName = await release2Branch.start();
+    assert.equal(release2BranchName, 'release/1.1.0');
+    await release2Branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await tester.checkoutBranch('feature/#1');
+    await release2Branch.finish();
+
+    await feature1.finish('#1');
+
+    await tester.dispose();
+  });
 });
 
 function createGitFlow(): GitFlow {

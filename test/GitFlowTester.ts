@@ -62,7 +62,11 @@ export class GitFlowTester {
   }
 
   public async checkoutDevelopBranch(): Promise<void> {
-    await this.repo.checkout('develop');
+    await this.checkoutBranch('develop');
+  }
+
+  public async checkoutBranch(branchName: string): Promise<void> {
+    await this.repo.checkout(branchName);
   }
 
   public selectBranch(type: BranchType): TestBranch {
