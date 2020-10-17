@@ -1,3 +1,12 @@
+## 2.0.6 (2020-10-17)
+
+
+### Bug Fixes
+
+* **release:** Fixed wrong version calculation if release branch is finished from another branch ([349142c](https://github.com/CuddlySheep/gitex-flow-node/commits/349142cd7d9a998f4bbf6c40011db292d4d98bab)), closes [#28](https://github.com/CuddlySheep/gitex-flow-node/issues/28)
+
+
+
 ## 2.0.5 (2020-09-27)
 
 
