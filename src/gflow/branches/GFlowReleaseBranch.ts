@@ -62,8 +62,21 @@ export class GFlowReleaseBranch implements GitFlowBranch {
    */
   public async finish(name?: string, msg?: string): Promise<void> {
     const project = new GitFlowNodeProject(this.options);
-    const version = name ?? (await project.getVersion());
+    const version = await this.getVersion(project, name);
     msg = msg ?? version;
     await this.gitFlowBranch.finish(version, msg);
+  }
+
+  private async getVersion(project: GitFlowNodeProject, name?: string): Promise<string> {
+    let version = name;
+    if (!version) {
+      const releaseBranches = await this.list();
+      if (releaseBranches.length == 0) {
+        version = await project.getVersion();
+      }
+      // There is only one release branch
+      version = releaseBranches[0];
+    }
+    return version;
   }
 }
