@@ -53,4 +53,4 @@ ___
 
 ### `Optional` type
 
-• **type**? : *[BranchType](../modules/api.md#branchtype)*
+• **type**? : *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)*

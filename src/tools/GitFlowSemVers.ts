@@ -1,4 +1,4 @@
-import { BranchType } from '../api/branches/GitFlowBranch';
+import { GitFlowBranchType } from '../api/branches/GitFlowBranch';
 import { inc, valid, ReleaseType } from 'semver';
 import { GitRepository } from '../git/GitRepository';
 import { GitLog } from '../git/GitLog';
@@ -24,7 +24,7 @@ export class GitFlowSemVers {
    * @param type - Type of the branch should be created.
    * @param version - A optional custom version to be used.
    */
-  public async calculateBranchVersion(type: BranchType, version?: string): Promise<string> {
+  public async calculateBranchVersion(type: GitFlowBranchType, version?: string): Promise<string> {
     if (version) {
       const validatedVersion = valid(version);
       if (!validatedVersion) {

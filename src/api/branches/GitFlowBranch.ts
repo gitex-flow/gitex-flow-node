@@ -1,9 +1,14 @@
 import { GitFlowBranchConfig } from '../GitFlowBranchConfig';
 
 /**
+ * Types of the git flow base branches.
+ */
+export type GitFlowBaseBranchType = 'master' | 'develop';
+
+/**
  * Types of the git flow branches.
  */
-export type BranchType = 'feature' | 'release' | 'bugfix' | 'hotfix' | 'support';
+export type GitFlowBranchType = 'feature' | 'release' | 'bugfix' | 'hotfix' | 'support';
 
 /**
  * This interface represents the basic functionality of a git flow branch.
@@ -12,7 +17,12 @@ export interface GitFlowBranch {
   /**
    * Specifies the git flow branch type.
    */
-  readonly type: BranchType;
+  readonly type: GitFlowBranchType;
+
+  /**
+   * Default base of this branch.
+   */
+  readonly defaultBase: GitFlowBaseBranchType;
 
   /**
    * Gets the git flow branch config.

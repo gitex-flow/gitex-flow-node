@@ -1,14 +1,16 @@
-[gitex-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowHotFixBranch](gflow.gflowhotfixbranch.md)
+[gitex-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowBranch](gflow.gflowbranch.md)
 
-# Class: GFlowHotFixBranch
+# Class: GFlowBranch
 
 This class extending a hotfix branch with some helpful functionality.
 
 ## Hierarchy
 
-* [GFlowBranch](gflow.gflowbranch.md)
+* **GFlowBranch**
 
-  ↳ **GFlowHotFixBranch**
+  ↳ [GFlowReleaseBranch](gflow.gflowreleasebranch.md)
+
+  ↳ [GFlowHotFixBranch](gflow.gflowhotfixbranch.md)
 
 ## Implements
 
@@ -18,30 +20,28 @@ This class extending a hotfix branch with some helpful functionality.
 
 ### Constructors
 
-* [constructor](gflow.gflowhotfixbranch.md#constructor)
+* [constructor](gflow.gflowbranch.md#constructor)
 
 ### Properties
 
-* [defaultBase](gflow.gflowhotfixbranch.md#readonly-defaultbase)
-* [logger](gflow.gflowhotfixbranch.md#protected-readonly-logger)
-* [projectConfig](gflow.gflowhotfixbranch.md#protected-optional-readonly-projectconfig)
-* [type](gflow.gflowhotfixbranch.md#readonly-type)
+* [defaultBase](gflow.gflowbranch.md#readonly-defaultbase)
+* [logger](gflow.gflowbranch.md#protected-readonly-logger)
+* [projectConfig](gflow.gflowbranch.md#protected-optional-readonly-projectconfig)
+* [type](gflow.gflowbranch.md#readonly-type)
 
 ### Methods
 
-* [finish](gflow.gflowhotfixbranch.md#finish)
-* [getBranchNameFromConfig](gflow.gflowhotfixbranch.md#protected-getbranchnamefromconfig)
-* [getConfig](gflow.gflowhotfixbranch.md#getconfig)
-* [list](gflow.gflowhotfixbranch.md#list)
-* [start](gflow.gflowhotfixbranch.md#start)
+* [finish](gflow.gflowbranch.md#finish)
+* [getBranchNameFromConfig](gflow.gflowbranch.md#protected-getbranchnamefromconfig)
+* [getConfig](gflow.gflowbranch.md#getconfig)
+* [list](gflow.gflowbranch.md#list)
+* [start](gflow.gflowbranch.md#start)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new GFlowHotFixBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
-
-*Overrides [GFlowBranch](gflow.gflowbranch.md).[constructor](gflow.gflowbranch.md#constructor)*
+\+ **new GFlowBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowBranch](gflow.gflowbranch.md)*
 
 Initializes a new instance of this class.
 
@@ -52,7 +52,7 @@ Name | Type | Description |
 `gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped. |
 `options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Git flow node project options.  |
 
-**Returns:** *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
+**Returns:** *[GFlowBranch](gflow.gflowbranch.md)*
 
 ## Properties
 
@@ -62,23 +62,17 @@ Name | Type | Description |
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
 
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[defaultBase](gflow.gflowbranch.md#readonly-defaultbase)*
-
 ___
 
 ### `Protected` `Readonly` logger
 
 • **logger**: *Logger*
 
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[logger](gflow.gflowbranch.md#protected-readonly-logger)*
-
 ___
 
 ### `Protected` `Optional` `Readonly` projectConfig
 
 • **projectConfig**? : *[ProjectConfig](../interfaces/tools.projectconfig.md)*
-
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[projectConfig](gflow.gflowbranch.md#protected-optional-readonly-projectconfig)*
 
 ___
 
@@ -88,8 +82,6 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
 
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[type](gflow.gflowbranch.md#readonly-type)*
-
 ## Methods
 
 ###  finish
@@ -98,9 +90,7 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
-*Overrides [GFlowBranch](gflow.gflowbranch.md).[finish](gflow.gflowbranch.md#finish)*
-
-Merges and finishes the branch of the branch type '[type](gflow.gflowhotfixbranch.md#readonly-type)'.
+Merges and finishes the branch of the branch type '[type](gflow.gflowbranch.md#readonly-type)'.
 
 **Parameters:**
 
@@ -116,8 +106,6 @@ ___
 ### `Protected` getBranchNameFromConfig
 
 ▸ **getBranchNameFromConfig**(`name`: string): *Promise‹string›*
-
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[getBranchNameFromConfig](gflow.gflowbranch.md#protected-getbranchnamefromconfig)*
 
 Gets the branch name including the git-flow configuration.
 
@@ -137,8 +125,6 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[getConfig](gflow.gflowbranch.md#getconfig)*
-
 Gets the git flow branch config.
 
 **Returns:** *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
@@ -151,9 +137,7 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[list](gflow.gflowbranch.md#list)*
-
-Lists all branches of the type '[type](gflow.gflowhotfixbranch.md#readonly-type)'.
+Lists all branches of the type '[type](gflow.gflowbranch.md#readonly-type)'.
 
 **Returns:** *Promise‹string[]›*
 
@@ -165,9 +149,7 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
-*Overrides [GFlowBranch](gflow.gflowbranch.md).[start](gflow.gflowbranch.md#start)*
-
-Creates and starts a new branch of the type '[type](gflow.gflowhotfixbranch.md#readonly-type)'.
+Creates and starts a new branch of the type '[type](gflow.gflowbranch.md#readonly-type)'.
 
 **Parameters:**
 

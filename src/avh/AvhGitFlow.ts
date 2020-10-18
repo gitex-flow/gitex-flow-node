@@ -9,11 +9,14 @@ import { BugfixGitFlowBranch } from './branches/BugfixGitFlowBranch';
 import { ReleaseGitFlowBranch } from './branches/ReleaseGitFlowBranch';
 import { HotfixGitFlowBranch } from './branches/HotfixGitFlowBranch';
 import { SupportGitFlowBranch } from './branches/SupportGitFlowBranch';
+import { getLogger, Logger } from 'log4js';
 
 /**
  * Implementation of git flow by [gitflow-avh](https://github.com/petervanderdoes/gitflow-avh).
  */
 export class AvhGitFlow implements GitFlow {
+  private logger: Logger = getLogger('AvhGitFlow');
+
   public readonly feature: GitFlowBranch;
   public readonly bugfix: GitFlowBranch;
   public readonly release: GitFlowBranch;
@@ -54,7 +57,7 @@ export class AvhGitFlow implements GitFlow {
       repositoryPath: this.repositoryPath,
       options: options,
     });
-    console.info(output);
+    this.logger.info(output.trim());
     if (config) {
       await this.config.set(config);
     }

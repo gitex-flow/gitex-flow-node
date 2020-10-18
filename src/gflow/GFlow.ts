@@ -2,26 +2,11 @@ import { GitFlow } from '../api/GitFlow';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { ConfigProvider } from '../api/ConfigProvider';
 import { GitFlowConfig } from '../api/GitFlowConfig';
+import { GFlowConfig } from './GFlowConfig';
 import { GFlowReleaseBranch } from './branches/GFlowReleaseBranch';
 import { GFlowHotFixBranch } from './branches/GFlowHotFixBranch';
-import { ProjectConfig } from '../tools/GitFlowNodeProject';
-
-/**
- * Options of the GFlow implementation.
- */
-export interface GFlowConfig {
-  /**
-   * The git flow config can be directly set in the GFlow options.
-   * This config will be taken if no other git flow config is given on calling the `init` method.
-   */
-  gitFlowConfig?: GitFlowConfig;
-
-  /**
-   * The configuration of the node project.
-   */
-  projectConfig: ProjectConfig;
-}
-
+import { configure } from 'log4js';
+import { GFlowBranch } from './branches/GFlowBranch';
 /**
  * GitFlow wrapper extending functionality to a common git flow implementation.
  */
@@ -43,22 +28,36 @@ export class GFlow implements GitFlow {
    * @param options - Options for configuring the GFlow.
    */
   constructor(gitFlow: GitFlow, options?: GFlowConfig) {
-    if (!options) {
-      options = {
-        projectConfig: {
-          projectPath: process.cwd(),
-        },
-      };
+    options = this.ensureDefaults(options);
+
+    if (options.log4jsConfig) {
+      configure(options.log4jsConfig);
     }
 
     this.gitFlow = gitFlow;
     this.options = options;
-    this.feature = this.gitFlow.feature;
-    this.bugfix = this.gitFlow.bugfix;
+    this.feature = new GFlowBranch(this.gitFlow.feature, options.projectConfig);
+    this.bugfix = new GFlowBranch(this.gitFlow.bugfix, options.projectConfig);
     this.release = new GFlowReleaseBranch(this.gitFlow.release, options.projectConfig);
     this.hotfix = new GFlowHotFixBranch(this.gitFlow.hotfix, options.projectConfig);
-    this.support = this.gitFlow.support;
+    this.support = new GFlowBranch(this.gitFlow.support, options.projectConfig);
     this.config = this.gitFlow.config;
+  }
+
+  private ensureDefaults(options?: GFlowConfig): GFlowConfig {
+    options = options ?? {};
+    if (!options.projectConfig) {
+      options.projectConfig = {
+        projectPath: process.cwd(),
+      };
+    }
+    if (!options.log4jsConfig) {
+      options.log4jsConfig = {
+        appenders: { console: { type: 'console' } },
+        categories: { default: { appenders: ['console'], level: 'info' } },
+      };
+    }
+    return options;
   }
 
   /**

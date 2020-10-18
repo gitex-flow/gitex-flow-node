@@ -6,7 +6,9 @@ This class extending a release branch with some helpful functionality.
 
 ## Hierarchy
 
-* **GFlowReleaseBranch**
+* [GFlowBranch](gflow.gflowbranch.md)
+
+  ↳ **GFlowReleaseBranch**
 
 ## Implements
 
@@ -20,11 +22,15 @@ This class extending a release branch with some helpful functionality.
 
 ### Properties
 
+* [defaultBase](gflow.gflowreleasebranch.md#readonly-defaultbase)
+* [logger](gflow.gflowreleasebranch.md#protected-readonly-logger)
+* [projectConfig](gflow.gflowreleasebranch.md#protected-optional-readonly-projectconfig)
 * [type](gflow.gflowreleasebranch.md#readonly-type)
 
 ### Methods
 
 * [finish](gflow.gflowreleasebranch.md#finish)
+* [getBranchNameFromConfig](gflow.gflowreleasebranch.md#protected-getbranchnamefromconfig)
 * [getConfig](gflow.gflowreleasebranch.md#getconfig)
 * [list](gflow.gflowreleasebranch.md#list)
 * [start](gflow.gflowreleasebranch.md#start)
@@ -34,6 +40,8 @@ This class extending a release branch with some helpful functionality.
 ###  constructor
 
 \+ **new GFlowReleaseBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowReleaseBranch](gflow.gflowreleasebranch.md)*
+
+*Overrides [GFlowBranch](gflow.gflowbranch.md).[constructor](gflow.gflowbranch.md#constructor)*
 
 Initializes a new instance of this class.
 
@@ -48,11 +56,39 @@ Name | Type | Description |
 
 ## Properties
 
+### `Readonly` defaultBase
+
+• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[defaultBase](gflow.gflowbranch.md#readonly-defaultbase)*
+
+___
+
+### `Protected` `Readonly` logger
+
+• **logger**: *Logger*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[logger](gflow.gflowbranch.md#protected-readonly-logger)*
+
+___
+
+### `Protected` `Optional` `Readonly` projectConfig
+
+• **projectConfig**? : *[ProjectConfig](../interfaces/tools.projectconfig.md)*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[projectConfig](gflow.gflowbranch.md#protected-optional-readonly-projectconfig)*
+
+___
+
 ### `Readonly` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)* = "release"
+• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[type](gflow.gflowbranch.md#readonly-type)*
 
 ## Methods
 
@@ -61,6 +97,8 @@ Name | Type | Description |
 ▸ **finish**(`name?`: undefined | string, `msg?`: undefined | string): *Promise‹void›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Overrides [GFlowBranch](gflow.gflowbranch.md).[finish](gflow.gflowbranch.md#finish)*
 
 Merges and finishes the branch of the branch type '[type](gflow.gflowreleasebranch.md#readonly-type)'.
 
@@ -75,11 +113,31 @@ Name | Type | Description |
 
 ___
 
+### `Protected` getBranchNameFromConfig
+
+▸ **getBranchNameFromConfig**(`name`: string): *Promise‹string›*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[getBranchNameFromConfig](gflow.gflowbranch.md#protected-getbranchnamefromconfig)*
+
+Gets the branch name including the git-flow configuration.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`name` | string | A given branch name without prefix.  |
+
+**Returns:** *Promise‹string›*
+
+___
+
 ###  getConfig
 
 ▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[getConfig](gflow.gflowbranch.md#getconfig)*
 
 Gets the git flow branch config.
 
@@ -93,6 +151,8 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[list](gflow.gflowbranch.md#list)*
+
 Lists all branches of the type '[type](gflow.gflowreleasebranch.md#readonly-type)'.
 
 **Returns:** *Promise‹string[]›*
@@ -104,6 +164,8 @@ ___
 ▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹string›*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Overrides [GFlowBranch](gflow.gflowbranch.md).[start](gflow.gflowbranch.md#start)*
 
 Creates and starts a new branch of the type '[type](gflow.gflowreleasebranch.md#readonly-type)'.
 

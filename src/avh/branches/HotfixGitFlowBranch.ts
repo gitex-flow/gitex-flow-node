@@ -1,4 +1,4 @@
-import { BranchType } from '../../api/branches/GitFlowBranch';
+import { GitFlowBaseBranchType, GitFlowBranchType } from '../../api/branches/GitFlowBranch';
 import { ConfigProvider } from '../../api/ConfigProvider';
 import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
 import { GitFlowConfig } from '../../api/GitFlowConfig';
@@ -13,7 +13,12 @@ export class HotfixGitFlowBranch extends AvhGitFlowBranch {
   /**
    * {@inheritdoc}
    */
-  public readonly type: BranchType = 'hotfix';
+  public readonly type: GitFlowBranchType = 'hotfix';
+
+  /**
+   * {@inheritdoc}
+   */
+  public readonly defaultBase: GitFlowBaseBranchType = 'master';
 
   /**
    * Initializes a new instance of this class.

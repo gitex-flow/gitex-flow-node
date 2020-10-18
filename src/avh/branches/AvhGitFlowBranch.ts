@@ -1,4 +1,5 @@
-import { GitFlowBranch, BranchType } from '../../api/branches/GitFlowBranch';
+import { getLogger, Logger } from 'log4js';
+import { GitFlowBaseBranchType, GitFlowBranch, GitFlowBranchType } from '../../api/branches/GitFlowBranch';
 import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
 import { AvhBranchListParser } from '../AvhBranchListParser';
 import { GitFlowBashExecuter } from '../GitFlowBashExecuter';
@@ -7,6 +8,7 @@ import { GitFlowBashExecuter } from '../GitFlowBashExecuter';
  * This class implements the basic functionality of a git flow branch.
  */
 export abstract class AvhGitFlowBranch implements GitFlowBranch {
+  private logger: Logger = getLogger('AvhGitFlowBranch');
   private readonly repositoryPath?: string;
 
   /**
@@ -21,7 +23,12 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
   /**
    * {@inheritdoc}
    */
-  public abstract readonly type: BranchType;
+  public abstract readonly type: GitFlowBranchType;
+
+  /**
+   * {@inheritdoc}
+   */
+  public abstract readonly defaultBase: GitFlowBaseBranchType;
 
   /**
    * {@inheritdoc}
@@ -48,23 +55,20 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
    * @returns The git reference of the create branch.
    */
   public async start(name?: string, base?: string): Promise<string> {
-    let args: string[] | undefined = undefined;
-    if (base) {
-      args = [base];
-    }
+    let branchName = await this.getBranchNameFromConfig(name);
+
     const output = await GitFlowBashExecuter.execute({
       type: this.type,
       action: 'start',
       name: name,
       repositoryPath: this.repositoryPath,
-      args: args,
+      args: base ? [base] : undefined,
     });
 
-    let branchName = await this.getBranchNameFromConfig(name);
     const matches = output.match(/'([^']+)'/);
     if (matches && matches.groups) {
       if (branchName !== matches.groups[0]) {
-        console.warn(
+        this.logger.warn(
           `WARNING: The expected branch name "${branchName}" does not match the actual branch name '${matches.groups[0]}'`,
         );
       }
@@ -91,7 +95,10 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
       repositoryPath: this.repositoryPath,
       options: options,
     });
-    console.info(output);
+    const outputs = output.trim().split('\n');
+    for (const out of outputs) {
+      this.logger.info(out);
+    }
   }
 
   private async getBranchNameFromConfig(name?: string): Promise<string> {

@@ -13,6 +13,7 @@ This interface represents the basic functionality of a git flow branch.
 * [AvhGitFlowBranch](../classes/avh.avhgitflowbranch.md)
 * [BugfixGitFlowBranch](../classes/avh.bugfixgitflowbranch.md)
 * [FeatureGitFlowBranch](../classes/avh.featuregitflowbranch.md)
+* [GFlowBranch](../classes/gflow.gflowbranch.md)
 * [GFlowHotFixBranch](../classes/gflow.gflowhotfixbranch.md)
 * [GFlowReleaseBranch](../classes/gflow.gflowreleasebranch.md)
 * [HotfixGitFlowBranch](../classes/avh.hotfixgitflowbranch.md)
@@ -23,6 +24,7 @@ This interface represents the basic functionality of a git flow branch.
 
 ### Properties
 
+* [defaultBase](api.gitflowbranch.md#readonly-defaultbase)
 * [type](api.gitflowbranch.md#readonly-type)
 
 ### Methods
@@ -34,9 +36,17 @@ This interface represents the basic functionality of a git flow branch.
 
 ## Properties
 
+### `Readonly` defaultBase
+
+• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)*
+
+Default base of this branch.
+
+___
+
 ### `Readonly` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)*
+• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)*
 
 Specifies the git flow branch type.
 

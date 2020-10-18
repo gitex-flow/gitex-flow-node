@@ -1,5 +1,6 @@
 import { exec } from 'child_process';
-import { BranchType } from '../api/branches/GitFlowBranch';
+import { getLogger } from 'log4js';
+import { GitFlowBranchType } from '../api/branches/GitFlowBranch';
 
 /**
  * All possible git flow actions can be applied.
@@ -23,7 +24,7 @@ export type GitFlowAction =
  * Schema of a git flow command arguments.
  */
 export interface GitFlowCommandArgs {
-  type?: BranchType;
+  type?: GitFlowBranchType;
   action?: GitFlowAction;
   name?: string;
   args?: string[];
@@ -35,6 +36,7 @@ export interface GitFlowCommandArgs {
  * Executer for git flow commands via command line.
  */
 export class GitFlowBashExecuter {
+  private static readonly logger = getLogger('GitFlowBashExecuter');
   private static readonly GitFlowCommand = 'git flow';
 
   /**
@@ -63,7 +65,7 @@ export class GitFlowBashExecuter {
     if (args.args) {
       cmd += ` "${args.args.join('" "')}"`;
     }
-    console.info(`Executing '${cmd}'`);
+    GitFlowBashExecuter.logger.debug(`Executing '${cmd}'`);
     return await GitFlowBashExecuter.execViaShell(cmd);
   }
 

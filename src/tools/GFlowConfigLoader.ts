@@ -1,6 +1,6 @@
-import { GFlowConfig } from '../gflow/GFlow';
 import { pathExistsSync, readJsonSync } from 'fs-extra';
 import { join } from 'path';
+import { GFlowConfig } from '../gflow/GFlowConfig';
 
 /**
  * Loader of the GFlow config file.
@@ -22,10 +22,6 @@ export class GFlowConfigLoader {
         gFlowConfig = readJsonSync(configFilePath) as GFlowConfig;
         break;
       }
-    }
-
-    if (gFlowConfig && !gFlowConfig.projectConfig.projectPath) {
-      gFlowConfig.projectConfig.projectPath = process.cwd();
     }
 
     return gFlowConfig;

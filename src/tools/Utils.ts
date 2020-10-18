@@ -1,3 +1,5 @@
+import { getLogger } from 'log4js';
+
 /**
  * Provides some utility functions.
  */
@@ -30,7 +32,8 @@ export class Utils {
     try {
       await command();
     } catch (error) {
-      console.error(error.message);
+      const logger = getLogger('gitex-flow');
+      logger.error(error);
     }
   }
 }

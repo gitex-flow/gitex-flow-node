@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CuddlySheep/gitex-flow-node.git"
+    "url": "git+https://github.com/gitex-flow/gitex-flow-node.git"
   },
   "engines": {
     "node": ">=8.9"
@@ -57,22 +57,17 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CuddlySheep/gitex-flow-node/issues"
+    "url": "https://github.com/gitex-flow/gitex-flow-node/issues"
   },
-  "homepage": "https://github.com/CuddlySheep/gitex-flow-node#readme",
+  "homepage": "https://github.com/gitex-flow/gitex-flow-node#readme",
   "dependencies": {
-    "@types/conventional-changelog-preset-loader": "^2.3.1",
-    "@types/conventional-changelog-writer": "^4.0.0",
-    "@types/conventional-commits-parser": "^3.0.0",
-    "@types/fs-extra": "^8.1.1",
-    "@types/semver": "^7.3.1",
-    "@types/standard-version": "^7.0.0",
     "commander": "^5.1.0",
     "conventional-changelog-angular": "^5.0.11",
     "conventional-changelog-preset-loader": "^2.3.4",
     "conventional-changelog-writer": "^4.0.17",
     "conventional-commits-parser": "^3.1.0",
     "fs-extra": "^9.0.1",
+    "log4js": "^6.3.0",
     "path": "^0.12.7",
     "semver": "^7.3.2",
     "simple-git": "^2.15.0",
@@ -80,13 +75,19 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
+    "@types/conventional-changelog-preset-loader": "^2.3.1",
+    "@types/conventional-changelog-writer": "^4.0.0",
+    "@types/conventional-commits-parser": "^3.0.0",
+    "@types/fs-extra": "^8.1.1",
+    "@types/log4js": "^2.3.5",
     "@types/mocha": "^7.0.2",
+    "@types/semver": "^7.3.4",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-jsdoc": "^23.0.0",
+    "eslint-plugin-jsdoc": "^22.2.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-tsdoc": "^0.2.6",
     "mocha": "^7.2.0",

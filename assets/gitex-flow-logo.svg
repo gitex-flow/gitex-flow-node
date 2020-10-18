@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="gitex-flow-logo.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 512 512"
+   height="1935.1182"
+   width="1935.1182"
+   inkscape:export-filename="C:\Users\Jannik\Pictures\gitex-flow-logo.png"
+   inkscape:export-xdpi="25.4"
+   inkscape:export-ydpi="25.4">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="-6"
+     inkscape:window-x="-6"
+     inkscape:window-height="1018"
+     inkscape:window-width="1920"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="g1075"
+     inkscape:document-units="mm"
+     inkscape:cy="1196.2201"
+     inkscape:cx="519.6372"
+     inkscape:zoom="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-37.306252,-38.893753)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Ebene 1">
+    <g
+       transform="matrix(3.5446108,0,0,3.5446108,75.468318,40.090254)"
+       id="g1075">
+      <path
+         style="fill:#0000cb;fill-opacity:1;stroke-width:0.943881"
+         fill="#f05133"
+         d="M 113.19584,49.065135 66.242458,2.1175232 c -2.701577,-2.70403091 -7.086849,-2.70403091 -9.791823,0 l -9.749349,9.7502928 12.366731,12.366731 c 2.874968,-0.970688 6.170246,-0.319862 8.460857,1.971201 2.302504,2.305336 2.948684,5.628741 1.953646,8.513337 l 11.919331,11.919331 c 2.883651,-0.993717 6.210738,-0.351708 8.513336,1.954967 3.219201,3.218258 3.219201,8.433107 0,11.652214 -3.219673,3.220144 -8.434522,3.220144 -11.655989,0 -2.420583,-2.422471 -3.019287,-5.979016 -1.79328,-8.961398 L 65.34983,40.168111 65.348886,69.419933 c 0.784838,0.38852 1.525501,0.907069 2.179516,1.558254 3.218257,3.217879 3.218257,8.431784 0,11.655045 -3.219201,3.217784 -8.436409,3.217784 -11.652213,0 -3.21873,-3.222977 -3.21873,-8.436883 0,-11.655045 0.795455,-0.794041 1.715882,-1.395058 2.69799,-1.797906 V 39.656622 c -0.98258,-0.40115 -1.90192,-0.997683 -2.698556,-1.798094 -2.438045,-2.436158 -3.025234,-6.014411 -1.774875,-9.008307 L 41.909579,16.657163 9.717567,48.848231 c -2.7048798,2.706108 -2.7048798,7.09138 0,9.795599 l 46.950538,46.94771 c 2.703087,2.70403 7.086848,2.70403 9.793712,0 L 113.19526,58.865642 c 2.70403,-2.705352 2.70403,-7.091945 0,-9.796543"
+         id="path1061" />
+      <text
+         id="text1079"
+         y="136.16512"
+         x="-5.4359865"
+         style="font-style:normal;font-weight:normal;font-size:34.9866px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.187428"
+         xml:space="preserve"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:34.9866px;font-family:Adelle;-inkscape-font-specification:'Adelle, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.187428"
+           y="136.16512"
+           x="-5.4359865"
+           id="tspan1077">git<tspan
+   id="tspan1081"
+   style="font-size:34.9866px;fill:#0000cb;fill-opacity:1;stroke-width:0.187428">ex</tspan><tspan
+   id="tspan837"
+   style="font-size:65%;baseline-shift:sub">flow</tspan></tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,3 +1,4 @@
+import { getLogger, Logger } from 'log4js';
 import { ConfigProvider } from '../api/ConfigProvider';
 import { GitFlowConfig } from '../api/GitFlowConfig';
 import { GitFlowBashExecuter } from './GitFlowBashExecuter';
@@ -6,6 +7,8 @@ import { GitFlowBashExecuter } from './GitFlowBashExecuter';
  * AVH Configuration provider.
  */
 export class AvhConfigProvider implements ConfigProvider<GitFlowConfig> {
+  private logger: Logger = getLogger('AvhConfigProvider');
+
   private repositoryPath?: string;
 
   /**
@@ -69,6 +72,6 @@ export class AvhConfigProvider implements ConfigProvider<GitFlowConfig> {
       repositoryPath: this.repositoryPath,
       options: `set ${key} ${value}`,
     });
-    console.info(output);
+    this.logger.debug(output.trim());
   }
 }

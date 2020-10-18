@@ -14,12 +14,21 @@
 
 ### Type aliases
 
-* [BranchType](api.md#branchtype)
+* [GitFlowBaseBranchType](api.md#gitflowbasebranchtype)
+* [GitFlowBranchType](api.md#gitflowbranchtype)
 
 ## Type aliases
 
-###  BranchType
+###  GitFlowBaseBranchType
 
-Ƭ **BranchType**: *"feature" | "release" | "bugfix" | "hotfix" | "support"*
+Ƭ **GitFlowBaseBranchType**: *"master" | "develop"*
+
+Types of the git flow base branches.
+
+___
+
+###  GitFlowBranchType
+
+Ƭ **GitFlowBranchType**: *"feature" | "release" | "bugfix" | "hotfix" | "support"*
 
 Types of the git flow branches.
