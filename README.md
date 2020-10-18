@@ -261,6 +261,10 @@ const gFlowConfig: GFlowConfig = {
     versionFile: 'package.json',
     bumpVersionFiles: ['package.json', 'package-lock.json'],
   },
+  log4jsConfig: {
+    appenders: { console: { type: 'console' } },
+    categories: { default: { appenders: ['console'], level: 'info' } },
+  },
 };
 
 const gitFlow = new AvhGitFlow();

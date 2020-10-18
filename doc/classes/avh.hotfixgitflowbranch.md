@@ -22,6 +22,7 @@ This class wraps the hotfix branch of the AVH implementation.
 
 ### Properties
 
+* [defaultBase](avh.hotfixgitflowbranch.md#readonly-defaultbase)
 * [type](avh.hotfixgitflowbranch.md#readonly-type)
 
 ### Methods
@@ -52,9 +53,21 @@ Name | Type | Description |
 
 ## Properties
 
+### `Readonly` defaultBase
+
+• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)* = "master"
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
+
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[defaultBase](avh.avhgitflowbranch.md#readonly-abstract-defaultbase)*
+
+{@inheritdoc}
+
+___
+
 ### `Readonly` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)* = "hotfix"
+• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)* = "hotfix"
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
 

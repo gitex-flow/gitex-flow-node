@@ -27,6 +27,7 @@ A simple API with basic functionality of a git repository.
 * [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
 * [getRepoPath](git.gitrepository.md#getrepopath)
 * [remove](git.gitrepository.md#remove)
+* [status](git.gitrepository.md#status)
 
 ## Constructors
 
@@ -137,3 +138,13 @@ ___
 Gets the path of the git repository.
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  status
+
+▸ **status**(): *Promise‹StatusResult›*
+
+Retrieves the current status of the git repository.
+
+**Returns:** *Promise‹StatusResult›*

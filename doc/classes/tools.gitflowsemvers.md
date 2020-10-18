@@ -38,7 +38,7 @@ Name | Type | Description |
 
 ###  calculateBranchVersion
 
-▸ **calculateBranchVersion**(`type`: [BranchType](../modules/api.md#branchtype), `version?`: undefined | string): *Promise‹string›*
+▸ **calculateBranchVersion**(`type`: [GitFlowBranchType](../modules/api.md#gitflowbranchtype), `version?`: undefined | string): *Promise‹string›*
 
 Calculates the version of the branch created from the current branch.
 
@@ -46,7 +46,7 @@ Calculates the version of the branch created from the current branch.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`type` | [BranchType](../modules/api.md#branchtype) | Type of the branch should be created. |
+`type` | [GitFlowBranchType](../modules/api.md#gitflowbranchtype) | Type of the branch should be created. |
 `version?` | undefined &#124; string | A optional custom version to be used.  |
 
 **Returns:** *Promise‹string›*

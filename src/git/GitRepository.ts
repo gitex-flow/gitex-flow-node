@@ -1,4 +1,4 @@
-import createRepository, { SimpleGit as Repository } from 'simple-git/promise';
+import createRepository, { SimpleGit as Repository, StatusResult } from 'simple-git/promise';
 import { join } from 'path';
 import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
 import conventionalCommitsParser from 'conventional-commits-parser';
@@ -53,8 +53,16 @@ export class GitRepository {
    */
   public async checkout(branchName: string): Promise<void> {
     const repo = await this.createOrOpenRepo();
-    console.log(`Checkout branch '${branchName}'`);
     await repo.checkout(branchName);
+  }
+
+  /**
+   * Retrieves the current status of the git repository.
+   */
+  public async status(): Promise<StatusResult> {
+    const repo = await this.createOrOpenRepo();
+    const status = await repo.status();
+    return status;
   }
 
   /**

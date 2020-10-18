@@ -25,6 +25,7 @@ Representing an API for handling git flow SemVer.
 
 * [checkoutBranch](tools.gitflownodeproject.md#checkoutbranch)
 * [commitChanges](tools.gitflownodeproject.md#commitchanges)
+* [getCurrentBranch](tools.gitflownodeproject.md#getcurrentbranch)
 * [getVersion](tools.gitflownodeproject.md#getversion)
 * [updateChangelog](tools.gitflownodeproject.md#updatechangelog)
 * [writeVersion](tools.gitflownodeproject.md#writeversion)
@@ -101,6 +102,16 @@ Name | Type | Default | Description |
 `commitChangelog` | boolean | true | Indicates if the changelog should be committed.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  getCurrentBranch
+
+▸ **getCurrentBranch**(): *Promise‹string›*
+
+Gets the current branch.
+
+**Returns:** *Promise‹string›*
 
 ___
 

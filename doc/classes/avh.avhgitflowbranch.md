@@ -30,6 +30,7 @@ This class implements the basic functionality of a git flow branch.
 
 ### Properties
 
+* [defaultBase](avh.avhgitflowbranch.md#readonly-abstract-defaultbase)
 * [type](avh.avhgitflowbranch.md#readonly-abstract-type)
 
 ### Methods
@@ -57,9 +58,19 @@ Name | Type | Description |
 
 ## Properties
 
+### `Readonly` `Abstract` defaultBase
+
+• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
+
+{@inheritdoc}
+
+___
+
 ### `Readonly` `Abstract` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)*
+• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)*
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
 

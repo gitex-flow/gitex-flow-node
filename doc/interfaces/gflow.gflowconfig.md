@@ -13,7 +13,8 @@ Options of the GFlow implementation.
 ### Properties
 
 * [gitFlowConfig](gflow.gflowconfig.md#optional-gitflowconfig)
-* [projectConfig](gflow.gflowconfig.md#projectconfig)
+* [log4jsConfig](gflow.gflowconfig.md#optional-log4jsconfig)
+* [projectConfig](gflow.gflowconfig.md#optional-projectconfig)
 
 ## Properties
 
@@ -26,8 +27,17 @@ This config will be taken if no other git flow config is given on calling the `i
 
 ___
 
-###  projectConfig
+### `Optional` log4jsConfig
 
-• **projectConfig**: *[ProjectConfig](tools.projectconfig.md)*
+• **log4jsConfig**? : *[Log4jsConfig](../modules/gflow.md#log4jsconfig)*
+
+The log4js configuration.
+For more information see https://log4js-node.github.io/log4js-node/api.html.
+
+___
+
+### `Optional` projectConfig
+
+• **projectConfig**? : *[ProjectConfig](tools.projectconfig.md)*
 
 The configuration of the node project.

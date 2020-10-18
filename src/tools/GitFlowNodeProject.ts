@@ -7,6 +7,7 @@ import conventionalChangelogPresetLoader from 'conventional-changelog-preset-loa
 import { readJson, pathExists, ensureFile, createWriteStream, createReadStream, moveSync, copySync } from 'fs-extra';
 import { Utils } from './Utils';
 import writeJsonFile from 'write-json-file';
+import { getLogger } from 'log4js';
 
 /**
  * Options of the git flow node project.
@@ -62,6 +63,8 @@ export interface ProjectConfig {
  * Representing an API for handling git flow SemVer.
  */
 export class GitFlowNodeProject {
+  private readonly logger = getLogger('GitFlowNodeProject');
+
   public static readonly DefaultVersionFile = 'package.json';
   public static readonly DefaultBumpVersionFiles = [GitFlowNodeProject.DefaultVersionFile, 'package-lock.json'];
   public static readonly DefaultChangelogFile = 'CHANGELOG.md';
@@ -76,7 +79,8 @@ export class GitFlowNodeProject {
    * @param options - Options of the git flow node project instance.
    */
   constructor(options?: ProjectConfig) {
-    if (!options) options = { projectPath: __dirname };
+    if (!options) options = { projectPath: process.cwd() };
+    if (!options.projectPath) options.projectPath = process.cwd();
     this.options = options;
     this.options.versionFile = GitFlowNodeProject.DefaultVersionFile;
     this.options.bumpVersionFiles = options.bumpVersionFiles ?? GitFlowNodeProject.DefaultBumpVersionFiles;
@@ -95,6 +99,14 @@ export class GitFlowNodeProject {
   }
 
   /**
+   * Gets the current branch.
+   */
+  public async getCurrentBranch(): Promise<string> {
+    const status = await this.gitRepository.status();
+    return status.current ?? '';
+  }
+
+  /**
    *  Writes the version and commits the changes in the git repository.
    *
    * @param version - Version to commit.
@@ -104,6 +116,7 @@ export class GitFlowNodeProject {
     for (const versionFile of versionFiles) {
       await this.writeVersionToFile(versionFile, version);
     }
+    this.logger.info(`Updated versions in ${versionFiles.join(' and ')} to ${version}`);
   }
 
   /**
@@ -126,6 +139,11 @@ export class GitFlowNodeProject {
     const context = await this.getContext(version, name);
 
     await this.appendChangelog(stream, changelogPath, context, config);
+    let changelogUpdatedMessage = `Updated ${this.options.changelogFileName}`;
+    if (this.options.storeLatestChangelog) {
+      changelogUpdatedMessage += `and ${GitFlowNodeProject.DefaultLatestChangelogFile}`;
+    }
+    this.logger.info(changelogUpdatedMessage);
   }
 
   /**

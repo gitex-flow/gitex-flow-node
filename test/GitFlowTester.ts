@@ -3,7 +3,7 @@ import { tmpdir } from 'os';
 import { assert } from 'chai';
 import { TestGitRepository } from './TestGitRepository';
 import { GitFlowConfig } from '../src/api/GitFlowConfig';
-import { BranchType, GitFlowBranch } from '../src/api/branches/GitFlowBranch';
+import { GitFlowBranchType, GitFlowBranch, GitFlowBaseBranchType } from '../src/api/branches/GitFlowBranch';
 import { join } from 'path';
 import { pathExists, copy, ensureDir, emptyDir, rmdir } from 'fs-extra';
 import { GitFlowBranchConfig } from '../src/api/GitFlowBranchConfig';
@@ -69,7 +69,7 @@ export class GitFlowTester {
     await this.repo.checkout(branchName);
   }
 
-  public selectBranch(type: BranchType): TestBranch {
+  public selectBranch(type: GitFlowBranchType): TestBranch {
     switch (type) {
       case 'bugfix':
         return new TestBranch(this.gitFlow.bugfix, this.repo);
@@ -82,7 +82,7 @@ export class GitFlowTester {
       case 'support':
         return new TestBranch(this.gitFlow.support, this.repo);
       default:
-        throw new Error(`Type ${type} is not supported.`);
+        throw new Error(`Type "${type}" is not supported.`);
     }
   }
 
@@ -107,7 +107,9 @@ export class TestBranch implements GitFlowBranch {
   private repo: TestGitRepository;
   private branchName?: string;
 
-  public type: BranchType;
+  public type: GitFlowBranchType;
+
+  public defaultBase: GitFlowBaseBranchType;
 
   /**
    * Initializes a new instance of this class.
@@ -119,6 +121,7 @@ export class TestBranch implements GitFlowBranch {
     this.branch = branch;
     this.repo = repo;
     this.type = branch.type;
+    this.defaultBase = branch.defaultBase;
   }
 
   public getConfig(): Promise<GitFlowBranchConfig> {

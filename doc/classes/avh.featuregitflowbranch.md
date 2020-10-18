@@ -22,6 +22,7 @@ This class wraps the feature branch of the AVH implementation.
 
 ### Properties
 
+* [defaultBase](avh.featuregitflowbranch.md#readonly-defaultbase)
 * [type](avh.featuregitflowbranch.md#readonly-type)
 
 ### Methods
@@ -52,9 +53,21 @@ Name | Type | Description |
 
 ## Properties
 
+### `Readonly` defaultBase
+
+• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)* = "develop"
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
+
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[defaultBase](avh.avhgitflowbranch.md#readonly-abstract-defaultbase)*
+
+{@inheritdoc}
+
+___
+
 ### `Readonly` type
 
-• **type**: *[BranchType](../modules/api.md#branchtype)* = "feature"
+• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)* = "feature"
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
 
