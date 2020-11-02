@@ -1,10 +1,10 @@
-## 2.1.1 (2020-11-02)
+## 2.1.2 (2020-11-02)
 
 
 ### Bug Fixes
 
-* **client:** Added input argument to the support branch to set branch base ([04d5f09](https://github.com/gitex-flow/gitex-flow-node/commits/04d5f093c555df76df63980fd4a5ebdda5713c0c))
-* **client:** Added optional input arguments for custom release and hotfix names ([18612df](https://github.com/gitex-flow/gitex-flow-node/commits/18612dfa643a17bf88d71f48f5a76032d6372521)), closes [#31](https://github.com/gitex-flow/gitex-flow-node/issues/31)
+* **gitex-flow:** Fixed error if custom hotfix or release branch name is not a SemVer string ([c495914](https://github.com/gitex-flow/gitex-flow-node/commits/c4959146fc2823255f32e07b98225eebbc84e144)), closes [#33](https://github.com/gitex-flow/gitex-flow-node/issues/33)
+* **logging:** Fixed spelling mistake ([39d390f](https://github.com/gitex-flow/gitex-flow-node/commits/39d390fba7c4607fc8f8d0dbdba00c269715e0d0)), closes [#32](https://github.com/gitex-flow/gitex-flow-node/issues/32)
 
 
 
