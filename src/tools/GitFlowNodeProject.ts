@@ -141,7 +141,7 @@ export class GitFlowNodeProject {
     await this.appendChangelog(stream, changelogPath, context, config);
     let changelogUpdatedMessage = `Updated ${this.options.changelogFileName}`;
     if (this.options.storeLatestChangelog) {
-      changelogUpdatedMessage += `and ${GitFlowNodeProject.DefaultLatestChangelogFile}`;
+      changelogUpdatedMessage += ` and ${GitFlowNodeProject.DefaultLatestChangelogFile}`;
     }
     this.logger.info(changelogUpdatedMessage);
   }
