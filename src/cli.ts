@@ -56,8 +56,8 @@ hotfix.command('finish [name]').action(async (name?: string) => {
 
 // support command
 const support = command.command('support');
-support.command('start <name>').action(async (name: string) => {
-  await Utils.exec(() => gFlow.support.start(name));
+support.command('start <name> [base]').action(async (name: string, base?: string) => {
+  await Utils.exec(() => gFlow.support.start(name, base));
 });
 support.command('finish [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.support.finish(name));
