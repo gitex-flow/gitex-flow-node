@@ -1,14 +1,10 @@
-# 2.1.0 (2020-10-18)
+## 2.1.1 (2020-11-02)
 
 
 ### Bug Fixes
 
-* **project:** Fixed branch pattern in node-ci.yml file ([f9f051a](https://github.com/gitex-flow/gitex-flow-node/commits/f9f051a622b798a537339d250e4bfb3cb4baa13d))
-
-
-### Features
-
-* **logging:** Improved logging by introducing log4js ([7fa2599](https://github.com/gitex-flow/gitex-flow-node/commits/7fa25999b18a74e0f226beac7e9d8e7cb4863de3)), closes [#29](https://github.com/gitex-flow/gitex-flow-node/issues/29)
+* **client:** Added input argument to the support branch to set branch base ([04d5f09](https://github.com/gitex-flow/gitex-flow-node/commits/04d5f093c555df76df63980fd4a5ebdda5713c0c))
+* **client:** Added optional input arguments for custom release and hotfix names ([18612df](https://github.com/gitex-flow/gitex-flow-node/commits/18612dfa643a17bf88d71f48f5a76032d6372521)), closes [#31](https://github.com/gitex-flow/gitex-flow-node/issues/31)
 
 
 

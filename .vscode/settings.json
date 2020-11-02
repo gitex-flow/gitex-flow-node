@@ -19,6 +19,7 @@
     "security",
     "hotfix",
     "versioning",
-    "release"
+    "release",
+    "client"
   ]
 }
