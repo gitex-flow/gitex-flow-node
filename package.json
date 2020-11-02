@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",

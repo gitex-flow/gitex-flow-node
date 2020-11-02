@@ -23,7 +23,7 @@ const feature = command.command('feature');
 feature.command('start <name>').action(async (name: string) => {
   await Utils.exec(() => gFlow.feature.start(name));
 });
-feature.command('finish [name]').action(async (name: string) => {
+feature.command('finish [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.feature.finish(name));
 });
 
@@ -32,34 +32,34 @@ const bugfix = command.command('bugfix');
 bugfix.command('start <name>').action(async (name: string) => {
   await Utils.exec(() => gFlow.bugfix.start(name));
 });
-bugfix.command('finish [name]').action(async (name: string) => {
+bugfix.command('finish [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.bugfix.finish(name));
 });
 
 // Release command
 const release = command.command('release');
-release.command('start').action(async () => {
-  await Utils.exec(() => gFlow.release.start());
+release.command('start [name]').action(async (name?: string) => {
+  await Utils.exec(() => gFlow.release.start(name));
 });
-release.command('finish').action(async () => {
-  await Utils.exec(() => gFlow.release.finish());
+release.command('finish [name]').action(async (name?: string) => {
+  await Utils.exec(() => gFlow.release.finish(name));
 });
 
 // HotFix command
 const hotfix = command.command('hotfix');
-hotfix.command('start').action(async () => {
-  await Utils.exec(() => gFlow.hotfix.start());
+hotfix.command('start [name]').action(async (name?: string) => {
+  await Utils.exec(() => gFlow.hotfix.start(name));
 });
-hotfix.command('finish').action(async () => {
-  await Utils.exec(() => gFlow.hotfix.finish());
+hotfix.command('finish [name]').action(async (name?: string) => {
+  await Utils.exec(() => gFlow.hotfix.finish(name));
 });
 
 // support command
 const support = command.command('support');
-support.command('start <name>').action(async (name: string) => {
-  await Utils.exec(() => gFlow.support.start(name));
+support.command('start <name> [base]').action(async (name: string, base?: string) => {
+  await Utils.exec(() => gFlow.support.start(name, base));
 });
-support.command('finish [name]').action(async (name: string) => {
+support.command('finish [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.support.finish(name));
 });
 
