@@ -13,6 +13,9 @@ This project provides a [node.js](https://nodejs.org/en/) implementation of gite
 - [User documentation](#user-documentation)
   - [Prerequisite](#prerequisite)
   - [Installation](#installation)
+    - [Global](#global)
+    - [Project dependency](#project-dependency)
+  - [Initialization](#initialization)
   - [Configuation](#configuation)
   - [Usage / Workflow](#usage--workflow)
     - [Commit message convention](#commit-message-convention)
@@ -66,11 +69,21 @@ If you like to use **gitex-flow** in your **node.js** project you can use **gite
 
 ### Installation
 
+#### Global
+
+```
+#> npm install -g gitex-flow
+```
+
+#### Project dependency
+
+You can also install gitex-flow as a npm development dependency in your project:
+
 ```
 #> npm install --save-dev gitex-flow
 ```
 
-After installation add the following lines to the `scripts` section in your `package.json` of your project:
+To integrate the gitex workflow into your project, add the following lines to the `scripts` section of your `package.json`:
 
 ```javascript
 "scripts": {
@@ -90,7 +103,15 @@ After installation add the following lines to the `scripts` section in your `pac
 }
 ```
 
-The very first time after installation you have to initialize git-flow by following command:
+### Initialization
+
+Once after the installation or after cloning a new local repository you have to initialize it by executing the following command:
+
+```
+#> gitex-flow init
+```
+
+or if it was installed as a project dependency
 
 ```
 #> npm run init
@@ -123,7 +144,11 @@ The following JSON shows the schema and the default values of the configuration:
       "package.json",
       "package-lock.json"
     ]
-  }
+  },
+  "log4jsConfig": {
+    "appenders": { "console": { "type": "console" } },
+    "categories": { "default": { "appenders": ["console"], "level": "info" } }
+  },
 }
 
 ```
