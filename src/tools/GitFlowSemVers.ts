@@ -27,10 +27,9 @@ export class GitFlowSemVers {
   public async calculateBranchVersion(type: GitFlowBranchType, version?: string): Promise<string> {
     if (version) {
       const validatedVersion = valid(version);
-      if (!validatedVersion) {
-        throw new Error(`The given name '${name}' isn't a valid semantic version.`);
+      if (validatedVersion) {
+        version = validatedVersion;
       }
-      version = validatedVersion;
     } else {
       const gitRepository = new GitRepository(this.basePath);
       const latestVersion = await gitRepository.getLatestReleasedVersion();
