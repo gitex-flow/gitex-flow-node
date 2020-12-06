@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",
@@ -34,18 +34,26 @@
     "type": "git",
     "url": "git+https://github.com/gitex-flow/gitex-flow-node.git"
   },
+  "bugs": {
+    "url": "https://github.com/gitex-flow/gitex-flow-node/issues"
+  },
+  "homepage": "https://github.com/gitex-flow/gitex-flow-node#readme",
   "engines": {
     "node": ">=8.9"
   },
   "keywords": [
     "git",
+    "flow",
+    "gitflow",
     "git-flow",
+    "scm",
+    "source control",
+    "vcs",
+    "version control system",
     "workflow",
     "deployment",
     "release",
     "publish",
-    "standard-version",
-    "semantic versioning",
     "SemVer",
     "conventional commits"
   ],
@@ -56,28 +64,24 @@
     "build/**/*"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gitex-flow/gitex-flow-node/issues"
-  },
-  "homepage": "https://github.com/gitex-flow/gitex-flow-node#readme",
   "dependencies": {
     "commander": "^5.1.0",
-    "conventional-changelog-angular": "^5.0.11",
+    "conventional-changelog-angular": "^5.0.12",
     "conventional-changelog-preset-loader": "^2.3.4",
-    "conventional-changelog-writer": "^4.0.17",
-    "conventional-commits-parser": "^3.1.0",
+    "conventional-changelog-writer": "^4.0.18",
+    "conventional-commits-parser": "^3.2.0",
     "fs-extra": "^9.0.1",
     "log4js": "^6.3.0",
     "path": "^0.12.7",
-    "semver": "^7.3.2",
-    "simple-git": "^2.15.0",
+    "semver": "^7.3.4",
+    "simple-git": "^2.24.0",
     "write-json-file": "^4.3.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.12",
+    "@types/chai": "^4.2.14",
     "@types/conventional-changelog-preset-loader": "^2.3.1",
     "@types/conventional-changelog-writer": "^4.0.0",
-    "@types/conventional-commits-parser": "^3.0.0",
+    "@types/conventional-commits-parser": "^3.0.1",
     "@types/fs-extra": "^8.1.1",
     "@types/log4js": "^2.3.5",
     "@types/mocha": "^7.0.2",
@@ -86,16 +90,16 @@
     "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-jsdoc": "^22.2.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-tsdoc": "^0.2.6",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-tsdoc": "^0.2.10",
     "mocha": "^7.2.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.2.1",
     "ts-node": "^8.10.2",
     "typedoc": "^0.17.8",
     "typedoc-plugin-external-module-map": "^1.2.1",
-    "typedoc-plugin-markdown": "^2.4.0",
+    "typedoc-plugin-markdown": "^2.4.2",
     "typescript": "^3.9.7"
   }
 }
