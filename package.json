@@ -34,18 +34,26 @@
     "type": "git",
     "url": "git+https://github.com/gitex-flow/gitex-flow-node.git"
   },
+  "bugs": {
+    "url": "https://github.com/gitex-flow/gitex-flow-node/issues"
+  },
+  "homepage": "https://github.com/gitex-flow/gitex-flow-node#readme",
   "engines": {
     "node": ">=8.9"
   },
   "keywords": [
     "git",
+    "flow",
+    "gitflow",
     "git-flow",
+    "scm",
+    "source control",
+    "vcs",
+    "version control system",
     "workflow",
     "deployment",
     "release",
     "publish",
-    "standard-version",
-    "semantic versioning",
     "SemVer",
     "conventional commits"
   ],
@@ -56,10 +64,6 @@
     "build/**/*"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gitex-flow/gitex-flow-node/issues"
-  },
-  "homepage": "https://github.com/gitex-flow/gitex-flow-node#readme",
   "dependencies": {
     "commander": "^5.1.0",
     "conventional-changelog-angular": "^5.0.11",
