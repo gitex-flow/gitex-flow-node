@@ -1,10 +1,9 @@
-import createRepository, { SimpleGit as Repository, StatusResult } from 'simple-git/promise';
+import createRepository, { SimpleGit as Repository, StatusResult, DefaultLogFields } from 'simple-git';
 import { join } from 'path';
 import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
 import conventionalCommitsParser from 'conventional-commits-parser';
 import { GitLog } from './GitLog';
 import { Readable } from 'stream';
-import { DefaultLogFields } from 'simple-git';
 
 /**
  * A simple API with basic functionality of a git repository.
