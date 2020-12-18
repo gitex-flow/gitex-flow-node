@@ -52,12 +52,17 @@ export class AvhGitFlow implements GitFlow {
     if (force == true) {
       options += ' -f';
     }
-    const output = await GitFlowBashExecuter.execute({
+    let output = await GitFlowBashExecuter.execute({
       action: 'init',
       repositoryPath: this.repositoryPath,
       options: options,
     });
-    this.logger.info(output.trim());
+    output = output.trim();
+    const alreadyInitialized = 'Already initialized for gitflow.';
+    if (output.startsWith(alreadyInitialized)) {
+      throw new Error(alreadyInitialized);
+    }
+    this.logger.info(output);
     if (config) {
       await this.config.set(config);
     }

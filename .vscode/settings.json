@@ -20,6 +20,8 @@
     "hotfix",
     "versioning",
     "release",
-    "client"
+    "client",
+    "api",
+    "support"
   ]
 }

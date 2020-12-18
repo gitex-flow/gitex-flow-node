@@ -101,6 +101,15 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   *
+   * @param name - A custom name for the branch.
+   */
+  public async generateBranchName(name?: string): Promise<string | undefined> {
+    return name;
+  }
+
   private async getBranchNameFromConfig(name?: string): Promise<string> {
     const config = await this.getConfig();
     let prefix = config.prefix ?? this.type;

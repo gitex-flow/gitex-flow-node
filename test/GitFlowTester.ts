@@ -141,6 +141,10 @@ export class TestBranch implements GitFlowBranch {
     await this.branch.finish(name, msg);
   }
 
+  public async generateBranchName(name?: string): Promise<string | undefined> {
+    return name;
+  }
+
   public async commit(fileName: string, msg: string): Promise<void> {
     if (!this.branchName) {
       throw new Error('Branch was not started.');

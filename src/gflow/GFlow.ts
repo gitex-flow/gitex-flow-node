@@ -7,6 +7,7 @@ import { GFlowReleaseBranch } from './branches/GFlowReleaseBranch';
 import { GFlowHotFixBranch } from './branches/GFlowHotFixBranch';
 import { configure } from 'log4js';
 import { GFlowBranch } from './branches/GFlowBranch';
+
 /**
  * GitFlow wrapper extending functionality to a common git flow implementation.
  */
@@ -16,10 +17,10 @@ export class GFlow implements GitFlow {
   public release: GitFlowBranch;
   public hotfix: GitFlowBranch;
   public support: GitFlowBranch;
-  public config: ConfigProvider<GitFlowConfig>;
+  public readonly config: ConfigProvider<GitFlowConfig>;
 
-  private gitFlow: GitFlow;
-  private options: GFlowConfig;
+  protected readonly options: GFlowConfig;
+  private readonly gitFlow: GitFlow;
 
   /**
    * Initializes a new instance of this class.
@@ -44,6 +45,23 @@ export class GFlow implements GitFlow {
     this.config = this.gitFlow.config;
   }
 
+  /**
+   * Setup a git repository for git flow usage.
+   *
+   * @param config - The git flow configuration.
+   * @param force - Force reinitialisation if git flow already initialized.
+   */
+  public async init(config?: GitFlowConfig, force?: boolean): Promise<void> {
+    await this.gitFlow.init(config ?? this.options.gitFlowConfig, force);
+  }
+
+  /**
+   * Provides the version of the git flow implementation.
+   */
+  public async version(): Promise<string> {
+    return await this.gitFlow.version();
+  }
+
   private ensureDefaults(options?: GFlowConfig): GFlowConfig {
     options = options ?? {};
     if (!options.projectConfig) {
@@ -58,22 +76,5 @@ export class GFlow implements GitFlow {
       };
     }
     return options;
-  }
-
-  /**
-   * Setup a git repository for git flow ussage.
-   *
-   * @param config - The git flow configuration.
-   * @param force - Force reinitialisation if git flow already initialized.
-   */
-  public async init(config?: GitFlowConfig, force?: boolean): Promise<void> {
-    await this.gitFlow.init(config ?? this.options.gitFlowConfig, force);
-  }
-
-  /**
-   * Provides the version of the git flow implementation.
-   */
-  public async version(): Promise<string> {
-    return await this.gitFlow.version();
   }
 }
