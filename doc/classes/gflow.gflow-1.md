@@ -21,9 +21,10 @@ GitFlow wrapper extending functionality to a common git flow implementation.
 ### Properties
 
 * [bugfix](gflow.gflow-1.md#bugfix)
-* [config](gflow.gflow-1.md#config)
+* [config](gflow.gflow-1.md#readonly-config)
 * [feature](gflow.gflow-1.md#feature)
 * [hotfix](gflow.gflow-1.md#hotfix)
+* [options](gflow.gflow-1.md#protected-readonly-options)
 * [release](gflow.gflow-1.md#release)
 * [support](gflow.gflow-1.md#support)
 
@@ -59,7 +60,7 @@ Name | Type | Description |
 
 ___
 
-###  config
+### `Readonly` config
 
 • **config**: *[ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
 
@@ -80,6 +81,12 @@ ___
 • **hotfix**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
 *Implementation of [GitFlow](../interfaces/api.gitflow.md).[hotfix](../interfaces/api.gitflow.md#readonly-hotfix)*
+
+___
+
+### `Protected` `Readonly` options
+
+• **options**: *[GFlowConfig](../interfaces/gflow.gflowconfig.md)*
 
 ___
 
@@ -105,7 +112,7 @@ ___
 
 *Implementation of [GitFlow](../interfaces/api.gitflow.md)*
 
-Setup a git repository for git flow ussage.
+Setup a git repository for git flow usage.
 
 **Parameters:**
 
