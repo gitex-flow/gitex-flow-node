@@ -15,7 +15,7 @@ const gFlow = new GFlow(gitFlow, gFlowConfig);
 
 // Init command
 command.command('init').action(async () => {
-  await gFlow.init();
+  await Utils.exec(() => gFlow.init());
 });
 
 // Feature command
