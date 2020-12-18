@@ -28,6 +28,7 @@ This class wraps the release branch of the AVH implementation.
 ### Methods
 
 * [finish](avh.releasegitflowbranch.md#finish)
+* [generateBranchName](avh.releasegitflowbranch.md#generatebranchname)
 * [getConfig](avh.releasegitflowbranch.md#getconfig)
 * [list](avh.releasegitflowbranch.md#list)
 * [start](avh.releasegitflowbranch.md#start)
@@ -95,6 +96,26 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  generateBranchName
+
+▸ **generateBranchName**(`name?`: undefined | string): *Promise‹string | undefined›*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[generateBranchName](avh.avhgitflowbranch.md#generatebranchname)*
+
+{@inheritdoc}
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`name?` | undefined &#124; string | A custom name for the branch.  |
+
+**Returns:** *Promise‹string | undefined›*
 
 ___
 

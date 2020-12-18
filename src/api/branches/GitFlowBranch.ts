@@ -50,4 +50,11 @@ export interface GitFlowBranch {
    * @param msg - Message to be set for finishing the branch.
    */
   finish(name?: string, msg?: string): Promise<void>;
+
+  /**
+   * Generates an default branch name.
+   *
+   * @param name - A custom name for the branch.
+   */
+  generateBranchName(name?: string): Promise<string | undefined>;
 }

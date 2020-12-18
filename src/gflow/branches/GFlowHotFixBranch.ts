@@ -1,5 +1,4 @@
 import { GitFlowBranch } from '../../api/branches/GitFlowBranch';
-import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
 import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
 import { GFlowBranch } from './GFlowBranch';
 
@@ -24,8 +23,10 @@ export class GFlowHotFixBranch extends GFlowBranch {
    * @param base - Base of the branch should be started from.
    */
   public async start(name?: string, base?: string): Promise<string> {
-    const semVer = new GitFlowSemVers(this.projectConfig?.projectPath);
-    const version = await semVer.calculateBranchVersion(this.type, name);
+    const version = await this.generateBranchName(name);
+    if (!version) {
+      throw new Error('Failed to calculate the version from the current repository.');
+    }
     const branch = await super.start(version, base);
     const project = new GitFlowNodeProject(this.projectConfig);
     await project.writeVersion(version);
@@ -42,7 +43,7 @@ export class GFlowHotFixBranch extends GFlowBranch {
   public async finish(name?: string, msg?: string): Promise<void> {
     const project = new GitFlowNodeProject(this.projectConfig);
     const version = await this.getVersion(project, name);
-    const branchName = await this.getBranchNameFromConfig(version);
+    const branchName = await this.generateBranchNameFromConfig(version);
     await project.checkoutBranch(branchName);
     await project.updateChangelog();
     await project.commitChanges(false);

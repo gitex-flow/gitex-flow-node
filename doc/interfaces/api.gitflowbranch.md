@@ -30,6 +30,7 @@ This interface represents the basic functionality of a git flow branch.
 ### Methods
 
 * [finish](api.gitflowbranch.md#finish)
+* [generateBranchName](api.gitflowbranch.md#generatebranchname)
 * [getConfig](api.gitflowbranch.md#getconfig)
 * [list](api.gitflowbranch.md#list)
 * [start](api.gitflowbranch.md#start)
@@ -66,6 +67,22 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  generateBranchName
+
+▸ **generateBranchName**(`name?`: undefined | string): *Promise‹string | undefined›*
+
+Generates an default branch name.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`name?` | undefined &#124; string | A custom name for the branch.  |
+
+**Returns:** *Promise‹string | undefined›*
 
 ___
 

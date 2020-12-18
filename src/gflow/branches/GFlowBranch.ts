@@ -2,9 +2,10 @@ import { GitFlowBaseBranchType, GitFlowBranch, GitFlowBranchType } from '../../a
 import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
 import { getLogger, Logger } from 'log4js';
 import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
+import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
 
 /**
- * This class extending a hotfix branch with some helpful functionality.
+ * This class represents an abstract GFlow branch with some basic functionality.
  */
 export class GFlowBranch implements GitFlowBranch {
   public readonly type: GitFlowBranchType;
@@ -51,6 +52,7 @@ export class GFlowBranch implements GitFlowBranch {
    */
   public async start(name?: string, base?: string): Promise<string> {
     this.logger.info(`Starting ${this.type} branch "${name}" based on "${base ?? this.defaultBase}"`);
+    name = await this.generateBranchName(name);
     const branch = await this.gitFlowBranch.start(name, base);
     this.logger.info(`Created branch "${branch}"`);
     return branch;
@@ -70,8 +72,18 @@ export class GFlowBranch implements GitFlowBranch {
     }
     this.logger.info(`Finishing ${this.type} branch "${name}"`);
     await this.gitFlowBranch.finish(name, msg);
-    const branchName = await this.getBranchNameFromConfig(name ?? '');
+    const branchName = await this.generateBranchNameFromConfig(name ?? '');
     this.logger.info(`Merged branch "${branchName}"`);
+  }
+
+  /**
+   * Generates an default branch name.
+   *
+   * @param name - A custom name for the branch.
+   */
+  public async generateBranchName(name?: string): Promise<string | undefined> {
+    const semVer = new GitFlowSemVers(this.projectConfig?.projectPath);
+    return await semVer.calculateBranchVersion(this.type, name);
   }
 
   /**
@@ -79,7 +91,7 @@ export class GFlowBranch implements GitFlowBranch {
    *
    * @param name - A given branch name without prefix.
    */
-  protected async getBranchNameFromConfig(name: string): Promise<string> {
+  protected async generateBranchNameFromConfig(name: string): Promise<string> {
     const config = await this.getConfig();
     let prefix = config.prefix ?? this.type;
     if (prefix.endsWith('/')) {

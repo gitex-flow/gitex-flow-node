@@ -30,7 +30,8 @@ This class extending a hotfix branch with some helpful functionality.
 ### Methods
 
 * [finish](gflow.gflowhotfixbranch.md#finish)
-* [getBranchNameFromConfig](gflow.gflowhotfixbranch.md#protected-getbranchnamefromconfig)
+* [generateBranchName](gflow.gflowhotfixbranch.md#generatebranchname)
+* [generateBranchNameFromConfig](gflow.gflowhotfixbranch.md#protected-generatebranchnamefromconfig)
 * [getConfig](gflow.gflowhotfixbranch.md#getconfig)
 * [list](gflow.gflowhotfixbranch.md#list)
 * [start](gflow.gflowhotfixbranch.md#start)
@@ -113,11 +114,31 @@ Name | Type | Description |
 
 ___
 
-### `Protected` getBranchNameFromConfig
+###  generateBranchName
 
-▸ **getBranchNameFromConfig**(`name`: string): *Promise‹string›*
+▸ **generateBranchName**(`name?`: undefined | string): *Promise‹string | undefined›*
 
-*Inherited from [GFlowBranch](gflow.gflowbranch.md).[getBranchNameFromConfig](gflow.gflowbranch.md#protected-getbranchnamefromconfig)*
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[generateBranchName](gflow.gflowbranch.md#generatebranchname)*
+
+Generates an default branch name.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`name?` | undefined &#124; string | A custom name for the branch.  |
+
+**Returns:** *Promise‹string | undefined›*
+
+___
+
+### `Protected` generateBranchNameFromConfig
+
+▸ **generateBranchNameFromConfig**(`name`: string): *Promise‹string›*
+
+*Inherited from [GFlowBranch](gflow.gflowbranch.md).[generateBranchNameFromConfig](gflow.gflowbranch.md#protected-generatebranchnamefromconfig)*
 
 Gets the branch name including the git-flow configuration.
 

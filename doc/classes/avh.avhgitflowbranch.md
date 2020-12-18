@@ -36,6 +36,7 @@ This class implements the basic functionality of a git flow branch.
 ### Methods
 
 * [finish](avh.avhgitflowbranch.md#finish)
+* [generateBranchName](avh.avhgitflowbranch.md#generatebranchname)
 * [getConfig](avh.avhgitflowbranch.md#abstract-getconfig)
 * [list](avh.avhgitflowbranch.md#list)
 * [start](avh.avhgitflowbranch.md#start)
@@ -94,6 +95,24 @@ Name | Type | Description |
 `msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  generateBranchName
+
+▸ **generateBranchName**(`name?`: undefined | string): *Promise‹string | undefined›*
+
+*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+
+{@inheritdoc}
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`name?` | undefined &#124; string | A custom name for the branch.  |
+
+**Returns:** *Promise‹string | undefined›*
 
 ___
 
