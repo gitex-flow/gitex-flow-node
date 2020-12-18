@@ -80,20 +80,11 @@ ___
 
 ###  finish
 
-▸ **finish**(`name?`: undefined | string, `msg?`: undefined | string): *Promise‹void›*
+▸ **finish**(): *Promise‹void›*
 
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[finish](avh.avhgitflowbranch.md#finish)*
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[finish](avh.avhgitflowbranch.md#finish)*
 
 {@inheritdoc}
-
-**Parameters:**
-
-Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | Name of the branch to be finished. |
-`msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
 
 **Returns:** *Promise‹void›*
 
@@ -153,7 +144,7 @@ ___
 
 *Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
 
-*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[start](avh.avhgitflowbranch.md#start)*
+*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[start](avh.avhgitflowbranch.md#start)*
 
 {@inheritdoc}
 

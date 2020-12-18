@@ -33,6 +33,24 @@ export class SupportGitFlowBranch extends AvhGitFlowBranch {
 
   /**
    * {@inheritdoc}
+   *
+   * @param name - Name of the branch to be started.
+   * @param base - Base of the branch should be started from.
+   * @returns The git reference of the create branch.
+   */
+  public async start(name?: string, base?: string): Promise<string> {
+    return super.start(name, base ?? this.defaultBase);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public async finish(): Promise<void> {
+    throw new Error('The AVH implementation does not support a finish on support branches.');
+  }
+
+  /**
+   * {@inheritdoc}
    */
   public async getConfig(): Promise<GitFlowBranchConfig> {
     const config = await this.configProvider?.get();
