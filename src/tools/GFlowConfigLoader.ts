@@ -11,13 +11,16 @@ export class GFlowConfigLoader {
   /**
    * Loads the gitex configuration file if exists.
    *
+   * @param projectPath - The path to the repository. (default: process.cwd())
+   *
    * @returns The configuration from file if it exists.
    */
-  public static load(): GFlowConfig | undefined {
+  public static load(projectPath?: string): GFlowConfig | undefined {
     let gFlowConfig: GFlowConfig | undefined;
+    projectPath = projectPath ?? process.cwd();
 
     for (const configFileName of GFlowConfigLoader.ConfigFileNames) {
-      const configFilePath = join(process.cwd(), configFileName);
+      const configFilePath = join(projectPath, configFileName);
       if (pathExistsSync(configFilePath)) {
         gFlowConfig = readJsonSync(configFilePath) as GFlowConfig;
         break;
