@@ -18,9 +18,15 @@ Loader of the GFlow config file.
 
 ### `Static` load
 
-▸ **load**(): *[GFlowConfig](../interfaces/gflow.gflowconfig.md) | undefined*
+▸ **load**(`projectPath?`: undefined | string): *[GFlowConfig](../interfaces/gflow.gflowconfig.md) | undefined*
 
 Loads the gitex configuration file if exists.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`projectPath?` | undefined &#124; string | The path to the repository. (default: process.cwd())  |
 
 **Returns:** *[GFlowConfig](../interfaces/gflow.gflowconfig.md) | undefined*
 
