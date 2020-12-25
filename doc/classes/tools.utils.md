@@ -15,6 +15,7 @@ Provides some utility functions.
 * [exec](tools.utils.md#static-exec)
 * [getCurrDate](tools.utils.md#static-getcurrdate)
 * [printBranches](tools.utils.md#static-printbranches)
+* [printConfig](tools.utils.md#static-printconfig)
 
 ## Methods
 
@@ -59,5 +60,21 @@ Prints the branches to the console.
 Name | Type | Description |
 ------ | ------ | ------ |
 `gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | The branch type to be printed.  |
+
+**Returns:** *Promise‹void›*
+
+___
+
+### `Static` printConfig
+
+▸ **printConfig**(`gitFlow`: [GFlow](gflow.gflow-1.md)): *Promise‹void›*
+
+Prints the config to the console.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`gitFlow` | [GFlow](gflow.gflow-1.md) | The git flow instance the config should be printed.  |
 
 **Returns:** *Promise‹void›*

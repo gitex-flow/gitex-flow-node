@@ -18,6 +18,11 @@ command.command('init').action(async () => {
   await Utils.exec(() => gFlow.init());
 });
 
+// Config command
+command.command('config').action(async () => {
+  await Utils.exec(() => Utils.printConfig(gFlow));
+});
+
 // Feature command
 const feature = command.command('feature').action(async () => {
   await Utils.exec(() => Utils.printBranches(gFlow.feature));

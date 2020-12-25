@@ -157,6 +157,12 @@ The following JSON shows the schema and the default values of the configuration:
 
 Further information on the [available configurations](doc/interfaces/gflow.gflowconfig.md) can be found in the API documentation.
 
+To show the loaded git flow configuration you can execute the command:
+
+```shell
+#> gitex-flow config
+```
+
 ## Usage / Workflow
 
 **gitex-flow** is fully compatible with **git flow**.
@@ -210,7 +216,7 @@ Feature branches can exist across many releases and can be updated regularly wit
 
 **Start feature**
 
-I can recommend to always use the issue number of the corresponding issue in the ticket system as the feature name (ex. #42)\*\*
+I can recommend to always use the issue number of the corresponding issue in the ticket system as the feature name (ex. #42).
 
 ```shell
 #> gitex-flow feature start <name>
@@ -237,7 +243,7 @@ This is useful for bugs which are not fixable as a hotfix (breaking change, low 
 
 **Start bugfix**
 
-I can recommend to always use the issue number of the corresponding issue in the ticket system as the bugfix name (ex. #42)\*\*
+I can recommend to always use the issue number of the corresponding issue in the ticket system as the bugfix name (ex. #42).
 
 ```shell
 #> gitex-flow bugfix start <name>

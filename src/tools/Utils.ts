@@ -1,5 +1,6 @@
 import { getLogger } from 'log4js';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
+import { GFlow } from '../gflow/GFlow';
 
 /**
  * Provides some utility functions.
@@ -36,6 +37,16 @@ export class Utils {
       const logger = getLogger('gitex-flow');
       logger.error(error);
     }
+  }
+
+  /**
+   * Prints the config to the console.
+   *
+   * @param gitFlow - The git flow instance the config should be printed.
+   */
+  public static async printConfig(gitFlow: GFlow): Promise<void> {
+    const branches = await gitFlow.config.get();
+    console.info(branches);
   }
 
   /**
