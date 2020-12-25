@@ -1,4 +1,5 @@
 import { getLogger } from 'log4js';
+import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 
 /**
  * Provides some utility functions.
@@ -34,6 +35,23 @@ export class Utils {
     } catch (error) {
       const logger = getLogger('gitex-flow');
       logger.error(error);
+    }
+  }
+
+  /**
+   * Prints the branches to the console.
+   *
+   * @param gitFlowBranch - The branch type to be printed.
+   */
+  public static async printBranches(gitFlowBranch: GitFlowBranch): Promise<void> {
+    const branches = await gitFlowBranch.list();
+    if (branches.length === 0) {
+      console.error(`There are no active ${gitFlowBranch.type} branches.`);
+    } else {
+      console.info(`Active ${gitFlowBranch.type} branches:`);
+      for (const branch of branches) {
+        console.info(` - ${branch}`);
+      }
     }
   }
 }

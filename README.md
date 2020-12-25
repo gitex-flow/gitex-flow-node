@@ -5,7 +5,7 @@ It also represents a tool chain for a continuous release strategy that automates
 
 This project provides a [node.js](https://nodejs.org/en/) implementation of gitex-flow that is tailored for use in a npm project.
 
-## Table of content
+# Table of content
 
 - [Table of content](#table-of-content)
 - [Introduction](#introduction)
@@ -13,28 +13,27 @@ This project provides a [node.js](https://nodejs.org/en/) implementation of gite
 - [User documentation](#user-documentation)
   - [Prerequisite](#prerequisite)
   - [Installation](#installation)
-    - [Global](#global)
-    - [Project dependency](#project-dependency)
-  - [Initialization](#initialization)
+    - [As a global reference](#as-a-global-reference)
+    - [As a project dependency](#as-a-project-dependency)
+    - [Initialization](#initialization)
   - [Configuation](#configuation)
   - [Usage / Workflow](#usage--workflow)
     - [Commit message convention](#commit-message-convention)
+  - [Git flow branches](#git-flow-branches)
     - [Feature](#feature)
-    - [BugFix](#bugfix)
+    - [Bugfix](#bugfix)
     - [Release](#release)
-      - [Extension features](#extension-features)
     - [HotFix](#hotfix)
-      - [Extension features](#extension-features-1)
     - [Support](#support)
 - [Developer documentation (API)](#developer-documentation-api)
 
-## Introduction
+# Introduction
 
 In my experience as a software developer, one of the most important parts of a software project is a precisely defined and largely automated release and deployment process.
 Modern software projects often consist of several autonomous projects (ex. micro services), each with their own release cycles.
 Git flow offers a standardized release strategy that helps you get this problem under control.
 
-In addition, using Git Flow covers some common requirements and allows other project management issues to be automated:
+In addition, using git flow covers some common requirements and allows other project management issues to be automated:
 
 1. **Easy creation of frequent releases**:
    Continous and frequent releases are mostly an essential part of the project requirement, especially for agile projects.
@@ -51,31 +50,32 @@ In addition, using Git Flow covers some common requirements and allows other pro
    Frequent releases carry the risk that the user loses track of the versions and their changes.
    Transparency is important in increasing the acceptance of the software and allows to participate the user into the software project.
 
-### Additional features compared to the standard git flow
+## Additional features compared to the standard git flow
 
 1. Automatic calculation of next versions for release and hotfix branches by using [semantic versioning (SemVer)](https://semver.org/) and the BREAKING CHANGE flag of [conventional commits](#commit-message-convention).
 2. Automatic dumping of the npm project versions (package.json, package-lock.json).
 3. Automatic generation of a changelog for each version by [conventional commits](#commit-message-convention).
 
-## User documentation
+# User documentation
 
-If you like to use **gitex-flow** in your **node.js** project you can use **gitex-flow** as a npm script.
+**gitex-flow** can be used as a npm package in your **node.js** project.
+You can install them either as global or project reference.
 
-### Prerequisite
+## Prerequisite
 
 - [git](https://git-scm.com/downloads) is installed
 - [git-flow (AVH edition)](https://github.com/petervanderdoes/gitflow-avh) is installed
 - [node.js](https://nodejs.org/en/) is installed
 
-### Installation
+## Installation
 
-#### Global
+### As a global reference
 
 ```
 #> npm install -g gitex-flow
 ```
 
-#### Project dependency
+### As a project dependency
 
 You can also install gitex-flow as a npm development dependency in your project:
 
@@ -117,7 +117,9 @@ or if it was installed as a project dependency
 #> npm run init
 ```
 
-### Configuation
+> For the sake of simplicity, in the rest of the documentation all examples will be made with the global installation. However, all these examples can also be transferred directly to the integration using project reference
+
+## Configuation
 
 To configure **gitex-flow** you can create a configuration file `.gitex`.
 The following JSON shows the schema and the default values of the configuration:
@@ -155,12 +157,12 @@ The following JSON shows the schema and the default values of the configuration:
 
 Further information on the [available configurations](doc/interfaces/gflow.gflowconfig.md) can be found in the API documentation.
 
-### Usage / Workflow
+## Usage / Workflow
 
 **gitex-flow** is fully compatible with **git flow**.
 This means that gitex-flow uses the same commands that you know from git flow, but with additional functionality.
 
-#### Commit message convention
+### Commit message convention
 
 In order to be able to take full advantage of **gitex-flow**, it is worth following some conventions.
 
@@ -190,74 +192,163 @@ BREAKING CHANGE: Adapted API by adding an options to the affected modules (class
 closes #10
 ```
 
-#### Feature
+## Git flow branches
 
-Features are branches that are based on the develop branch, which add new functionality to the program.
+Git flow offers five different branches for different use cases.
+For some branch types several branches can be active at the same time (_features_, _bugfixes_, _support-branches_), for others (_release_, _hotfix_) only one.
+
+### Feature
+
+Features are branches that are based on the develop branch, which add new functionality to the application.
 Feature branches can exist across many releases and can be updated regularly with the latest changes the develop branch.
 
+**List active features**
+
 ```shell
-#> npm run feature:start -- <name>
-...
-#> npm run feature:finish -- <name>
+#> gitex-flow feature
 ```
 
-#### BugFix
+**Start feature**
+
+I can recommend to always use the issue number of the corresponding issue in the ticket system as the feature name (ex. #42)\*\*
+
+```shell
+#> gitex-flow feature start <name>
+```
+
+**Finish feature**
+
+The name does not need to be specified if the feature branch has already been checked out.
+
+```shell
+#> gitex-flow feature finish [name]
+```
+
+### Bugfix
 
 Bugfix branches are similar to feature branches, but are used for fixing bugs.
 This is useful for bugs which are not fixable as a hotfix (breaking change, low prio bug).
 
+**List active bugfixes**
+
 ```shell
-#> npm run bugfix:start -- <name>
-...
-#> npm run bugfix:finish -- <name>
+#> gitex-flow bugfix
 ```
 
-#### Release
+**Start bugfix**
+
+I can recommend to always use the issue number of the corresponding issue in the ticket system as the bugfix name (ex. #42)\*\*
+
+```shell
+#> gitex-flow bugfix start <name>
+```
+
+**Finish bugfix**
+
+The name does not need to be specified if the bugfix branch has already been checked out.
+
+```shell
+#> gitex-flow bugfix finish [name]
+```
+
+### Release
 
 Releases are branches that are based on the develop branch, which freezes the current code and mark a feature stop.
 The code from the release branch can be published to the consolidation (test) system.
 Only bugfixes are allowed to be commited on the release branch.
 If the release is stable, the release branch can be finished and merged into the master branch.
 
+**List active release**
+
 ```shell
-#> npm run release:start -- [name]
-...
-#> npm run release:finish -- [name]
+#> gitex-flow release
 ```
 
-##### Extension features
+**Start release**
 
-- If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
-- If the release is started, the version from `package.json` is updated
-- If the release is started, the `CHANGELOG.md` is updated with the changes since the last release
+When starting a release, gitex-flow automatically updates the versions in package.json and package-lock.json and updates the changelog based on the commits since the last release.
 
-#### HotFix
+By default, a release is always a minor release. However, in case there has been a BREAKING CHANGE since the last release, it is treated as a major release.
+
+If no custom name is specified for the release, then gitex-flow uses the calculated version as the name.
+
+```shell
+#> gitex-flow release start [name]
+```
+
+**Finish release**
+
+The name does not need to be specified if the release branch has already been checked out.
+
+```shell
+#> gitex-flow release finish [name]
+```
+
+### HotFix
 
 Hotfixes are bug fixes based on a released version.
 
+**List active hotfix**
+
 ```shell
-#> npm run hotfix:start -- [name]
-...
-#> npm run hotfix:finish -- [name]
+#> gitex-flow hotfix
 ```
 
-##### Extension features
+**Start hotfix**
 
-- If no name is set, the branch name is generated automatically with the next minor semantic version string based on the latest released version.
-- If the hotfix is started, the version from `package.json` is updated
-- Before the hotfix is finished, the `CHANGELOG.md` is updated with the bugfixs are mode on the hotfix branch
+When starting a hotfix, gitex-flow automatically updates the versions in package.json and package-lock.json.
 
-#### Support
+Unlike the release, the changelog is only updated when the hotfix is finished.
+
+A hotfix is always a patch.
+It's not allowed to commit breaking changes or new features on a hotfix branch.
+
+If no custom name is specified for the hotfix, then gitex-flow uses patch version as the name.
+
+```shell
+#> gitex-flow hotfix start [name]
+```
+
+**Finish hotfix**
+
+After the bugfixes commited to the hotfix branch the changelog can be updated.
+
+The name does not need to be specified if the release branch has already been checked out.
+
+```shell
+#> gitex-flow hotfix finish [name]
+```
+
+### Support
 
 Support branches are based on a released version to provide long term support of a program version.
 
+**List active support**
+
 ```shell
-#> npm run support:start -- <name> <base>
-...
-#> npm run support:finish -- <name> <base>
+#> gitex-flow support
 ```
 
-## Developer documentation (API)
+**Start support**
+
+As default the base of a new support branch is the `master` branch.
+
+```shell
+#> gitex-flow support start <name> [base]
+```
+
+**Finish support**
+
+> Some git flow implementations do not support finishing support branches.
+> However the gitex api provides for it.
+
+The name does not need to be specified if the release branch has already been checked out.
+
+```shell
+#> gitex-flow support finish [name]
+```
+
+# Developer documentation (API)
 
 If you like to use **gitex-flow** in your code, you can use the typescript gitex-flow API.
 
