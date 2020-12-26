@@ -51,9 +51,14 @@ export class GFlowBranch implements GitFlowBranch {
    * @param base - Base of the branch should be started from.
    */
   public async start(name?: string, base?: string): Promise<string> {
+    const project = new GitFlowNodeProject(this.projectConfig);
     this.logger.info(`Starting ${this.type} branch "${name}" based on "${base ?? this.defaultBase}"`);
     name = await this.generateBranchName(name);
+    const stashed = await this.stashChanges(project);
     const branch = await this.gitFlowBranch.start(name, base);
+    if (stashed) {
+      await this.popStashedChanges(project);
+    }
     this.logger.info(`Created branch "${branch}"`);
     return branch;
   }
@@ -98,5 +103,21 @@ export class GFlowBranch implements GitFlowBranch {
       prefix = prefix.slice(0, -1);
     }
     return `${prefix}/${name}`;
+  }
+
+  private async stashChanges(project: GitFlowNodeProject): Promise<boolean> {
+    let stashed = false;
+    if (this.projectConfig?.autoStash !== false) {
+      stashed = await project.stash();
+      if (stashed) {
+        this.logger.info(`Auto stashed current changes`);
+      }
+    }
+    return stashed;
+  }
+
+  private async popStashedChanges(project: GitFlowNodeProject): Promise<void> {
+    await project.popLatestStash();
+    this.logger.info(`Pop auto stashed changes`);
   }
 }

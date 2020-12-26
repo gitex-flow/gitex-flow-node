@@ -141,6 +141,7 @@ The following JSON shows the schema and the default values of the configuration:
   },
   "projectConfig": {
     "projectPath": "./",
+    "autoStash": true,
     "changelogFileName": "CHANGELOG.md",
     "storeLatestChangelog": false,
     "conventionalChangelogPresent": "angular",
@@ -372,6 +373,7 @@ const gFlowConfig: GFlowConfig = {
   },
   projectConfig: {
     projectPath: './',
+    autoStash: true,
     changelogFileName: 'CHANGELOG.md',
     storeLatestChangelog: false,
     conventionalChangelogPresent: 'angular',

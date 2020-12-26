@@ -19,6 +19,13 @@ export interface ProjectConfig {
   projectPath: string;
 
   /**
+   * Auto stashes the uncommited changes on starting a git flow branch.
+   * After the git flow branch was created, the latest stash is popped.
+   * *DEFAULTS*: true
+   */
+  autoStash?: boolean;
+
+  /**
    * Specifies the name of the changelog.
    * *DEFAULTS*: CHANGELOG.md
    */
@@ -96,6 +103,26 @@ export class GitFlowNodeProject {
    */
   public async checkoutBranch(branchName: string): Promise<void> {
     await this.gitRepository.checkout(branchName);
+  }
+
+  /**
+   * Stashes the uncommited changes from the current branch.
+   */
+  public async stash(): Promise<boolean> {
+    const status = await this.gitRepository.status();
+    let stashMessage: string | undefined = undefined;
+    if (!status.isClean()) {
+      stashMessage = await this.gitRepository.stash();
+    }
+    return stashMessage !== undefined;
+  }
+
+  /**
+   * Pops stash with a given name.
+   *
+   */
+  public async popLatestStash(): Promise<void> {
+    return this.gitRepository.popLatestStash();
   }
 
   /**

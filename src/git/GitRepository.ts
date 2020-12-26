@@ -86,6 +86,23 @@ export class GitRepository {
   }
 
   /**
+   * Stashes the uncommited changes from the current branch.
+   */
+  public async stash(): Promise<string> {
+    const repo = await this.createOrOpenRepo();
+    const message = await repo.stash();
+    return message.trim();
+  }
+
+  /**
+   * Pops stash with a given name.
+   */
+  public async popLatestStash(): Promise<void> {
+    const repo = await this.createOrOpenRepo();
+    await repo.stash(['pop', '-q']);
+  }
+
+  /**
    * Returns the most recent released version tag (semantic version).
    */
   public async getLatestReleasedVersion(): Promise<string | undefined> {
