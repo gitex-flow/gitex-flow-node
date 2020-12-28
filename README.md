@@ -16,7 +16,7 @@ It also represents a tool chain for a continuous release strategy that automates
   - [Installation](#installation)
     - [As a global reference](#as-a-global-reference)
     - [As a project dependency](#as-a-project-dependency)
-    - [Initialization](#initialization)
+  - [Initialization](#initialization)
   - [Configuation](#configuation)
   - [Conventional commits guideline](#conventional-commits-guideline)
   - [Git flow branches](#git-flow-branches)
@@ -26,6 +26,7 @@ It also represents a tool chain for a continuous release strategy that automates
     - [Hotfix](#hotfix)
     - [Support](#support)
 - [Developer documentation (API)](#developer-documentation-api)
+- [Troubleshooting](#troubleshooting)
 
 # Introduction
 
@@ -106,7 +107,7 @@ To integrate the gitex workflow into your project, add the following lines to th
 }
 ```
 
-### Initialization
+## Initialization
 
 Once after the installation or after cloning a new local repository you have to initialize it by executing the following command:
 
@@ -392,3 +393,17 @@ const gFlow = new GFlow(gitFlow, gFlowConfig);
 ```
 
 The full API documentation can be found [here](doc/README.md).
+
+# Troubleshooting
+
+1. Executing the `gitex-flow [...]` command results in the following error:
+
+   > _Branches '\<branch>' and 'origin/\<branch>' have diverged._
+   >
+   > _Fatal: And branch '\<branch>' may be fast-forwarded_
+
+   **Reason**: The executed command affects a branch where the local and remote state of the git repository have diverged.
+
+   **Problem**: This problem cannot be solved automatically, because the solution depends heavily on the state of the local git repository.
+
+   **Solution**: Make sure that the affected local branch is up to date. In most cases this is easy (e.t. `git pull --rebase`), but there are also cases where a manual merge is necessary.
