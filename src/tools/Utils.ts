@@ -1,6 +1,12 @@
 import { getLogger } from 'log4js';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { GFlow } from '../gflow/GFlow';
+import { Readable, Writable } from 'stream';
+import { ProjectConfig } from '../configs';
+import { ChangelogConfig } from '../configs/ChangelogConfig';
+import { ChangelogType } from '../changelog/ChangelogType';
+import { ConventionalChangelogWriterOptions } from '../changelog/ConventionalChangelogWriter';
+import { ChangelogWriter } from '../changelog';
 
 /**
  * Provides some utility functions.
@@ -64,5 +70,64 @@ export class Utils {
         console.info(` - ${branch}`);
       }
     }
+  }
+
+  /**
+   * Pipes a readable stream asynchrounously to a writable stream with error handling.
+   *
+   * @param src - The readable source stream.
+   * @param dest - The writable destination stream.
+   * @param destroy - Specifies if the streams should be destroyed on finish.
+   *
+   * @returns Promise on copying stream properly.
+   */
+  public static pipe(src: Readable, dest: Writable, destroy = true): Promise<void> {
+    return new Promise((resolve, reject) => {
+      src
+        .on('error', (err: Error) => {
+          err.message = `Error on reading source stream: ${err.message}`;
+          reject(err);
+        })
+        .pipe(dest)
+        .on('error', (err: Error) => {
+          err.message = `Error on writing destination stream: ${err.message}`;
+          reject(err);
+        })
+        .on('finish', () => {
+          if (destroy) {
+            src.destroy();
+            dest.destroy();
+          }
+          resolve();
+        });
+    });
+  }
+
+  /**
+   * Derives the [[ChangelogConfig]] from a given [[projectConfig]].
+   *
+   * @param projectConfig - The project configuration.
+   *
+   * @returns The derived changelog config.
+   */
+  public static deriveChangelogConfig(projectConfig?: ProjectConfig): ChangelogConfig {
+    const config = projectConfig?.changelog ?? {
+      basePath: projectConfig?.projectPath ?? process.cwd(),
+      type: ChangelogType.ConventionalChangelog,
+    };
+
+    config.basePath = config.basePath ?? projectConfig?.projectPath ?? process.cwd();
+
+    // Following lines are ensuring backward compatibility to avoid a breaking change for version 2.3.
+    config.changelogFileName =
+      projectConfig?.changelogFileName ?? config.changelogFileName ?? ChangelogWriter.DefaultChangelogFile;
+    config.storeLatestChangelog = projectConfig?.storeLatestChangelog ?? config.storeLatestChangelog;
+    if (config.type == ChangelogType.ConventionalChangelog) {
+      const conf = config as ConventionalChangelogWriterOptions;
+      conf.conventionalChangelogPresent =
+        projectConfig?.conventionalChangelogPresent ?? conf.conventionalChangelogPresent ?? 'angular';
+    }
+
+    return config;
   }
 }

@@ -37,7 +37,7 @@ This class wraps the support branch of the AVH implementation.
 
 ###  constructor
 
-\+ **new SupportGitFlowBranch**(`repoPath?`: undefined | string, `configProvider?`: [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›): *[SupportGitFlowBranch](avh.supportgitflowbranch.md)*
+\+ **new SupportGitFlowBranch**(`repoPath?`: undefined | string, `configProvider?`: [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)›): *[SupportGitFlowBranch](avh.supportgitflowbranch.md)*
 
 *Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[constructor](avh.avhgitflowbranch.md#constructor)*
 
@@ -48,7 +48,7 @@ Initializes a new instance of this class.
 Name | Type | Description |
 ------ | ------ | ------ |
 `repoPath?` | undefined &#124; string | The path to the git repository. |
-`configProvider?` | [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)› | Git flow config provider.  |
+`configProvider?` | [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)› | Git flow config provider.  |
 
 **Returns:** *[SupportGitFlowBranch](avh.supportgitflowbranch.md)*
 

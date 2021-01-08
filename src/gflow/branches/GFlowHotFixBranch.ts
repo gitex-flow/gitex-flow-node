@@ -1,6 +1,8 @@
 import { GitFlowBranch } from '../../api/branches/GitFlowBranch';
-import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
+import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
+import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GFlowBranch } from './GFlowBranch';
+import { Utils } from '../../tools/Utils';
 
 /**
  * This class extending a hotfix branch with some helpful functionality.
@@ -45,7 +47,8 @@ export class GFlowHotFixBranch extends GFlowBranch {
     const version = await this.getVersion(project, name);
     const branchName = await this.generateBranchNameFromConfig(version);
     await project.checkoutBranch(branchName);
-    await project.updateChangelog();
+    const changelogConfig = Utils.deriveChangelogConfig(this.projectConfig);
+    await project.updateChangelog(changelogConfig);
     await project.commitChanges(false);
     await super.finish(version, msg ?? version);
   }

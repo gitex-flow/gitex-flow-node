@@ -12,12 +12,32 @@ Provides some utility functions.
 
 ### Methods
 
+* [deriveChangelogConfig](tools.utils.md#static-derivechangelogconfig)
 * [exec](tools.utils.md#static-exec)
 * [getCurrDate](tools.utils.md#static-getcurrdate)
+* [pipe](tools.utils.md#static-pipe)
 * [printBranches](tools.utils.md#static-printbranches)
 * [printConfig](tools.utils.md#static-printconfig)
 
 ## Methods
+
+### `Static` deriveChangelogConfig
+
+▸ **deriveChangelogConfig**(`projectConfig?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[ChangelogConfig](../interfaces/configs.changelogconfig.md)*
+
+Derives the [ChangelogConfig](../interfaces/configs.changelogconfig.md) from a given [projectConfig](../interfaces/configs.gflowconfig.md#optional-projectconfig).
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`projectConfig?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | The project configuration.  |
+
+**Returns:** *[ChangelogConfig](../interfaces/configs.changelogconfig.md)*
+
+The derived changelog config.
+
+___
 
 ### `Static` exec
 
@@ -46,6 +66,26 @@ Gets the current date formatted as yyyy-mm-dd.
 **Returns:** *string*
 
 date in fomat yyyy-mm-dd.
+
+___
+
+### `Static` pipe
+
+▸ **pipe**(`src`: Readable, `dest`: Writable, `destroy`: boolean): *Promise‹void›*
+
+Pipes a readable stream asynchrounously to a writable stream with error handling.
+
+**Parameters:**
+
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`src` | Readable | - | The readable source stream. |
+`dest` | Writable | - | The writable destination stream. |
+`destroy` | boolean | true | Specifies if the streams should be destroyed on finish.  |
+
+**Returns:** *Promise‹void›*
+
+Promise on copying stream properly.
 
 ___
 

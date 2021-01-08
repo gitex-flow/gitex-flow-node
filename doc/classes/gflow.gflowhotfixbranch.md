@@ -40,7 +40,7 @@ This class extending a hotfix branch with some helpful functionality.
 
 ###  constructor
 
-\+ **new GFlowHotFixBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
+\+ **new GFlowHotFixBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
 
 *Overrides [GFlowBranch](gflow.gflowbranch.md).[constructor](gflow.gflowbranch.md#constructor)*
 
@@ -51,7 +51,7 @@ Initializes a new instance of this class.
 Name | Type | Description |
 ------ | ------ | ------ |
 `gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped. |
-`options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Git flow node project options.  |
+`options?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | Git flow node project options.  |
 
 **Returns:** *[GFlowHotFixBranch](gflow.gflowhotfixbranch.md)*
 
@@ -77,7 +77,7 @@ ___
 
 ### `Protected` `Optional` `Readonly` projectConfig
 
-• **projectConfig**? : *[ProjectConfig](../interfaces/tools.projectconfig.md)*
+• **projectConfig**? : *[ProjectConfig](../interfaces/configs.projectconfig.md)*
 
 *Inherited from [GFlowBranch](gflow.gflowbranch.md).[projectConfig](gflow.gflowbranch.md#protected-optional-readonly-projectconfig)*
 

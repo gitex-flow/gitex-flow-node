@@ -19,6 +19,7 @@ It also represents a tool chain for a continuous release strategy that automates
   - [Initialization](#initialization)
   - [Configuation](#configuation)
   - [Conventional commits guideline](#conventional-commits-guideline)
+  - [Changelog generator](#changelog-generator)
   - [Git flow branches](#git-flow-branches)
     - [Feature](#feature)
     - [Bugfix](#bugfix)
@@ -143,9 +144,15 @@ The following JSON shows the schema and the default values of the configuration:
   "projectConfig": {
     "projectPath": "./",
     "autoStash": true,
-    "changelogFileName": "CHANGELOG.md",
-    "storeLatestChangelog": false,
-    "conventionalChangelogPresent": "angular",
+    "changelogFileName": "CHANGELOG.md",       // @deprecated
+    "storeLatestChangelog": false,             // @deprecated
+    "conventionalChangelogPresent": "angular", // @deprecated
+    "changelog": {
+      "type": "ConventionalChangelog",
+      "changelogFileName": "CHANGELOG.md",
+      "storeLatestChangelog": false,
+      "conventionalChangelogPresent": "angular"
+    },
     "versionFile": "package.json",
     "bumpVersionFiles": [
       "package.json",
@@ -170,11 +177,7 @@ To show the loaded git flow configuration you can execute the command:
 
 ## Conventional commits guideline
 
-To use gites flow properly, you have to follow the [conventional commits guideline](https://www.conventionalcommits.org/en/v1.0.0/).
-
-To generate the changelogs, gitex-flow uses parts of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) framework.
-You can select your prefered setting by the option `conventionalChangelogPresent` of the [project settings](doc/interfaces/tools.projectconfig.md).
-The default is `angular`.
+To use gitex flow properly, you have to follow the [conventional commits guideline](https://www.conventionalcommits.org/en/v1.0.0/).
 
 An example for a matching conventional angular commit message:
 
@@ -197,6 +200,23 @@ BREAKING CHANGE: Adapted API by adding an options to the affected modules (class
 
 closes #10
 ```
+
+## Changelog generator
+
+Gitex flow provides a modular changelog generator.
+The framework provides some useful default implementations that you can easily configure in the `changelog` block of the `projectConfig` section.
+All implementations of the changelog generator have the following common options:
+
+- `basePath`: the base folder containing the changelog file (default: `projectConfig.projectPath` otherwise `process.cwd()`)
+- `changelogFileName`: The name of the changelog (default: `CHANGELOG.md`)
+- `storeLatestChangelog`: Keep the changelog of the latest version as a separate file named `CHANGELOG.latest.md` (default: `false`)
+
+Depending on the implementation there may be additional properties.
+
+| Type                    | Description                                                                                                                  | Options                                                                                              | Note      |
+| ----------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- | :-------- |
+| `None`                  | Deactivates the changelog generator.                                                                                         | -                                                                                                    |           |
+| `ConventionalChangelog` | Implemenatation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](doc/interfaces/changelog.conventionalchangelogwriteroptions.md) | `default` |
 
 ## Git flow branches
 
@@ -375,9 +395,15 @@ const gFlowConfig: GFlowConfig = {
   projectConfig: {
     projectPath: './',
     autoStash: true,
-    changelogFileName: 'CHANGELOG.md',
-    storeLatestChangelog: false,
-    conventionalChangelogPresent: 'angular',
+    changelogFileName: 'CHANGELOG.md', // @deprecated
+    storeLatestChangelog: false, // @deprecated
+    conventionalChangelogPresent: 'angular', // @deprecated
+    changelog: {
+      type: 'ConventionalChangelog',
+      changelogFileName: 'CHANGELOG.md',
+      storeLatestChangelog: false,
+      conventionalChangelogPresent: 'angular',
+    },
     versionFile: 'package.json',
     bumpVersionFiles: ['package.json', 'package-lock.json'],
   },

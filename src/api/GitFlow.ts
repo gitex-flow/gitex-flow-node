@@ -1,5 +1,5 @@
 import { GitFlowBranch } from './branches/GitFlowBranch';
-import { GitFlowConfig } from './GitFlowConfig';
+import { GitFlowConfig } from '../configs/GitFlowConfig';
 import { ConfigProvider } from './ConfigProvider';
 
 /**

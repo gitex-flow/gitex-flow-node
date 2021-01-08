@@ -37,7 +37,7 @@ GitFlow wrapper extending functionality to a common git flow implementation.
 
 ###  constructor
 
-\+ **new GFlow**(`gitFlow`: [GitFlow](../interfaces/api.gitflow.md), `options?`: [GFlowConfig](../interfaces/gflow.gflowconfig.md)): *[GFlow](gflow.gflow-1.md)*
+\+ **new GFlow**(`gitFlow`: [GitFlow](../interfaces/api.gitflow.md), `options?`: [GFlowConfig](../interfaces/configs.gflowconfig.md)): *[GFlow](gflow.gflow-1.md)*
 
 Initializes a new instance of this class.
 
@@ -46,7 +46,7 @@ Initializes a new instance of this class.
 Name | Type | Description |
 ------ | ------ | ------ |
 `gitFlow` | [GitFlow](../interfaces/api.gitflow.md) | GitFlow implementation. |
-`options?` | [GFlowConfig](../interfaces/gflow.gflowconfig.md) | Options for configuring the GFlow.  |
+`options?` | [GFlowConfig](../interfaces/configs.gflowconfig.md) | Options for configuring the GFlow.  |
 
 **Returns:** *[GFlow](gflow.gflow-1.md)*
 
@@ -62,7 +62,7 @@ ___
 
 ### `Readonly` config
 
-• **config**: *[ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
+• **config**: *[ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)›*
 
 *Implementation of [GitFlow](../interfaces/api.gitflow.md).[config](../interfaces/api.gitflow.md#readonly-config)*
 
@@ -86,7 +86,7 @@ ___
 
 ### `Protected` `Readonly` options
 
-• **options**: *[GFlowConfig](../interfaces/gflow.gflowconfig.md)*
+• **options**: *[GFlowConfig](../interfaces/configs.gflowconfig.md)*
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 ###  init
 
-▸ **init**(`config?`: [GitFlowConfig](../interfaces/api.gitflowconfig.md), `force?`: undefined | false | true): *Promise‹void›*
+▸ **init**(`config?`: [GitFlowConfig](../interfaces/configs.gitflowconfig.md), `force?`: undefined | false | true): *Promise‹void›*
 
 *Implementation of [GitFlow](../interfaces/api.gitflow.md)*
 
@@ -118,7 +118,7 @@ Setup a git repository for git flow usage.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`config?` | [GitFlowConfig](../interfaces/api.gitflowconfig.md) | The git flow configuration. |
+`config?` | [GitFlowConfig](../interfaces/configs.gitflowconfig.md) | The git flow configuration. |
 `force?` | undefined &#124; false &#124; true | Force reinitialisation if git flow already initialized.  |
 
 **Returns:** *Promise‹void›*

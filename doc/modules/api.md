@@ -10,7 +10,6 @@
 * [GitFlow](../interfaces/api.gitflow.md)
 * [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 * [GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)
-* [GitFlowConfig](../interfaces/api.gitflowconfig.md)
 
 ### Type aliases
 

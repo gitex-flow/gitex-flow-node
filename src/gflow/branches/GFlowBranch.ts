@@ -1,7 +1,8 @@
 import { GitFlowBaseBranchType, GitFlowBranch, GitFlowBranchType } from '../../api/branches/GitFlowBranch';
 import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
 import { getLogger, Logger } from 'log4js';
-import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
+import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
+import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
 
 /**

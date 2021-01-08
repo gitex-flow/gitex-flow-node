@@ -2,7 +2,7 @@ import { GitFlow } from '../src/api/GitFlow';
 import { tmpdir } from 'os';
 import { assert } from 'chai';
 import { TestGitRepository } from './TestGitRepository';
-import { GitFlowConfig } from '../src/api/GitFlowConfig';
+import { GitFlowConfig } from '../src/configs/GitFlowConfig';
 import { GitFlowBranchType, GitFlowBranch, GitFlowBaseBranchType } from '../src/api/branches/GitFlowBranch';
 import { join } from 'path';
 import { pathExists, copy, ensureDir, emptyDir, rmdir } from 'fs-extra';

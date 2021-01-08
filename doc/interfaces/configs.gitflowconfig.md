@@ -1,4 +1,4 @@
-[gitex-flow](../README.md) › [api](../modules/api.md) › [GitFlowConfig](api.gitflowconfig.md)
+[gitex-flow](../README.md) › [configs](../modules/configs.md) › [GitFlowConfig](configs.gitflowconfig.md)
 
 # Interface: GitFlowConfig
 
@@ -12,14 +12,14 @@ Configuration of a git flow instance.
 
 ### Properties
 
-* [bugfixBranchPrefix](api.gitflowconfig.md#optional-bugfixbranchprefix)
-* [developBranch](api.gitflowconfig.md#optional-developbranch)
-* [featureBranchPrefix](api.gitflowconfig.md#optional-featurebranchprefix)
-* [hotfixBranchPrefix](api.gitflowconfig.md#optional-hotfixbranchprefix)
-* [masterBranch](api.gitflowconfig.md#optional-masterbranch)
-* [releaseBranchPrefix](api.gitflowconfig.md#optional-releasebranchprefix)
-* [supportBranchPrefix](api.gitflowconfig.md#optional-supportbranchprefix)
-* [versionTagPrefix](api.gitflowconfig.md#optional-versiontagprefix)
+* [bugfixBranchPrefix](configs.gitflowconfig.md#optional-bugfixbranchprefix)
+* [developBranch](configs.gitflowconfig.md#optional-developbranch)
+* [featureBranchPrefix](configs.gitflowconfig.md#optional-featurebranchprefix)
+* [hotfixBranchPrefix](configs.gitflowconfig.md#optional-hotfixbranchprefix)
+* [masterBranch](configs.gitflowconfig.md#optional-masterbranch)
+* [releaseBranchPrefix](configs.gitflowconfig.md#optional-releasebranchprefix)
+* [supportBranchPrefix](configs.gitflowconfig.md#optional-supportbranchprefix)
+* [versionTagPrefix](configs.gitflowconfig.md#optional-versiontagprefix)
 
 ## Properties
 

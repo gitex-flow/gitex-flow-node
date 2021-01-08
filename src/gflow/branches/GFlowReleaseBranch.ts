@@ -1,6 +1,8 @@
 import { GitFlowBranch } from '../../api/branches/GitFlowBranch';
-import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
+import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
+import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GFlowBranch } from './GFlowBranch';
+import { Utils } from '../../tools/Utils';
 
 /**
  * This class extending a release branch with some helpful functionality.
@@ -30,7 +32,8 @@ export class GFlowReleaseBranch extends GFlowBranch {
     const branchName = await super.start(version, base);
     const project = new GitFlowNodeProject(this.projectConfig);
     await project.writeVersion(version);
-    await project.updateChangelog(version);
+    const changelogConfig = Utils.deriveChangelogConfig(this.projectConfig);
+    await project.updateChangelog(changelogConfig, version);
     await project.commitChanges();
     return branchName;
   }

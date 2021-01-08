@@ -1,5 +1,5 @@
-import { GitFlowConfig } from '../api/GitFlowConfig';
-import { ProjectConfig } from '../tools/GitFlowNodeProject';
+import { GitFlowConfig } from './GitFlowConfig';
+import { ProjectConfig } from './ProjectConfig';
 import { Configuration } from 'log4js';
 
 export type Log4jsConfig = Configuration;
