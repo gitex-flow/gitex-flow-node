@@ -8,11 +8,11 @@ describe('Test ConventionCommits implementation', function () {
       
       This unencrypted protocol has led to several vulnerabilities in the framework.
       
-      SECURITY: Only encrypted protocols are now allowed
+      SECURITY: Only encrypted protocols are now allowed.
+      REMOVED: Removed support for HTTP.
       BREAKING CHANGE: Removed HTTP endpoint in web service.
       
-      closes #941, refs #1094, #1100
-      `,
+      closes #941, refs #1094, #1100`,
     ]);
 
     assert.equal(logs[0].type, 'fix');
@@ -22,7 +22,11 @@ describe('Test ConventionCommits implementation', function () {
     assert.deepStrictEqual(logs[0].notes, [
       {
         title: 'SECURITY',
-        text: 'Only encrypted protocols are now allowed',
+        text: 'Only encrypted protocols are now allowed.',
+      },
+      {
+        title: 'REMOVED',
+        text: 'Removed support for HTTP.',
       },
       {
         title: 'BREAKING CHANGE',

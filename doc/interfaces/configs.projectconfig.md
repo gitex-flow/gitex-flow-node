@@ -115,7 +115,7 @@ Additional *DEFAULTS*:
 "refs",
 "references"
 ],
-"noteKeywords": ["BREAKING CHANGE", "SECURITY"]
+"noteKeywords": ["BREAKING CHANGE", "SECURITY", "REMOVED"]
 }
 ```
 

@@ -167,7 +167,7 @@ The following JSON shows the schema and the default values of the configuration:
         "refs",
         "references",
       ],
-      "noteKeywords": ["BREAKING CHANGE", "SECURITY"],
+      "noteKeywords": ["BREAKING CHANGE", "SECURITY", "REMOVED"],
       // ... for all other default values see the original options of the conventional-commits-parser.
     },
     "versionFile": "package.json",
@@ -449,7 +449,7 @@ const gFlowConfig: GFlowConfig = {
         'refs',
         'references',
       ],
-      noteKeywords: ['BREAKING CHANGE', 'SECURITY'],
+      noteKeywords: ['BREAKING CHANGE', 'SECURITY', 'REMOVED'],
     },
     versionFile: 'package.json',
     bumpVersionFiles: ['package.json', 'package-lock.json'],
