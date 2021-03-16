@@ -129,7 +129,7 @@ or if it was installed as a project dependency
 To configure **gitex-flow** you can create a configuration file `.gitex[[-flow][.json]]`.
 The following JSON shows the schema and the default values of the configuration:
 
-```JSON
+```javascript
 {
   "gitFlowConfig": {
     "masterBranch": "master",
@@ -168,7 +168,7 @@ The following JSON shows the schema and the default values of the configuration:
         "references",
       ],
       "noteKeywords": ["BREAKING CHANGE", "SECURITY", "REMOVED"],
-      // ... for all other default values see the original options of the conventional-commits-parser.
+      // *for all options visit documentation of conventional-commits-parser
     },
     "versionFile": "package.json",
     "bumpVersionFiles": [
@@ -185,6 +185,8 @@ The following JSON shows the schema and the default values of the configuration:
 ```
 
 Further information on the [available configurations](doc/interfaces/gflow.gflowconfig.md) can be found in the API documentation.
+
+For all options of the `conventionalCommits` block visit the project of the underlying [conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options).
 
 To show the loaded git flow configuration you can execute the command:
 
