@@ -51,9 +51,11 @@ export class KeepAChangelogWriter extends ChangelogWriter {
 
     for (const log of logs) {
       const changeType = this.getTypeFromLog(log);
-      const referencedIssues = log.references?.map((x) => `#${x.issue}`).join(', ');
-      const message = log.subject + (log.references ? ` ( ${referencedIssues} )` : '');
-      latestRelease.addChange(changeType, new Change(message));
+      if (log.subject) {
+        const referencedIssues = log.references?.map((x) => `#${x.issue}`).join(', ');
+        const message = log.subject + (referencedIssues ? ` ( ${referencedIssues} )` : '');
+        latestRelease.addChange(changeType, new Change(message));
+      }
     }
 
     return Readable.from(latestReleaseChangelog.toString());

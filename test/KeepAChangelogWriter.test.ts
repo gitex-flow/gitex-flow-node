@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { readFile, remove } from 'fs-extra';
+import { emptyDir, readFile, remove } from 'fs-extra';
 import { join, resolve } from 'path';
 import { KeepAChangelogWriter } from '../src/changelog/KeepAChangelogWriter';
 import { Utils } from '../src/tools/Utils';
@@ -8,6 +8,10 @@ const testTmpPath = resolve(join('.', 'test_tmp'));
 const changelogPath = join(testTmpPath, 'CHANGELOG.md');
 
 describe('Test Keep-A-Changelog writer implementation', function () {
+  this.beforeAll(async () => {
+    await emptyDir(testTmpPath);
+  });
+
   this.afterAll(async () => {
     await remove(testTmpPath);
   });
@@ -28,6 +32,9 @@ describe('Test Keep-A-Changelog writer implementation', function () {
       BREAKING CHANGE: Removed HTTP endpoint in web service.
       
       closes #941, refs #1094, #1100`,
+      `Merge tag '1.4.4' into develop
+
+      1.4.4 1.4.4`,
     ]);
     const writer = new KeepAChangelogWriter({
       basePath: testTmpPath,
@@ -69,6 +76,18 @@ describe('Test Keep-A-Changelog writer implementation', function () {
     assert.equal(
       await readFile(changelogPath, 'utf8'),
       await readFile(resolve(join(__dirname, 'files', 'KaC_2_0_0.md')), 'utf8'),
+    );
+    await writer.write(
+      {
+        version: '2.0.1',
+        title: 'Test project',
+        repoUrl: 'https://github.com/gitex-flow/gitex-flow-node',
+      },
+      [logs[3]],
+    );
+    assert.equal(
+      await readFile(changelogPath, 'utf8'),
+      await readFile(resolve(join(__dirname, 'files', 'KaC_2_0_1.md')), 'utf8'),
     );
   });
 });
