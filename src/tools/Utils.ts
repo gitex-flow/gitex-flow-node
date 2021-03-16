@@ -1,12 +1,14 @@
 import { getLogger } from 'log4js';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { GFlow } from '../gflow/GFlow';
-import { Readable, Writable } from 'stream';
-import { ProjectConfig } from '../configs';
+import { Readable, Writable, Transform } from 'stream';
+import { ConventionalCommitConfig, ProjectConfig } from '../configs';
 import { ChangelogConfig } from '../configs/ChangelogConfig';
 import { ChangelogType } from '../changelog/ChangelogType';
 import { ConventionalChangelogWriterOptions } from '../changelog/ConventionalChangelogWriter';
 import { ChangelogWriter } from '../changelog';
+import conventionalCommitsParser from 'conventional-commits-parser';
+import { GitLog } from '../git/GitLog';
 
 /**
  * Provides some utility functions.
@@ -129,5 +131,62 @@ export class Utils {
     }
 
     return config;
+  }
+
+  /**
+   * Parses conventional commit messages to a [[GitLog]] array.
+   *
+   * @param commitMessages - The commit messages.
+   * @param conventionalCommitConfig - The configuration of the conventional commit parser.
+   * @returns The parsed conventional commit messages as an array of [[GitLogs]].
+   */
+  public static async parseConventionalCommits(
+    commitMessages: string[],
+    conventionalCommitConfig?: ConventionalCommitConfig,
+  ): Promise<GitLog[]> {
+    const gitLogs: GitLog[] = [];
+    const stream = Readable.from(commitMessages);
+    return new Promise((resolve, reject) => {
+      stream
+        .pipe(Utils.parseConventionalCommitsViaPipe(conventionalCommitConfig))
+        .on('error', function (err) {
+          err.message = 'Error in conventional-commits-parser: ' + err.message;
+          reject(err);
+        })
+        .on('data', (data) => {
+          const log = data as GitLog;
+          gitLogs.push(log);
+        })
+        .on('end', () => {
+          resolve(gitLogs);
+        });
+    });
+  }
+
+  /**
+   * Parses conventional commit messages via a stream.Transform pipe.
+   *
+   * @param conventionalCommitConfig - The configuration of the conventional commit parser.
+   * @returns The parsed conventional commit messages as transformed stream.
+   */
+  public static parseConventionalCommitsViaPipe(conventionalCommitConfig?: ConventionalCommitConfig): Transform {
+    return conventionalCommitsParser(
+      conventionalCommitConfig ?? {
+        referenceActions: [
+          'close',
+          'closes',
+          'closed',
+          'fix',
+          'fixes',
+          'fixed',
+          'resolve',
+          'resolves',
+          'resolved',
+          'refs',
+          'references',
+        ],
+        noteKeywords: ['BREAKING CHANGE', 'SECURITY'],
+      },
+    );
   }
 }

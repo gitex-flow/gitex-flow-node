@@ -15,6 +15,8 @@ Provides some utility functions.
 * [deriveChangelogConfig](tools.utils.md#static-derivechangelogconfig)
 * [exec](tools.utils.md#static-exec)
 * [getCurrDate](tools.utils.md#static-getcurrdate)
+* [parseConventionalCommits](tools.utils.md#static-parseconventionalcommits)
+* [parseConventionalCommitsViaPipe](tools.utils.md#static-parseconventionalcommitsviapipe)
 * [pipe](tools.utils.md#static-pipe)
 * [printBranches](tools.utils.md#static-printbranches)
 * [printConfig](tools.utils.md#static-printconfig)
@@ -66,6 +68,43 @@ Gets the current date formatted as yyyy-mm-dd.
 **Returns:** *string*
 
 date in fomat yyyy-mm-dd.
+
+___
+
+### `Static` parseConventionalCommits
+
+▸ **parseConventionalCommits**(`commitMessages`: string[], `conventionalCommitConfig?`: [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig)): *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+
+Parses conventional commit messages to a [GitLog](../interfaces/git.gitlog.md) array.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`commitMessages` | string[] | The commit messages. |
+`conventionalCommitConfig?` | [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig) | The configuration of the conventional commit parser. |
+
+**Returns:** *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+
+The parsed conventional commit messages as an array of [[GitLogs]].
+
+___
+
+### `Static` parseConventionalCommitsViaPipe
+
+▸ **parseConventionalCommitsViaPipe**(`conventionalCommitConfig?`: [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig)): *Transform*
+
+Parses conventional commit messages via a stream.Transform pipe.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`conventionalCommitConfig?` | [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig) | The configuration of the conventional commit parser. |
+
+**Returns:** *Transform*
+
+The parsed conventional commit messages as transformed stream.
 
 ___
 

@@ -60,7 +60,7 @@ export abstract class ChangelogWriter {
     await ensureFile(changelogPath);
 
     const latestChangelogStream = await this.createLatestChangelogStream(context, logs);
-    const changelogStream = await this.mergeWithChangelog(latestChangelogStream, changelogPath);
+    const changelogStream = await this.mergeWithChangelog(latestChangelogStream, changelogPath, context);
 
     let changelogUpdatedMessage = `Updated ${changelogFileName}`;
     if (this.opt.storeLatestChangelog) {
@@ -103,6 +103,11 @@ export abstract class ChangelogWriter {
    *
    * @param context - The context information of the git repository.
    * @param logs - The conventional git logs since the last release.
+   * @param context - The context information of the git repository.
    */
-  protected abstract mergeWithChangelog(latestChangelogStream: Readable, changelogPath: string): Promise<Readable>;
+  protected abstract mergeWithChangelog(
+    latestChangelogStream: Readable,
+    changelogPath: string,
+    context?: GitRepositoryContext,
+  ): Promise<Readable>;
 }

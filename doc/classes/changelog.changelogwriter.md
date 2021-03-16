@@ -10,6 +10,8 @@ Builder for a changelog.
 
   ↳ [ConventionalChangelogWriter](changelog.conventionalchangelogwriter.md)
 
+  ↳ [KeepAChangelogWriter](changelog.keepachangelogwriter.md)
+
 ## Index
 
 ### Constructors
@@ -70,16 +72,17 @@ ___
 
 ### `Protected` `Abstract` mergeWithChangelog
 
-▸ **mergeWithChangelog**(`latestChangelogStream`: Readable, `changelogPath`: string): *Promise‹Readable›*
+▸ **mergeWithChangelog**(`latestChangelogStream`: Readable, `changelogPath`: string, `context?`: [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md)): *Promise‹Readable›*
 
 Merges a changelog stream from the commits since the last release.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`latestChangelogStream` | Readable |
-`changelogPath` | string |
+Name | Type | Description |
+------ | ------ | ------ |
+`latestChangelogStream` | Readable | - |
+`changelogPath` | string | - |
+`context?` | [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository.  |
 
 **Returns:** *Promise‹Readable›*
 

@@ -1,4 +1,7 @@
+import { Options } from 'conventional-commits-parser';
 import { ChangelogConfig } from './ChangelogConfig';
+
+export type ConventionalCommitConfig = Options;
 
 /**
  * Options of the git flow node project.
@@ -51,19 +54,44 @@ export interface ProjectConfig {
   conventionalChangelogPresent?: string;
 
   /**
-   * Set the configuration of the changelog.
+   * Sets the configuration of the changelog.
    *
    * *DEFAULTS*:
    * ```JSON
    * {
-   *    type: 'ConventionalChangelog',
-   *    changelogFileName: 'CHANGELOG.md',
-   *    storeLatestChangelog: false,
-   *    conventionalChangelogPresent: 'angular'
+   *    "type": "ConventionalChangelog",
+   *    "changelogFileName": "CHANGELOG.md",
+   *    "storeLatestChangelog": false,
+   *    "conventionalChangelogPresent": "angular"
    * }
    * ```
    */
   changelog?: ChangelogConfig;
+
+  /**
+   * Sets the conventional commit [options of conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options)
+   *
+   * Additional *DEFAULTS*:
+   * ```JSON
+   *  {
+   *    "referenceActions": [
+          "close",
+          "closes",
+          "closed",
+          "fix",
+          "fixes",
+          "fixed",
+          "resolve",
+          "resolves",
+          "resolved",
+          "refs",
+          "references"
+        ],
+        "noteKeywords": ["BREAKING CHANGE", "SECURITY"]
+      }
+   * ```
+   */
+  conventionalCommit?: ConventionalCommitConfig;
 
   /**
    * Specifies the primary version file containing the version of the project.

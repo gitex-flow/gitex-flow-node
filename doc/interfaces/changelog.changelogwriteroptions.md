@@ -10,6 +10,8 @@ Options of the ChangelogWriter.
 
   ↳ [ConventionalChangelogWriterOptions](changelog.conventionalchangelogwriteroptions.md)
 
+  ↳ [KeepAChangelogWriterOptions](changelog.keepachangelogwriteroptions.md)
+
   ↳ [ChangelogConfig](configs.changelogconfig.md)
 
 ## Index

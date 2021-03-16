@@ -3,9 +3,14 @@
  */
 export enum ChangelogType {
   /**
-   * The conventional changelog is the default changelog generator.
+   * [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
    */
   ConventionalChangelog = 'ConventionalChangelog',
+
+  /**
+   * [keep-a-changelog](https://keepachangelog.com/en/1.0.0/)
+   */
+  KeepAChangelog = 'KeepAChangelog',
 
   /**
    * Indicates no changelog should be generated.

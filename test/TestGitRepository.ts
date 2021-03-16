@@ -21,7 +21,7 @@ export class TestGitRepository extends GitRepository {
 
   private async copyFileToRepo(fileName: string): Promise<void> {
     const src = join(this.fileFolderPath, fileName);
-    const dest = join(this.repoPath, fileName);
+    const dest = join(this.getRepoPath(), fileName);
     await copy(src, dest);
   }
 }

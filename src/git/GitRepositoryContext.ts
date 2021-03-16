@@ -39,19 +39,19 @@ export interface GitRepositoryContext {
    *
    * *DEFAULT*: 'commits'
    */
-  commit: string;
+  commit?: string;
 
   /**
    * Issue or pull request keyword.
    *
    * *DEFAULT*: 'issues'
    */
-  issue: string;
+  issue?: string;
 
   /**
    * Default to formatted (`'yyyy-mm-dd'`) today's date. [dateformat](https://github.com/felixge/node-dateformat)
    * is used for formatting the date. If `version` is found in the last commit,
    * `committerDate` will overwrite this.
    */
-  date: string;
+  date?: string;
 }

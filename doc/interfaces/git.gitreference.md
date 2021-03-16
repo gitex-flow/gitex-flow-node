@@ -39,7 +39,7 @@ ___
 
 ### `Optional` owner
 
-• **owner**? : *undefined | string*
+• **owner**? : *string | null*
 
 The owner of the referenced issue.
 
@@ -63,6 +63,6 @@ ___
 
 ### `Optional` repository
 
-• **repository**? : *undefined | string*
+• **repository**? : *string | null*
 
 The repository the referenced issue.

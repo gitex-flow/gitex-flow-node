@@ -9,6 +9,7 @@ Enum of all available changelog types.
 ### Enumeration members
 
 * [ConventionalChangelog](changelog.changelogtype.md#conventionalchangelog)
+* [KeepAChangelog](changelog.changelogtype.md#keepachangelog)
 * [None](changelog.changelogtype.md#none)
 
 ## Enumeration members
@@ -17,7 +18,15 @@ Enum of all available changelog types.
 
 • **ConventionalChangelog**: = "ConventionalChangelog"
 
-The conventional changelog is the default changelog generator.
+[conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
+
+___
+
+###  KeepAChangelog
+
+• **KeepAChangelog**: = "KeepAChangelog"
+
+[keep-a-changelog](https://keepachangelog.com/en/1.0.0/)
 
 ___
 

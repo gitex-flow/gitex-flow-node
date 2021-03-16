@@ -2,6 +2,7 @@ import { ChangelogConfig } from '../configs/ChangelogConfig';
 import { ChangelogType } from './ChangelogType';
 import { ChangelogWriter } from './ChangelogWriter';
 import { ConventionalChangelogWriter } from './ConventionalChangelogWriter';
+import { KeepAChangelogWriter } from './KeepAChangelogWriter';
 
 /**
  * A factory to create [[ChangelogWriter]] from a [[ChangelogConfig]].
@@ -18,6 +19,8 @@ export class ChangelogWriterFactory {
     switch (changelogConfig.type) {
       case ChangelogType.None:
         return undefined;
+      case ChangelogType.KeepAChangelog:
+        return new KeepAChangelogWriter(changelogConfig);
       default:
         return new ConventionalChangelogWriter(changelogConfig);
     }

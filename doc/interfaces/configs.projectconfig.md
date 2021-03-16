@@ -17,6 +17,7 @@ Options of the git flow node project.
 * [changelog](configs.projectconfig.md#optional-changelog)
 * [changelogFileName](configs.projectconfig.md#optional-changelogfilename)
 * [conventionalChangelogPresent](configs.projectconfig.md#optional-conventionalchangelogpresent)
+* [conventionalCommit](configs.projectconfig.md#optional-conventionalcommit)
 * [projectPath](configs.projectconfig.md#projectpath)
 * [storeLatestChangelog](configs.projectconfig.md#optional-storelatestchangelog)
 * [versionFile](configs.projectconfig.md#optional-versionfile)
@@ -46,15 +47,15 @@ ___
 
 • **changelog**? : *[ChangelogConfig](configs.changelogconfig.md)*
 
-Set the configuration of the changelog.
+Sets the configuration of the changelog.
 
 *DEFAULTS*:
 ```JSON
 {
-   type: 'ConventionalChangelog',
-   changelogFileName: 'CHANGELOG.md',
-   storeLatestChangelog: false,
-   conventionalChangelogPresent: 'angular'
+   "type": "ConventionalChangelog",
+   "changelogFileName": "CHANGELOG.md",
+   "storeLatestChangelog": false,
+   "conventionalChangelogPresent": "angular"
 }
 ```
 
@@ -89,6 +90,34 @@ For more infomation check out the documentation of the
 This loader is used to load the corresponding present.
 
 **`deprecated`** This property was moved to the option `changelog`. This property will be removed in version 3.*.
+
+___
+
+### `Optional` conventionalCommit
+
+• **conventionalCommit**? : *[ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig)*
+
+Sets the conventional commit [options of conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options)
+
+Additional *DEFAULTS*:
+```JSON
+ {
+   "referenceActions": [
+"close",
+"closes",
+"closed",
+"fix",
+"fixes",
+"fixed",
+"resolve",
+"resolves",
+"resolved",
+"refs",
+"references"
+],
+"noteKeywords": ["BREAKING CHANGE", "SECURITY"]
+}
+```
 
 ___
 

@@ -12,10 +12,10 @@ Represents the git repository context.
 
 ### Properties
 
-* [commit](git.gitrepositorycontext.md#commit)
-* [date](git.gitrepositorycontext.md#date)
+* [commit](git.gitrepositorycontext.md#optional-commit)
+* [date](git.gitrepositorycontext.md#optional-date)
 * [host](git.gitrepositorycontext.md#optional-host)
-* [issue](git.gitrepositorycontext.md#issue)
+* [issue](git.gitrepositorycontext.md#optional-issue)
 * [owner](git.gitrepositorycontext.md#optional-owner)
 * [repoUrl](git.gitrepositorycontext.md#optional-repourl)
 * [repository](git.gitrepositorycontext.md#optional-repository)
@@ -24,9 +24,9 @@ Represents the git repository context.
 
 ## Properties
 
-###  commit
+### `Optional` commit
 
-• **commit**: *string*
+• **commit**? : *undefined | string*
 
 Commit keyword in the url.
 
@@ -34,9 +34,9 @@ Commit keyword in the url.
 
 ___
 
-###  date
+### `Optional` date
 
-• **date**: *string*
+• **date**? : *undefined | string*
 
 Default to formatted (`'yyyy-mm-dd'`) today's date. [dateformat](https://github.com/felixge/node-dateformat)
 is used for formatting the date. If `version` is found in the last commit,
@@ -52,9 +52,9 @@ The hosting website. Eg: `'https://github.com'` or `'https://bitbucket.org'`.
 
 ___
 
-###  issue
+### `Optional` issue
 
-• **issue**: *string*
+• **issue**? : *undefined | string*
 
 Issue or pull request keyword.
 

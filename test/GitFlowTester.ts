@@ -25,7 +25,9 @@ export class GitFlowTester {
    */
   constructor(gitFlow: GitFlow, testRepoPath: string) {
     this.gitFlow = gitFlow;
-    this.repo = new TestGitRepository(testRepoPath);
+    this.repo = new TestGitRepository({
+      projectPath: testRepoPath,
+    });
   }
 
   public async init(): Promise<void> {

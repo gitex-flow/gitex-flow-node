@@ -16,7 +16,7 @@ A simple API with basic functionality of a git repository.
 
 ### Properties
 
-* [repoPath](git.gitrepository.md#protected-repopath)
+* [config](git.gitrepository.md#protected-optional-config)
 
 ### Methods
 
@@ -35,7 +35,7 @@ A simple API with basic functionality of a git repository.
 
 ###  constructor
 
-\+ **new GitRepository**(`repoPath?`: undefined | string): *[GitRepository](git.gitrepository.md)*
+\+ **new GitRepository**(`config?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[GitRepository](git.gitrepository.md)*
 
 Initializes a new instance of this class.
 
@@ -43,15 +43,15 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`repoPath?` | undefined &#124; string | Path of the git repository.  |
+`config?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | The project configuration.  |
 
 **Returns:** *[GitRepository](git.gitrepository.md)*
 
 ## Properties
 
-### `Protected` repoPath
+### `Protected` `Optional` config
 
-• **repoPath**: *string*
+• **config**? : *[ProjectConfig](../interfaces/configs.projectconfig.md)*
 
 ## Methods
 

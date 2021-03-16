@@ -153,6 +153,23 @@ The following JSON shows the schema and the default values of the configuration:
       "storeLatestChangelog": false,
       "conventionalChangelogPresent": "angular"
     },
+    "conventionalCommits": {
+      "referenceActions": [
+        "close",
+        "closes",
+        "closed",
+        "fix",
+        "fixes",
+        "fixed",
+        "resolve",
+        "resolves",
+        "resolved",
+        "refs",
+        "references",
+      ],
+      "noteKeywords": ["BREAKING CHANGE", "SECURITY"],
+      // ... for all other default values see the original options of the conventional-commits-parser.
+    },
     "versionFile": "package.json",
     "bumpVersionFiles": [
       "package.json",
@@ -201,6 +218,19 @@ BREAKING CHANGE: Adapted API by adding an options to the affected modules (class
 closes #10
 ```
 
+or
+
+```
+fix(service): Removed support of unencrypted HTTP protocol
+
+This unencrypted protocol has led to several vulnerabilities in the framework.
+
+SECURITY: Only encrypted protocols are now allowed
+BREAKING CHANGE: Removed HTTP endpoint in web service.
+
+closes #941, refs #1094, #1100
+```
+
 ## Changelog generator
 
 Gitex flow provides a modular changelog generator.
@@ -213,10 +243,11 @@ All implementations of the changelog generator have the following common options
 
 Depending on the implementation there may be additional properties.
 
-| Type                    | Description                                                                                                                  | Options                                                                                              | Note      |
-| ----------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- | :-------- |
-| `None`                  | Deactivates the changelog generator.                                                                                         | -                                                                                                    |           |
-| `ConventionalChangelog` | Implemenatation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](doc/interfaces/changelog.conventionalchangelogwriteroptions.md) | `default` |
+| Type                    | Description                                                                                                                 | Options                                                                                              | Note      |
+| ----------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- | :-------- |
+| `None`                  | Deactivates the changelog generator.                                                                                        | -                                                                                                    |           |
+| `ConventionalChangelog` | Implementation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](doc/interfaces/changelog.conventionalchangelogwriteroptions.md) | `default` |
+| `KeepAChangelog`        | Implementation of the [keep-a-changelog](https://keepachangelog.com/en/1.0.0/) generator.                                   | [KeepAChangelogWriterOptions](doc/interfaces/changelog.keepachangelogwriteroptions.md)               |           |
 
 ## Git flow branches
 
@@ -403,6 +434,22 @@ const gFlowConfig: GFlowConfig = {
       changelogFileName: 'CHANGELOG.md',
       storeLatestChangelog: false,
       conventionalChangelogPresent: 'angular',
+    },
+    conventionalCommits: {
+      referenceActions: [
+        'close',
+        'closes',
+        'closed',
+        'fix',
+        'fixes',
+        'fixed',
+        'resolve',
+        'resolves',
+        'resolved',
+        'refs',
+        'references',
+      ],
+      noteKeywords: ['BREAKING CHANGE', 'SECURITY'],
     },
     versionFile: 'package.json',
     bumpVersionFiles: ['package.json', 'package-lock.json'],

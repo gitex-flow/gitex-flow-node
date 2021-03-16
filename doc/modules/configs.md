@@ -13,9 +13,16 @@
 
 ### Type aliases
 
+* [ConventionalCommitConfig](configs.md#conventionalcommitconfig)
 * [Log4jsConfig](configs.md#log4jsconfig)
 
 ## Type aliases
+
+###  ConventionalCommitConfig
+
+Ƭ **ConventionalCommitConfig**: *Options*
+
+___
 
 ###  Log4jsConfig
 
