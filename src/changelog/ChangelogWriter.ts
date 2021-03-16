@@ -2,7 +2,7 @@ import { GitLog } from '../git';
 import { GitRepositoryContext } from '../git/GitRepositoryContext';
 import { Readable } from 'stream';
 import { basename, extname, join } from 'path';
-import { createWriteStream, ensureFile } from 'fs-extra';
+import { createReadStream, createWriteStream, ensureFile, remove } from 'fs-extra';
 import { getLogger } from 'log4js';
 import { Utils } from '../tools/Utils';
 
@@ -59,16 +59,21 @@ export abstract class ChangelogWriter {
     const changelogPath = join(basePath, changelogFileName);
     await ensureFile(changelogPath);
 
-    const latestChangelogStream = await this.createLatestChangelogStream(context, logs);
+    let latestChangelogStream = await this.createLatestChangelogStream(context, logs);
+
+    const latestChangelogFileName = ChangelogWriter.getLatestChangelogName(changelogFileName);
+    const latestChangelogFilePath = join(basePath, latestChangelogFileName);
+    const latestChangelogFileStream = createWriteStream(latestChangelogFilePath);
+    await Utils.pipe(latestChangelogStream, latestChangelogFileStream);
+
+    latestChangelogStream = createReadStream(latestChangelogFilePath);
     const changelogStream = await this.mergeWithChangelog(latestChangelogStream, changelogPath, context);
 
     let changelogUpdatedMessage = `Updated ${changelogFileName}`;
     if (this.opt.storeLatestChangelog) {
-      const latestChangelogFileName = ChangelogWriter.getLatestChangelogName(changelogFileName);
-      const latestChangelogFilePath = join(basePath, latestChangelogFileName);
-      const latestChangelogFileStream = createWriteStream(latestChangelogFilePath);
-      await Utils.pipe(latestChangelogStream, latestChangelogFileStream);
       changelogUpdatedMessage += ` and ${latestChangelogFileName}`;
+    } else {
+      await remove(latestChangelogFilePath);
     }
 
     const changelogFileStream = createWriteStream(changelogPath);

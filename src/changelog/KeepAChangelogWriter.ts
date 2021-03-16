@@ -45,7 +45,10 @@ export class KeepAChangelogWriter extends ChangelogWriter {
    * @param logs - The conventional git logs since the last release.
    */
   protected async createLatestChangelogStream(context: GitRepositoryContext, logs: GitLog[]): Promise<Readable> {
-    const latestReleaseChangelog = new Changelog(this.options.title ?? 'Changelog', this.options.description);
+    const latestReleaseChangelog = new Changelog(
+      this.options.title ?? 'Changelog of latest version',
+      this.options.description ?? `Changes of version ${context.version}`,
+    );
     const latestRelease = new Release(context.version ?? '', context.date ?? new Date());
     latestReleaseChangelog.addRelease(latestRelease);
 
@@ -99,8 +102,8 @@ export class KeepAChangelogWriter extends ChangelogWriter {
     }
 
     let latestChangelog: Changelog;
-    latestChangelogStream.on('data', (changelog: string) => {
-      latestChangelog = parser(changelog);
+    latestChangelogStream.on('data', (changelogBuffer: Buffer) => {
+      latestChangelog = parser(changelogBuffer.toString());
     });
 
     return new Promise((resolve, reject) => {
