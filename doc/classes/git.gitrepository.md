@@ -16,7 +16,7 @@ A simple API with basic functionality of a git repository.
 
 ### Properties
 
-* [repoPath](git.gitrepository.md#protected-repopath)
+* [config](git.gitrepository.md#protected-optional-config)
 
 ### Methods
 
@@ -26,14 +26,16 @@ A simple API with basic functionality of a git repository.
 * [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
 * [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
 * [getRepoPath](git.gitrepository.md#getrepopath)
+* [popLatestStash](git.gitrepository.md#poplateststash)
 * [remove](git.gitrepository.md#remove)
+* [stash](git.gitrepository.md#stash)
 * [status](git.gitrepository.md#status)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new GitRepository**(`repoPath?`: undefined | string): *[GitRepository](git.gitrepository.md)*
+\+ **new GitRepository**(`config?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[GitRepository](git.gitrepository.md)*
 
 Initializes a new instance of this class.
 
@@ -41,15 +43,15 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`repoPath?` | undefined &#124; string | Path of the git repository.  |
+`config?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | The project configuration.  |
 
 **Returns:** *[GitRepository](git.gitrepository.md)*
 
 ## Properties
 
-### `Protected` repoPath
+### `Protected` `Optional` config
 
-• **repoPath**: *string*
+• **config**? : *[ProjectConfig](../interfaces/configs.projectconfig.md)*
 
 ## Methods
 
@@ -131,6 +133,16 @@ The path to the git repository.
 
 ___
 
+###  popLatestStash
+
+▸ **popLatestStash**(): *Promise‹void›*
+
+Pops stash with a given name.
+
+**Returns:** *Promise‹void›*
+
+___
+
 ###  remove
 
 ▸ **remove**(): *Promise‹void›*
@@ -138,6 +150,16 @@ ___
 Gets the path of the git repository.
 
 **Returns:** *Promise‹void›*
+
+___
+
+###  stash
+
+▸ **stash**(): *Promise‹string›*
+
+Stashes the uncommited changes from the current branch.
+
+**Returns:** *Promise‹string›*
 
 ___
 

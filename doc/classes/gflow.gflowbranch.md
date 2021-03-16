@@ -42,7 +42,7 @@ This class represents an abstract GFlow branch with some basic functionality.
 
 ###  constructor
 
-\+ **new GFlowBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowBranch](gflow.gflowbranch.md)*
+\+ **new GFlowBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[GFlowBranch](gflow.gflowbranch.md)*
 
 Initializes a new instance of this class.
 
@@ -51,7 +51,7 @@ Initializes a new instance of this class.
 Name | Type | Description |
 ------ | ------ | ------ |
 `gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped. |
-`options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Git flow node project options.  |
+`options?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | Git flow node project options.  |
 
 **Returns:** *[GFlowBranch](gflow.gflowbranch.md)*
 
@@ -73,7 +73,7 @@ ___
 
 ### `Protected` `Optional` `Readonly` projectConfig
 
-• **projectConfig**? : *[ProjectConfig](../interfaces/tools.projectconfig.md)*
+• **projectConfig**? : *[ProjectConfig](../interfaces/configs.projectconfig.md)*
 
 ___
 

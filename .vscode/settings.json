@@ -22,6 +22,7 @@
     "release",
     "client",
     "api",
-    "support"
+    "support",
+    "changelog"
   ]
 }

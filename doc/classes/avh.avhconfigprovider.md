@@ -10,7 +10,7 @@ AVH Configuration provider.
 
 ## Implements
 
-* [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›
+* [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)›
 
 ## Index
 
@@ -43,19 +43,19 @@ Name | Type | Description |
 
 ###  get
 
-▸ **get**(): *Promise‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
+▸ **get**(): *Promise‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)›*
 
 *Implementation of [ConfigProvider](../interfaces/api.configprovider.md)*
 
 {@inheritdoc}
 
-**Returns:** *Promise‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
+**Returns:** *Promise‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)›*
 
 ___
 
 ###  set
 
-▸ **set**(`config`: [GitFlowConfig](../interfaces/api.gitflowconfig.md)): *Promise‹void›*
+▸ **set**(`config`: [GitFlowConfig](../interfaces/configs.gitflowconfig.md)): *Promise‹void›*
 
 {@inheritdoc}
 
@@ -63,6 +63,6 @@ ___
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`config` | [GitFlowConfig](../interfaces/api.gitflowconfig.md) | Git flow config to be set.  |
+`config` | [GitFlowConfig](../interfaces/configs.gitflowconfig.md) | Git flow config to be set.  |
 
 **Returns:** *Promise‹void›*

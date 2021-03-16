@@ -1,6 +1,6 @@
 import { pathExistsSync, readJsonSync } from 'fs-extra';
 import { join } from 'path';
-import { GFlowConfig } from '../gflow/GFlowConfig';
+import { GFlowConfig } from '../configs/GFlowConfig';
 
 /**
  * Loader of the GFlow config file.

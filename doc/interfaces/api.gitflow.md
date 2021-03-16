@@ -41,7 +41,7 @@ ___
 
 ### `Readonly` config
 
-• **config**: *[ConfigProvider](api.configprovider.md)‹[GitFlowConfig](api.gitflowconfig.md)›*
+• **config**: *[ConfigProvider](api.configprovider.md)‹[GitFlowConfig](configs.gitflowconfig.md)›*
 
 Provides functionality to get and set the git flow configuration.
 
@@ -81,7 +81,7 @@ Provides functionality of support branches.
 
 ###  init
 
-▸ **init**(`config?`: [GitFlowConfig](api.gitflowconfig.md), `force?`: undefined | false | true): *Promise‹void›*
+▸ **init**(`config?`: [GitFlowConfig](configs.gitflowconfig.md), `force?`: undefined | false | true): *Promise‹void›*
 
 Setup a git repository for git flow ussage.
 
@@ -89,7 +89,7 @@ Setup a git repository for git flow ussage.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`config?` | [GitFlowConfig](api.gitflowconfig.md) | The git flow configuration. |
+`config?` | [GitFlowConfig](configs.gitflowconfig.md) | The git flow configuration. |
 `force?` | undefined &#124; false &#124; true | Force reinitialisation if git flow already initialized.  |
 
 **Returns:** *Promise‹void›*

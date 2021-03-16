@@ -1,7 +1,7 @@
 import { GitFlowBaseBranchType, GitFlowBranchType } from '../../api/branches/GitFlowBranch';
 import { ConfigProvider } from '../../api/ConfigProvider';
 import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
-import { GitFlowConfig } from '../../api/GitFlowConfig';
+import { GitFlowConfig } from '../../configs/GitFlowConfig';
 import { AvhGitFlowBranch } from './AvhGitFlowBranch';
 
 /**

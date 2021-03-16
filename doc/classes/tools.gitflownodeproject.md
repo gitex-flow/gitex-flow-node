@@ -17,8 +17,6 @@ Representing an API for handling git flow SemVer.
 ### Properties
 
 * [DefaultBumpVersionFiles](tools.gitflownodeproject.md#static-readonly-defaultbumpversionfiles)
-* [DefaultChangelogFile](tools.gitflownodeproject.md#static-readonly-defaultchangelogfile)
-* [DefaultLatestChangelogFile](tools.gitflownodeproject.md#static-readonly-defaultlatestchangelogfile)
 * [DefaultVersionFile](tools.gitflownodeproject.md#static-readonly-defaultversionfile)
 
 ### Methods
@@ -27,6 +25,8 @@ Representing an API for handling git flow SemVer.
 * [commitChanges](tools.gitflownodeproject.md#commitchanges)
 * [getCurrentBranch](tools.gitflownodeproject.md#getcurrentbranch)
 * [getVersion](tools.gitflownodeproject.md#getversion)
+* [popLatestStash](tools.gitflownodeproject.md#poplateststash)
+* [stash](tools.gitflownodeproject.md#stash)
 * [updateChangelog](tools.gitflownodeproject.md#updatechangelog)
 * [writeVersion](tools.gitflownodeproject.md#writeversion)
 
@@ -34,7 +34,7 @@ Representing an API for handling git flow SemVer.
 
 ###  constructor
 
-\+ **new GitFlowNodeProject**(`options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GitFlowNodeProject](tools.gitflownodeproject.md)*
+\+ **new GitFlowNodeProject**(`options?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[GitFlowNodeProject](tools.gitflownodeproject.md)*
 
 Initializes a new instance of this class.
 
@@ -42,7 +42,7 @@ Initializes a new instance of this class.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Options of the git flow node project instance.  |
+`options?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | Options of the git flow node project instance.  |
 
 **Returns:** *[GitFlowNodeProject](tools.gitflownodeproject.md)*
 
@@ -51,18 +51,6 @@ Name | Type | Description |
 ### `Static` `Readonly` DefaultBumpVersionFiles
 
 ▪ **DefaultBumpVersionFiles**: *string[]* = [GitFlowNodeProject.DefaultVersionFile, 'package-lock.json']
-
-___
-
-### `Static` `Readonly` DefaultChangelogFile
-
-▪ **DefaultChangelogFile**: *"CHANGELOG.md"* = "CHANGELOG.md"
-
-___
-
-### `Static` `Readonly` DefaultLatestChangelogFile
-
-▪ **DefaultLatestChangelogFile**: *"CHANGELOG.latest.md"* = "CHANGELOG.latest.md"
 
 ___
 
@@ -125,9 +113,29 @@ Gets the current version from the package.json.
 
 ___
 
+###  popLatestStash
+
+▸ **popLatestStash**(): *Promise‹void›*
+
+Pops stash with a given name.
+
+**Returns:** *Promise‹void›*
+
+___
+
+###  stash
+
+▸ **stash**(): *Promise‹boolean›*
+
+Stashes the uncommited changes from the current branch.
+
+**Returns:** *Promise‹boolean›*
+
+___
+
 ###  updateChangelog
 
-▸ **updateChangelog**(`version?`: undefined | string, `name?`: undefined | string): *Promise‹void›*
+▸ **updateChangelog**(`changelogConfig`: [ChangelogConfig](../interfaces/configs.changelogconfig.md), `version?`: undefined | string, `name?`: undefined | string): *Promise‹void›*
 
 Updates the changelog with the changes since the last release.
 
@@ -135,6 +143,7 @@ Updates the changelog with the changes since the last release.
 
 Name | Type | Description |
 ------ | ------ | ------ |
+`changelogConfig` | [ChangelogConfig](../interfaces/configs.changelogconfig.md) | The changelog configuration. |
 `version?` | undefined &#124; string | Version the changelog is created for. |
 `name?` | undefined &#124; string | Name of the release.  |
 

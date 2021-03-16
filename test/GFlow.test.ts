@@ -4,7 +4,8 @@ import { GitFlow } from '../src/api/GitFlow';
 import { GitFlowTester } from './GitFlowTester';
 import { GFlow } from '../src/gflow/GFlow';
 import { assert } from 'chai';
-import { readFile } from 'fs-extra';
+import { pathExists, readFile } from 'fs-extra';
+import { GFlowConfig } from '../src/configs/GFlowConfig';
 
 const testRepoPath = resolve(join('.', 'test_repo'));
 
@@ -335,16 +336,43 @@ describe('Test gFlow implementation', function () {
 
     await tester.dispose();
   });
+
+  it('[feature #45] git flow release "1.0.0" (without generating changelog)', async function () {
+    const tester = new GitFlowTester(
+      createGitFlow(
+        JSON.parse(`{
+          "projectConfig": {
+            "projectPath": "${testRepoPath}",
+            "changelog": {
+              "type": "None"
+            }
+          }
+        }`),
+      ),
+      testRepoPath,
+    );
+    await tester.init();
+
+    const release1Branch = tester.selectBranch('release');
+    const release1BranchName = await release1Branch.start();
+    assert.equal(release1BranchName, 'release/1.0.0');
+    assert.isFalse(
+      await pathExists(join(testRepoPath, 'CHANGELOG.md')),
+      'The file CHANGELOG.md exists but should not.',
+    );
+
+    await tester.dispose();
+  });
 });
 
-function createGitFlow(): GitFlow {
+function createGitFlow(config?: GFlowConfig): GitFlow {
   const avhGitFlow = new AvhGitFlow(testRepoPath);
-  const gFlow = new GFlow(avhGitFlow, {
-    projectConfig: {
-      projectPath: testRepoPath,
-    },
-  });
-  return gFlow;
+  config = config ?? {};
+  config.projectConfig = config.projectConfig ?? {
+    projectPath: testRepoPath,
+  };
+  config.projectConfig.projectPath = testRepoPath;
+  return new GFlow(avhGitFlow, config);
 }
 
 async function assertPackageJson(fileName: string): Promise<void> {
