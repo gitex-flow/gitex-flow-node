@@ -44,6 +44,7 @@ describe('Test Keep-A-Changelog writer implementation', function () {
         version: '1.0.0',
         title: 'Test project',
         repoUrl: 'https://github.com/gitex-flow/gitex-flow-node',
+        date: '2021-03-16',
       },
       [logs[0]],
     );
@@ -57,6 +58,7 @@ describe('Test Keep-A-Changelog writer implementation', function () {
         version: '1.0.1',
         title: 'Test project',
         repoUrl: 'https://github.com/gitex-flow/gitex-flow-node',
+        date: '2021-03-16',
       },
       [logs[1]],
     );
@@ -70,6 +72,7 @@ describe('Test Keep-A-Changelog writer implementation', function () {
         version: '2.0.0',
         title: 'Test project',
         repoUrl: 'https://github.com/gitex-flow/gitex-flow-node',
+        date: '2021-03-16',
       },
       [logs[2]],
     );
@@ -82,6 +85,7 @@ describe('Test Keep-A-Changelog writer implementation', function () {
         version: '2.0.1',
         title: 'Test project',
         repoUrl: 'https://github.com/gitex-flow/gitex-flow-node',
+        date: '2021-03-16',
       },
       [logs[3]],
     );
