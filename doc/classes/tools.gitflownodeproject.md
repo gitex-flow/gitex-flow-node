@@ -78,7 +78,7 @@ ___
 
 ###  commitChanges
 
-▸ **commitChanges**(`commitVersionFiles`: boolean, `commitChangelog`: boolean): *Promise‹void›*
+▸ **commitChanges**(`commitVersionFiles`: boolean, `commitChangelog`: boolean): *Promise‹string›*
 
 Commits the changes of the git repository.
 
@@ -89,7 +89,9 @@ Name | Type | Default | Description |
 `commitVersionFiles` | boolean | true | Indicates if the defined version files should be committed if they exists. |
 `commitChangelog` | boolean | true | Indicates if the changelog should be committed.  |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise‹string›*
+
+The hash of the commit.
 
 ___
 

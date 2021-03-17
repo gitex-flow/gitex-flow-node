@@ -89,7 +89,7 @@ export class GFlowBranch implements GitFlowBranch {
    */
   public async generateBranchName(name?: string): Promise<string | undefined> {
     const semVer = new GitFlowSemVers(this.projectConfig?.projectPath);
-    return await semVer.calculateBranchVersion(this.type, name);
+    return semVer.calculateBranchVersion(this.type, name);
   }
 
   /**

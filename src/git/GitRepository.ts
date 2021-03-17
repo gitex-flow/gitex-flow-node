@@ -71,6 +71,8 @@ export class GitRepository {
    * @param message - Commit message.
    * @param authorName - The name of the author.
    * @param authorMail - Mail address of the author.
+   *
+   * @returns The hash of the commit.
    */
   public async commit(fileNames: string[], message: string, authorName?: string, authorMail?: string): Promise<string> {
     const repo = await this.createOrOpenRepo();
@@ -100,6 +102,18 @@ export class GitRepository {
   public async popLatestStash(): Promise<void> {
     const repo = await this.createOrOpenRepo();
     await repo.stash(['pop', '-q']);
+  }
+
+  /**
+   * Ensures there are no uncommited changes (staged and unstaged) in the local workspace.
+   */
+  public async ensureNoUnCommitedChanges(): Promise<void> {
+    const repo = await this.createOrOpenRepo();
+    const diff = await repo.diff(['HEAD']);
+    console.log(diff);
+    if (diff) {
+      throw new Error('There are some uncommited changes.');
+    }
   }
 
   /**

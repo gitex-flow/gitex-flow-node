@@ -1,5 +1,5 @@
 import { GitFlowBranchType } from '../api/branches/GitFlowBranch';
-import { inc, valid, ReleaseType } from 'semver';
+import { inc, valid, ReleaseType, clean } from 'semver';
 import { GitRepository } from '../git/GitRepository';
 import { GitLog } from '../git/GitLog';
 
@@ -25,28 +25,27 @@ export class GitFlowSemVers {
    * @param version - A optional custom version to be used.
    */
   public async calculateBranchVersion(type: GitFlowBranchType, version?: string): Promise<string | undefined> {
-    if (version) {
-      const validatedVersion = valid(version);
-      if (validatedVersion) {
-        version = validatedVersion;
-      }
-    } else if (type == 'hotfix' || type == 'release') {
-      const gitRepository = new GitRepository({
-        projectPath: this.basePath,
-      });
-      const latestVersion = await gitRepository.getLatestReleasedVersion();
-      if (!latestVersion) {
-        version = '1.0.0';
+    if (type == 'hotfix' || type == 'release') {
+      if (version) {
+        version = valid(clean(version)) ?? undefined;
       } else {
-        let releaseType: ReleaseType = 'patch';
-        if (type == 'release') {
-          if (await this.hasBreakingChanges()) {
-            releaseType = 'major';
-          } else {
-            releaseType = 'minor';
+        const gitRepository = new GitRepository({
+          projectPath: this.basePath,
+        });
+        const latestVersion = await gitRepository.getLatestReleasedVersion();
+        if (!latestVersion) {
+          version = '1.0.0';
+        } else {
+          let releaseType: ReleaseType = 'patch';
+          if (type == 'release') {
+            if (await this.hasBreakingChanges()) {
+              releaseType = 'major';
+            } else {
+              releaseType = 'minor';
+            }
           }
+          version = inc(latestVersion, releaseType) as string;
         }
-        version = inc(latestVersion, releaseType) as string;
       }
     }
     return version;

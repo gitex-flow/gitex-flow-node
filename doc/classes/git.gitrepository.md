@@ -23,6 +23,7 @@ A simple API with basic functionality of a git repository.
 * [checkout](git.gitrepository.md#checkout)
 * [commit](git.gitrepository.md#commit)
 * [ensure](git.gitrepository.md#ensure)
+* [ensureNoUnCommitedChanges](git.gitrepository.md#ensurenouncommitedchanges)
 * [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
 * [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
 * [getRepoPath](git.gitrepository.md#getrepopath)
@@ -88,6 +89,8 @@ Name | Type | Description |
 
 **Returns:** *Promise‹string›*
 
+The hash of the commit.
+
 ___
 
 ###  ensure
@@ -96,6 +99,16 @@ ___
 
 Ensures the repository exists.
 If it doesn't exist it will be created.
+
+**Returns:** *Promise‹void›*
+
+___
+
+###  ensureNoUnCommitedChanges
+
+▸ **ensureNoUnCommitedChanges**(): *Promise‹void›*
+
+Ensures there are no uncommited changes (staged and unstaged) in the local workspace.
 
 **Returns:** *Promise‹void›*
 
