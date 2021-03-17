@@ -95,6 +95,7 @@ export class GitFlowNodeProject {
    * @param branchName - Name of the branch to be checked out.
    */
   public async checkoutBranch(branchName: string): Promise<void> {
+    await this.gitRepository.ensureNoUnCommitedChanges();
     await this.gitRepository.checkout(branchName);
   }
 
@@ -151,8 +152,10 @@ export class GitFlowNodeProject {
    *
    * @param commitVersionFiles - Indicates if the defined version files should be committed if they exists.
    * @param commitChangelog - Indicates if the changelog should be committed.
+   *
+   * @returns The hash of the commit.
    */
-  public async commitChanges(commitVersionFiles = true, commitChangelog = true): Promise<void> {
+  public async commitChanges(commitVersionFiles = true, commitChangelog = true): Promise<string> {
     const updateDescs: string[] = [];
     const files: string[] = [];
 
@@ -181,7 +184,7 @@ export class GitFlowNodeProject {
     }
 
     const commitMsg = `chore(release): Updated ${updateDescs.join(' and ')}`;
-    await this.gitRepository.commit(files, commitMsg);
+    return this.gitRepository.commit(files, commitMsg);
   }
 
   /**
