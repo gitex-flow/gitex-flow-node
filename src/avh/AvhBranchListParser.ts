@@ -6,6 +6,8 @@ export class AvhBranchListParser {
    * Parses the shell answer of AVH implementation.
    *
    * @param list - List retrived by the shell command 'git flow <branchName> list'.
+   *
+   * @returns The branch list.
    */
   public static async parse(list: string): Promise<string[]> {
     // No '*' branches exists

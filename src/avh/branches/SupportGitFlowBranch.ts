@@ -51,6 +51,8 @@ export class SupportGitFlowBranch extends AvhGitFlowBranch {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The configuration of the support git flow branch.
    */
   public async getConfig(): Promise<GitFlowBranchConfig> {
     const config = await this.configProvider?.get();

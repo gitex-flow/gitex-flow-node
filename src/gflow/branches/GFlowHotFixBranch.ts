@@ -19,10 +19,12 @@ export class GFlowHotFixBranch extends GFlowBranch {
   }
 
   /**
-   * Creates and starts a new branch of the type '[[type]]'.
+   * Creates and starts a new hotfix branch.
    *
    * @param name - Name of the branch to be started.
    * @param base - Base of the branch should be started from.
+   *
+   * @returns The name of the hotfix branch.
    */
   public async start(name?: string, base?: string): Promise<string> {
     const version = await this.generateBranchName(name);

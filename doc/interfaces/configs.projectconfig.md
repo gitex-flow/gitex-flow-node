@@ -1,32 +1,30 @@
-[gitex-flow](../README.md) › [configs](../modules/configs.md) › [ProjectConfig](configs.projectconfig.md)
+[gitex-flow](../README.md) / [configs](../modules/configs.md) / ProjectConfig
 
 # Interface: ProjectConfig
 
+[configs](../modules/configs.md).ProjectConfig
+
 Options of the git flow node project.
 
-## Hierarchy
-
-* **ProjectConfig**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [autoStash](configs.projectconfig.md#optional-autostash)
-* [bumpVersionFiles](configs.projectconfig.md#optional-bumpversionfiles)
-* [changelog](configs.projectconfig.md#optional-changelog)
-* [changelogFileName](configs.projectconfig.md#optional-changelogfilename)
-* [conventionalChangelogPresent](configs.projectconfig.md#optional-conventionalchangelogpresent)
-* [conventionalCommit](configs.projectconfig.md#optional-conventionalcommit)
-* [projectPath](configs.projectconfig.md#projectpath)
-* [storeLatestChangelog](configs.projectconfig.md#optional-storelatestchangelog)
-* [versionFile](configs.projectconfig.md#optional-versionfile)
+- [autoStash](configs.projectconfig.md#autostash)
+- [bumpVersionFiles](configs.projectconfig.md#bumpversionfiles)
+- [changelog](configs.projectconfig.md#changelog)
+- [changelogFileName](configs.projectconfig.md#changelogfilename)
+- [conventionalChangelogPresent](configs.projectconfig.md#conventionalchangelogpresent)
+- [conventionalCommit](configs.projectconfig.md#conventionalcommit)
+- [projectPath](configs.projectconfig.md#projectpath)
+- [storeLatestChangelog](configs.projectconfig.md#storelatestchangelog)
+- [versionFile](configs.projectconfig.md#versionfile)
 
 ## Properties
 
-### `Optional` autoStash
+### autoStash
 
-• **autoStash**? : *undefined | false | true*
+• `Optional` **autoStash**: *boolean*
 
 Auto stashes the uncommited changes on starting a git flow branch.
 After the git flow branch was created, the latest stash is popped.
@@ -34,18 +32,18 @@ After the git flow branch was created, the latest stash is popped.
 
 ___
 
-### `Optional` bumpVersionFiles
+### bumpVersionFiles
 
-• **bumpVersionFiles**? : *string[]*
+• `Optional` **bumpVersionFiles**: *string*[]
 
 Specifies the JSON files containing a version attribute to be overwritten if the version changes.
 *DEFAULTS*: 'package.json' and 'package-lock.json'
 
 ___
 
-### `Optional` changelog
+### changelog
 
-• **changelog**? : *[ChangelogConfig](configs.changelogconfig.md)*
+• `Optional` **changelog**: [*ChangelogConfig*](configs.changelogconfig.md)
 
 Sets the configuration of the changelog.
 
@@ -61,9 +59,9 @@ Sets the configuration of the changelog.
 
 ___
 
-### `Optional` changelogFileName
+### changelogFileName
 
-• **changelogFileName**? : *undefined | string*
+• `Optional` **changelogFileName**: *string*
 
 Specifies the name of the changelog.
 *DEFAULTS*: CHANGELOG.md
@@ -72,9 +70,9 @@ Specifies the name of the changelog.
 
 ___
 
-### `Optional` conventionalChangelogPresent
+### conventionalChangelogPresent
 
-• **conventionalChangelogPresent**? : *undefined | string*
+• `Optional` **conventionalChangelogPresent**: *string*
 
 Specifies the conventional commit format.
 The selectable options are:
@@ -93,9 +91,9 @@ This loader is used to load the corresponding present.
 
 ___
 
-### `Optional` conventionalCommit
+### conventionalCommit
 
-• **conventionalCommit**? : *[ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig)*
+• `Optional` **conventionalCommit**: Options
 
 Sets the conventional commit [options of conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options)
 
@@ -121,7 +119,7 @@ Additional *DEFAULTS*:
 
 ___
 
-###  projectPath
+### projectPath
 
 • **projectPath**: *string*
 
@@ -129,20 +127,20 @@ Path to the node project folder / git repository.
 
 ___
 
-### `Optional` storeLatestChangelog
+### storeLatestChangelog
 
-• **storeLatestChangelog**? : *undefined | false | true*
+• `Optional` **storeLatestChangelog**: *boolean*
 
-Set this flag to keep the changelog of the latest release as [changelogFileName](configs.projectconfig.md#optional-changelogfilename).latest.md.
+Set this flag to keep the changelog of the latest release as [changelogFileName](configs.projectconfig.md#changelogfilename).latest.md.
 This file can be useful for some other tools which processes the release information (ex. gitlab).
 
 **`deprecated`** This property was moved to the option `changelog`. This property will be removed in version 3.*.
 
 ___
 
-### `Optional` versionFile
+### versionFile
 
-• **versionFile**? : *undefined | string*
+• `Optional` **versionFile**: *string*
 
 Specifies the primary version file containing the version of the project.
 *DEFAULTS*: 'package.json'

@@ -33,6 +33,8 @@ export class FeatureGitFlowBranch extends AvhGitFlowBranch {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The configuration of the feature git flow branch.
    */
   public async getConfig(): Promise<GitFlowBranchConfig> {
     const config = await this.configProvider?.get();

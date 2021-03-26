@@ -43,6 +43,8 @@ export class GitFlowBashExecuter {
    * Executes the a git flow command via command line.
    *
    * @param args - Arguments for git flow command execution.
+   *
+   * @returns The result of the executed command.
    */
   public static async execute(args: GitFlowCommandArgs): Promise<string> {
     let cmd = '';

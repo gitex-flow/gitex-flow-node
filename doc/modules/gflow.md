@@ -1,12 +1,12 @@
-[gitex-flow](../README.md) › [gflow](gflow.md)
+[gitex-flow](../README.md) / gflow
 
 # Module: gflow
 
-## Index
+## Table of contents
 
 ### Classes
 
-* [GFlow](../classes/gflow.gflow-1.md)
-* [GFlowBranch](../classes/gflow.gflowbranch.md)
-* [GFlowHotFixBranch](../classes/gflow.gflowhotfixbranch.md)
-* [GFlowReleaseBranch](../classes/gflow.gflowreleasebranch.md)
+- [GFlow](../classes/gflow.gflow-1.md)
+- [GFlowBranch](../classes/gflow.gflowbranch.md)
+- [GFlowHotFixBranch](../classes/gflow.gflowhotfixbranch.md)
+- [GFlowReleaseBranch](../classes/gflow.gflowreleasebranch.md)

@@ -1,20 +1,22 @@
-[gitex-flow](../README.md) › [changelog](../modules/changelog.md) › [ChangelogType](changelog.changelogtype.md)
+[gitex-flow](../README.md) / [changelog](../modules/changelog.md) / ChangelogType
 
 # Enumeration: ChangelogType
 
+[changelog](../modules/changelog.md).ChangelogType
+
 Enum of all available changelog types.
 
-## Index
+## Table of contents
 
 ### Enumeration members
 
-* [ConventionalChangelog](changelog.changelogtype.md#conventionalchangelog)
-* [KeepAChangelog](changelog.changelogtype.md#keepachangelog)
-* [None](changelog.changelogtype.md#none)
+- [ConventionalChangelog](changelog.changelogtype.md#conventionalchangelog)
+- [KeepAChangelog](changelog.changelogtype.md#keepachangelog)
+- [None](changelog.changelogtype.md#none)
 
 ## Enumeration members
 
-###  ConventionalChangelog
+### ConventionalChangelog
 
 • **ConventionalChangelog**: = "ConventionalChangelog"
 
@@ -22,7 +24,7 @@ Enum of all available changelog types.
 
 ___
 
-###  KeepAChangelog
+### KeepAChangelog
 
 • **KeepAChangelog**: = "KeepAChangelog"
 
@@ -30,7 +32,7 @@ ___
 
 ___
 
-###  None
+### None
 
 • **None**: = "None"
 

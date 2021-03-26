@@ -57,6 +57,8 @@ export class GitRepository {
 
   /**
    * Retrieves the current status of the git repository.
+   *
+   * @returns The status of the git repository.
    */
   public async status(): Promise<StatusResult> {
     const repo = await this.createOrOpenRepo();
@@ -89,6 +91,8 @@ export class GitRepository {
 
   /**
    * Stashes the uncommited changes from the current branch.
+   *
+   * @returns The message of the stashing.
    */
   public async stash(): Promise<string> {
     const repo = await this.createOrOpenRepo();
@@ -118,6 +122,8 @@ export class GitRepository {
 
   /**
    * Returns the most recent released version tag (semantic version).
+   *
+   * @returns The version of the latest release.
    */
   public async getLatestReleasedVersion(): Promise<string | undefined> {
     const repo = await this.createOrOpenRepo();
@@ -127,6 +133,8 @@ export class GitRepository {
 
   /**
    * Collects all commit messages since the last release.
+   *
+   * @returns The logs since the last release.
    */
   public async getLogsSinceLastRelease(): Promise<GitLog[]> {
     const logs = await this.getDiffLogs();

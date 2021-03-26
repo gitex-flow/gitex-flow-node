@@ -30,25 +30,43 @@ export class GitFlowTester {
     });
   }
 
+  /**
+   * Init the git flow tester.
+   */
   public async init(): Promise<void> {
     await this.dispose();
     await GitFlowTester.ensureGitFlowRepo(this.gitFlow, this.repo);
   }
 
+  /**
+   * Disposes the git flow tester.
+   */
   public async dispose(): Promise<void> {
     await this.repo.remove();
   }
 
+  /**
+   * Clears the cache.
+   */
   public static async clearCache(): Promise<void> {
     await emptyDir(GitFlowTester.CachedGitFlowRepo);
     await rmdir(GitFlowTester.CachedGitFlowRepo);
   }
 
+  /**
+   * Asserts the version.
+   */
   public async assertVersion(): Promise<void> {
     const version = await this.gitFlow.version();
     assert.match(version, /^[0-9]+.[0-9]+.[0-9]+.*/);
   }
 
+  /**
+   * Asserts the initialization of the test git flow.
+   *
+   * @param config - The git flow configuration.
+   * @param force - Flag to force the initialization.
+   */
   public async assertInit(config?: GitFlowConfig, force?: boolean): Promise<void> {
     await this.repo.ensure();
     await this.gitFlow.init(config, force);
@@ -63,14 +81,29 @@ export class GitFlowTester {
     assert.equal(activeConfig.versionTagPrefix, config?.versionTagPrefix);
   }
 
+  /**
+   * Checks out the development branch.
+   */
   public async checkoutDevelopBranch(): Promise<void> {
     await this.checkoutBranch('develop');
   }
 
+  /**
+   * Checks out a branch.
+   *
+   * @param branchName - The branch name to be checked out.
+   */
   public async checkoutBranch(branchName: string): Promise<void> {
     await this.repo.checkout(branchName);
   }
 
+  /**
+   * Select the given git flow branch.
+   *
+   * @param type - The git flow branch type to be selected.
+   *
+   * @returns The selected git flow branch.
+   */
   public selectBranch(type: GitFlowBranchType): TestBranch {
     switch (type) {
       case 'bugfix':
@@ -126,27 +159,64 @@ export class TestBranch implements GitFlowBranch {
     this.defaultBase = branch.defaultBase;
   }
 
+  /**
+   * Gets the test git flow branch configuration.
+   *
+   * @returns The git flow branch configuration.
+   */
   public getConfig(): Promise<GitFlowBranchConfig> {
     return this.branch.getConfig();
   }
 
+  /**
+   * Retrieves all test  branches from the current type.
+   *
+   * @returns All open branches from the current type.
+   */
   public list(): Promise<string[]> {
     return this.branch.list();
   }
 
+  /**
+   * Starts the current test git flow branch.
+   *
+   * @param name - The name of the git flow branch.
+   * @param base - The base of the git flow branch.
+   *
+   * @returns The name with its prefix.
+   */
   public async start(name?: string | undefined, base?: string | undefined): Promise<string> {
     this.branchName = await this.branch.start(name, base);
     return this.branchName;
   }
 
+  /**
+   * Finishes the current test git flow branch.
+   *
+   * @param name - The name of the git flow branch.
+   * @param msg - The message to finish the test git flow branch.
+   */
   public async finish(name?: string | undefined, msg?: string | undefined): Promise<void> {
     await this.branch.finish(name, msg);
   }
 
+  /**
+   * Generates the test git flow branch name.
+   *
+   * @param name - The name of the test git flow branch.
+   *
+   * @returns The test git flow branch name.
+   */
   public async generateBranchName(name?: string): Promise<string | undefined> {
     return name;
   }
 
+  /**
+   * Commits a given file to the test repository.
+   *
+   * @param fileName - The file name to be commited.
+   * @param msg - The commit message.
+   */
   public async commit(fileName: string, msg: string): Promise<void> {
     if (!this.branchName) {
       throw new Error('Branch was not started.');

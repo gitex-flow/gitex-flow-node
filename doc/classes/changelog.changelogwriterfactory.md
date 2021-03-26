@@ -1,33 +1,43 @@
-[gitex-flow](../README.md) › [changelog](../modules/changelog.md) › [ChangelogWriterFactory](changelog.changelogwriterfactory.md)
+[gitex-flow](../README.md) / [changelog](../modules/changelog.md) / ChangelogWriterFactory
 
 # Class: ChangelogWriterFactory
 
+[changelog](../modules/changelog.md).ChangelogWriterFactory
+
 A factory to create [ChangelogWriter](changelog.changelogwriter.md) from a [ChangelogConfig](../interfaces/configs.changelogconfig.md).
 
-## Hierarchy
+## Table of contents
 
-* **ChangelogWriterFactory**
+### Constructors
 
-## Index
+- [constructor](changelog.changelogwriterfactory.md#constructor)
 
 ### Methods
 
-* [create](changelog.changelogwriterfactory.md#static-create)
+- [create](changelog.changelogwriterfactory.md#create)
+
+## Constructors
+
+### constructor
+
+\+ **new ChangelogWriterFactory**(): [*ChangelogWriterFactory*](changelog.changelogwriterfactory.md)
+
+**Returns:** [*ChangelogWriterFactory*](changelog.changelogwriterfactory.md)
 
 ## Methods
 
-### `Static` create
+### create
 
-▸ **create**(`changelogConfig`: [ChangelogConfig](../interfaces/configs.changelogconfig.md)): *[ChangelogWriter](changelog.changelogwriter.md) | undefined*
+▸ `Static`**create**(`changelogConfig`: [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)): *undefined* \| [*ChangelogWriter*](changelog.changelogwriter.md)
 
 Creates an instance of a [ChangelogWriter](changelog.changelogwriter.md) from a [ChangelogConfig](../interfaces/configs.changelogconfig.md).
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`changelogConfig` | [ChangelogConfig](../interfaces/configs.changelogconfig.md) | The changelog configuration to be used.  |
+:------ | :------ | :------ |
+`changelogConfig` | [*ChangelogConfig*](../interfaces/configs.changelogconfig.md) | The changelog configuration to be used.    |
 
-**Returns:** *[ChangelogWriter](changelog.changelogwriter.md) | undefined*
+**Returns:** *undefined* \| [*ChangelogWriter*](changelog.changelogwriter.md)
 
 The instance of the created ChangelogWriter or `undefined`.

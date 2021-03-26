@@ -33,6 +33,8 @@ export class ReleaseGitFlowBranch extends AvhGitFlowBranch {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The configuration of the release git flow branch.
    */
   public async getConfig(): Promise<GitFlowBranchConfig> {
     const config = await this.configProvider?.get();

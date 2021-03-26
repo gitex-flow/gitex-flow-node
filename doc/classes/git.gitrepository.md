@@ -1,140 +1,142 @@
-[gitex-flow](../README.md) › [git](../modules/git.md) › [GitRepository](git.gitrepository.md)
+[gitex-flow](../README.md) / [git](../modules/git.md) / GitRepository
 
 # Class: GitRepository
 
+[git](../modules/git.md).GitRepository
+
 A simple API with basic functionality of a git repository.
 
-## Hierarchy
-
-* **GitRepository**
-
-## Index
+## Table of contents
 
 ### Constructors
 
-* [constructor](git.gitrepository.md#constructor)
+- [constructor](git.gitrepository.md#constructor)
 
 ### Properties
 
-* [config](git.gitrepository.md#protected-optional-config)
+- [config](git.gitrepository.md#config)
 
 ### Methods
 
-* [checkout](git.gitrepository.md#checkout)
-* [commit](git.gitrepository.md#commit)
-* [ensure](git.gitrepository.md#ensure)
-* [ensureNoUnCommitedChanges](git.gitrepository.md#ensurenouncommitedchanges)
-* [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
-* [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
-* [getRepoPath](git.gitrepository.md#getrepopath)
-* [popLatestStash](git.gitrepository.md#poplateststash)
-* [remove](git.gitrepository.md#remove)
-* [stash](git.gitrepository.md#stash)
-* [status](git.gitrepository.md#status)
+- [checkout](git.gitrepository.md#checkout)
+- [commit](git.gitrepository.md#commit)
+- [ensure](git.gitrepository.md#ensure)
+- [ensureNoUnCommitedChanges](git.gitrepository.md#ensurenouncommitedchanges)
+- [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
+- [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
+- [getRepoPath](git.gitrepository.md#getrepopath)
+- [popLatestStash](git.gitrepository.md#poplateststash)
+- [remove](git.gitrepository.md#remove)
+- [stash](git.gitrepository.md#stash)
+- [status](git.gitrepository.md#status)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new GitRepository**(`config?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[GitRepository](git.gitrepository.md)*
+\+ **new GitRepository**(`config?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*GitRepository*](git.gitrepository.md)
 
 Initializes a new instance of this class.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`config?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | The project configuration.  |
+:------ | :------ | :------ |
+`config?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | The project configuration.    |
 
-**Returns:** *[GitRepository](git.gitrepository.md)*
+**Returns:** [*GitRepository*](git.gitrepository.md)
 
 ## Properties
 
-### `Protected` `Optional` config
+### config
 
-• **config**? : *[ProjectConfig](../interfaces/configs.projectconfig.md)*
+• `Protected` `Optional` **config**: [*ProjectConfig*](../interfaces/configs.projectconfig.md)
 
 ## Methods
 
-###  checkout
+### checkout
 
-▸ **checkout**(`branchName`: string): *Promise‹void›*
+▸ **checkout**(`branchName`: *string*): *Promise*<void\>
 
 Checks out a given branch.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`branchName` | string | Name of the branch to be checked out.  |
+:------ | :------ | :------ |
+`branchName` | *string* | Name of the branch to be checked out.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-###  commit
+### commit
 
-▸ **commit**(`fileNames`: string[], `message`: string, `authorName?`: undefined | string, `authorMail?`: undefined | string): *Promise‹string›*
+▸ **commit**(`fileNames`: *string*[], `message`: *string*, `authorName?`: *string*, `authorMail?`: *string*): *Promise*<string\>
 
 Adds and commits the given file names to the current branch.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`fileNames` | string[] | Relative file paths to be added before commit. |
-`message` | string | Commit message. |
-`authorName?` | undefined &#124; string | The name of the author. |
-`authorMail?` | undefined &#124; string | Mail address of the author.  |
+:------ | :------ | :------ |
+`fileNames` | *string*[] | Relative file paths to be added before commit.   |
+`message` | *string* | Commit message.   |
+`authorName?` | *string* | The name of the author.   |
+`authorMail?` | *string* | Mail address of the author.    |
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
 
 The hash of the commit.
 
 ___
 
-###  ensure
+### ensure
 
-▸ **ensure**(): *Promise‹void›*
+▸ **ensure**(): *Promise*<void\>
 
 Ensures the repository exists.
 If it doesn't exist it will be created.
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-###  ensureNoUnCommitedChanges
+### ensureNoUnCommitedChanges
 
-▸ **ensureNoUnCommitedChanges**(): *Promise‹void›*
+▸ **ensureNoUnCommitedChanges**(): *Promise*<void\>
 
 Ensures there are no uncommited changes (staged and unstaged) in the local workspace.
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-###  getLatestReleasedVersion
+### getLatestReleasedVersion
 
-▸ **getLatestReleasedVersion**(): *Promise‹string | undefined›*
+▸ **getLatestReleasedVersion**(): *Promise*<undefined \| string\>
 
 Returns the most recent released version tag (semantic version).
 
-**Returns:** *Promise‹string | undefined›*
+**Returns:** *Promise*<undefined \| string\>
+
+The version of the latest release.
 
 ___
 
-###  getLogsSinceLastRelease
+### getLogsSinceLastRelease
 
-▸ **getLogsSinceLastRelease**(): *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+▸ **getLogsSinceLastRelease**(): *Promise*<[*GitLog*](../interfaces/git.gitlog.md)[]\>
 
 Collects all commit messages since the last release.
 
-**Returns:** *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+**Returns:** *Promise*<[*GitLog*](../interfaces/git.gitlog.md)[]\>
+
+The logs since the last release.
 
 ___
 
-###  getRepoPath
+### getRepoPath
 
 ▸ **getRepoPath**(): *string*
 
@@ -146,40 +148,44 @@ The path to the git repository.
 
 ___
 
-###  popLatestStash
+### popLatestStash
 
-▸ **popLatestStash**(): *Promise‹void›*
+▸ **popLatestStash**(): *Promise*<void\>
 
 Pops stash with a given name.
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-###  remove
+### remove
 
-▸ **remove**(): *Promise‹void›*
+▸ **remove**(): *Promise*<void\>
 
 Gets the path of the git repository.
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-###  stash
+### stash
 
-▸ **stash**(): *Promise‹string›*
+▸ **stash**(): *Promise*<string\>
 
 Stashes the uncommited changes from the current branch.
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
+
+The message of the stashing.
 
 ___
 
-###  status
+### status
 
-▸ **status**(): *Promise‹StatusResult›*
+▸ **status**(): *Promise*<StatusResult\>
 
 Retrieves the current status of the git repository.
 
-**Returns:** *Promise‹StatusResult›*
+**Returns:** *Promise*<StatusResult\>
+
+The status of the git repository.

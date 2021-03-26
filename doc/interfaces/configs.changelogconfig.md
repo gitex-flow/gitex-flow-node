@@ -1,62 +1,64 @@
-[gitex-flow](../README.md) › [configs](../modules/configs.md) › [ChangelogConfig](configs.changelogconfig.md)
+[gitex-flow](../README.md) / [configs](../modules/configs.md) / ChangelogConfig
 
 # Interface: ChangelogConfig
+
+[configs](../modules/configs.md).ChangelogConfig
 
 Configuration for the changelog creation.
 
 ## Hierarchy
 
-* [ChangelogWriterOptions](changelog.changelogwriteroptions.md)
+* [*ChangelogWriterOptions*](changelog.changelogwriteroptions.md)
 
   ↳ **ChangelogConfig**
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [basePath](configs.changelogconfig.md#optional-basepath)
-* [changelogFileName](configs.changelogconfig.md#optional-changelogfilename)
-* [storeLatestChangelog](configs.changelogconfig.md#optional-storelatestchangelog)
-* [type](configs.changelogconfig.md#type)
+- [basePath](configs.changelogconfig.md#basepath)
+- [changelogFileName](configs.changelogconfig.md#changelogfilename)
+- [storeLatestChangelog](configs.changelogconfig.md#storelatestchangelog)
+- [type](configs.changelogconfig.md#type)
 
 ## Properties
 
-### `Optional` basePath
+### basePath
 
-• **basePath**? : *undefined | string*
-
-*Inherited from [ConventionalChangelogWriterOptions](changelog.conventionalchangelogwriteroptions.md).[basePath](changelog.conventionalchangelogwriteroptions.md#optional-basepath)*
+• `Optional` **basePath**: *string*
 
 Path to the node project folder / git repository.
 
+Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[basePath](changelog.changelogwriteroptions.md#basepath)
+
 ___
 
-### `Optional` changelogFileName
+### changelogFileName
 
-• **changelogFileName**? : *undefined | string*
-
-*Inherited from [ConventionalChangelogWriterOptions](changelog.conventionalchangelogwriteroptions.md).[changelogFileName](changelog.conventionalchangelogwriteroptions.md#optional-changelogfilename)*
+• `Optional` **changelogFileName**: *string*
 
 Specifies the name of the changelog.
 
 *DEFAULT*: CHANGELOG.md
 
+Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[changelogFileName](changelog.changelogwriteroptions.md#changelogfilename)
+
 ___
 
-### `Optional` storeLatestChangelog
+### storeLatestChangelog
 
-• **storeLatestChangelog**? : *undefined | false | true*
+• `Optional` **storeLatestChangelog**: *boolean*
 
-*Inherited from [ConventionalChangelogWriterOptions](changelog.conventionalchangelogwriteroptions.md).[storeLatestChangelog](changelog.conventionalchangelogwriteroptions.md#optional-storelatestchangelog)*
-
-Set this flag to keep the changelog of the latest release as [changelogFileName](configs.changelogconfig.md#optional-changelogfilename).latest.md.
+Set this flag to keep the changelog of the latest release as [changelogFileName](configs.changelogconfig.md#changelogfilename).latest.md.
 This file can be useful for some other tools which processes the release information (ex. gitlab).
 
+Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[storeLatestChangelog](changelog.changelogwriteroptions.md#storelatestchangelog)
+
 ___
 
-###  type
+### type
 
-• **type**: *[ChangelogType](../enums/changelog.changelogtype.md) | string*
+• **type**: *string*
 
 The type of the changelog.
 This option indicates which type of changelog should be parsed and generated.

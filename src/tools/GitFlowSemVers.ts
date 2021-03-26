@@ -23,6 +23,8 @@ export class GitFlowSemVers {
    *
    * @param type - Type of the branch should be created.
    * @param version - A optional custom version to be used.
+   *
+   * @returns The calculated branch version.
    */
   public async calculateBranchVersion(type: GitFlowBranchType, version?: string): Promise<string | undefined> {
     if (type == 'hotfix' || type == 'release') {

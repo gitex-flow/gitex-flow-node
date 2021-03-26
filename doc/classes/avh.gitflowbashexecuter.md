@@ -1,31 +1,43 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [GitFlowBashExecuter](avh.gitflowbashexecuter.md)
+[gitex-flow](../README.md) / [avh](../modules/avh.md) / GitFlowBashExecuter
 
 # Class: GitFlowBashExecuter
 
+[avh](../modules/avh.md).GitFlowBashExecuter
+
 Executer for git flow commands via command line.
 
-## Hierarchy
+## Table of contents
 
-* **GitFlowBashExecuter**
+### Constructors
 
-## Index
+- [constructor](avh.gitflowbashexecuter.md#constructor)
 
 ### Methods
 
-* [execute](avh.gitflowbashexecuter.md#static-execute)
+- [execute](avh.gitflowbashexecuter.md#execute)
+
+## Constructors
+
+### constructor
+
+\+ **new GitFlowBashExecuter**(): [*GitFlowBashExecuter*](avh.gitflowbashexecuter.md)
+
+**Returns:** [*GitFlowBashExecuter*](avh.gitflowbashexecuter.md)
 
 ## Methods
 
-### `Static` execute
+### execute
 
-▸ **execute**(`args`: [GitFlowCommandArgs](../interfaces/avh.gitflowcommandargs.md)): *Promise‹string›*
+▸ `Static`**execute**(`args`: [*GitFlowCommandArgs*](../interfaces/avh.gitflowcommandargs.md)): *Promise*<string\>
 
 Executes the a git flow command via command line.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`args` | [GitFlowCommandArgs](../interfaces/avh.gitflowcommandargs.md) | Arguments for git flow command execution.  |
+:------ | :------ | :------ |
+`args` | [*GitFlowCommandArgs*](../interfaces/avh.gitflowcommandargs.md) | Arguments for git flow command execution.    |
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
+
+The result of the executed command.

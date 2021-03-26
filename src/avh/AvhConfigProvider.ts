@@ -38,6 +38,8 @@ export class AvhConfigProvider implements ConfigProvider<GitFlowConfig> {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The git flow configuration.
    */
   public async get(): Promise<GitFlowConfig> {
     const output = await GitFlowBashExecuter.execute({

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { join } from 'path';
 import { GitRepository } from '../git/GitRepository';
 import { readJson, pathExists } from 'fs-extra';
@@ -50,6 +49,8 @@ export class GitFlowNodeProject {
 
   /**
    * Stashes the uncommited changes from the current branch.
+   *
+   * @returns `true` if stash was successful, otherwise `false`.
    */
   public async stash(): Promise<boolean> {
     const status = await this.gitRepository.status();
@@ -61,8 +62,9 @@ export class GitFlowNodeProject {
   }
 
   /**
-   * Pops stash with a given name.
+   * Pops the latest stash.
    *
+   * @returns Promise on popping the latest stash.
    */
   public async popLatestStash(): Promise<void> {
     return this.gitRepository.popLatestStash();
@@ -70,6 +72,8 @@ export class GitFlowNodeProject {
 
   /**
    * Gets the current branch.
+   *
+   * @returns The current branch checked out.
    */
   public async getCurrentBranch(): Promise<string> {
     const status = await this.gitRepository.status();
@@ -149,6 +153,8 @@ export class GitFlowNodeProject {
 
   /**
    * Gets the current version from the package.json.
+   *
+   * @returns The version of the project.
    */
   public async getVersion(): Promise<string> {
     const versionFile = this.options.versionFile as string;

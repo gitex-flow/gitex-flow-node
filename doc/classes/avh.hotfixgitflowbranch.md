@@ -1,169 +1,159 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)
+[gitex-flow](../README.md) / [avh](../modules/avh.md) / HotfixGitFlowBranch
 
 # Class: HotfixGitFlowBranch
+
+[avh](../modules/avh.md).HotfixGitFlowBranch
 
 This class wraps the hotfix branch of the AVH implementation.
 
 ## Hierarchy
 
-* [AvhGitFlowBranch](avh.avhgitflowbranch.md)
+* [*AvhGitFlowBranch*](avh.avhgitflowbranch.md)
 
   ↳ **HotfixGitFlowBranch**
 
-## Implements
-
-* [GitFlowBranch](../interfaces/api.gitflowbranch.md)
-
-## Index
+## Table of contents
 
 ### Constructors
 
-* [constructor](avh.hotfixgitflowbranch.md#constructor)
+- [constructor](avh.hotfixgitflowbranch.md#constructor)
 
 ### Properties
 
-* [defaultBase](avh.hotfixgitflowbranch.md#readonly-defaultbase)
-* [type](avh.hotfixgitflowbranch.md#readonly-type)
+- [defaultBase](avh.hotfixgitflowbranch.md#defaultbase)
+- [type](avh.hotfixgitflowbranch.md#type)
 
 ### Methods
 
-* [finish](avh.hotfixgitflowbranch.md#finish)
-* [generateBranchName](avh.hotfixgitflowbranch.md#generatebranchname)
-* [getConfig](avh.hotfixgitflowbranch.md#getconfig)
-* [list](avh.hotfixgitflowbranch.md#list)
-* [start](avh.hotfixgitflowbranch.md#start)
+- [finish](avh.hotfixgitflowbranch.md#finish)
+- [generateBranchName](avh.hotfixgitflowbranch.md#generatebranchname)
+- [getConfig](avh.hotfixgitflowbranch.md#getconfig)
+- [list](avh.hotfixgitflowbranch.md#list)
+- [start](avh.hotfixgitflowbranch.md#start)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new HotfixGitFlowBranch**(`repoPath?`: undefined | string, `configProvider?`: [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)›): *[HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)*
-
-*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[constructor](avh.avhgitflowbranch.md#constructor)*
+\+ **new HotfixGitFlowBranch**(`repoPath?`: *string*, `configProvider?`: [*ConfigProvider*](../interfaces/api.configprovider.md)<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>): [*HotfixGitFlowBranch*](avh.hotfixgitflowbranch.md)
 
 Initializes a new instance of this class.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`repoPath?` | undefined &#124; string | The path to the git repository. |
-`configProvider?` | [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/configs.gitflowconfig.md)› | Git flow config provider.  |
+:------ | :------ | :------ |
+`repoPath?` | *string* | The path to the git repository.   |
+`configProvider?` | [*ConfigProvider*](../interfaces/api.configprovider.md)<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\> | Git flow config provider.    |
 
-**Returns:** *[HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)*
+**Returns:** [*HotfixGitFlowBranch*](avh.hotfixgitflowbranch.md)
+
+Overrides: [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
 ## Properties
 
-### `Readonly` defaultBase
+### defaultBase
 
-• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)* = "master"
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
-
-*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[defaultBase](avh.avhgitflowbranch.md#readonly-abstract-defaultbase)*
+• `Readonly` **defaultBase**: [*GitFlowBaseBranchType*](../modules/api.md#gitflowbasebranchtype)= 'master'
 
 {@inheritdoc}
+
+Overrides: [AvhGitFlowBranch](avh.avhgitflowbranch.md).[defaultBase](avh.avhgitflowbranch.md#defaultbase)
 
 ___
 
-### `Readonly` type
+### type
 
-• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)* = "hotfix"
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
-
-*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[type](avh.avhgitflowbranch.md#readonly-abstract-type)*
+• `Readonly` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)= 'hotfix'
 
 {@inheritdoc}
+
+Overrides: [AvhGitFlowBranch](avh.avhgitflowbranch.md).[type](avh.avhgitflowbranch.md#type)
 
 ## Methods
 
-###  finish
+### finish
 
-▸ **finish**(`name?`: undefined | string, `msg?`: undefined | string): *Promise‹void›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[finish](avh.avhgitflowbranch.md#finish)*
+▸ **finish**(`name?`: *string*, `msg?`: *string*): *Promise*<void\>
 
 {@inheritdoc}
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | Name of the branch to be finished. |
-`msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
+:------ | :------ | :------ |
+`name?` | *string* | Name of the branch to be finished.   |
+`msg?` | *string* | Message to be set for finishing the branch.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
+
+Inherited from: [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
 ___
 
-###  generateBranchName
+### generateBranchName
 
-▸ **generateBranchName**(`name?`: undefined | string): *Promise‹string | undefined›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[generateBranchName](avh.avhgitflowbranch.md#generatebranchname)*
+▸ **generateBranchName**(`name?`: *string*): *Promise*<undefined \| string\>
 
 {@inheritdoc}
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | A custom name for the branch.  |
+:------ | :------ | :------ |
+`name?` | *string* | A custom name for the branch.    |
 
-**Returns:** *Promise‹string | undefined›*
+**Returns:** *Promise*<undefined \| string\>
 
-___
+The generated branch name.
 
-###  getConfig
-
-▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Overrides [AvhGitFlowBranch](avh.avhgitflowbranch.md).[getConfig](avh.avhgitflowbranch.md#abstract-getconfig)*
-
-{@inheritdoc}
-
-**Returns:** *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
+Inherited from: [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
 ___
 
-###  list
+### getConfig
 
-▸ **list**(): *Promise‹string[]›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[list](avh.avhgitflowbranch.md#list)*
+▸ **getConfig**(): *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
 
 {@inheritdoc}
 
-**Returns:** *Promise‹string[]›*
+**Returns:** *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
+
+The configuration of the hotfix git flow branch.
+
+Overrides: [AvhGitFlowBranch](avh.avhgitflowbranch.md)
 
 ___
 
-###  start
+### list
 
-▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹string›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Inherited from [AvhGitFlowBranch](avh.avhgitflowbranch.md).[start](avh.avhgitflowbranch.md#start)*
+▸ **list**(): *Promise*<string[]\>
 
 {@inheritdoc}
 
-**Parameters:**
+**Returns:** *Promise*<string[]\>
+
+The list of the currently opened branch.
+
+Inherited from: [AvhGitFlowBranch](avh.avhgitflowbranch.md)
+
+___
+
+### start
+
+▸ **start**(`name?`: *string*, `base?`: *string*): *Promise*<string\>
+
+{@inheritdoc}
+
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | Name of the branch to be started. |
-`base?` | undefined &#124; string | Base of the branch should be started from. |
+:------ | :------ | :------ |
+`name?` | *string* | Name of the branch to be started.   |
+`base?` | *string* | Base of the branch should be started from.   |
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
 
 The git reference of the create branch.
+
+Inherited from: [AvhGitFlowBranch](avh.avhgitflowbranch.md)

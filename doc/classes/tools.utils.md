@@ -1,67 +1,75 @@
-[gitex-flow](../README.md) › [tools](../modules/tools.md) › [Utils](tools.utils.md)
+[gitex-flow](../README.md) / [tools](../modules/tools.md) / Utils
 
 # Class: Utils
 
+[tools](../modules/tools.md).Utils
+
 Provides some utility functions.
 
-## Hierarchy
+## Table of contents
 
-* **Utils**
+### Constructors
 
-## Index
+- [constructor](tools.utils.md#constructor)
 
 ### Methods
 
-* [deriveChangelogConfig](tools.utils.md#static-derivechangelogconfig)
-* [exec](tools.utils.md#static-exec)
-* [getCurrDate](tools.utils.md#static-getcurrdate)
-* [parseConventionalCommits](tools.utils.md#static-parseconventionalcommits)
-* [parseConventionalCommitsViaPipe](tools.utils.md#static-parseconventionalcommitsviapipe)
-* [pipe](tools.utils.md#static-pipe)
-* [printBranches](tools.utils.md#static-printbranches)
-* [printConfig](tools.utils.md#static-printconfig)
+- [deriveChangelogConfig](tools.utils.md#derivechangelogconfig)
+- [exec](tools.utils.md#exec)
+- [getCurrDate](tools.utils.md#getcurrdate)
+- [parseConventionalCommits](tools.utils.md#parseconventionalcommits)
+- [parseConventionalCommitsViaPipe](tools.utils.md#parseconventionalcommitsviapipe)
+- [pipe](tools.utils.md#pipe)
+- [printBranches](tools.utils.md#printbranches)
+- [printConfig](tools.utils.md#printconfig)
+
+## Constructors
+
+### constructor
+
+\+ **new Utils**(): [*Utils*](tools.utils.md)
+
+**Returns:** [*Utils*](tools.utils.md)
 
 ## Methods
 
-### `Static` deriveChangelogConfig
+### deriveChangelogConfig
 
-▸ **deriveChangelogConfig**(`projectConfig?`: [ProjectConfig](../interfaces/configs.projectconfig.md)): *[ChangelogConfig](../interfaces/configs.changelogconfig.md)*
+▸ `Static`**deriveChangelogConfig**(`projectConfig?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)
 
-Derives the [ChangelogConfig](../interfaces/configs.changelogconfig.md) from a given [projectConfig](../interfaces/configs.gflowconfig.md#optional-projectconfig).
+Derives the [ChangelogConfig](../interfaces/configs.changelogconfig.md) from a given [projectConfig](../interfaces/configs.gflowconfig.md#projectconfig).
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`projectConfig?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | The project configuration.  |
+:------ | :------ | :------ |
+`projectConfig?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | The project configuration.    |
 
-**Returns:** *[ChangelogConfig](../interfaces/configs.changelogconfig.md)*
+**Returns:** [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)
 
 The derived changelog config.
 
 ___
 
-### `Static` exec
+### exec
 
-▸ **exec**(`command`: function): *Promise‹void›*
+▸ `Static`**exec**(`command`: () => *Promise*<string \| void\>): *Promise*<void\>
 
 Executes a command and suppresses errors if they are thrown.
 
-**Parameters:**
+#### Parameters:
 
-▪ **command**: *function*
+Name | Type | Description |
+:------ | :------ | :------ |
+`command` | () => *Promise*<string \| void\> | Command to be executed.    |
 
-Command to be executed.
-
-▸ (): *Promise‹string | void›*
-
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-### `Static` getCurrDate
+### getCurrDate
 
-▸ **getCurrDate**(): *string*
+▸ `Static`**getCurrDate**(): *string*
 
 Gets the current date formatted as yyyy-mm-dd.
 
@@ -71,36 +79,36 @@ date in fomat yyyy-mm-dd.
 
 ___
 
-### `Static` parseConventionalCommits
+### parseConventionalCommits
 
-▸ **parseConventionalCommits**(`commitMessages`: string[], `conventionalCommitConfig?`: [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig)): *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+▸ `Static`**parseConventionalCommits**(`commitMessages`: *string*[], `conventionalCommitConfig?`: Options): *Promise*<[*GitLog*](../interfaces/git.gitlog.md)[]\>
 
 Parses conventional commit messages to a [GitLog](../interfaces/git.gitlog.md) array.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`commitMessages` | string[] | The commit messages. |
-`conventionalCommitConfig?` | [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig) | The configuration of the conventional commit parser. |
+:------ | :------ | :------ |
+`commitMessages` | *string*[] | The commit messages.   |
+`conventionalCommitConfig?` | Options | The configuration of the conventional commit parser.   |
 
-**Returns:** *Promise‹[GitLog](../interfaces/git.gitlog.md)[]›*
+**Returns:** *Promise*<[*GitLog*](../interfaces/git.gitlog.md)[]\>
 
 The parsed conventional commit messages as an array of [[GitLogs]].
 
 ___
 
-### `Static` parseConventionalCommitsViaPipe
+### parseConventionalCommitsViaPipe
 
-▸ **parseConventionalCommitsViaPipe**(`conventionalCommitConfig?`: [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig)): *Transform*
+▸ `Static`**parseConventionalCommitsViaPipe**(`conventionalCommitConfig?`: Options): *Transform*
 
 Parses conventional commit messages via a stream.Transform pipe.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`conventionalCommitConfig?` | [ConventionalCommitConfig](../modules/configs.md#conventionalcommitconfig) | The configuration of the conventional commit parser. |
+:------ | :------ | :------ |
+`conventionalCommitConfig?` | Options | The configuration of the conventional commit parser.   |
 
 **Returns:** *Transform*
 
@@ -108,52 +116,52 @@ The parsed conventional commit messages as transformed stream.
 
 ___
 
-### `Static` pipe
+### pipe
 
-▸ **pipe**(`src`: Readable, `dest`: Writable, `destroy`: boolean): *Promise‹void›*
+▸ `Static`**pipe**(`src`: *Readable*, `dest`: *Writable*, `destroy?`: *boolean*): *Promise*<void\>
 
 Pipes a readable stream asynchrounously to a writable stream with error handling.
 
-**Parameters:**
+#### Parameters:
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`src` | Readable | - | The readable source stream. |
-`dest` | Writable | - | The writable destination stream. |
-`destroy` | boolean | true | Specifies if the streams should be destroyed on finish.  |
+Name | Type | Default value | Description |
+:------ | :------ | :------ | :------ |
+`src` | *Readable* | - | The readable source stream.   |
+`dest` | *Writable* | - | The writable destination stream.   |
+`destroy` | *boolean* | true | Specifies if the streams should be destroyed on finish.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 Promise on copying stream properly.
 
 ___
 
-### `Static` printBranches
+### printBranches
 
-▸ **printBranches**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md)): *Promise‹void›*
+▸ `Static`**printBranches**(`gitFlowBranch`: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)): *Promise*<void\>
 
 Prints the branches to the console.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | The branch type to be printed.  |
+:------ | :------ | :------ |
+`gitFlowBranch` | [*GitFlowBranch*](../interfaces/api.gitflowbranch.md) | The branch type to be printed.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-### `Static` printConfig
+### printConfig
 
-▸ **printConfig**(`gitFlow`: [GFlow](gflow.gflow-1.md)): *Promise‹void›*
+▸ `Static`**printConfig**(`gitFlow`: [*GFlow*](gflow.gflow-1.md)): *Promise*<void\>
 
 Prints the config to the console.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`gitFlow` | [GFlow](gflow.gflow-1.md) | The git flow instance the config should be printed.  |
+:------ | :------ | :------ |
+`gitFlow` | [*GFlow*](gflow.gflow-1.md) | The git flow instance the config should be printed.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>

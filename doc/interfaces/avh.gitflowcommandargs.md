@@ -1,56 +1,54 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [GitFlowCommandArgs](avh.gitflowcommandargs.md)
+[gitex-flow](../README.md) / [avh](../modules/avh.md) / GitFlowCommandArgs
 
 # Interface: GitFlowCommandArgs
 
+[avh](../modules/avh.md).GitFlowCommandArgs
+
 Schema of a git flow command arguments.
 
-## Hierarchy
-
-* **GitFlowCommandArgs**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [action](avh.gitflowcommandargs.md#optional-action)
-* [args](avh.gitflowcommandargs.md#optional-args)
-* [name](avh.gitflowcommandargs.md#optional-name)
-* [options](avh.gitflowcommandargs.md#optional-options)
-* [repositoryPath](avh.gitflowcommandargs.md#optional-repositorypath)
-* [type](avh.gitflowcommandargs.md#optional-type)
+- [action](avh.gitflowcommandargs.md#action)
+- [args](avh.gitflowcommandargs.md#args)
+- [name](avh.gitflowcommandargs.md#name)
+- [options](avh.gitflowcommandargs.md#options)
+- [repositoryPath](avh.gitflowcommandargs.md#repositorypath)
+- [type](avh.gitflowcommandargs.md#type)
 
 ## Properties
 
-### `Optional` action
+### action
 
-• **action**? : *[GitFlowAction](../modules/avh.md#gitflowaction)*
-
-___
-
-### `Optional` args
-
-• **args**? : *string[]*
+• `Optional` **action**: [*GitFlowAction*](../modules/avh.md#gitflowaction)
 
 ___
 
-### `Optional` name
+### args
 
-• **name**? : *undefined | string*
-
-___
-
-### `Optional` options
-
-• **options**? : *undefined | string*
+• `Optional` **args**: *string*[]
 
 ___
 
-### `Optional` repositoryPath
+### name
 
-• **repositoryPath**? : *undefined | string*
+• `Optional` **name**: *string*
 
 ___
 
-### `Optional` type
+### options
 
-• **type**? : *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)*
+• `Optional` **options**: *string*
+
+___
+
+### repositoryPath
+
+• `Optional` **repositoryPath**: *string*
+
+___
+
+### type
+
+• `Optional` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)

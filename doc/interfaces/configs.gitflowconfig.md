@@ -1,70 +1,68 @@
-[gitex-flow](../README.md) › [configs](../modules/configs.md) › [GitFlowConfig](configs.gitflowconfig.md)
+[gitex-flow](../README.md) / [configs](../modules/configs.md) / GitFlowConfig
 
 # Interface: GitFlowConfig
 
+[configs](../modules/configs.md).GitFlowConfig
+
 Configuration of a git flow instance.
 
-## Hierarchy
-
-* **GitFlowConfig**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [bugfixBranchPrefix](configs.gitflowconfig.md#optional-bugfixbranchprefix)
-* [developBranch](configs.gitflowconfig.md#optional-developbranch)
-* [featureBranchPrefix](configs.gitflowconfig.md#optional-featurebranchprefix)
-* [hotfixBranchPrefix](configs.gitflowconfig.md#optional-hotfixbranchprefix)
-* [masterBranch](configs.gitflowconfig.md#optional-masterbranch)
-* [releaseBranchPrefix](configs.gitflowconfig.md#optional-releasebranchprefix)
-* [supportBranchPrefix](configs.gitflowconfig.md#optional-supportbranchprefix)
-* [versionTagPrefix](configs.gitflowconfig.md#optional-versiontagprefix)
+- [bugfixBranchPrefix](configs.gitflowconfig.md#bugfixbranchprefix)
+- [developBranch](configs.gitflowconfig.md#developbranch)
+- [featureBranchPrefix](configs.gitflowconfig.md#featurebranchprefix)
+- [hotfixBranchPrefix](configs.gitflowconfig.md#hotfixbranchprefix)
+- [masterBranch](configs.gitflowconfig.md#masterbranch)
+- [releaseBranchPrefix](configs.gitflowconfig.md#releasebranchprefix)
+- [supportBranchPrefix](configs.gitflowconfig.md#supportbranchprefix)
+- [versionTagPrefix](configs.gitflowconfig.md#versiontagprefix)
 
 ## Properties
 
-### `Optional` bugfixBranchPrefix
+### bugfixBranchPrefix
 
-• **bugfixBranchPrefix**? : *undefined | string*
-
-___
-
-### `Optional` developBranch
-
-• **developBranch**? : *undefined | string*
+• `Optional` **bugfixBranchPrefix**: *string*
 
 ___
 
-### `Optional` featureBranchPrefix
+### developBranch
 
-• **featureBranchPrefix**? : *undefined | string*
-
-___
-
-### `Optional` hotfixBranchPrefix
-
-• **hotfixBranchPrefix**? : *undefined | string*
+• `Optional` **developBranch**: *string*
 
 ___
 
-### `Optional` masterBranch
+### featureBranchPrefix
 
-• **masterBranch**? : *undefined | string*
-
-___
-
-### `Optional` releaseBranchPrefix
-
-• **releaseBranchPrefix**? : *undefined | string*
+• `Optional` **featureBranchPrefix**: *string*
 
 ___
 
-### `Optional` supportBranchPrefix
+### hotfixBranchPrefix
 
-• **supportBranchPrefix**? : *undefined | string*
+• `Optional` **hotfixBranchPrefix**: *string*
 
 ___
 
-### `Optional` versionTagPrefix
+### masterBranch
 
-• **versionTagPrefix**? : *undefined | string*
+• `Optional` **masterBranch**: *string*
+
+___
+
+### releaseBranchPrefix
+
+• `Optional` **releaseBranchPrefix**: *string*
+
+___
+
+### supportBranchPrefix
+
+• `Optional` **supportBranchPrefix**: *string*
+
+___
+
+### versionTagPrefix
+
+• `Optional` **versionTagPrefix**: *string*

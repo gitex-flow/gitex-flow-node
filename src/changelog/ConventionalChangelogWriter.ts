@@ -50,6 +50,8 @@ export class ConventionalChangelogWriter extends ChangelogWriter {
    *
    * @param context - The context information of the git repository.
    * @param logs - The conventional git logs since the last release.
+   *
+   * @returns The stream of the latest changelog.
    */
   protected async createLatestChangelogStream(context: GitRepositoryContext, logs: GitLog[]): Promise<Transform> {
     const present = this.options.conventionalChangelogPresent ?? 'angular';
@@ -64,6 +66,8 @@ export class ConventionalChangelogWriter extends ChangelogWriter {
    *
    * @param latestChangelogStream - The stream with the changelogs since the latest release.
    * @param changelogPath - The file path of the changelog to be merged.
+   *
+   * @returns The stream of the merged changelogs.
    */
   protected async mergeWithChangelog(latestChangelogStream: Readable, changelogPath: string): Promise<Readable> {
     const dir = dirname(changelogPath);

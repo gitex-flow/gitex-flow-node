@@ -1,23 +1,21 @@
-[gitex-flow](../README.md) › [api](../modules/api.md) › [GitFlowBranchConfig](api.gitflowbranchconfig.md)
+[gitex-flow](../README.md) / [api](../modules/api.md) / GitFlowBranchConfig
 
 # Interface: GitFlowBranchConfig
 
+[api](../modules/api.md).GitFlowBranchConfig
+
 Configuration of a git flow branch instance.
 
-## Hierarchy
-
-* **GitFlowBranchConfig**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [prefix](api.gitflowbranchconfig.md#optional-prefix)
+- [prefix](api.gitflowbranchconfig.md#prefix)
 
 ## Properties
 
-### `Optional` prefix
+### prefix
 
-• **prefix**? : *undefined | string*
+• `Optional` **prefix**: *string*
 
 Prefix of the branch ex. 'feature' or 'hotfix'.

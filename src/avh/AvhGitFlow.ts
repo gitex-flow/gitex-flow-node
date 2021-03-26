@@ -70,6 +70,8 @@ export class AvhGitFlow implements GitFlow {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The AVH git flow version.
    */
   public async version(): Promise<string> {
     return await GitFlowBashExecuter.execute({

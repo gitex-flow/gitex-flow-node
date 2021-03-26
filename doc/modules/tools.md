@@ -1,12 +1,12 @@
-[gitex-flow](../README.md) › [tools](tools.md)
+[gitex-flow](../README.md) / tools
 
 # Module: tools
 
-## Index
+## Table of contents
 
 ### Classes
 
-* [GFlowConfigLoader](../classes/tools.gflowconfigloader.md)
-* [GitFlowNodeProject](../classes/tools.gitflownodeproject.md)
-* [GitFlowSemVers](../classes/tools.gitflowsemvers.md)
-* [Utils](../classes/tools.utils.md)
+- [GFlowConfigLoader](../classes/tools.gflowconfigloader.md)
+- [GitFlowNodeProject](../classes/tools.gitflownodeproject.md)
+- [GitFlowSemVers](../classes/tools.gitflowsemvers.md)
+- [Utils](../classes/tools.utils.md)

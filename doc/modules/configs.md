@@ -1,29 +1,29 @@
-[gitex-flow](../README.md) › [configs](configs.md)
+[gitex-flow](../README.md) / configs
 
 # Module: configs
 
-## Index
+## Table of contents
 
 ### Interfaces
 
-* [ChangelogConfig](../interfaces/configs.changelogconfig.md)
-* [GFlowConfig](../interfaces/configs.gflowconfig.md)
-* [GitFlowConfig](../interfaces/configs.gitflowconfig.md)
-* [ProjectConfig](../interfaces/configs.projectconfig.md)
+- [ChangelogConfig](../interfaces/configs.changelogconfig.md)
+- [GFlowConfig](../interfaces/configs.gflowconfig.md)
+- [GitFlowConfig](../interfaces/configs.gitflowconfig.md)
+- [ProjectConfig](../interfaces/configs.projectconfig.md)
 
 ### Type aliases
 
-* [ConventionalCommitConfig](configs.md#conventionalcommitconfig)
-* [Log4jsConfig](configs.md#log4jsconfig)
+- [ConventionalCommitConfig](configs.md#conventionalcommitconfig)
+- [Log4jsConfig](configs.md#log4jsconfig)
 
 ## Type aliases
 
-###  ConventionalCommitConfig
+### ConventionalCommitConfig
 
-Ƭ **ConventionalCommitConfig**: *Options*
+Ƭ **ConventionalCommitConfig**: Options
 
 ___
 
-###  Log4jsConfig
+### Log4jsConfig
 
-Ƭ **Log4jsConfig**: *Configuration*
+Ƭ **Log4jsConfig**: Configuration

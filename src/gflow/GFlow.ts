@@ -57,6 +57,8 @@ export class GFlow implements GitFlow {
 
   /**
    * Provides the version of the git flow implementation.
+   *
+   * @returns The version of git flow.
    */
   public async version(): Promise<string> {
     return await this.gitFlow.version();

@@ -43,6 +43,8 @@ export class KeepAChangelogWriter extends ChangelogWriter {
    *
    * @param context - The context information of the git repository.
    * @param logs - The conventional git logs since the last release.
+   *
+   * @returns The stream of the latest changelog.
    */
   protected async createLatestChangelogStream(context: GitRepositoryContext, logs: GitLog[]): Promise<Readable> {
     const latestReleaseChangelog = new Changelog(
@@ -86,6 +88,8 @@ export class KeepAChangelogWriter extends ChangelogWriter {
    * @param latestChangelogStream - The stream with the changelogs since the latest release.
    * @param changelogPath - The file path of the changelog to be merged.
    * @param context - The context information of the git repository.
+   *
+   * @returns The stream of the merged changelog.
    */
   protected async mergeWithChangelog(
     latestChangelogStream: Readable,

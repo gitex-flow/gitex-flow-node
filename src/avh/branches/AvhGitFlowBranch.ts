@@ -37,6 +37,8 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The list of the currently opened branch.
    */
   public async list(): Promise<string[]> {
     const output = await GitFlowBashExecuter.execute({
@@ -105,6 +107,8 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
    * {@inheritdoc}
    *
    * @param name - A custom name for the branch.
+   *
+   * @returns The generated branch name.
    */
   public async generateBranchName(name?: string): Promise<string | undefined> {
     return name;

@@ -1,16 +1,16 @@
-[gitex-flow](../README.md) › [git](git.md)
+[gitex-flow](../README.md) / git
 
 # Module: git
 
-## Index
+## Table of contents
 
 ### Classes
 
-* [GitRepository](../classes/git.gitrepository.md)
+- [GitRepository](../classes/git.gitrepository.md)
 
 ### Interfaces
 
-* [GitLog](../interfaces/git.gitlog.md)
-* [GitNote](../interfaces/git.gitnote.md)
-* [GitReference](../interfaces/git.gitreference.md)
-* [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md)
+- [GitLog](../interfaces/git.gitlog.md)
+- [GitNote](../interfaces/git.gitnote.md)
+- [GitReference](../interfaces/git.gitreference.md)
+- [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md)

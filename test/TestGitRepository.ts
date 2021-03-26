@@ -13,6 +13,8 @@ export class TestGitRepository extends GitRepository {
    *
    * @param fileName - Name of the file to be commited.
    * @param message - Commit message to be set.
+   *
+   * @returns The commit hash.
    */
   public async commitTestFile(fileName: string, message: string): Promise<string> {
     await this.copyFileToRepo(fileName);

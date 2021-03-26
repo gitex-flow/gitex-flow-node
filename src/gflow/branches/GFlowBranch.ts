@@ -33,6 +33,8 @@ export class GFlowBranch implements GitFlowBranch {
 
   /**
    * Gets the git flow branch config.
+   *
+   * @returns The configuration of the gitex flow branch.
    */
   public async getConfig(): Promise<GitFlowBranchConfig> {
     return await this.gitFlowBranch.getConfig();
@@ -40,6 +42,8 @@ export class GFlowBranch implements GitFlowBranch {
 
   /**
    * Lists all branches of the type '[[type]]'.
+   *
+   * @returns The list of branches.
    */
   public async list(): Promise<string[]> {
     return await this.gitFlowBranch.list();
@@ -50,6 +54,8 @@ export class GFlowBranch implements GitFlowBranch {
    *
    * @param name - Name of the branch to be started.
    * @param base - Base of the branch should be started from.
+   *
+   * @returns The name of the started branch.
    */
   public async start(name?: string, base?: string): Promise<string> {
     const project = new GitFlowNodeProject(this.projectConfig);
@@ -86,6 +92,8 @@ export class GFlowBranch implements GitFlowBranch {
    * Generates an default branch name.
    *
    * @param name - A custom name for the branch.
+   *
+   * @returns The generated branch name.
    */
   public async generateBranchName(name?: string): Promise<string | undefined> {
     const semVer = new GitFlowSemVers(this.projectConfig?.projectPath);
@@ -96,6 +104,8 @@ export class GFlowBranch implements GitFlowBranch {
    * Gets the branch name including the git-flow configuration.
    *
    * @param name - A given branch name without prefix.
+   *
+   * @returns The generated name.
    */
   protected async generateBranchNameFromConfig(name: string): Promise<string> {
     const config = await this.getConfig();

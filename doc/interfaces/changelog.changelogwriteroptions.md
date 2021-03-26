@@ -1,6 +1,8 @@
-[gitex-flow](../README.md) › [changelog](../modules/changelog.md) › [ChangelogWriterOptions](changelog.changelogwriteroptions.md)
+[gitex-flow](../README.md) / [changelog](../modules/changelog.md) / ChangelogWriterOptions
 
 # Interface: ChangelogWriterOptions
+
+[changelog](../modules/changelog.md).ChangelogWriterOptions
 
 Options of the ChangelogWriter.
 
@@ -8,33 +10,33 @@ Options of the ChangelogWriter.
 
 * **ChangelogWriterOptions**
 
-  ↳ [ConventionalChangelogWriterOptions](changelog.conventionalchangelogwriteroptions.md)
+  ↳ [*ConventionalChangelogWriterOptions*](changelog.conventionalchangelogwriteroptions.md)
 
-  ↳ [KeepAChangelogWriterOptions](changelog.keepachangelogwriteroptions.md)
+  ↳ [*KeepAChangelogWriterOptions*](changelog.keepachangelogwriteroptions.md)
 
-  ↳ [ChangelogConfig](configs.changelogconfig.md)
+  ↳ [*ChangelogConfig*](configs.changelogconfig.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [basePath](changelog.changelogwriteroptions.md#optional-basepath)
-* [changelogFileName](changelog.changelogwriteroptions.md#optional-changelogfilename)
-* [storeLatestChangelog](changelog.changelogwriteroptions.md#optional-storelatestchangelog)
+- [basePath](changelog.changelogwriteroptions.md#basepath)
+- [changelogFileName](changelog.changelogwriteroptions.md#changelogfilename)
+- [storeLatestChangelog](changelog.changelogwriteroptions.md#storelatestchangelog)
 
 ## Properties
 
-### `Optional` basePath
+### basePath
 
-• **basePath**? : *undefined | string*
+• `Optional` **basePath**: *string*
 
 Path to the node project folder / git repository.
 
 ___
 
-### `Optional` changelogFileName
+### changelogFileName
 
-• **changelogFileName**? : *undefined | string*
+• `Optional` **changelogFileName**: *string*
 
 Specifies the name of the changelog.
 
@@ -42,9 +44,9 @@ Specifies the name of the changelog.
 
 ___
 
-### `Optional` storeLatestChangelog
+### storeLatestChangelog
 
-• **storeLatestChangelog**? : *undefined | false | true*
+• `Optional` **storeLatestChangelog**: *boolean*
 
-Set this flag to keep the changelog of the latest release as [changelogFileName](changelog.changelogwriteroptions.md#optional-changelogfilename).latest.md.
+Set this flag to keep the changelog of the latest release as [changelogFileName](changelog.changelogwriteroptions.md#changelogfilename).latest.md.
 This file can be useful for some other tools which processes the release information (ex. gitlab).
