@@ -1,6 +1,8 @@
-[gitex-flow](../README.md) › [gflow](../modules/gflow.md) › [GFlowBranch](gflow.gflowbranch.md)
+[gitex-flow](../README.md) / [gflow](../modules/gflow.md) / GFlowBranch
 
 # Class: GFlowBranch
+
+[gflow](../modules/gflow.md).GFlowBranch
 
 This class represents an abstract GFlow branch with some basic functionality.
 
@@ -8,173 +10,187 @@ This class represents an abstract GFlow branch with some basic functionality.
 
 * **GFlowBranch**
 
-  ↳ [GFlowReleaseBranch](gflow.gflowreleasebranch.md)
+  ↳ [*GFlowHotFixBranch*](gflow.gflowhotfixbranch.md)
 
-  ↳ [GFlowHotFixBranch](gflow.gflowhotfixbranch.md)
+  ↳ [*GFlowReleaseBranch*](gflow.gflowreleasebranch.md)
 
 ## Implements
 
-* [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+* [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
 
-## Index
+## Table of contents
 
 ### Constructors
 
-* [constructor](gflow.gflowbranch.md#constructor)
+- [constructor](gflow.gflowbranch.md#constructor)
 
 ### Properties
 
-* [defaultBase](gflow.gflowbranch.md#readonly-defaultbase)
-* [logger](gflow.gflowbranch.md#protected-readonly-logger)
-* [projectConfig](gflow.gflowbranch.md#protected-optional-readonly-projectconfig)
-* [type](gflow.gflowbranch.md#readonly-type)
+- [defaultBase](gflow.gflowbranch.md#defaultbase)
+- [logger](gflow.gflowbranch.md#logger)
+- [projectConfig](gflow.gflowbranch.md#projectconfig)
+- [type](gflow.gflowbranch.md#type)
 
 ### Methods
 
-* [finish](gflow.gflowbranch.md#finish)
-* [generateBranchName](gflow.gflowbranch.md#generatebranchname)
-* [generateBranchNameFromConfig](gflow.gflowbranch.md#protected-generatebranchnamefromconfig)
-* [getConfig](gflow.gflowbranch.md#getconfig)
-* [list](gflow.gflowbranch.md#list)
-* [start](gflow.gflowbranch.md#start)
+- [finish](gflow.gflowbranch.md#finish)
+- [generateBranchName](gflow.gflowbranch.md#generatebranchname)
+- [generateBranchNameFromConfig](gflow.gflowbranch.md#generatebranchnamefromconfig)
+- [getConfig](gflow.gflowbranch.md#getconfig)
+- [list](gflow.gflowbranch.md#list)
+- [start](gflow.gflowbranch.md#start)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new GFlowBranch**(`gitFlowBranch`: [GitFlowBranch](../interfaces/api.gitflowbranch.md), `options?`: [ProjectConfig](../interfaces/tools.projectconfig.md)): *[GFlowBranch](gflow.gflowbranch.md)*
+\+ **new GFlowBranch**(`gitFlowBranch`: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md), `options?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*GFlowBranch*](gflow.gflowbranch.md)
 
 Initializes a new instance of this class.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped. |
-`options?` | [ProjectConfig](../interfaces/tools.projectconfig.md) | Git flow node project options.  |
+:------ | :------ | :------ |
+`gitFlowBranch` | [*GitFlowBranch*](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped.   |
+`options?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | Git flow node project options.    |
 
-**Returns:** *[GFlowBranch](gflow.gflowbranch.md)*
+**Returns:** [*GFlowBranch*](gflow.gflowbranch.md)
 
 ## Properties
 
-### `Readonly` defaultBase
+### defaultBase
 
-• **defaultBase**: *[GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)*
+• `Readonly` **defaultBase**: [*GitFlowBaseBranchType*](../modules/api.md#gitflowbasebranchtype)
 
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#readonly-defaultbase)*
+Default base of this branch.
 
-___
-
-### `Protected` `Readonly` logger
-
-• **logger**: *Logger*
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#defaultbase)
 
 ___
 
-### `Protected` `Optional` `Readonly` projectConfig
+### logger
 
-• **projectConfig**? : *[ProjectConfig](../interfaces/tools.projectconfig.md)*
+• `Protected` `Readonly` **logger**: *Logger*
 
 ___
 
-### `Readonly` type
+### projectConfig
 
-• **type**: *[GitFlowBranchType](../modules/api.md#gitflowbranchtype)*
+• `Protected` `Optional` `Readonly` **projectConfig**: [*ProjectConfig*](../interfaces/configs.projectconfig.md)
 
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#readonly-type)*
+___
+
+### type
+
+• `Readonly` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)
+
+Specifies the git flow branch type.
+
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#type)
 
 ## Methods
 
-###  finish
+### finish
 
-▸ **finish**(`name?`: undefined | string, `msg?`: undefined | string): *Promise‹void›*
+▸ **finish**(`name?`: *string*, `msg?`: *string*): *Promise*<void\>
 
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+Merges and finishes the branch of the branch type '[type](gflow.gflowbranch.md#type)'.
 
-Merges and finishes the branch of the branch type '[type](gflow.gflowbranch.md#readonly-type)'.
-
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | Name of the branch to be finished. |
-`msg?` | undefined &#124; string | Message to be set for finishing the branch.  |
+:------ | :------ | :------ |
+`name?` | *string* | Name of the branch to be finished.   |
+`msg?` | *string* | Message to be set for finishing the branch.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
+
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 ___
 
-###  generateBranchName
+### generateBranchName
 
-▸ **generateBranchName**(`name?`: undefined | string): *Promise‹string | undefined›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+▸ **generateBranchName**(`name?`: *string*): *Promise*<undefined \| string\>
 
 Generates an default branch name.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | A custom name for the branch.  |
+:------ | :------ | :------ |
+`name?` | *string* | A custom name for the branch.    |
 
-**Returns:** *Promise‹string | undefined›*
+**Returns:** *Promise*<undefined \| string\>
+
+The generated branch name.
+
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 ___
 
-### `Protected` generateBranchNameFromConfig
+### generateBranchNameFromConfig
 
-▸ **generateBranchNameFromConfig**(`name`: string): *Promise‹string›*
+▸ `Protected`**generateBranchNameFromConfig**(`name`: *string*): *Promise*<string\>
 
 Gets the branch name including the git-flow configuration.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name` | string | A given branch name without prefix.  |
+:------ | :------ | :------ |
+`name` | *string* | A given branch name without prefix.    |
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
+
+The generated name.
 
 ___
 
-###  getConfig
+### getConfig
 
-▸ **getConfig**(): *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
-
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+▸ **getConfig**(): *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
 
 Gets the git flow branch config.
 
-**Returns:** *Promise‹[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)›*
+**Returns:** *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
+
+The configuration of the gitex flow branch.
+
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 ___
 
-###  list
+### list
 
-▸ **list**(): *Promise‹string[]›*
+▸ **list**(): *Promise*<string[]\>
 
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+Lists all branches of the type '[type](gflow.gflowbranch.md#type)'.
 
-Lists all branches of the type '[type](gflow.gflowbranch.md#readonly-type)'.
+**Returns:** *Promise*<string[]\>
 
-**Returns:** *Promise‹string[]›*
+The list of branches.
+
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 ___
 
-###  start
+### start
 
-▸ **start**(`name?`: undefined | string, `base?`: undefined | string): *Promise‹string›*
+▸ **start**(`name?`: *string*, `base?`: *string*): *Promise*<string\>
 
-*Implementation of [GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+Creates and starts a new branch of the type '[type](gflow.gflowbranch.md#type)'.
 
-Creates and starts a new branch of the type '[type](gflow.gflowbranch.md#readonly-type)'.
-
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`name?` | undefined &#124; string | Name of the branch to be started. |
-`base?` | undefined &#124; string | Base of the branch should be started from.  |
+:------ | :------ | :------ |
+`name?` | *string* | Name of the branch to be started.   |
+`base?` | *string* | Base of the branch should be started from.    |
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
+
+The name of the started branch.
+
+Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)

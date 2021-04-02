@@ -1,8 +1,8 @@
 import { GitFlow } from '../api/GitFlow';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { ConfigProvider } from '../api/ConfigProvider';
-import { GitFlowConfig } from '../api/GitFlowConfig';
-import { GFlowConfig } from './GFlowConfig';
+import { GitFlowConfig } from '../configs/GitFlowConfig';
+import { GFlowConfig } from '../configs/GFlowConfig';
 import { GFlowReleaseBranch } from './branches/GFlowReleaseBranch';
 import { GFlowHotFixBranch } from './branches/GFlowHotFixBranch';
 import { configure } from 'log4js';
@@ -57,6 +57,8 @@ export class GFlow implements GitFlow {
 
   /**
    * Provides the version of the git flow implementation.
+   *
+   * @returns The version of git flow.
    */
   public async version(): Promise<string> {
     return await this.gitFlow.version();

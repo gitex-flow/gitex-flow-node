@@ -16,10 +16,14 @@
       "error",
       {
         "publicOnly": true,
+        "contexts": ["MethodDefinition:not([accessibility=\"private\"]) > FunctionExpression"],
         "require": {
+          "ArrowFunctionExpression": true,
+          "ClassDeclaration": true,
+          "ClassExpression": true,
           "FunctionDeclaration": true,
-          "MethodDefinition": true,
-          "ClassDeclaration": true
+          "FunctionExpression": false,
+          "MethodDefinition": false
         }
       }
     ],

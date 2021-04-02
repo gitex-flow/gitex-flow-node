@@ -1,7 +1,7 @@
 import { GitFlowBaseBranchType, GitFlowBranchType } from '../../api/branches/GitFlowBranch';
 import { ConfigProvider } from '../../api/ConfigProvider';
 import { GitFlowBranchConfig } from '../../api/GitFlowBranchConfig';
-import { GitFlowConfig } from '../../api/GitFlowConfig';
+import { GitFlowConfig } from '../../configs/GitFlowConfig';
 import { AvhGitFlowBranch } from './AvhGitFlowBranch';
 
 /**
@@ -33,6 +33,8 @@ export class ReleaseGitFlowBranch extends AvhGitFlowBranch {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The configuration of the release git flow branch.
    */
   public async getConfig(): Promise<GitFlowBranchConfig> {
     const config = await this.configProvider?.get();

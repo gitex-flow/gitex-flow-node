@@ -1,105 +1,103 @@
-[gitex-flow](../README.md) › [api](../modules/api.md) › [GitFlow](api.gitflow.md)
+[gitex-flow](../README.md) / [api](../modules/api.md) / GitFlow
 
 # Interface: GitFlow
 
+[api](../modules/api.md).GitFlow
+
 Specification of the git flow API.
-
-## Hierarchy
-
-* **GitFlow**
 
 ## Implemented by
 
-* [AvhGitFlow](../classes/avh.avhgitflow.md)
-* [GFlow](../classes/gflow.gflow-1.md)
+* [*AvhGitFlow*](../classes/avh.avhgitflow.md)
+* [*GFlow*](../classes/gflow.gflow-1.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [bugfix](api.gitflow.md#readonly-bugfix)
-* [config](api.gitflow.md#readonly-config)
-* [feature](api.gitflow.md#readonly-feature)
-* [hotfix](api.gitflow.md#readonly-hotfix)
-* [release](api.gitflow.md#readonly-release)
-* [support](api.gitflow.md#readonly-support)
+- [bugfix](api.gitflow.md#bugfix)
+- [config](api.gitflow.md#config)
+- [feature](api.gitflow.md#feature)
+- [hotfix](api.gitflow.md#hotfix)
+- [release](api.gitflow.md#release)
+- [support](api.gitflow.md#support)
 
 ### Methods
 
-* [init](api.gitflow.md#init)
-* [version](api.gitflow.md#version)
+- [init](api.gitflow.md#init)
+- [version](api.gitflow.md#version)
 
 ## Properties
 
-### `Readonly` bugfix
+### bugfix
 
-• **bugfix**: *[GitFlowBranch](api.gitflowbranch.md)*
+• `Readonly` **bugfix**: [*GitFlowBranch*](api.gitflowbranch.md)
 
 Provides functionality of bugfix branches.
 
 ___
 
-### `Readonly` config
+### config
 
-• **config**: *[ConfigProvider](api.configprovider.md)‹[GitFlowConfig](api.gitflowconfig.md)›*
+• `Readonly` **config**: [*ConfigProvider*](api.configprovider.md)<[*GitFlowConfig*](configs.gitflowconfig.md)\>
 
 Provides functionality to get and set the git flow configuration.
 
 ___
 
-### `Readonly` feature
+### feature
 
-• **feature**: *[GitFlowBranch](api.gitflowbranch.md)*
+• `Readonly` **feature**: [*GitFlowBranch*](api.gitflowbranch.md)
 
 Provides functionality of feature branches.
 
 ___
 
-### `Readonly` hotfix
+### hotfix
 
-• **hotfix**: *[GitFlowBranch](api.gitflowbranch.md)*
+• `Readonly` **hotfix**: [*GitFlowBranch*](api.gitflowbranch.md)
 
 Provides functionality of hotfix branches.
 
 ___
 
-### `Readonly` release
+### release
 
-• **release**: *[GitFlowBranch](api.gitflowbranch.md)*
+• `Readonly` **release**: [*GitFlowBranch*](api.gitflowbranch.md)
 
 Provides functionality of release branches.
 
 ___
 
-### `Readonly` support
+### support
 
-• **support**: *[GitFlowBranch](api.gitflowbranch.md)*
+• `Readonly` **support**: [*GitFlowBranch*](api.gitflowbranch.md)
 
 Provides functionality of support branches.
 
 ## Methods
 
-###  init
+### init
 
-▸ **init**(`config?`: [GitFlowConfig](api.gitflowconfig.md), `force?`: undefined | false | true): *Promise‹void›*
+▸ **init**(`config?`: [*GitFlowConfig*](configs.gitflowconfig.md), `force?`: *boolean*): *Promise*<void\>
 
 Setup a git repository for git flow ussage.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`config?` | [GitFlowConfig](api.gitflowconfig.md) | The git flow configuration. |
-`force?` | undefined &#124; false &#124; true | Force reinitialisation if git flow already initialized.  |
+:------ | :------ | :------ |
+`config?` | [*GitFlowConfig*](configs.gitflowconfig.md) | The git flow configuration.   |
+`force?` | *boolean* | Force reinitialisation if git flow already initialized.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 ___
 
-###  version
+### version
 
-▸ **version**(): *Promise‹string›*
+▸ **version**(): *Promise*<string\>
 
 Provides the version of the git flow implementation.
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>

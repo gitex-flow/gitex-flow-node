@@ -23,13 +23,17 @@ export class GitFlowSemVers {
    *
    * @param type - Type of the branch should be created.
    * @param version - A optional custom version to be used.
+   *
+   * @returns The calculated branch version.
    */
   public async calculateBranchVersion(type: GitFlowBranchType, version?: string): Promise<string | undefined> {
     if (type == 'hotfix' || type == 'release') {
       if (version) {
         version = valid(clean(version)) ?? undefined;
       } else {
-        const gitRepository = new GitRepository(this.basePath);
+        const gitRepository = new GitRepository({
+          projectPath: this.basePath,
+        });
         const latestVersion = await gitRepository.getLatestReleasedVersion();
         if (!latestVersion) {
           version = '1.0.0';
@@ -50,10 +54,11 @@ export class GitFlowSemVers {
   }
 
   private async hasBreakingChanges(): Promise<boolean> {
-    const gitRepository = new GitRepository(this.basePath);
+    const gitRepository = new GitRepository({
+      projectPath: this.basePath,
+    });
     const gitLogs = await gitRepository.getLogsSinceLastRelease();
-    // There are BREAKING CHANGES if there is at least one note.
-    const hasBreakingChanges = gitLogs.some((log: GitLog) => log.notes.length > 0);
+    const hasBreakingChanges = gitLogs.some((log: GitLog) => log.notes.some((x) => x.title === 'BREAKING CHANGE'));
     return hasBreakingChanges;
   }
 }

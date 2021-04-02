@@ -1,31 +1,43 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [AvhBranchListParser](avh.avhbranchlistparser.md)
+[gitex-flow](../README.md) / [avh](../modules/avh.md) / AvhBranchListParser
 
 # Class: AvhBranchListParser
 
+[avh](../modules/avh.md).AvhBranchListParser
+
 Parser of the AVH branch list retrieved by 'git flow <branchName> list'.
 
-## Hierarchy
+## Table of contents
 
-* **AvhBranchListParser**
+### Constructors
 
-## Index
+- [constructor](avh.avhbranchlistparser.md#constructor)
 
 ### Methods
 
-* [parse](avh.avhbranchlistparser.md#static-parse)
+- [parse](avh.avhbranchlistparser.md#parse)
+
+## Constructors
+
+### constructor
+
+\+ **new AvhBranchListParser**(): [*AvhBranchListParser*](avh.avhbranchlistparser.md)
+
+**Returns:** [*AvhBranchListParser*](avh.avhbranchlistparser.md)
 
 ## Methods
 
-### `Static` parse
+### parse
 
-▸ **parse**(`list`: string): *Promise‹string[]›*
+▸ `Static`**parse**(`list`: *string*): *Promise*<string[]\>
 
 Parses the shell answer of AVH implementation.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`list` | string | List retrived by the shell command 'git flow <branchName> list'.  |
+:------ | :------ | :------ |
+`list` | *string* | List retrived by the shell command 'git flow <branchName> list'.    |
 
-**Returns:** *Promise‹string[]›*
+**Returns:** *Promise*<string[]\>
+
+The branch list.

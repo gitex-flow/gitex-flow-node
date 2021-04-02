@@ -1,15 +1,11 @@
 {
-  "inputFiles": ["./src"],
-  "mode": "modules",
+  "entryPoints": ["./src"],
   "readme": "none",
-  "excludeNotExported": true,
   "excludePrivate": true,
   "hideGenerator": true,
   "theme": "markdown",
   "out": "./doc",
   "disableSources": true,
   "external-modulemap": ".*/src/([^\\./]+)/",
-  "stripInternal": true,
-  "preserveConstEnums": true,
   "exclude": ["**/*cli.ts", "**/*index.ts", "test/**/*"]
 }

@@ -1,7 +1,7 @@
 import { GitFlow } from '../api/GitFlow';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { GitFlowBashExecuter } from './GitFlowBashExecuter';
-import { GitFlowConfig } from '../api/GitFlowConfig';
+import { GitFlowConfig } from '../configs/GitFlowConfig';
 import { ConfigProvider } from '../api/ConfigProvider';
 import { AvhConfigProvider } from './AvhConfigProvider';
 import { FeatureGitFlowBranch } from './branches/FeatureGitFlowBranch';
@@ -70,6 +70,8 @@ export class AvhGitFlow implements GitFlow {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The AVH git flow version.
    */
   public async version(): Promise<string> {
     return await GitFlowBashExecuter.execute({

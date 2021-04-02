@@ -10,12 +10,12 @@ export interface GitReference {
   /**
    * The owner of the referenced issue.
    */
-  owner?: string;
+  owner?: string | null;
 
   /**
    * The repository the referenced issue.
    */
-  repository?: string;
+  repository?: string | null;
 
   /**
    * The issue number without prefix.

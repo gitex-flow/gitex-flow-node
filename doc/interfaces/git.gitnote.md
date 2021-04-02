@@ -1,31 +1,29 @@
-[gitex-flow](../README.md) › [git](../modules/git.md) › [GitNote](git.gitnote.md)
+[gitex-flow](../README.md) / [git](../modules/git.md) / GitNote
 
 # Interface: GitNote
 
+[git](../modules/git.md).GitNote
+
 Represents a git note.
 
-## Hierarchy
-
-* **GitNote**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [text](git.gitnote.md#optional-text)
-* [title](git.gitnote.md#title)
+- [text](git.gitnote.md#text)
+- [title](git.gitnote.md#title)
 
 ## Properties
 
-### `Optional` text
+### text
 
-• **text**? : *undefined | string*
+• `Optional` **text**: *string*
 
 The text of the note.
 
 ___
 
-###  title
+### title
 
 • **title**: *string*
 

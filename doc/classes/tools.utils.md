@@ -1,46 +1,167 @@
-[gitex-flow](../README.md) › [tools](../modules/tools.md) › [Utils](tools.utils.md)
+[gitex-flow](../README.md) / [tools](../modules/tools.md) / Utils
 
 # Class: Utils
 
+[tools](../modules/tools.md).Utils
+
 Provides some utility functions.
 
-## Hierarchy
+## Table of contents
 
-* **Utils**
+### Constructors
 
-## Index
+- [constructor](tools.utils.md#constructor)
 
 ### Methods
 
-* [exec](tools.utils.md#static-exec)
-* [getCurrDate](tools.utils.md#static-getcurrdate)
+- [deriveChangelogConfig](tools.utils.md#derivechangelogconfig)
+- [exec](tools.utils.md#exec)
+- [getCurrDate](tools.utils.md#getcurrdate)
+- [parseConventionalCommits](tools.utils.md#parseconventionalcommits)
+- [parseConventionalCommitsViaPipe](tools.utils.md#parseconventionalcommitsviapipe)
+- [pipe](tools.utils.md#pipe)
+- [printBranches](tools.utils.md#printbranches)
+- [printConfig](tools.utils.md#printconfig)
+
+## Constructors
+
+### constructor
+
+\+ **new Utils**(): [*Utils*](tools.utils.md)
+
+**Returns:** [*Utils*](tools.utils.md)
 
 ## Methods
 
-### `Static` exec
+### deriveChangelogConfig
 
-▸ **exec**(`command`: function): *Promise‹void›*
+▸ `Static`**deriveChangelogConfig**(`projectConfig?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)
 
-Executes a command and suppresses errors if they are thrown.
+Derives the [ChangelogConfig](../interfaces/configs.changelogconfig.md) from a given [projectConfig](../interfaces/configs.gflowconfig.md#projectconfig).
 
-**Parameters:**
+#### Parameters:
 
-▪ **command**: *function*
+Name | Type | Description |
+:------ | :------ | :------ |
+`projectConfig?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | The project configuration.    |
 
-Command to be executed.
+**Returns:** [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)
 
-▸ (): *Promise‹string | void›*
-
-**Returns:** *Promise‹void›*
+The derived changelog config.
 
 ___
 
-### `Static` getCurrDate
+### exec
 
-▸ **getCurrDate**(): *string*
+▸ `Static`**exec**(`command`: () => *Promise*<string \| void\>): *Promise*<void\>
+
+Executes a command and suppresses errors if they are thrown.
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`command` | () => *Promise*<string \| void\> | Command to be executed.    |
+
+**Returns:** *Promise*<void\>
+
+___
+
+### getCurrDate
+
+▸ `Static`**getCurrDate**(): *string*
 
 Gets the current date formatted as yyyy-mm-dd.
 
 **Returns:** *string*
 
 date in fomat yyyy-mm-dd.
+
+___
+
+### parseConventionalCommits
+
+▸ `Static`**parseConventionalCommits**(`commitMessages`: *string*[], `conventionalCommitConfig?`: Options): *Promise*<[*GitLog*](../interfaces/git.gitlog.md)[]\>
+
+Parses conventional commit messages to a [GitLog](../interfaces/git.gitlog.md) array.
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`commitMessages` | *string*[] | The commit messages.   |
+`conventionalCommitConfig?` | Options | The configuration of the conventional commit parser.   |
+
+**Returns:** *Promise*<[*GitLog*](../interfaces/git.gitlog.md)[]\>
+
+The parsed conventional commit messages as an array of [[GitLogs]].
+
+___
+
+### parseConventionalCommitsViaPipe
+
+▸ `Static`**parseConventionalCommitsViaPipe**(`conventionalCommitConfig?`: Options): *Transform*
+
+Parses conventional commit messages via a stream.Transform pipe.
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`conventionalCommitConfig?` | Options | The configuration of the conventional commit parser.   |
+
+**Returns:** *Transform*
+
+The parsed conventional commit messages as transformed stream.
+
+___
+
+### pipe
+
+▸ `Static`**pipe**(`src`: *Readable*, `dest`: *Writable*, `destroy?`: *boolean*): *Promise*<void\>
+
+Pipes a readable stream asynchrounously to a writable stream with error handling.
+
+#### Parameters:
+
+Name | Type | Default value | Description |
+:------ | :------ | :------ | :------ |
+`src` | *Readable* | - | The readable source stream.   |
+`dest` | *Writable* | - | The writable destination stream.   |
+`destroy` | *boolean* | true | Specifies if the streams should be destroyed on finish.    |
+
+**Returns:** *Promise*<void\>
+
+Promise on copying stream properly.
+
+___
+
+### printBranches
+
+▸ `Static`**printBranches**(`gitFlowBranch`: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)): *Promise*<void\>
+
+Prints the branches to the console.
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`gitFlowBranch` | [*GitFlowBranch*](../interfaces/api.gitflowbranch.md) | The branch type to be printed.    |
+
+**Returns:** *Promise*<void\>
+
+___
+
+### printConfig
+
+▸ `Static`**printConfig**(`gitFlow`: [*GFlow*](gflow.gflow-1.md)): *Promise*<void\>
+
+Prints the config to the console.
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`gitFlow` | [*GFlow*](gflow.gflow-1.md) | The git flow instance the config should be printed.    |
+
+**Returns:** *Promise*<void\>

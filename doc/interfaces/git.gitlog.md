@@ -1,49 +1,47 @@
-[gitex-flow](../README.md) › [git](../modules/git.md) › [GitLog](git.gitlog.md)
+[gitex-flow](../README.md) / [git](../modules/git.md) / GitLog
 
 # Interface: GitLog
 
+[git](../modules/git.md).GitLog
+
 Represents the parsed properties of a conventional commit git log.
 
-## Hierarchy
-
-* **GitLog**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [body](git.gitlog.md#optional-body)
-* [footer](git.gitlog.md#optional-footer)
-* [hash](git.gitlog.md#hash)
-* [header](git.gitlog.md#header)
-* [mentions](git.gitlog.md#optional-mentions)
-* [merge](git.gitlog.md#optional-merge)
-* [notes](git.gitlog.md#notes)
-* [references](git.gitlog.md#optional-references)
-* [revert](git.gitlog.md#optional-revert)
-* [scope](git.gitlog.md#optional-scope)
-* [subject](git.gitlog.md#subject)
-* [type](git.gitlog.md#type)
+- [body](git.gitlog.md#body)
+- [footer](git.gitlog.md#footer)
+- [hash](git.gitlog.md#hash)
+- [header](git.gitlog.md#header)
+- [mentions](git.gitlog.md#mentions)
+- [merge](git.gitlog.md#merge)
+- [notes](git.gitlog.md#notes)
+- [references](git.gitlog.md#references)
+- [revert](git.gitlog.md#revert)
+- [scope](git.gitlog.md#scope)
+- [subject](git.gitlog.md#subject)
+- [type](git.gitlog.md#type)
 
 ## Properties
 
-### `Optional` body
+### body
 
-• **body**? : *undefined | string*
+• `Optional` **body**: *string*
 
 The body of the conventional commit message (long description).
 
 ___
 
-### `Optional` footer
+### footer
 
-• **footer**? : *undefined | string*
+• `Optional` **footer**: *string*
 
 The footer of the conventional commit message (containing references).
 
 ___
 
-###  hash
+### hash
 
 • **hash**: *string*
 
@@ -51,7 +49,7 @@ The hash of of the referenced commit.
 
 ___
 
-###  header
+### header
 
 • **header**: *string*
 
@@ -59,55 +57,55 @@ The whole conventional commit message.
 
 ___
 
-### `Optional` mentions
+### mentions
 
-• **mentions**? : *undefined | string*
+• `Optional` **mentions**: *string*
 
 Mentioned contributer.
 
 ___
 
-### `Optional` merge
+### merge
 
-• **merge**? : *undefined | string*
+• `Optional` **merge**: *string*
 
 The merge text of the commit message.
 
 ___
 
-###  notes
+### notes
 
-• **notes**: *[GitNote](git.gitnote.md)[]*
+• **notes**: [*GitNote*](git.gitnote.md)[]
 
 Parsed footer notes (ex. BREAKING CHANGE)
 
 ___
 
-### `Optional` references
+### references
 
-• **references**? : *[GitReference](git.gitreference.md)[]*
+• `Optional` **references**: [*GitReference*](git.gitreference.md)[]
 
 Parsed footer references (ex. closes #39)
 
 ___
 
-### `Optional` revert
+### revert
 
-• **revert**? : *undefined | string*
+• `Optional` **revert**: *string*
 
 States if the commit is a revert commit.
 
 ___
 
-### `Optional` scope
+### scope
 
-• **scope**? : *undefined | string*
+• `Optional` **scope**: *string*
 
 Conventional commit scope (group).
 
 ___
 
-###  subject
+### subject
 
 • **subject**: *string*
 
@@ -115,7 +113,7 @@ The conventional commit message without the type and scope.
 
 ___
 
-###  type
+### type
 
 • **type**: *string*
 

@@ -1,33 +1,43 @@
-[gitex-flow](../README.md) › [tools](../modules/tools.md) › [GFlowConfigLoader](tools.gflowconfigloader.md)
+[gitex-flow](../README.md) / [tools](../modules/tools.md) / GFlowConfigLoader
 
 # Class: GFlowConfigLoader
 
+[tools](../modules/tools.md).GFlowConfigLoader
+
 Loader of the GFlow config file.
 
-## Hierarchy
+## Table of contents
 
-* **GFlowConfigLoader**
+### Constructors
 
-## Index
+- [constructor](tools.gflowconfigloader.md#constructor)
 
 ### Methods
 
-* [load](tools.gflowconfigloader.md#static-load)
+- [load](tools.gflowconfigloader.md#load)
+
+## Constructors
+
+### constructor
+
+\+ **new GFlowConfigLoader**(): [*GFlowConfigLoader*](tools.gflowconfigloader.md)
+
+**Returns:** [*GFlowConfigLoader*](tools.gflowconfigloader.md)
 
 ## Methods
 
-### `Static` load
+### load
 
-▸ **load**(`projectPath?`: undefined | string): *[GFlowConfig](../interfaces/gflow.gflowconfig.md) | undefined*
+▸ `Static`**load**(`projectPath?`: *string*): *undefined* \| [*GFlowConfig*](../interfaces/configs.gflowconfig.md)
 
 Loads the gitex configuration file if exists.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`projectPath?` | undefined &#124; string | The path to the repository. (default: process.cwd())  |
+:------ | :------ | :------ |
+`projectPath?` | *string* | The path to the repository. (default: process.cwd())    |
 
-**Returns:** *[GFlowConfig](../interfaces/gflow.gflowconfig.md) | undefined*
+**Returns:** *undefined* \| [*GFlowConfig*](../interfaces/configs.gflowconfig.md)
 
 The configuration from file if it exists.

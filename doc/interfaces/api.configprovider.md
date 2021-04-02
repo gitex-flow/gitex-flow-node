@@ -1,50 +1,50 @@
-[gitex-flow](../README.md) › [api](../modules/api.md) › [ConfigProvider](api.configprovider.md)
+[gitex-flow](../README.md) / [api](../modules/api.md) / ConfigProvider
 
-# Interface: ConfigProvider ‹**T**›
+# Interface: ConfigProvider<T\>
+
+[api](../modules/api.md).ConfigProvider
 
 Configuration provider.
 
 ## Type parameters
 
-▪ **T**
-
-## Hierarchy
-
-* **ConfigProvider**
+Name |
+:------ |
+`T` |
 
 ## Implemented by
 
-* [AvhConfigProvider](../classes/avh.avhconfigprovider.md)
+* [*AvhConfigProvider*](../classes/avh.avhconfigprovider.md)
 
-## Index
+## Table of contents
 
 ### Methods
 
-* [get](api.configprovider.md#get)
-* [set](api.configprovider.md#set)
+- [get](api.configprovider.md#get)
+- [set](api.configprovider.md#set)
 
 ## Methods
 
-###  get
+### get
 
-▸ **get**(): *Promise‹T›*
+▸ **get**(): *Promise*<T\>
 
 Gets the current configuration.
 
-**Returns:** *Promise‹T›*
+**Returns:** *Promise*<T\>
 
 ___
 
-###  set
+### set
 
-▸ **set**(`config`: T): *Promise‹void›*
+▸ **set**(`config`: T): *Promise*<void\>
 
 Sets a new configuarion.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`config` | T | Configuration to be set.  |
+:------ | :------ | :------ |
+`config` | T | Configuration to be set.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>

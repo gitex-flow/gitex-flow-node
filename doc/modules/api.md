@@ -1,34 +1,33 @@
-[gitex-flow](../README.md) › [api](api.md)
+[gitex-flow](../README.md) / api
 
 # Module: api
 
-## Index
+## Table of contents
 
 ### Interfaces
 
-* [ConfigProvider](../interfaces/api.configprovider.md)
-* [GitFlow](../interfaces/api.gitflow.md)
-* [GitFlowBranch](../interfaces/api.gitflowbranch.md)
-* [GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)
-* [GitFlowConfig](../interfaces/api.gitflowconfig.md)
+- [ConfigProvider](../interfaces/api.configprovider.md)
+- [GitFlow](../interfaces/api.gitflow.md)
+- [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+- [GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)
 
 ### Type aliases
 
-* [GitFlowBaseBranchType](api.md#gitflowbasebranchtype)
-* [GitFlowBranchType](api.md#gitflowbranchtype)
+- [GitFlowBaseBranchType](api.md#gitflowbasebranchtype)
+- [GitFlowBranchType](api.md#gitflowbranchtype)
 
 ## Type aliases
 
-###  GitFlowBaseBranchType
+### GitFlowBaseBranchType
 
-Ƭ **GitFlowBaseBranchType**: *"master" | "develop"*
+Ƭ **GitFlowBaseBranchType**: *master* \| *develop*
 
 Types of the git flow base branches.
 
 ___
 
-###  GitFlowBranchType
+### GitFlowBranchType
 
-Ƭ **GitFlowBranchType**: *"feature" | "release" | "bugfix" | "hotfix" | "support"*
+Ƭ **GitFlowBranchType**: *feature* \| *release* \| *bugfix* \| *hotfix* \| *support*
 
 Types of the git flow branches.

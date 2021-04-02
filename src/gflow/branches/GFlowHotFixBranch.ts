@@ -1,6 +1,8 @@
 import { GitFlowBranch } from '../../api/branches/GitFlowBranch';
-import { GitFlowNodeProject, ProjectConfig } from '../../tools/GitFlowNodeProject';
+import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
+import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GFlowBranch } from './GFlowBranch';
+import { Utils } from '../../tools/Utils';
 
 /**
  * This class extending a hotfix branch with some helpful functionality.
@@ -17,10 +19,12 @@ export class GFlowHotFixBranch extends GFlowBranch {
   }
 
   /**
-   * Creates and starts a new branch of the type '[[type]]'.
+   * Creates and starts a new hotfix branch.
    *
    * @param name - Name of the branch to be started.
    * @param base - Base of the branch should be started from.
+   *
+   * @returns The name of the hotfix branch.
    */
   public async start(name?: string, base?: string): Promise<string> {
     const version = await this.generateBranchName(name);
@@ -45,7 +49,8 @@ export class GFlowHotFixBranch extends GFlowBranch {
     const version = await this.getVersion(project, name);
     const branchName = await this.generateBranchNameFromConfig(version);
     await project.checkoutBranch(branchName);
-    await project.updateChangelog();
+    const changelogConfig = Utils.deriveChangelogConfig(this.projectConfig);
+    await project.updateChangelog(changelogConfig);
     await project.commitChanges(false);
     await super.finish(version, msg ?? version);
   }

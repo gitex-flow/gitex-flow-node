@@ -1,68 +1,70 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [AvhConfigProvider](avh.avhconfigprovider.md)
+[gitex-flow](../README.md) / [avh](../modules/avh.md) / AvhConfigProvider
 
 # Class: AvhConfigProvider
 
+[avh](../modules/avh.md).AvhConfigProvider
+
 AVH Configuration provider.
-
-## Hierarchy
-
-* **AvhConfigProvider**
 
 ## Implements
 
-* [ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›
+* [*ConfigProvider*](../interfaces/api.configprovider.md)<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
 
-## Index
+## Table of contents
 
 ### Constructors
 
-* [constructor](avh.avhconfigprovider.md#constructor)
+- [constructor](avh.avhconfigprovider.md#constructor)
 
 ### Methods
 
-* [get](avh.avhconfigprovider.md#get)
-* [set](avh.avhconfigprovider.md#set)
+- [get](avh.avhconfigprovider.md#get)
+- [set](avh.avhconfigprovider.md#set)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new AvhConfigProvider**(`repoPath?`: undefined | string): *[AvhConfigProvider](avh.avhconfigprovider.md)*
+\+ **new AvhConfigProvider**(`repoPath?`: *string*): [*AvhConfigProvider*](avh.avhconfigprovider.md)
 
 Initializes a new instance of this class.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`repoPath?` | undefined &#124; string | The path to the git repository.  |
+:------ | :------ | :------ |
+`repoPath?` | *string* | The path to the git repository.    |
 
-**Returns:** *[AvhConfigProvider](avh.avhconfigprovider.md)*
+**Returns:** [*AvhConfigProvider*](avh.avhconfigprovider.md)
 
 ## Methods
 
-###  get
+### get
 
-▸ **get**(): *Promise‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
-
-*Implementation of [ConfigProvider](../interfaces/api.configprovider.md)*
+▸ **get**(): *Promise*<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
 
 {@inheritdoc}
 
-**Returns:** *Promise‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
+**Returns:** *Promise*<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
+
+The git flow configuration.
+
+Implementation of: [ConfigProvider](../interfaces/api.configprovider.md)
 
 ___
 
-###  set
+### set
 
-▸ **set**(`config`: [GitFlowConfig](../interfaces/api.gitflowconfig.md)): *Promise‹void›*
+▸ **set**(`config`: [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)): *Promise*<void\>
 
 {@inheritdoc}
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`config` | [GitFlowConfig](../interfaces/api.gitflowconfig.md) | Git flow config to be set.  |
+:------ | :------ | :------ |
+`config` | [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md) | Git flow config to be set.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
+
+Implementation of: [ConfigProvider](../interfaces/api.configprovider.md)

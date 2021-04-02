@@ -1,128 +1,140 @@
-[gitex-flow](../README.md) › [avh](../modules/avh.md) › [AvhGitFlow](avh.avhgitflow.md)
+[gitex-flow](../README.md) / [avh](../modules/avh.md) / AvhGitFlow
 
 # Class: AvhGitFlow
 
+[avh](../modules/avh.md).AvhGitFlow
+
 Implementation of git flow by [gitflow-avh](https://github.com/petervanderdoes/gitflow-avh).
-
-## Hierarchy
-
-* **AvhGitFlow**
 
 ## Implements
 
-* [GitFlow](../interfaces/api.gitflow.md)
+* [*GitFlow*](../interfaces/api.gitflow.md)
 
-## Index
+## Table of contents
 
 ### Constructors
 
-* [constructor](avh.avhgitflow.md#constructor)
+- [constructor](avh.avhgitflow.md#constructor)
 
 ### Properties
 
-* [bugfix](avh.avhgitflow.md#readonly-bugfix)
-* [config](avh.avhgitflow.md#readonly-config)
-* [feature](avh.avhgitflow.md#readonly-feature)
-* [hotfix](avh.avhgitflow.md#readonly-hotfix)
-* [release](avh.avhgitflow.md#readonly-release)
-* [support](avh.avhgitflow.md#readonly-support)
+- [bugfix](avh.avhgitflow.md#bugfix)
+- [config](avh.avhgitflow.md#config)
+- [feature](avh.avhgitflow.md#feature)
+- [hotfix](avh.avhgitflow.md#hotfix)
+- [release](avh.avhgitflow.md#release)
+- [support](avh.avhgitflow.md#support)
 
 ### Methods
 
-* [init](avh.avhgitflow.md#init)
-* [version](avh.avhgitflow.md#version)
+- [init](avh.avhgitflow.md#init)
+- [version](avh.avhgitflow.md#version)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new AvhGitFlow**(`repoPath?`: undefined | string): *[AvhGitFlow](avh.avhgitflow.md)*
+\+ **new AvhGitFlow**(`repoPath?`: *string*): [*AvhGitFlow*](avh.avhgitflow.md)
 
 Initializes a new instance of this class.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`repoPath?` | undefined &#124; string | The path to the git repository.  |
+:------ | :------ | :------ |
+`repoPath?` | *string* | The path to the git repository.    |
 
-**Returns:** *[AvhGitFlow](avh.avhgitflow.md)*
+**Returns:** [*AvhGitFlow*](avh.avhgitflow.md)
 
 ## Properties
 
-### `Readonly` bugfix
+### bugfix
 
-• **bugfix**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+• `Readonly` **bugfix**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
 
-*Implementation of [GitFlow](../interfaces/api.gitflow.md).[bugfix](../interfaces/api.gitflow.md#readonly-bugfix)*
+Provides functionality of bugfix branches.
 
-___
-
-### `Readonly` config
-
-• **config**: *[ConfigProvider](../interfaces/api.configprovider.md)‹[GitFlowConfig](../interfaces/api.gitflowconfig.md)›*
-
-*Implementation of [GitFlow](../interfaces/api.gitflow.md).[config](../interfaces/api.gitflow.md#readonly-config)*
+Implementation of: [GitFlow](../interfaces/api.gitflow.md).[bugfix](../interfaces/api.gitflow.md#bugfix)
 
 ___
 
-### `Readonly` feature
+### config
 
-• **feature**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+• `Readonly` **config**: [*ConfigProvider*](../interfaces/api.configprovider.md)<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
 
-*Implementation of [GitFlow](../interfaces/api.gitflow.md).[feature](../interfaces/api.gitflow.md#readonly-feature)*
+Provides functionality to get and set the git flow configuration.
 
-___
-
-### `Readonly` hotfix
-
-• **hotfix**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
-
-*Implementation of [GitFlow](../interfaces/api.gitflow.md).[hotfix](../interfaces/api.gitflow.md#readonly-hotfix)*
+Implementation of: [GitFlow](../interfaces/api.gitflow.md).[config](../interfaces/api.gitflow.md#config)
 
 ___
 
-### `Readonly` release
+### feature
 
-• **release**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+• `Readonly` **feature**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
 
-*Implementation of [GitFlow](../interfaces/api.gitflow.md).[release](../interfaces/api.gitflow.md#readonly-release)*
+Provides functionality of feature branches.
+
+Implementation of: [GitFlow](../interfaces/api.gitflow.md).[feature](../interfaces/api.gitflow.md#feature)
 
 ___
 
-### `Readonly` support
+### hotfix
 
-• **support**: *[GitFlowBranch](../interfaces/api.gitflowbranch.md)*
+• `Readonly` **hotfix**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
 
-*Implementation of [GitFlow](../interfaces/api.gitflow.md).[support](../interfaces/api.gitflow.md#readonly-support)*
+Provides functionality of hotfix branches.
+
+Implementation of: [GitFlow](../interfaces/api.gitflow.md).[hotfix](../interfaces/api.gitflow.md#hotfix)
+
+___
+
+### release
+
+• `Readonly` **release**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+
+Provides functionality of release branches.
+
+Implementation of: [GitFlow](../interfaces/api.gitflow.md).[release](../interfaces/api.gitflow.md#release)
+
+___
+
+### support
+
+• `Readonly` **support**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+
+Provides functionality of support branches.
+
+Implementation of: [GitFlow](../interfaces/api.gitflow.md).[support](../interfaces/api.gitflow.md#support)
 
 ## Methods
 
-###  init
+### init
 
-▸ **init**(`config?`: [GitFlowConfig](../interfaces/api.gitflowconfig.md), `force?`: undefined | false | true): *Promise‹void›*
-
-*Implementation of [GitFlow](../interfaces/api.gitflow.md)*
+▸ **init**(`config?`: [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md), `force?`: *boolean*): *Promise*<void\>
 
 {@inheritdoc}
 
-**Parameters:**
+#### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
-`config?` | [GitFlowConfig](../interfaces/api.gitflowconfig.md) | The git flow configuration. |
-`force?` | undefined &#124; false &#124; true | Force reinitialisation if git flow already initialized.  |
+:------ | :------ | :------ |
+`config?` | [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md) | The git flow configuration.   |
+`force?` | *boolean* | Force reinitialisation if git flow already initialized.    |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
+
+Implementation of: [GitFlow](../interfaces/api.gitflow.md)
 
 ___
 
-###  version
+### version
 
-▸ **version**(): *Promise‹string›*
-
-*Implementation of [GitFlow](../interfaces/api.gitflow.md)*
+▸ **version**(): *Promise*<string\>
 
 {@inheritdoc}
 
-**Returns:** *Promise‹string›*
+**Returns:** *Promise*<string\>
+
+The AVH git flow version.
+
+Implementation of: [GitFlow](../interfaces/api.gitflow.md)

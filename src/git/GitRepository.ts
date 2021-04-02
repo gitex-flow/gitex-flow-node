@@ -1,23 +1,23 @@
 import createRepository, { SimpleGit as Repository, StatusResult, DefaultLogFields } from 'simple-git';
 import { join } from 'path';
 import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
-import conventionalCommitsParser from 'conventional-commits-parser';
 import { GitLog } from './GitLog';
-import { Readable } from 'stream';
+import { ProjectConfig } from '../configs';
+import { Utils } from '../tools';
 
 /**
  * A simple API with basic functionality of a git repository.
  */
 export class GitRepository {
-  protected repoPath: string;
+  protected config?: ProjectConfig;
 
   /**
    * Initializes a new instance of this class.
    *
-   * @param repoPath - Path of the git repository.
+   * @param config - The project configuration.
    */
-  constructor(repoPath?: string) {
-    this.repoPath = repoPath ?? process.cwd();
+  constructor(config?: ProjectConfig) {
+    this.config = config;
   }
 
   /**
@@ -26,15 +26,15 @@ export class GitRepository {
    * @returns The path to the git repository.
    */
   public getRepoPath(): string {
-    return this.repoPath;
+    return this.config?.projectPath ?? process.cwd();
   }
 
   /**
    * Gets the path of the git repository.
    */
   public async remove(): Promise<void> {
-    await emptyDir(this.repoPath);
-    await rmdir(this.repoPath);
+    await emptyDir(this.getRepoPath());
+    await rmdir(this.getRepoPath());
   }
 
   /**
@@ -57,6 +57,8 @@ export class GitRepository {
 
   /**
    * Retrieves the current status of the git repository.
+   *
+   * @returns The status of the git repository.
    */
   public async status(): Promise<StatusResult> {
     const repo = await this.createOrOpenRepo();
@@ -88,6 +90,25 @@ export class GitRepository {
   }
 
   /**
+   * Stashes the uncommited changes from the current branch.
+   *
+   * @returns The message of the stashing.
+   */
+  public async stash(): Promise<string> {
+    const repo = await this.createOrOpenRepo();
+    const message = await repo.stash();
+    return message.trim();
+  }
+
+  /**
+   * Pops stash with a given name.
+   */
+  public async popLatestStash(): Promise<void> {
+    const repo = await this.createOrOpenRepo();
+    await repo.stash(['pop', '-q']);
+  }
+
+  /**
    * Ensures there are no uncommited changes (staged and unstaged) in the local workspace.
    */
   public async ensureNoUnCommitedChanges(): Promise<void> {
@@ -101,6 +122,8 @@ export class GitRepository {
 
   /**
    * Returns the most recent released version tag (semantic version).
+   *
+   * @returns The version of the latest release.
    */
   public async getLatestReleasedVersion(): Promise<string | undefined> {
     const repo = await this.createOrOpenRepo();
@@ -110,29 +133,15 @@ export class GitRepository {
 
   /**
    * Collects all commit messages since the last release.
+   *
+   * @returns The logs since the last release.
    */
   public async getLogsSinceLastRelease(): Promise<GitLog[]> {
-    const gitLogs: GitLog[] = [];
     const logs = await this.getDiffLogs();
     const logMessages = logs.map((log) => `${log.message}\n\n${log.body}\n\n${log.refs}`);
-    const stream = Readable.from(logMessages);
-    let currIndex = 0;
-    return new Promise((resolve, reject) => {
-      stream
-        .pipe(conventionalCommitsParser())
-        .on('error', function (err) {
-          err.message = 'Error in conventional-commits-parser: ' + err.message;
-          reject(err);
-        })
-        .on('data', (data) => {
-          const log = data as GitLog;
-          log.hash = logs[currIndex++].hash;
-          gitLogs.push(log);
-        })
-        .on('end', () => {
-          resolve(gitLogs);
-        });
-    });
+    const gitLogs = await Utils.parseConventionalCommits(logMessages, this.config?.conventionalCommit);
+    gitLogs.forEach((v, i) => (v.hash = logs[i].hash));
+    return gitLogs;
   }
 
   private async getDiffLogs(): Promise<readonly DefaultLogFields[]> {
@@ -148,12 +157,13 @@ export class GitRepository {
 
   private async createOrOpenRepo(): Promise<Repository> {
     let repo: Repository;
-    const gitFolder = join(this.repoPath, '.git');
-    await ensureDir(this.repoPath);
+    const path = this.getRepoPath();
+    const gitFolder = join(path, '.git');
+    await ensureDir(path);
     if (await pathExists(gitFolder)) {
-      repo = createRepository(this.repoPath);
+      repo = createRepository(path);
     } else {
-      repo = createRepository(this.repoPath);
+      repo = createRepository(path);
       await repo.init();
     }
     return repo;

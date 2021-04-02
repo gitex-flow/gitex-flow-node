@@ -1,27 +1,25 @@
-[gitex-flow](../README.md) › [git](../modules/git.md) › [GitReference](git.gitreference.md)
+[gitex-flow](../README.md) / [git](../modules/git.md) / GitReference
 
 # Interface: GitReference
 
+[git](../modules/git.md).GitReference
+
 Represents a git reference.
 
-## Hierarchy
-
-* **GitReference**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [action](git.gitreference.md#action)
-* [issue](git.gitreference.md#optional-issue)
-* [owner](git.gitreference.md#optional-owner)
-* [prefix](git.gitreference.md#prefix)
-* [raw](git.gitreference.md#raw)
-* [repository](git.gitreference.md#optional-repository)
+- [action](git.gitreference.md#action)
+- [issue](git.gitreference.md#issue)
+- [owner](git.gitreference.md#owner)
+- [prefix](git.gitreference.md#prefix)
+- [raw](git.gitreference.md#raw)
+- [repository](git.gitreference.md#repository)
 
 ## Properties
 
-###  action
+### action
 
 • **action**: *string*
 
@@ -29,23 +27,23 @@ The action of the reference (ex. closes).
 
 ___
 
-### `Optional` issue
+### issue
 
-• **issue**? : *undefined | string*
+• `Optional` **issue**: *string*
 
 The issue number without prefix.
 
 ___
 
-### `Optional` owner
+### owner
 
-• **owner**? : *undefined | string*
+• `Optional` **owner**: *null* \| *string*
 
 The owner of the referenced issue.
 
 ___
 
-###  prefix
+### prefix
 
 • **prefix**: *string*
 
@@ -53,7 +51,7 @@ The prefix of the issue number without issue number.
 
 ___
 
-###  raw
+### raw
 
 • **raw**: *string*
 
@@ -61,8 +59,8 @@ The raw issue number.
 
 ___
 
-### `Optional` repository
+### repository
 
-• **repository**? : *undefined | string*
+• `Optional` **repository**: *null* \| *string*
 
 The repository the referenced issue.

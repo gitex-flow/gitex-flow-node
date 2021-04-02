@@ -1,6 +1,6 @@
 import { getLogger, Logger } from 'log4js';
 import { ConfigProvider } from '../api/ConfigProvider';
-import { GitFlowConfig } from '../api/GitFlowConfig';
+import { GitFlowConfig } from '../configs/GitFlowConfig';
 import { GitFlowBashExecuter } from './GitFlowBashExecuter';
 
 /**
@@ -38,6 +38,8 @@ export class AvhConfigProvider implements ConfigProvider<GitFlowConfig> {
 
   /**
    * {@inheritdoc}
+   *
+   * @returns The git flow configuration.
    */
   public async get(): Promise<GitFlowConfig> {
     const output = await GitFlowBashExecuter.execute({

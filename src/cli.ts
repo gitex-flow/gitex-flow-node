@@ -18,8 +18,15 @@ command.command('init').action(async () => {
   await Utils.exec(() => gFlow.init());
 });
 
+// Config command
+command.command('config').action(async () => {
+  await Utils.exec(() => Utils.printConfig(gFlow));
+});
+
 // Feature command
-const feature = command.command('feature');
+const feature = command.command('feature').action(async () => {
+  await Utils.exec(() => Utils.printBranches(gFlow.feature));
+});
 feature.command('start <name>').action(async (name: string) => {
   await Utils.exec(() => gFlow.feature.start(name));
 });
@@ -28,7 +35,9 @@ feature.command('finish [name]').action(async (name?: string) => {
 });
 
 // BugFix command
-const bugfix = command.command('bugfix');
+const bugfix = command.command('bugfix').action(async () => {
+  await Utils.exec(() => Utils.printBranches(gFlow.bugfix));
+});
 bugfix.command('start <name>').action(async (name: string) => {
   await Utils.exec(() => gFlow.bugfix.start(name));
 });
@@ -37,7 +46,9 @@ bugfix.command('finish [name]').action(async (name?: string) => {
 });
 
 // Release command
-const release = command.command('release');
+const release = command.command('release').action(async () => {
+  await Utils.exec(() => Utils.printBranches(gFlow.release));
+});
 release.command('start [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.release.start(name));
 });
@@ -46,7 +57,9 @@ release.command('finish [name]').action(async (name?: string) => {
 });
 
 // HotFix command
-const hotfix = command.command('hotfix');
+const hotfix = command.command('hotfix').action(async () => {
+  await Utils.exec(() => Utils.printBranches(gFlow.hotfix));
+});
 hotfix.command('start [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.hotfix.start(name));
 });
@@ -55,7 +68,9 @@ hotfix.command('finish [name]').action(async (name?: string) => {
 });
 
 // support command
-const support = command.command('support');
+const support = command.command('support').action(async () => {
+  await Utils.exec(() => Utils.printBranches(gFlow.support));
+});
 support.command('start <name> [base]').action(async (name: string, base?: string) => {
   await Utils.exec(() => gFlow.support.start(name, base));
 });
