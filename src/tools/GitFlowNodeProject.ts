@@ -100,7 +100,7 @@ export class GitFlowNodeProject {
    * @param version - Version the changelog is created for.
    * @param name - Name of the release.
    */
-  public async updateChangelog(changelogConfig: ChangelogConfig, version?: string, name?: string): Promise<void> {
+  public async updateChangelog<T>(changelogConfig: ChangelogConfig<T>, version?: string, name?: string): Promise<void> {
     const changelogWriter = ChangelogWriterFactory.create(changelogConfig);
     if (changelogWriter) {
       const logs = await this.gitRepository.getLogsSinceLastRelease();
