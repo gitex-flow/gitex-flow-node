@@ -114,7 +114,6 @@ export class GitRepository {
   public async ensureNoUnCommitedChanges(): Promise<void> {
     const repo = await this.createOrOpenRepo();
     const diff = await repo.diff(['HEAD']);
-    console.log(diff);
     if (diff) {
       throw new Error('There are some uncommited changes.');
     }
