@@ -66,7 +66,7 @@ export interface ProjectConfig {
    * }
    * ```
    */
-  changelog?: ChangelogConfig;
+  changelog?: ChangelogConfig<Record<string, unknown>>;
 
   /**
    * Sets the conventional commit [options of conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options)

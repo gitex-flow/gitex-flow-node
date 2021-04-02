@@ -112,7 +112,7 @@ export class Utils {
    *
    * @returns The derived changelog config.
    */
-  public static deriveChangelogConfig(projectConfig?: ProjectConfig): ChangelogConfig {
+  public static deriveChangelogConfig(projectConfig?: ProjectConfig): ChangelogConfig<Record<string, unknown>> {
     const config = projectConfig?.changelog ?? {
       basePath: projectConfig?.projectPath ?? process.cwd(),
       type: ChangelogType.ConventionalChangelog,
