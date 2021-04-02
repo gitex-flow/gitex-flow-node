@@ -153,7 +153,7 @@ The following JSON shows the schema and the default values of the configuration:
       "storeLatestChangelog": false,
       "conventionalChangelogPresent": "angular"
     },
-    "conventionalCommits": {
+    "conventionalCommit": {
       "referenceActions": [
         "close",
         "closes",
@@ -186,7 +186,7 @@ The following JSON shows the schema and the default values of the configuration:
 
 Further information on the [available configurations](doc/interfaces/gflow.gflowconfig.md) can be found in the API documentation.
 
-For all options of the `conventionalCommits` block visit the project of the underlying [conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options).
+For all options of the `conventionalCommit` block visit the project of the underlying [conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options).
 
 To show the loaded git flow configuration you can execute the command:
 
@@ -437,7 +437,7 @@ const gFlowConfig: GFlowConfig = {
       storeLatestChangelog: false,
       conventionalChangelogPresent: 'angular',
     },
-    conventionalCommits: {
+    conventionalCommit: {
       referenceActions: [
         'close',
         'closes',
