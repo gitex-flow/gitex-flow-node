@@ -35,9 +35,9 @@ Provides some utility functions.
 
 ### deriveChangelogConfig
 
-▸ `Static`**deriveChangelogConfig**(`projectConfig?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)
+▸ `Static`**deriveChangelogConfig**(`projectConfig?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*ChangelogConfig*](../modules/configs.md#changelogconfig)<Record<string, unknown\>\>
 
-Derives the [ChangelogConfig](../interfaces/configs.changelogconfig.md) from a given [projectConfig](../interfaces/configs.gflowconfig.md#projectconfig).
+Derives the [ChangelogConfig](../modules/configs.md#changelogconfig) from a given [projectConfig](../interfaces/configs.gflowconfig.md#projectconfig).
 
 #### Parameters:
 
@@ -45,7 +45,7 @@ Name | Type | Description |
 :------ | :------ | :------ |
 `projectConfig?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | The project configuration.    |
 
-**Returns:** [*ChangelogConfig*](../interfaces/configs.changelogconfig.md)
+**Returns:** [*ChangelogConfig*](../modules/configs.md#changelogconfig)<Record<string, unknown\>\>
 
 The derived changelog config.
 

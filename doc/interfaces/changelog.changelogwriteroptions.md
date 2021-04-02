@@ -14,8 +14,6 @@ Options of the ChangelogWriter.
 
   ↳ [*KeepAChangelogWriterOptions*](changelog.keepachangelogwriteroptions.md)
 
-  ↳ [*ChangelogConfig*](configs.changelogconfig.md)
-
 ## Table of contents
 
 ### Properties

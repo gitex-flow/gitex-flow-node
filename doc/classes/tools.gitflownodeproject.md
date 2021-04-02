@@ -143,15 +143,21 @@ ___
 
 ### updateChangelog
 
-▸ **updateChangelog**(`changelogConfig`: [*ChangelogConfig*](../interfaces/configs.changelogconfig.md), `version?`: *string*, `name?`: *string*): *Promise*<void\>
+▸ **updateChangelog**<T\>(`changelogConfig`: [*ChangelogConfig*](../modules/configs.md#changelogconfig)<T\>, `version?`: *string*, `name?`: *string*): *Promise*<void\>
 
 Updates the changelog with the changes since the last release.
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
 
 #### Parameters:
 
 Name | Type | Description |
 :------ | :------ | :------ |
-`changelogConfig` | [*ChangelogConfig*](../interfaces/configs.changelogconfig.md) | The changelog configuration.   |
+`changelogConfig` | [*ChangelogConfig*](../modules/configs.md#changelogconfig)<T\> | The changelog configuration.   |
 `version?` | *string* | Version the changelog is created for.   |
 `name?` | *string* | Name of the release.    |
 

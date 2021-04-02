@@ -43,7 +43,7 @@ ___
 
 ### changelog
 
-• `Optional` **changelog**: [*ChangelogConfig*](configs.changelogconfig.md)
+• `Optional` **changelog**: [*ChangelogConfig*](../modules/configs.md#changelogconfig)<Record<string, unknown\>\>
 
 Sets the configuration of the changelog.
 
