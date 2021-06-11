@@ -8,7 +8,7 @@ Options of the KeepAChangelogWriter.
 
 ## Hierarchy
 
-* [*ChangelogWriterOptions*](changelog.changelogwriteroptions.md)
+- [ChangelogWriterOptions](changelog.changelogwriteroptions.md)
 
   ↳ **KeepAChangelogWriterOptions**
 
@@ -26,29 +26,33 @@ Options of the KeepAChangelogWriter.
 
 ### basePath
 
-• `Optional` **basePath**: *string*
+• `Optional` **basePath**: `string`
 
 Path to the node project folder / git repository.
 
-Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[basePath](changelog.changelogwriteroptions.md#basepath)
+#### Inherited from
+
+[ChangelogWriterOptions](changelog.changelogwriteroptions.md).[basePath](changelog.changelogwriteroptions.md#basepath)
 
 ___
 
 ### changelogFileName
 
-• `Optional` **changelogFileName**: *string*
+• `Optional` **changelogFileName**: `string`
 
 Specifies the name of the changelog.
 
 *DEFAULT*: CHANGELOG.md
 
-Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[changelogFileName](changelog.changelogwriteroptions.md#changelogfilename)
+#### Inherited from
+
+[ChangelogWriterOptions](changelog.changelogwriteroptions.md).[changelogFileName](changelog.changelogwriteroptions.md#changelogfilename)
 
 ___
 
 ### description
 
-• `Optional` **description**: *string*
+• `Optional` **description**: `string`
 
 The description of the changelog.
 
@@ -56,18 +60,20 @@ ___
 
 ### storeLatestChangelog
 
-• `Optional` **storeLatestChangelog**: *boolean*
+• `Optional` **storeLatestChangelog**: `boolean`
 
 Set this flag to keep the changelog of the latest release as [changelogFileName](changelog.keepachangelogwriteroptions.md#changelogfilename).latest.md.
 This file can be useful for some other tools which processes the release information (ex. gitlab).
 
-Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[storeLatestChangelog](changelog.changelogwriteroptions.md#storelatestchangelog)
+#### Inherited from
+
+[ChangelogWriterOptions](changelog.changelogwriteroptions.md).[storeLatestChangelog](changelog.changelogwriteroptions.md#storelatestchangelog)
 
 ___
 
 ### title
 
-• `Optional` **title**: *string*
+• `Optional` **title**: `string`
 
 The title of the changelog.
 *DEFAULT*: 'Changelog'

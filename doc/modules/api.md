@@ -20,7 +20,7 @@
 
 ### GitFlowBaseBranchType
 
-Ƭ **GitFlowBaseBranchType**: *master* \| *develop*
+Ƭ **GitFlowBaseBranchType**: ``"master"`` \| ``"develop"``
 
 Types of the git flow base branches.
 
@@ -28,6 +28,6 @@ ___
 
 ### GitFlowBranchType
 
-Ƭ **GitFlowBranchType**: *feature* \| *release* \| *bugfix* \| *hotfix* \| *support*
+Ƭ **GitFlowBranchType**: ``"feature"`` \| ``"release"`` \| ``"bugfix"`` \| ``"hotfix"`` \| ``"support"``
 
 Types of the git flow branches.

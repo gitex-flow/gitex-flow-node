@@ -21,7 +21,7 @@ Represents a git reference.
 
 ### action
 
-• **action**: *string*
+• **action**: `string`
 
 The action of the reference (ex. closes).
 
@@ -29,7 +29,7 @@ ___
 
 ### issue
 
-• `Optional` **issue**: *string*
+• `Optional` **issue**: `string`
 
 The issue number without prefix.
 
@@ -37,7 +37,7 @@ ___
 
 ### owner
 
-• `Optional` **owner**: *null* \| *string*
+• `Optional` **owner**: ``null`` \| `string`
 
 The owner of the referenced issue.
 
@@ -45,7 +45,7 @@ ___
 
 ### prefix
 
-• **prefix**: *string*
+• **prefix**: `string`
 
 The prefix of the issue number without issue number.
 
@@ -53,7 +53,7 @@ ___
 
 ### raw
 
-• **raw**: *string*
+• **raw**: `string`
 
 The raw issue number.
 
@@ -61,6 +61,6 @@ ___
 
 ### repository
 
-• `Optional` **repository**: *null* \| *string*
+• `Optional` **repository**: ``null`` \| `string`
 
 The repository the referenced issue.

@@ -32,62 +32,64 @@ Representing an API for handling git flow SemVer.
 
 ### constructor
 
-\+ **new GitFlowNodeProject**(`options?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*GitFlowNodeProject*](tools.gitflownodeproject.md)
+• **new GitFlowNodeProject**(`options?`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`options?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | Options of the git flow node project instance.    |
-
-**Returns:** [*GitFlowNodeProject*](tools.gitflownodeproject.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | Options of the git flow node project instance. |
 
 ## Properties
 
 ### DefaultBumpVersionFiles
 
-▪ `Static` `Readonly` **DefaultBumpVersionFiles**: *string*[]
+▪ `Static` `Readonly` **DefaultBumpVersionFiles**: `string`[]
 
 ___
 
 ### DefaultVersionFile
 
-▪ `Static` `Readonly` **DefaultVersionFile**: *package.json*= 'package.json'
+▪ `Static` `Readonly` **DefaultVersionFile**: ``"package.json"``
 
 ## Methods
 
 ### checkoutBranch
 
-▸ **checkoutBranch**(`branchName`: *string*): *Promise*<void\>
+▸ **checkoutBranch**(`branchName`): `Promise`<void\>
 
 Checks out the given branch of the project.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`branchName` | *string* | Name of the branch to be checked out.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `branchName` | `string` | Name of the branch to be checked out. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>
 
 ___
 
 ### commitChanges
 
-▸ **commitChanges**(`commitVersionFiles?`: *boolean*, `commitChangelog?`: *boolean*): *Promise*<string\>
+▸ **commitChanges**(`commitVersionFiles?`, `commitChangelog?`): `Promise`<string\>
 
 Commits the changes of the git repository.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Default value | Description |
-:------ | :------ | :------ | :------ |
-`commitVersionFiles` | *boolean* | true | Indicates if the defined version files should be committed if they exists.   |
-`commitChangelog` | *boolean* | true | Indicates if the changelog should be committed.    |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `commitVersionFiles` | `boolean` | true | Indicates if the defined version files should be committed if they exists. |
+| `commitChangelog` | `boolean` | true | Indicates if the changelog should be committed. |
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The hash of the commit.
 
@@ -95,11 +97,13 @@ ___
 
 ### getCurrentBranch
 
-▸ **getCurrentBranch**(): *Promise*<string\>
+▸ **getCurrentBranch**(): `Promise`<string\>
 
 Gets the current branch.
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The current branch checked out.
 
@@ -107,11 +111,13 @@ ___
 
 ### getVersion
 
-▸ **getVersion**(): *Promise*<string\>
+▸ **getVersion**(): `Promise`<string\>
 
 Gets the current version from the package.json.
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The version of the project.
 
@@ -119,11 +125,13 @@ ___
 
 ### popLatestStash
 
-▸ **popLatestStash**(): *Promise*<void\>
+▸ **popLatestStash**(): `Promise`<void\>
 
 Pops the latest stash.
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>
 
 Promise on popping the latest stash.
 
@@ -131,11 +139,13 @@ ___
 
 ### stash
 
-▸ **stash**(): *Promise*<boolean\>
+▸ **stash**(): `Promise`<boolean\>
 
 Stashes the uncommited changes from the current branch.
 
-**Returns:** *Promise*<boolean\>
+#### Returns
+
+`Promise`<boolean\>
 
 `true` if stash was successful, otherwise `false`.
 
@@ -143,38 +153,42 @@ ___
 
 ### updateChangelog
 
-▸ **updateChangelog**<T\>(`changelogConfig`: [*ChangelogConfig*](../modules/configs.md#changelogconfig)<T\>, `version?`: *string*, `name?`: *string*): *Promise*<void\>
+▸ **updateChangelog**<T\>(`changelogConfig`, `version?`, `name?`): `Promise`<void\>
 
 Updates the changelog with the changes since the last release.
 
-#### Type parameters:
+#### Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`changelogConfig` | [*ChangelogConfig*](../modules/configs.md#changelogconfig)<T\> | The changelog configuration.   |
-`version?` | *string* | Version the changelog is created for.   |
-`name?` | *string* | Name of the release.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `changelogConfig` | [ChangelogConfig](../modules/configs.md#changelogconfig)<T\> | The changelog configuration. |
+| `version?` | `string` | Version the changelog is created for. |
+| `name?` | `string` | Name of the release. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>
 
 ___
 
 ### writeVersion
 
-▸ **writeVersion**(`version`: *string*): *Promise*<void\>
+▸ **writeVersion**(`version`): `Promise`<void\>
 
  Writes the version and commits the changes in the git repository.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`version` | *string* | Version to commit.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `version` | `string` | Version to commit. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>

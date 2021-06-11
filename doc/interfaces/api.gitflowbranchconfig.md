@@ -16,6 +16,6 @@ Configuration of a git flow branch instance.
 
 ### prefix
 
-• `Optional` **prefix**: *string*
+• `Optional` **prefix**: `string`
 
 Prefix of the branch ex. 'feature' or 'hotfix'.

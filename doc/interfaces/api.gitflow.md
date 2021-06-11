@@ -8,8 +8,8 @@ Specification of the git flow API.
 
 ## Implemented by
 
-* [*AvhGitFlow*](../classes/avh.avhgitflow.md)
-* [*GFlow*](../classes/gflow.gflow-1.md)
+- [AvhGitFlow](../classes/avh.avhgitflow.md)
+- [GFlow](../classes/gflow.gflow-1.md)
 
 ## Table of contents
 
@@ -31,7 +31,7 @@ Specification of the git flow API.
 
 ### bugfix
 
-• `Readonly` **bugfix**: [*GitFlowBranch*](api.gitflowbranch.md)
+• `Readonly` **bugfix**: [GitFlowBranch](api.gitflowbranch.md)
 
 Provides functionality of bugfix branches.
 
@@ -39,7 +39,7 @@ ___
 
 ### config
 
-• `Readonly` **config**: [*ConfigProvider*](api.configprovider.md)<[*GitFlowConfig*](configs.gitflowconfig.md)\>
+• `Readonly` **config**: [ConfigProvider](api.configprovider.md)<[GitFlowConfig](configs.gitflowconfig.md)\>
 
 Provides functionality to get and set the git flow configuration.
 
@@ -47,7 +47,7 @@ ___
 
 ### feature
 
-• `Readonly` **feature**: [*GitFlowBranch*](api.gitflowbranch.md)
+• `Readonly` **feature**: [GitFlowBranch](api.gitflowbranch.md)
 
 Provides functionality of feature branches.
 
@@ -55,7 +55,7 @@ ___
 
 ### hotfix
 
-• `Readonly` **hotfix**: [*GitFlowBranch*](api.gitflowbranch.md)
+• `Readonly` **hotfix**: [GitFlowBranch](api.gitflowbranch.md)
 
 Provides functionality of hotfix branches.
 
@@ -63,7 +63,7 @@ ___
 
 ### release
 
-• `Readonly` **release**: [*GitFlowBranch*](api.gitflowbranch.md)
+• `Readonly` **release**: [GitFlowBranch](api.gitflowbranch.md)
 
 Provides functionality of release branches.
 
@@ -71,7 +71,7 @@ ___
 
 ### support
 
-• `Readonly` **support**: [*GitFlowBranch*](api.gitflowbranch.md)
+• `Readonly` **support**: [GitFlowBranch](api.gitflowbranch.md)
 
 Provides functionality of support branches.
 
@@ -79,25 +79,29 @@ Provides functionality of support branches.
 
 ### init
 
-▸ **init**(`config?`: [*GitFlowConfig*](configs.gitflowconfig.md), `force?`: *boolean*): *Promise*<void\>
+▸ **init**(`config?`, `force?`): `Promise`<void\>
 
 Setup a git repository for git flow ussage.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`config?` | [*GitFlowConfig*](configs.gitflowconfig.md) | The git flow configuration.   |
-`force?` | *boolean* | Force reinitialisation if git flow already initialized.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config?` | [GitFlowConfig](configs.gitflowconfig.md) | The git flow configuration. |
+| `force?` | `boolean` | Force reinitialisation if git flow already initialized. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>
 
 ___
 
 ### version
 
-▸ **version**(): *Promise*<string\>
+▸ **version**(): `Promise`<string\>
 
 Provides the version of the git flow implementation.
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>

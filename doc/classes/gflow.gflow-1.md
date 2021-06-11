@@ -8,7 +8,7 @@ GitFlow wrapper extending functionality to a common git flow implementation.
 
 ## Implements
 
-* [*GitFlow*](../interfaces/api.gitflow.md)
+- [GitFlow](../interfaces/api.gitflow.md)
 
 ## Table of contents
 
@@ -35,114 +35,132 @@ GitFlow wrapper extending functionality to a common git flow implementation.
 
 ### constructor
 
-\+ **new GFlow**(`gitFlow`: [*GitFlow*](../interfaces/api.gitflow.md), `options?`: [*GFlowConfig*](../interfaces/configs.gflowconfig.md)): [*GFlow*](gflow.gflow-1.md)
+• **new GFlow**(`gitFlow`, `options?`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`gitFlow` | [*GitFlow*](../interfaces/api.gitflow.md) | GitFlow implementation.   |
-`options?` | [*GFlowConfig*](../interfaces/configs.gflowconfig.md) | Options for configuring the GFlow.    |
-
-**Returns:** [*GFlow*](gflow.gflow-1.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gitFlow` | [GitFlow](../interfaces/api.gitflow.md) | GitFlow implementation. |
+| `options?` | [GFlowConfig](../interfaces/configs.gflowconfig.md) | Options for configuring the GFlow. |
 
 ## Properties
 
 ### bugfix
 
-• **bugfix**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+• **bugfix**: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 Provides functionality of bugfix branches.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md).[bugfix](../interfaces/api.gitflow.md#bugfix)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[bugfix](../interfaces/api.gitflow.md#bugfix)
 
 ___
 
 ### config
 
-• `Readonly` **config**: [*ConfigProvider*](../interfaces/api.configprovider.md)<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
+• `Readonly` **config**: [ConfigProvider](../interfaces/api.configprovider.md)<[GitFlowConfig](../interfaces/configs.gitflowconfig.md)\>
 
 Provides functionality to get and set the git flow configuration.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md).[config](../interfaces/api.gitflow.md#config)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[config](../interfaces/api.gitflow.md#config)
 
 ___
 
 ### feature
 
-• **feature**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+• **feature**: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 Provides functionality of feature branches.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md).[feature](../interfaces/api.gitflow.md#feature)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[feature](../interfaces/api.gitflow.md#feature)
 
 ___
 
 ### hotfix
 
-• **hotfix**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+• **hotfix**: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 Provides functionality of hotfix branches.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md).[hotfix](../interfaces/api.gitflow.md#hotfix)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[hotfix](../interfaces/api.gitflow.md#hotfix)
 
 ___
 
 ### options
 
-• `Protected` `Readonly` **options**: [*GFlowConfig*](../interfaces/configs.gflowconfig.md)
+• `Protected` `Readonly` **options**: [GFlowConfig](../interfaces/configs.gflowconfig.md)
 
 ___
 
 ### release
 
-• **release**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+• **release**: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 Provides functionality of release branches.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md).[release](../interfaces/api.gitflow.md#release)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[release](../interfaces/api.gitflow.md#release)
 
 ___
 
 ### support
 
-• **support**: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+• **support**: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 Provides functionality of support branches.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md).[support](../interfaces/api.gitflow.md#support)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[support](../interfaces/api.gitflow.md#support)
 
 ## Methods
 
 ### init
 
-▸ **init**(`config?`: [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md), `force?`: *boolean*): *Promise*<void\>
+▸ **init**(`config?`, `force?`): `Promise`<void\>
 
 Setup a git repository for git flow usage.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`config?` | [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md) | The git flow configuration.   |
-`force?` | *boolean* | Force reinitialisation if git flow already initialized.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config?` | [GitFlowConfig](../interfaces/configs.gitflowconfig.md) | The git flow configuration. |
+| `force?` | `boolean` | Force reinitialisation if git flow already initialized. |
 
-**Returns:** *Promise*<void\>
+#### Returns
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md)
+`Promise`<void\>
+
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[init](../interfaces/api.gitflow.md#init)
 
 ___
 
 ### version
 
-▸ **version**(): *Promise*<string\>
+▸ **version**(): `Promise`<string\>
 
 Provides the version of the git flow implementation.
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The version of git flow.
 
-Implementation of: [GitFlow](../interfaces/api.gitflow.md)
+#### Implementation of
+
+[GitFlow](../interfaces/api.gitflow.md).[version](../interfaces/api.gitflow.md#version)

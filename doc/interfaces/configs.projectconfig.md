@@ -24,7 +24,7 @@ Options of the git flow node project.
 
 ### autoStash
 
-• `Optional` **autoStash**: *boolean*
+• `Optional` **autoStash**: `boolean`
 
 Auto stashes the uncommited changes on starting a git flow branch.
 After the git flow branch was created, the latest stash is popped.
@@ -34,7 +34,7 @@ ___
 
 ### bumpVersionFiles
 
-• `Optional` **bumpVersionFiles**: *string*[]
+• `Optional` **bumpVersionFiles**: `string`[]
 
 Specifies the JSON files containing a version attribute to be overwritten if the version changes.
 *DEFAULTS*: 'package.json' and 'package-lock.json'
@@ -43,7 +43,7 @@ ___
 
 ### changelog
 
-• `Optional` **changelog**: [*ChangelogConfig*](../modules/configs.md#changelogconfig)<Record<string, unknown\>\>
+• `Optional` **changelog**: [ChangelogConfig](../modules/configs.md#changelogconfig)<Record<string, unknown\>\>
 
 Sets the configuration of the changelog.
 
@@ -61,7 +61,7 @@ ___
 
 ### changelogFileName
 
-• `Optional` **changelogFileName**: *string*
+• `Optional` **changelogFileName**: `string`
 
 Specifies the name of the changelog.
 *DEFAULTS*: CHANGELOG.md
@@ -72,7 +72,7 @@ ___
 
 ### conventionalChangelogPresent
 
-• `Optional` **conventionalChangelogPresent**: *string*
+• `Optional` **conventionalChangelogPresent**: `string`
 
 Specifies the conventional commit format.
 The selectable options are:
@@ -93,7 +93,7 @@ ___
 
 ### conventionalCommit
 
-• `Optional` **conventionalCommit**: Options
+• `Optional` **conventionalCommit**: `Options`
 
 Sets the conventional commit [options of conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options)
 
@@ -121,7 +121,7 @@ ___
 
 ### projectPath
 
-• **projectPath**: *string*
+• **projectPath**: `string`
 
 Path to the node project folder / git repository.
 
@@ -129,7 +129,7 @@ ___
 
 ### storeLatestChangelog
 
-• `Optional` **storeLatestChangelog**: *boolean*
+• `Optional` **storeLatestChangelog**: `boolean`
 
 Set this flag to keep the changelog of the latest release as [changelogFileName](configs.projectconfig.md#changelogfilename).latest.md.
 This file can be useful for some other tools which processes the release information (ex. gitlab).
@@ -140,7 +140,7 @@ ___
 
 ### versionFile
 
-• `Optional` **versionFile**: *string*
+• `Optional` **versionFile**: `string`
 
 Specifies the primary version file containing the version of the project.
 *DEFAULTS*: 'package.json'

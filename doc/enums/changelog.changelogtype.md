@@ -18,7 +18,7 @@ Enum of all available changelog types.
 
 ### ConventionalChangelog
 
-• **ConventionalChangelog**: = "ConventionalChangelog"
+• **ConventionalChangelog** = "ConventionalChangelog"
 
 [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
 
@@ -26,7 +26,7 @@ ___
 
 ### KeepAChangelog
 
-• **KeepAChangelog**: = "KeepAChangelog"
+• **KeepAChangelog** = "KeepAChangelog"
 
 [keep-a-changelog](https://keepachangelog.com/en/1.0.0/)
 
@@ -34,6 +34,6 @@ ___
 
 ### None
 
-• **None**: = "None"
+• **None** = "None"
 
 Indicates no changelog should be generated.

@@ -8,7 +8,7 @@ This class extending a hotfix branch with some helpful functionality.
 
 ## Hierarchy
 
-* [*GFlowBranch*](gflow.gflowbranch.md)
+- [GFlowBranch](gflow.gflowbranch.md)
 
   ↳ **GFlowHotFixBranch**
 
@@ -38,161 +38,193 @@ This class extending a hotfix branch with some helpful functionality.
 
 ### constructor
 
-\+ **new GFlowHotFixBranch**(`gitFlowBranch`: [*GitFlowBranch*](../interfaces/api.gitflowbranch.md), `options?`: [*ProjectConfig*](../interfaces/configs.projectconfig.md)): [*GFlowHotFixBranch*](gflow.gflowhotfixbranch.md)
+• **new GFlowHotFixBranch**(`gitFlowBranch`, `options?`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`gitFlowBranch` | [*GitFlowBranch*](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped.   |
-`options?` | [*ProjectConfig*](../interfaces/configs.projectconfig.md) | Git flow node project options.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `gitFlowBranch` | [GitFlowBranch](../interfaces/api.gitflowbranch.md) | Git flow branch to be wrapped. |
+| `options?` | [ProjectConfig](../interfaces/configs.projectconfig.md) | Git flow node project options. |
 
-**Returns:** [*GFlowHotFixBranch*](gflow.gflowhotfixbranch.md)
+#### Overrides
 
-Overrides: [GFlowBranch](gflow.gflowbranch.md)
+[GFlowBranch](gflow.gflowbranch.md).[constructor](gflow.gflowbranch.md#constructor)
 
 ## Properties
 
 ### defaultBase
 
-• `Readonly` **defaultBase**: [*GitFlowBaseBranchType*](../modules/api.md#gitflowbasebranchtype)
+• `Readonly` **defaultBase**: [GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)
 
 Default base of this branch.
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md).[defaultBase](gflow.gflowbranch.md#defaultbase)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[defaultBase](gflow.gflowbranch.md#defaultbase)
 
 ___
 
 ### logger
 
-• `Protected` `Readonly` **logger**: *Logger*
+• `Protected` `Readonly` **logger**: `Logger`
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md).[logger](gflow.gflowbranch.md#logger)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[logger](gflow.gflowbranch.md#logger)
 
 ___
 
 ### projectConfig
 
-• `Protected` `Optional` `Readonly` **projectConfig**: [*ProjectConfig*](../interfaces/configs.projectconfig.md)
+• `Protected` `Optional` `Readonly` **projectConfig**: [ProjectConfig](../interfaces/configs.projectconfig.md)
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md).[projectConfig](gflow.gflowbranch.md#projectconfig)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[projectConfig](gflow.gflowbranch.md#projectconfig)
 
 ___
 
 ### type
 
-• `Readonly` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)
+• `Readonly` **type**: [GitFlowBranchType](../modules/api.md#gitflowbranchtype)
 
 Specifies the git flow branch type.
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md).[type](gflow.gflowbranch.md#type)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[type](gflow.gflowbranch.md#type)
 
 ## Methods
 
 ### finish
 
-▸ **finish**(`name?`: *string*, `msg?`: *string*): *Promise*<void\>
+▸ **finish**(`name?`, `msg?`): `Promise`<void\>
 
 Merges and finishes the branch of the branch type '[type](gflow.gflowhotfixbranch.md#type)'.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | Name of the branch to be finished.   |
-`msg?` | *string* | Message to be set for finishing the branch.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | Name of the branch to be finished. |
+| `msg?` | `string` | Message to be set for finishing the branch. |
 
-**Returns:** *Promise*<void\>
+#### Returns
 
-Overrides: [GFlowBranch](gflow.gflowbranch.md)
+`Promise`<void\>
+
+#### Overrides
+
+[GFlowBranch](gflow.gflowbranch.md).[finish](gflow.gflowbranch.md#finish)
 
 ___
 
 ### generateBranchName
 
-▸ **generateBranchName**(`name?`: *string*): *Promise*<undefined \| string\>
+▸ **generateBranchName**(`name?`): `Promise`<undefined \| string\>
 
 Generates an default branch name.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | A custom name for the branch.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | A custom name for the branch. |
 
-**Returns:** *Promise*<undefined \| string\>
+#### Returns
+
+`Promise`<undefined \| string\>
 
 The generated branch name.
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[generateBranchName](gflow.gflowbranch.md#generatebranchname)
 
 ___
 
 ### generateBranchNameFromConfig
 
-▸ `Protected`**generateBranchNameFromConfig**(`name`: *string*): *Promise*<string\>
+▸ `Protected` **generateBranchNameFromConfig**(`name`): `Promise`<string\>
 
 Gets the branch name including the git-flow configuration.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name` | *string* | A given branch name without prefix.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | A given branch name without prefix. |
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The generated name.
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[generateBranchNameFromConfig](gflow.gflowbranch.md#generatebranchnamefromconfig)
 
 ___
 
 ### getConfig
 
-▸ **getConfig**(): *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
+▸ **getConfig**(): `Promise`<[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)\>
 
 Gets the git flow branch config.
 
-**Returns:** *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
+#### Returns
+
+`Promise`<[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)\>
 
 The configuration of the gitex flow branch.
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[getConfig](gflow.gflowbranch.md#getconfig)
 
 ___
 
 ### list
 
-▸ **list**(): *Promise*<string[]\>
+▸ **list**(): `Promise`<string[]\>
 
 Lists all branches of the type '[type](gflow.gflowhotfixbranch.md#type)'.
 
-**Returns:** *Promise*<string[]\>
+#### Returns
+
+`Promise`<string[]\>
 
 The list of branches.
 
-Inherited from: [GFlowBranch](gflow.gflowbranch.md)
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[list](gflow.gflowbranch.md#list)
 
 ___
 
 ### start
 
-▸ **start**(`name?`: *string*, `base?`: *string*): *Promise*<string\>
+▸ **start**(`name?`, `base?`): `Promise`<string\>
 
 Creates and starts a new hotfix branch.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | Name of the branch to be started.   |
-`base?` | *string* | Base of the branch should be started from.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | Name of the branch to be started. |
+| `base?` | `string` | Base of the branch should be started from. |
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The name of the hotfix branch.
 
-Overrides: [GFlowBranch](gflow.gflowbranch.md)
+#### Overrides
+
+[GFlowBranch](gflow.gflowbranch.md).[start](gflow.gflowbranch.md#start)
