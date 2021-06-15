@@ -8,11 +8,11 @@ Builder for a changelog.
 
 ## Hierarchy
 
-* **ChangelogWriter**
+- **ChangelogWriter**
 
-  ↳ [*ConventionalChangelogWriter*](changelog.conventionalchangelogwriter.md)
+  ↳ [ConventionalChangelogWriter](changelog.conventionalchangelogwriter.md)
 
-  ↳ [*KeepAChangelogWriter*](changelog.keepachangelogwriter.md)
+  ↳ [KeepAChangelogWriter](changelog.keepachangelogwriter.md)
 
 ## Table of contents
 
@@ -35,90 +35,96 @@ Builder for a changelog.
 
 ### constructor
 
-\+ **new ChangelogWriter**(`options`: [*ChangelogWriterOptions*](../interfaces/changelog.changelogwriteroptions.md)): [*ChangelogWriter*](changelog.changelogwriter.md)
+• **new ChangelogWriter**(`options`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`options` | [*ChangelogWriterOptions*](../interfaces/changelog.changelogwriteroptions.md) | The options of the instance.    |
-
-**Returns:** [*ChangelogWriter*](changelog.changelogwriter.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | [ChangelogWriterOptions](../interfaces/changelog.changelogwriteroptions.md) | The options of the instance. |
 
 ## Properties
 
 ### DefaultChangelogFile
 
-▪ `Static` `Readonly` **DefaultChangelogFile**: *CHANGELOG.md*= 'CHANGELOG.md'
+▪ `Static` `Readonly` **DefaultChangelogFile**: ``"CHANGELOG.md"``
 
 ## Methods
 
 ### createLatestChangelogStream
 
-▸ `Protected` `Abstract`**createLatestChangelogStream**(`context`: [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md), `logs`: [*GitLog*](../interfaces/git.gitlog.md)[]): *Promise*<Readable\>
+▸ `Protected` `Abstract` **createLatestChangelogStream**(`context`, `logs`): `Promise`<Readable\>
 
 Creates a changelog stream from the commits since the last release.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`context` | [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository.   |
-`logs` | [*GitLog*](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `context` | [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository. |
+| `logs` | [GitLog](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release. |
 
-**Returns:** *Promise*<Readable\>
+#### Returns
+
+`Promise`<Readable\>
 
 ___
 
 ### mergeWithChangelog
 
-▸ `Protected` `Abstract`**mergeWithChangelog**(`latestChangelogStream`: *Readable*, `changelogPath`: *string*, `context?`: [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md)): *Promise*<Readable\>
+▸ `Protected` `Abstract` **mergeWithChangelog**(`latestChangelogStream`, `changelogPath`, `context?`): `Promise`<Readable\>
 
 Merges a changelog stream from the commits since the last release.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`latestChangelogStream` | *Readable* | - |
-`changelogPath` | *string* | - |
-`context?` | [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `latestChangelogStream` | `Readable` | - |
+| `changelogPath` | `string` | - |
+| `context?` | [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository. |
 
-**Returns:** *Promise*<Readable\>
+#### Returns
+
+`Promise`<Readable\>
 
 ___
 
 ### write
 
-▸ **write**(`context`: [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md), `logs`: [*GitLog*](../interfaces/git.gitlog.md)[]): *Promise*<void\>
+▸ **write**(`context`, `logs`): `Promise`<void\>
 
 Writes a changelog.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`context` | [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository.   |
-`logs` | [*GitLog*](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `context` | [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository. |
+| `logs` | [GitLog](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>
 
 ___
 
 ### getLatestChangelogName
 
-▸ `Static`**getLatestChangelogName**(`changelogFileName`: *string*): *string*
+▸ `Static` **getLatestChangelogName**(`changelogFileName`): `string`
 
 Derives the name of the seperated latest changelog from the main changelog name.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`changelogFileName` | *string* | The name of the main changelog.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `changelogFileName` | `string` | The name of the main changelog. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
 
 The derived name for the latest changelog.

@@ -21,34 +21,34 @@ Schema of a git flow command arguments.
 
 ### action
 
-• `Optional` **action**: [*GitFlowAction*](../modules/avh.md#gitflowaction)
+• `Optional` **action**: [GitFlowAction](../modules/avh.md#gitflowaction)
 
 ___
 
 ### args
 
-• `Optional` **args**: *string*[]
+• `Optional` **args**: `string`[]
 
 ___
 
 ### name
 
-• `Optional` **name**: *string*
+• `Optional` **name**: `string`
 
 ___
 
 ### options
 
-• `Optional` **options**: *string*
+• `Optional` **options**: `string`
 
 ___
 
 ### repositoryPath
 
-• `Optional` **repositoryPath**: *string*
+• `Optional` **repositoryPath**: `string`
 
 ___
 
 ### type
 
-• `Optional` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)
+• `Optional` **type**: [GitFlowBranchType](../modules/api.md#gitflowbranchtype)

@@ -92,7 +92,7 @@ export abstract class ChangelogWriter {
   public static getLatestChangelogName(changelogFileName: string): string {
     const ext = extname(changelogFileName);
     const baseFileName = basename(changelogFileName, ext);
-    return `${baseFileName}.latest.${ext}`;
+    return `${baseFileName}.latest${ext}`;
   }
 
   /**

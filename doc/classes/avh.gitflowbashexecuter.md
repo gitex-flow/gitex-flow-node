@@ -20,24 +20,24 @@ Executer for git flow commands via command line.
 
 ### constructor
 
-\+ **new GitFlowBashExecuter**(): [*GitFlowBashExecuter*](avh.gitflowbashexecuter.md)
-
-**Returns:** [*GitFlowBashExecuter*](avh.gitflowbashexecuter.md)
+• **new GitFlowBashExecuter**()
 
 ## Methods
 
 ### execute
 
-▸ `Static`**execute**(`args`: [*GitFlowCommandArgs*](../interfaces/avh.gitflowcommandargs.md)): *Promise*<string\>
+▸ `Static` **execute**(`args`): `Promise`<string\>
 
 Executes the a git flow command via command line.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`args` | [*GitFlowCommandArgs*](../interfaces/avh.gitflowcommandargs.md) | Arguments for git flow command execution.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `args` | [GitFlowCommandArgs](../interfaces/avh.gitflowcommandargs.md) | Arguments for git flow command execution. |
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The result of the executed command.

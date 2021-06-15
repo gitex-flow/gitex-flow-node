@@ -116,7 +116,13 @@ export class GFlowBranch implements GitFlowBranch {
     return `${prefix}/${name}`;
   }
 
-  private async stashChanges(project: GitFlowNodeProject): Promise<boolean> {
+  /**
+   * Stashes the current local changes.
+   *
+   * @param project - The git project to be stashed.
+   * @returns Returns `true` if changes were stashed. Otherwise `false`.
+   */
+  protected async stashChanges(project: GitFlowNodeProject): Promise<boolean> {
     let stashed = false;
     if (this.projectConfig?.autoStash !== false) {
       stashed = await project.stash();
@@ -127,7 +133,12 @@ export class GFlowBranch implements GitFlowBranch {
     return stashed;
   }
 
-  private async popStashedChanges(project: GitFlowNodeProject): Promise<void> {
+  /**
+   * Pops the latest stash into to local repository.
+   *
+   * @param project - The git project the stash should be popped from.
+   */
+  protected async popStashedChanges(project: GitFlowNodeProject): Promise<void> {
     await project.popLatestStash();
     this.logger.info(`Pop auto stashed changes`);
   }

@@ -8,7 +8,7 @@ Builder for a changelog from conventional commits.
 
 ## Hierarchy
 
-* [*ChangelogWriter*](changelog.changelogwriter.md)
+- [ChangelogWriter](changelog.changelogwriter.md)
 
   ↳ **ConventionalChangelogWriter**
 
@@ -33,105 +33,123 @@ Builder for a changelog from conventional commits.
 
 ### constructor
 
-\+ **new ConventionalChangelogWriter**(`options`: [*ConventionalChangelogWriterOptions*](../interfaces/changelog.conventionalchangelogwriteroptions.md)): [*ConventionalChangelogWriter*](changelog.conventionalchangelogwriter.md)
+• **new ConventionalChangelogWriter**(`options`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`options` | [*ConventionalChangelogWriterOptions*](../interfaces/changelog.conventionalchangelogwriteroptions.md) | The options of the instance.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options` | [ConventionalChangelogWriterOptions](../interfaces/changelog.conventionalchangelogwriteroptions.md) | The options of the instance. |
 
-**Returns:** [*ConventionalChangelogWriter*](changelog.conventionalchangelogwriter.md)
+#### Overrides
 
-Overrides: [ChangelogWriter](changelog.changelogwriter.md)
+[ChangelogWriter](changelog.changelogwriter.md).[constructor](changelog.changelogwriter.md#constructor)
 
 ## Properties
 
 ### DefaultChangelogFile
 
-▪ `Static` `Readonly` **DefaultChangelogFile**: *CHANGELOG.md*= 'CHANGELOG.md'
+▪ `Static` `Readonly` **DefaultChangelogFile**: ``"CHANGELOG.md"``
 
-Inherited from: [ChangelogWriter](changelog.changelogwriter.md).[DefaultChangelogFile](changelog.changelogwriter.md#defaultchangelogfile)
+#### Inherited from
+
+[ChangelogWriter](changelog.changelogwriter.md).[DefaultChangelogFile](changelog.changelogwriter.md#defaultchangelogfile)
 
 ## Methods
 
 ### createLatestChangelogStream
 
-▸ `Protected`**createLatestChangelogStream**(`context`: [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md), `logs`: [*GitLog*](../interfaces/git.gitlog.md)[]): *Promise*<Transform\>
+▸ `Protected` **createLatestChangelogStream**(`context`, `logs`): `Promise`<Transform\>
 
 Builds a changelog stream from the commits since the last release.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`context` | [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository.   |
-`logs` | [*GitLog*](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `context` | [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository. |
+| `logs` | [GitLog](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release. |
 
-**Returns:** *Promise*<Transform\>
+#### Returns
+
+`Promise`<Transform\>
 
 The stream of the latest changelog.
 
-Overrides: [ChangelogWriter](changelog.changelogwriter.md)
+#### Overrides
+
+[ChangelogWriter](changelog.changelogwriter.md).[createLatestChangelogStream](changelog.changelogwriter.md#createlatestchangelogstream)
 
 ___
 
 ### mergeWithChangelog
 
-▸ `Protected`**mergeWithChangelog**(`latestChangelogStream`: *Readable*, `changelogPath`: *string*): *Promise*<Readable\>
+▸ `Protected` **mergeWithChangelog**(`latestChangelogStream`, `changelogPath`): `Promise`<Readable\>
 
 Merges the changelog since the latest release with the main changelog.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`latestChangelogStream` | *Readable* | The stream with the changelogs since the latest release.   |
-`changelogPath` | *string* | The file path of the changelog to be merged.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `latestChangelogStream` | `Readable` | The stream with the changelogs since the latest release. |
+| `changelogPath` | `string` | The file path of the changelog to be merged. |
 
-**Returns:** *Promise*<Readable\>
+#### Returns
+
+`Promise`<Readable\>
 
 The stream of the merged changelogs.
 
-Overrides: [ChangelogWriter](changelog.changelogwriter.md)
+#### Overrides
+
+[ChangelogWriter](changelog.changelogwriter.md).[mergeWithChangelog](changelog.changelogwriter.md#mergewithchangelog)
 
 ___
 
 ### write
 
-▸ **write**(`context`: [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md), `logs`: [*GitLog*](../interfaces/git.gitlog.md)[]): *Promise*<void\>
+▸ **write**(`context`, `logs`): `Promise`<void\>
 
 Writes a changelog.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`context` | [*GitRepositoryContext*](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository.   |
-`logs` | [*GitLog*](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `context` | [GitRepositoryContext](../interfaces/git.gitrepositorycontext.md) | The context information of the git repository. |
+| `logs` | [GitLog](../interfaces/git.gitlog.md)[] | The conventional git logs since the last release. |
 
-**Returns:** *Promise*<void\>
+#### Returns
 
-Inherited from: [ChangelogWriter](changelog.changelogwriter.md)
+`Promise`<void\>
+
+#### Inherited from
+
+[ChangelogWriter](changelog.changelogwriter.md).[write](changelog.changelogwriter.md#write)
 
 ___
 
 ### getLatestChangelogName
 
-▸ `Static`**getLatestChangelogName**(`changelogFileName`: *string*): *string*
+▸ `Static` **getLatestChangelogName**(`changelogFileName`): `string`
 
 Derives the name of the seperated latest changelog from the main changelog name.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`changelogFileName` | *string* | The name of the main changelog.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `changelogFileName` | `string` | The name of the main changelog. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
 
 The derived name for the latest changelog.
 
-Inherited from: [ChangelogWriter](changelog.changelogwriter.md)
+#### Inherited from
+
+[ChangelogWriter](changelog.changelogwriter.md).[getLatestChangelogName](changelog.changelogwriter.md#getlatestchangelogname)

@@ -31,7 +31,7 @@ export class GitFlowNodeProject {
     if (!options) options = { projectPath: process.cwd() };
     options.projectPath = options.projectPath ?? process.cwd();
     this.options = options;
-    this.options.versionFile = GitFlowNodeProject.DefaultVersionFile;
+    this.options.versionFile = this.options.versionFile ?? GitFlowNodeProject.DefaultVersionFile;
     this.options.bumpVersionFiles = options.bumpVersionFiles ?? GitFlowNodeProject.DefaultBumpVersionFiles;
     this.options.changelog = Utils.deriveChangelogConfig(this.options);
     this.gitRepository = new GitRepository(options);

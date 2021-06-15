@@ -23,46 +23,46 @@ Configuration of a git flow instance.
 
 ### bugfixBranchPrefix
 
-• `Optional` **bugfixBranchPrefix**: *string*
+• `Optional` **bugfixBranchPrefix**: `string`
 
 ___
 
 ### developBranch
 
-• `Optional` **developBranch**: *string*
+• `Optional` **developBranch**: `string`
 
 ___
 
 ### featureBranchPrefix
 
-• `Optional` **featureBranchPrefix**: *string*
+• `Optional` **featureBranchPrefix**: `string`
 
 ___
 
 ### hotfixBranchPrefix
 
-• `Optional` **hotfixBranchPrefix**: *string*
+• `Optional` **hotfixBranchPrefix**: `string`
 
 ___
 
 ### masterBranch
 
-• `Optional` **masterBranch**: *string*
+• `Optional` **masterBranch**: `string`
 
 ___
 
 ### releaseBranchPrefix
 
-• `Optional` **releaseBranchPrefix**: *string*
+• `Optional` **releaseBranchPrefix**: `string`
 
 ___
 
 ### supportBranchPrefix
 
-• `Optional` **supportBranchPrefix**: *string*
+• `Optional` **supportBranchPrefix**: `string`
 
 ___
 
 ### versionTagPrefix
 
-• `Optional` **versionTagPrefix**: *string*
+• `Optional` **versionTagPrefix**: `string`

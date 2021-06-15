@@ -25,53 +25,55 @@
 
 ### constructor
 
-\+ **new Changelog**(`title?`: *string*, `description?`: *string*): [*Changelog*](_types.changelog.md)
+• **new Changelog**(`title?`, `description?`)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`title?` | *string* |
-`description?` | *string* |
-
-**Returns:** [*Changelog*](_types.changelog.md)
+| Name | Type |
+| :------ | :------ |
+| `title?` | `string` |
+| `description?` | `string` |
 
 ## Properties
 
 ### head
 
-• `Optional` **head**: *string*
+• `Optional` **head**: `string`
 
 ___
 
 ### releases
 
-• **releases**: [*Release*](_types.release.md)[]
+• **releases**: [Release](_types.release.md)[]
 
 ___
 
 ### url
 
-• `Optional` **url**: *string*
+• `Optional` **url**: `string`
 
 ## Methods
 
 ### addRelease
 
-▸ **addRelease**(`release`: [*Release*](_types.release.md)): [*Changelog*](_types.changelog.md)
+▸ **addRelease**(`release`): [Changelog](_types.changelog.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`release` | [*Release*](_types.release.md) |
+| Name | Type |
+| :------ | :------ |
+| `release` | [Release](_types.release.md) |
 
-**Returns:** [*Changelog*](_types.changelog.md)
+#### Returns
+
+[Changelog](_types.changelog.md)
 
 ___
 
 ### toString
 
-▸ **toString**(): *string*
+▸ **toString**(): `string`
 
-**Returns:** *string*
+#### Returns
+
+`string`

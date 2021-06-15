@@ -22,18 +22,20 @@
 
 ### ChangeType
 
-Ƭ **ChangeType**: *added* \| *changed* \| *deprecated* \| *removed* \| *fixed* \| *security*
+Ƭ **ChangeType**: ``"added"`` \| ``"changed"`` \| ``"deprecated"`` \| ``"removed"`` \| ``"fixed"`` \| ``"security"``
 
 ## Functions
 
 ### parser
 
-▸ **parser**(`changelog`: *string*): [*Changelog*](../classes/_types.changelog.md)
+▸ **parser**(`changelog`): [Changelog](../classes/_types.changelog.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`changelog` | *string* |
+| Name | Type |
+| :------ | :------ |
+| `changelog` | `string` |
 
-**Returns:** [*Changelog*](../classes/_types.changelog.md)
+#### Returns
+
+[Changelog](../classes/_types.changelog.md)

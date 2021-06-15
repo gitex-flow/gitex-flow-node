@@ -20,24 +20,24 @@
 
 ### ChangelogConfig
 
-Ƭ **ChangelogConfig**<T\>: T & { `type`: [*ChangelogType*](../enums/changelog.changelogtype.md) \| *string*  }
+Ƭ **ChangelogConfig**<T\>: `T` & { `type`: [ChangelogType](../enums/changelog.changelogtype.md) \| `string`  }
 
 Configuration for the changelog creation.
 
-#### Type parameters:
+#### Type parameters
 
-Name | Type |
-:------ | :------ |
-`T` | [*ChangelogWriterOptions*](../interfaces/changelog.changelogwriteroptions.md) |
+| Name | Type |
+| :------ | :------ |
+| `T` | `T`: [ChangelogWriterOptions](../interfaces/changelog.changelogwriteroptions.md) |
 
 ___
 
 ### ConventionalCommitConfig
 
-Ƭ **ConventionalCommitConfig**: Options
+Ƭ **ConventionalCommitConfig**: `Options`
 
 ___
 
 ### Log4jsConfig
 
-Ƭ **Log4jsConfig**: Configuration
+Ƭ **Log4jsConfig**: `Configuration`

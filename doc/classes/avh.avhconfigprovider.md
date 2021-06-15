@@ -8,7 +8,7 @@ AVH Configuration provider.
 
 ## Implements
 
-* [*ConfigProvider*](../interfaces/api.configprovider.md)<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
+- [ConfigProvider](../interfaces/api.configprovider.md)<[GitFlowConfig](../interfaces/configs.gitflowconfig.md)\>
 
 ## Table of contents
 
@@ -25,46 +25,52 @@ AVH Configuration provider.
 
 ### constructor
 
-\+ **new AvhConfigProvider**(`repoPath?`: *string*): [*AvhConfigProvider*](avh.avhconfigprovider.md)
+• **new AvhConfigProvider**(`repoPath?`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`repoPath?` | *string* | The path to the git repository.    |
-
-**Returns:** [*AvhConfigProvider*](avh.avhconfigprovider.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `repoPath?` | `string` | The path to the git repository. |
 
 ## Methods
 
 ### get
 
-▸ **get**(): *Promise*<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
+▸ **get**(): `Promise`<[GitFlowConfig](../interfaces/configs.gitflowconfig.md)\>
 
 {@inheritdoc}
 
-**Returns:** *Promise*<[*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)\>
+#### Returns
+
+`Promise`<[GitFlowConfig](../interfaces/configs.gitflowconfig.md)\>
 
 The git flow configuration.
 
-Implementation of: [ConfigProvider](../interfaces/api.configprovider.md)
+#### Implementation of
+
+[ConfigProvider](../interfaces/api.configprovider.md).[get](../interfaces/api.configprovider.md#get)
 
 ___
 
 ### set
 
-▸ **set**(`config`: [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md)): *Promise*<void\>
+▸ **set**(`config`): `Promise`<void\>
 
 {@inheritdoc}
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`config` | [*GitFlowConfig*](../interfaces/configs.gitflowconfig.md) | Git flow config to be set.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config` | [GitFlowConfig](../interfaces/configs.gitflowconfig.md) | Git flow config to be set. |
 
-**Returns:** *Promise*<void\>
+#### Returns
 
-Implementation of: [ConfigProvider](../interfaces/api.configprovider.md)
+`Promise`<void\>
+
+#### Implementation of
+
+[ConfigProvider](../interfaces/api.configprovider.md).[set](../interfaces/api.configprovider.md#set)
