@@ -38,7 +38,9 @@ This class represents an abstract GFlow branch with some basic functionality.
 - [generateBranchNameFromConfig](gflow.gflowbranch.md#generatebranchnamefromconfig)
 - [getConfig](gflow.gflowbranch.md#getconfig)
 - [list](gflow.gflowbranch.md#list)
+- [popStashedChanges](gflow.gflowbranch.md#popstashedchanges)
 - [start](gflow.gflowbranch.md#start)
+- [stashChanges](gflow.gflowbranch.md#stashchanges)
 
 ## Constructors
 
@@ -196,6 +198,24 @@ The list of branches.
 
 ___
 
+### popStashedChanges
+
+▸ `Protected` **popStashedChanges**(`project`): `Promise`<void\>
+
+Pops the latest stash into to local repository.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `project` | [GitFlowNodeProject](tools.gitflownodeproject.md) | The git project the stash should be popped from. |
+
+#### Returns
+
+`Promise`<void\>
+
+___
+
 ### start
 
 ▸ **start**(`name?`, `base?`): `Promise`<string\>
@@ -218,3 +238,23 @@ The name of the started branch.
 #### Implementation of
 
 [GitFlowBranch](../interfaces/api.gitflowbranch.md).[start](../interfaces/api.gitflowbranch.md#start)
+
+___
+
+### stashChanges
+
+▸ `Protected` **stashChanges**(`project`): `Promise`<boolean\>
+
+Stashes the current local changes.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `project` | [GitFlowNodeProject](tools.gitflownodeproject.md) | The git project to be stashed. |
+
+#### Returns
+
+`Promise`<boolean\>
+
+Returns `true` if changes were stashed. Otherwise `false`.
