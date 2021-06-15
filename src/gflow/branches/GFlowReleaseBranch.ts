@@ -30,13 +30,17 @@ export class GFlowReleaseBranch extends GFlowBranch {
     if (!version) {
       throw new Error('Failed to calculate the version from the current repository.');
     }
-    const branchName = await super.start(version, base);
     const project = new GitFlowNodeProject(this.projectConfig);
+    const stashed = await super.stashChanges(project);
+    const branchName = await super.start(version, base);
     await project.writeVersion(version);
     if (this.projectConfig?.changelog) {
       await project.updateChangelog(this.projectConfig.changelog);
     }
     await project.commitChanges();
+    if (stashed) {
+      await this.popStashedChanges(project);
+    }
     return branchName;
   }
 

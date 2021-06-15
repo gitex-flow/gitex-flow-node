@@ -32,7 +32,9 @@ This class extending a release branch with some helpful functionality.
 - [generateBranchNameFromConfig](gflow.gflowreleasebranch.md#generatebranchnamefromconfig)
 - [getConfig](gflow.gflowreleasebranch.md#getconfig)
 - [list](gflow.gflowreleasebranch.md#list)
+- [popStashedChanges](gflow.gflowreleasebranch.md#popstashedchanges)
 - [start](gflow.gflowreleasebranch.md#start)
+- [stashChanges](gflow.gflowreleasebranch.md#stashchanges)
 
 ## Constructors
 
@@ -206,6 +208,28 @@ The list of branches.
 
 ___
 
+### popStashedChanges
+
+▸ `Protected` **popStashedChanges**(`project`): `Promise`<void\>
+
+Pops the latest stash into to local repository.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `project` | [GitFlowNodeProject](tools.gitflownodeproject.md) | The git project the stash should be popped from. |
+
+#### Returns
+
+`Promise`<void\>
+
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[popStashedChanges](gflow.gflowbranch.md#popstashedchanges)
+
+___
+
 ### start
 
 ▸ **start**(`name?`, `base?`): `Promise`<string\>
@@ -228,3 +252,27 @@ The name of the release branch.
 #### Overrides
 
 [GFlowBranch](gflow.gflowbranch.md).[start](gflow.gflowbranch.md#start)
+
+___
+
+### stashChanges
+
+▸ `Protected` **stashChanges**(`project`): `Promise`<boolean\>
+
+Stashes the current local changes.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `project` | [GitFlowNodeProject](tools.gitflownodeproject.md) | The git project to be stashed. |
+
+#### Returns
+
+`Promise`<boolean\>
+
+Returns `true` if changes were stashed. Otherwise `false`.
+
+#### Inherited from
+
+[GFlowBranch](gflow.gflowbranch.md).[stashChanges](gflow.gflowbranch.md#stashchanges)

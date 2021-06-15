@@ -29,10 +29,14 @@ export class GFlowHotFixBranch extends GFlowBranch {
     if (!version) {
       throw new Error('Failed to calculate the version from the current repository.');
     }
-    const branch = await super.start(version, base);
     const project = new GitFlowNodeProject(this.projectConfig);
+    const stashed = await super.stashChanges(project);
+    const branch = await super.start(version, base);
     await project.writeVersion(version);
     await project.commitChanges(true, false);
+    if (stashed) {
+      await this.popStashedChanges(project);
+    }
     return branch;
   }
 
