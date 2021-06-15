@@ -1,11 +1,13 @@
-## 2.3.1 (2021-04-02)
+## 2.3.2 (2021-06-15)
 
 
 ### Bug Fixes
 
-* **config:** Fixed changelog configuration data structure in typescript ([6b1d0d1](https://github.com/gitex-flow/gitex-flow-node/commits/6b1d0d1e27b694422a04e5a9e5f73ae9278801d3)), closes [#53](https://github.com/gitex-flow/gitex-flow-node/issues/53)
-* **config:** Renamed "conventionalCommits" to "conventionalCommit" ([2f3891a](https://github.com/gitex-flow/gitex-flow-node/commits/2f3891ab0460a14869e9befa218c1b70d5055be3)), closes [#51](https://github.com/gitex-flow/gitex-flow-node/issues/51)
-* **logging:** Removed console output on uncommited changes detection ([c28d228](https://github.com/gitex-flow/gitex-flow-node/commits/c28d228f9154369f0da9bedeef222fd16bee32a0)), closes [#52](https://github.com/gitex-flow/gitex-flow-node/issues/52)
+* **changelog:** Added workaround to prevent security notes are recognized as breaking change ([18c2367](https://github.com/gitex-flow/gitex-flow-node/commits/18c236707243015674302a3f337f5627118da64f)), closes [#56](https://github.com/gitex-flow/gitex-flow-node/issues/56)
+* **changelog:** Removed the duplicate dot from latest changelog name ([66fd00f](https://github.com/gitex-flow/gitex-flow-node/commits/66fd00f983e736a9183a88f904e58baacc8208a5)), closes [#55](https://github.com/gitex-flow/gitex-flow-node/issues/55)
+* **config:** Fixed ignored option "versionFile" ([e719c40](https://github.com/gitex-flow/gitex-flow-node/commits/e719c40d125b67cd11a2ef9b2300da03a02652b0)), closes [#60](https://github.com/gitex-flow/gitex-flow-node/issues/60)
+* **gitex-flow:** Fixed that user changes in package*.json are not committed during version update ([73af2d5](https://github.com/gitex-flow/gitex-flow-node/commits/73af2d5d7b3f825df0b059e639c01c1a8345238b)), closes [#58](https://github.com/gitex-flow/gitex-flow-node/issues/58)
+* **project:** Updated minor versions of dependencies due to security issues ([b76dbbd](https://github.com/gitex-flow/gitex-flow-node/commits/b76dbbdf56ab44fdf39f873971247a8a830b0a0e)), closes [#57](https://github.com/gitex-flow/gitex-flow-node/issues/57)
 
 
 
