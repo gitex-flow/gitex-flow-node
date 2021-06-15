@@ -8,21 +8,21 @@ This class implements the basic functionality of a git flow branch.
 
 ## Hierarchy
 
-* **AvhGitFlowBranch**
+- **AvhGitFlowBranch**
 
-  ↳ [*BugfixGitFlowBranch*](avh.bugfixgitflowbranch.md)
+  ↳ [BugfixGitFlowBranch](avh.bugfixgitflowbranch.md)
 
-  ↳ [*FeatureGitFlowBranch*](avh.featuregitflowbranch.md)
+  ↳ [FeatureGitFlowBranch](avh.featuregitflowbranch.md)
 
-  ↳ [*HotfixGitFlowBranch*](avh.hotfixgitflowbranch.md)
+  ↳ [HotfixGitFlowBranch](avh.hotfixgitflowbranch.md)
 
-  ↳ [*ReleaseGitFlowBranch*](avh.releasegitflowbranch.md)
+  ↳ [ReleaseGitFlowBranch](avh.releasegitflowbranch.md)
 
-  ↳ [*SupportGitFlowBranch*](avh.supportgitflowbranch.md)
+  ↳ [SupportGitFlowBranch](avh.supportgitflowbranch.md)
 
 ## Implements
 
-* [*GitFlowBranch*](../interfaces/api.gitflowbranch.md)
+- [GitFlowBranch](../interfaces/api.gitflowbranch.md)
 
 ## Table of contents
 
@@ -47,120 +47,142 @@ This class implements the basic functionality of a git flow branch.
 
 ### constructor
 
-\+ **new AvhGitFlowBranch**(`repoPath?`: *string*): [*AvhGitFlowBranch*](avh.avhgitflowbranch.md)
+• **new AvhGitFlowBranch**(`repoPath?`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`repoPath?` | *string* | The path to the git repository.    |
-
-**Returns:** [*AvhGitFlowBranch*](avh.avhgitflowbranch.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `repoPath?` | `string` | The path to the git repository. |
 
 ## Properties
 
 ### defaultBase
 
-• `Readonly` `Abstract` **defaultBase**: [*GitFlowBaseBranchType*](../modules/api.md#gitflowbasebranchtype)
+• `Readonly` `Abstract` **defaultBase**: [GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)
 
 {@inheritdoc}
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#defaultbase)
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[defaultBase](../interfaces/api.gitflowbranch.md#defaultbase)
 
 ___
 
 ### type
 
-• `Readonly` `Abstract` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)
+• `Readonly` `Abstract` **type**: [GitFlowBranchType](../modules/api.md#gitflowbranchtype)
 
 {@inheritdoc}
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#type)
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[type](../interfaces/api.gitflowbranch.md#type)
 
 ## Methods
 
 ### finish
 
-▸ **finish**(`name?`: *string*, `msg?`: *string*): *Promise*<void\>
+▸ **finish**(`name?`, `msg?`): `Promise`<void\>
 
 {@inheritdoc}
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | Name of the branch to be finished.   |
-`msg?` | *string* | Message to be set for finishing the branch.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | Name of the branch to be finished. |
+| `msg?` | `string` | Message to be set for finishing the branch. |
 
-**Returns:** *Promise*<void\>
+#### Returns
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+`Promise`<void\>
+
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[finish](../interfaces/api.gitflowbranch.md#finish)
 
 ___
 
 ### generateBranchName
 
-▸ **generateBranchName**(`name?`: *string*): *Promise*<undefined \| string\>
+▸ **generateBranchName**(`name?`): `Promise`<undefined \| string\>
 
 {@inheritdoc}
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | A custom name for the branch.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | A custom name for the branch. |
 
-**Returns:** *Promise*<undefined \| string\>
+#### Returns
+
+`Promise`<undefined \| string\>
 
 The generated branch name.
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[generateBranchName](../interfaces/api.gitflowbranch.md#generatebranchname)
 
 ___
 
 ### getConfig
 
-▸ `Abstract`**getConfig**(): *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
+▸ `Abstract` **getConfig**(): `Promise`<[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)\>
 
 {@inheritdoc}
 
-**Returns:** *Promise*<[*GitFlowBranchConfig*](../interfaces/api.gitflowbranchconfig.md)\>
+#### Returns
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+`Promise`<[GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)\>
+
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[getConfig](../interfaces/api.gitflowbranch.md#getconfig)
 
 ___
 
 ### list
 
-▸ **list**(): *Promise*<string[]\>
+▸ **list**(): `Promise`<string[]\>
 
 {@inheritdoc}
 
-**Returns:** *Promise*<string[]\>
+#### Returns
+
+`Promise`<string[]\>
 
 The list of the currently opened branch.
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[list](../interfaces/api.gitflowbranch.md#list)
 
 ___
 
 ### start
 
-▸ **start**(`name?`: *string*, `base?`: *string*): *Promise*<string\>
+▸ **start**(`name?`, `base?`): `Promise`<string\>
 
 {@inheritdoc}
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | Name of the branch to be started.   |
-`base?` | *string* | Base of the branch should be started from.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | Name of the branch to be started. |
+| `base?` | `string` | Base of the branch should be started from. |
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The git reference of the create branch.
 
-Implementation of: [GitFlowBranch](../interfaces/api.gitflowbranch.md)
+#### Implementation of
+
+[GitFlowBranch](../interfaces/api.gitflowbranch.md).[start](../interfaces/api.gitflowbranch.md#start)

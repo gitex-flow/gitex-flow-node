@@ -20,30 +20,30 @@ A factory to create [ChangelogWriter](changelog.changelogwriter.md) from a [Chan
 
 ### constructor
 
-\+ **new ChangelogWriterFactory**(): [*ChangelogWriterFactory*](changelog.changelogwriterfactory.md)
-
-**Returns:** [*ChangelogWriterFactory*](changelog.changelogwriterfactory.md)
+• **new ChangelogWriterFactory**()
 
 ## Methods
 
 ### create
 
-▸ `Static`**create**<T\>(`changelogConfig`: [*ChangelogConfig*](../modules/configs.md#changelogconfig)<T\>): *undefined* \| [*ChangelogWriter*](changelog.changelogwriter.md)
+▸ `Static` **create**<T\>(`changelogConfig`): `undefined` \| [ChangelogWriter](changelog.changelogwriter.md)
 
 Creates an instance of a [ChangelogWriter](changelog.changelogwriter.md) from a [ChangelogConfig](../modules/configs.md#changelogconfig).
 
-#### Type parameters:
+#### Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`changelogConfig` | [*ChangelogConfig*](../modules/configs.md#changelogconfig)<T\> | The changelog configuration to be used.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `changelogConfig` | [ChangelogConfig](../modules/configs.md#changelogconfig)<T\> | The changelog configuration to be used. |
 
-**Returns:** *undefined* \| [*ChangelogWriter*](changelog.changelogwriter.md)
+#### Returns
+
+`undefined` \| [ChangelogWriter](changelog.changelogwriter.md)
 
 The instance of the created ChangelogWriter or `undefined`.

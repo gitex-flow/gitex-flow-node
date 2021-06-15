@@ -8,7 +8,7 @@ Options of the ConventionalChangelogBuilder.
 
 ## Hierarchy
 
-* [*ChangelogWriterOptions*](changelog.changelogwriteroptions.md)
+- [ChangelogWriterOptions](changelog.changelogwriteroptions.md)
 
   ↳ **ConventionalChangelogWriterOptions**
 
@@ -25,29 +25,33 @@ Options of the ConventionalChangelogBuilder.
 
 ### basePath
 
-• `Optional` **basePath**: *string*
+• `Optional` **basePath**: `string`
 
 Path to the node project folder / git repository.
 
-Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[basePath](changelog.changelogwriteroptions.md#basepath)
+#### Inherited from
+
+[ChangelogWriterOptions](changelog.changelogwriteroptions.md).[basePath](changelog.changelogwriteroptions.md#basepath)
 
 ___
 
 ### changelogFileName
 
-• `Optional` **changelogFileName**: *string*
+• `Optional` **changelogFileName**: `string`
 
 Specifies the name of the changelog.
 
 *DEFAULT*: CHANGELOG.md
 
-Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[changelogFileName](changelog.changelogwriteroptions.md#changelogfilename)
+#### Inherited from
+
+[ChangelogWriterOptions](changelog.changelogwriteroptions.md).[changelogFileName](changelog.changelogwriteroptions.md#changelogfilename)
 
 ___
 
 ### conventionalChangelogPresent
 
-• `Optional` **conventionalChangelogPresent**: *string*
+• `Optional` **conventionalChangelogPresent**: `string`
 
 Specifies the conventional commit format.
 The selectable options are:
@@ -66,9 +70,11 @@ ___
 
 ### storeLatestChangelog
 
-• `Optional` **storeLatestChangelog**: *boolean*
+• `Optional` **storeLatestChangelog**: `boolean`
 
 Set this flag to keep the changelog of the latest release as [changelogFileName](changelog.conventionalchangelogwriteroptions.md#changelogfilename).latest.md.
 This file can be useful for some other tools which processes the release information (ex. gitlab).
 
-Inherited from: [ChangelogWriterOptions](changelog.changelogwriteroptions.md).[storeLatestChangelog](changelog.changelogwriteroptions.md#storelatestchangelog)
+#### Inherited from
+
+[ChangelogWriterOptions](changelog.changelogwriteroptions.md).[storeLatestChangelog](changelog.changelogwriteroptions.md#storelatestchangelog)

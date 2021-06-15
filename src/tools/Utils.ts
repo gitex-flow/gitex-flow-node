@@ -2,13 +2,10 @@ import { getLogger } from 'log4js';
 import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { GFlow } from '../gflow/GFlow';
 import { Readable, Writable, Transform } from 'stream';
-import { ConventionalCommitConfig, ProjectConfig } from '../configs';
-import { ChangelogConfig } from '../configs/ChangelogConfig';
-import { ChangelogType } from '../changelog/ChangelogType';
-import { ConventionalChangelogWriterOptions } from '../changelog/ConventionalChangelogWriter';
-import { ChangelogWriter } from '../changelog';
+import { ConventionalCommitConfig } from '../configs';
 import conventionalCommitsParser from 'conventional-commits-parser';
 import { GitLog } from '../git/GitLog';
+import { ConfigDefaulter } from '../configs/ConfigDefaulter';
 
 /**
  * Provides some utility functions.
@@ -106,34 +103,6 @@ export class Utils {
   }
 
   /**
-   * Derives the [[ChangelogConfig]] from a given [[projectConfig]].
-   *
-   * @param projectConfig - The project configuration.
-   *
-   * @returns The derived changelog config.
-   */
-  public static deriveChangelogConfig(projectConfig?: ProjectConfig): ChangelogConfig<Record<string, unknown>> {
-    const config = projectConfig?.changelog ?? {
-      basePath: projectConfig?.projectPath ?? process.cwd(),
-      type: ChangelogType.ConventionalChangelog,
-    };
-
-    config.basePath = config.basePath ?? projectConfig?.projectPath ?? process.cwd();
-
-    // Following lines are ensuring backward compatibility to avoid a breaking change for version 2.3.
-    config.changelogFileName =
-      projectConfig?.changelogFileName ?? config.changelogFileName ?? ChangelogWriter.DefaultChangelogFile;
-    config.storeLatestChangelog = projectConfig?.storeLatestChangelog ?? config.storeLatestChangelog;
-    if (config.type == ChangelogType.ConventionalChangelog) {
-      const conf = config as ConventionalChangelogWriterOptions;
-      conf.conventionalChangelogPresent =
-        projectConfig?.conventionalChangelogPresent ?? conf.conventionalChangelogPresent ?? 'angular';
-    }
-
-    return config;
-  }
-
-  /**
    * Parses conventional commit messages to a [[GitLog]] array.
    *
    * @param commitMessages - The commit messages.
@@ -170,23 +139,6 @@ export class Utils {
    * @returns The parsed conventional commit messages as transformed stream.
    */
   public static parseConventionalCommitsViaPipe(conventionalCommitConfig?: ConventionalCommitConfig): Transform {
-    return conventionalCommitsParser(
-      conventionalCommitConfig ?? {
-        referenceActions: [
-          'close',
-          'closes',
-          'closed',
-          'fix',
-          'fixes',
-          'fixed',
-          'resolve',
-          'resolves',
-          'resolved',
-          'refs',
-          'references',
-        ],
-        noteKeywords: ['BREAKING CHANGE', 'SECURITY', 'REMOVED'],
-      },
-    );
+    return conventionalCommitsParser(conventionalCommitConfig ?? ConfigDefaulter.DefaultConventionalCommit);
   }
 }

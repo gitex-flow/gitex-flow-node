@@ -20,24 +20,24 @@ Loader of the GFlow config file.
 
 ### constructor
 
-\+ **new GFlowConfigLoader**(): [*GFlowConfigLoader*](tools.gflowconfigloader.md)
-
-**Returns:** [*GFlowConfigLoader*](tools.gflowconfigloader.md)
+• **new GFlowConfigLoader**()
 
 ## Methods
 
 ### load
 
-▸ `Static`**load**(`projectPath?`: *string*): *undefined* \| [*GFlowConfig*](../interfaces/configs.gflowconfig.md)
+▸ `Static` **load**(`projectPath?`): `undefined` \| [GFlowConfig](../interfaces/configs.gflowconfig.md)
 
 Loads the gitex configuration file if exists.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`projectPath?` | *string* | The path to the repository. (default: process.cwd())    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `projectPath?` | `string` | The path to the repository. (default: process.cwd()) |
 
-**Returns:** *undefined* \| [*GFlowConfig*](../interfaces/configs.gflowconfig.md)
+#### Returns
+
+`undefined` \| [GFlowConfig](../interfaces/configs.gflowconfig.md)
 
 The configuration from file if it exists.

@@ -29,6 +29,6 @@
 
 ### GitFlowAction
 
-Ƭ **GitFlowAction**: *start* \| *finish* \| *list* \| *publish* \| *track* \| *diff* \| *rebase* \| *checkout* \| *pull* \| *delete* \| *init* \| *version* \| *config*
+Ƭ **GitFlowAction**: ``"start"`` \| ``"finish"`` \| ``"list"`` \| ``"publish"`` \| ``"track"`` \| ``"diff"`` \| ``"rebase"`` \| ``"checkout"`` \| ``"pull"`` \| ``"delete"`` \| ``"init"`` \| ``"version"`` \| ``"config"``
 
 All possible git flow actions can be applied.

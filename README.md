@@ -134,11 +134,11 @@ The following JSON shows the schema and the default values of the configuration:
   "gitFlowConfig": {
     "masterBranch": "master",
     "developBranch": "develop",
-    "featureBranchPrefix": "feature",
-    "bugfixBranchPrefix": "bugfix",
-    "releaseBranchPrefix": "release",
-    "hotfixBranchPrefix": "hotfix",
-    "supportBranchPrefix": "support",
+    "featureBranchPrefix": "feature/",
+    "bugfixBranchPrefix": "bugfix/",
+    "releaseBranchPrefix": "release/",
+    "hotfixBranchPrefix": "hotfix/",
+    "supportBranchPrefix": "support/",
     "versionTagPrefix": null
   },
   "projectConfig": {
@@ -418,11 +418,11 @@ const gFlowConfig: GFlowConfig = {
   gitFlowConfig: {
     masterBranch: 'master',
     developBranch: 'develop',
-    featureBranchPrefix: 'feature',
-    bugfixBranchPrefix: 'bugfix',
-    releaseBranchPrefix: 'release',
-    hotfixBranchPrefix: 'hotfix',
-    supportBranchPrefix: 'support',
+    featureBranchPrefix: 'feature/',
+    bugfixBranchPrefix: 'bugfix/',
+    releaseBranchPrefix: 'release/',
+    hotfixBranchPrefix: 'hotfix/',
+    supportBranchPrefix: 'support/',
     versionTagPrefix: undefined,
   },
   projectConfig: {

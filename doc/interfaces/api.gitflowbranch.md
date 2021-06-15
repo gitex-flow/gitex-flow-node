@@ -8,8 +8,8 @@ This interface represents the basic functionality of a git flow branch.
 
 ## Implemented by
 
-* [*AvhGitFlowBranch*](../classes/avh.avhgitflowbranch.md)
-* [*GFlowBranch*](../classes/gflow.gflowbranch.md)
+- [AvhGitFlowBranch](../classes/avh.avhgitflowbranch.md)
+- [GFlowBranch](../classes/gflow.gflowbranch.md)
 
 ## Table of contents
 
@@ -30,7 +30,7 @@ This interface represents the basic functionality of a git flow branch.
 
 ### defaultBase
 
-• `Readonly` **defaultBase**: [*GitFlowBaseBranchType*](../modules/api.md#gitflowbasebranchtype)
+• `Readonly` **defaultBase**: [GitFlowBaseBranchType](../modules/api.md#gitflowbasebranchtype)
 
 Default base of this branch.
 
@@ -38,7 +38,7 @@ ___
 
 ### type
 
-• `Readonly` **type**: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype)
+• `Readonly` **type**: [GitFlowBranchType](../modules/api.md#gitflowbranchtype)
 
 Specifies the git flow branch type.
 
@@ -46,70 +46,80 @@ Specifies the git flow branch type.
 
 ### finish
 
-▸ **finish**(`name?`: *string*, `msg?`: *string*): *Promise*<void\>
+▸ **finish**(`name?`, `msg?`): `Promise`<void\>
 
 Merges and finishes the branch of the branch type '[type](api.gitflowbranch.md#type)'.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | Name of the branch to be finished.   |
-`msg?` | *string* | Message to be set for finishing the branch.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | Name of the branch to be finished. |
+| `msg?` | `string` | Message to be set for finishing the branch. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>
 
 ___
 
 ### generateBranchName
 
-▸ **generateBranchName**(`name?`: *string*): *Promise*<undefined \| string\>
+▸ **generateBranchName**(`name?`): `Promise`<undefined \| string\>
 
 Generates an default branch name.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | A custom name for the branch.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | A custom name for the branch. |
 
-**Returns:** *Promise*<undefined \| string\>
+#### Returns
+
+`Promise`<undefined \| string\>
 
 ___
 
 ### getConfig
 
-▸ **getConfig**(): *Promise*<[*GitFlowBranchConfig*](api.gitflowbranchconfig.md)\>
+▸ **getConfig**(): `Promise`<[GitFlowBranchConfig](api.gitflowbranchconfig.md)\>
 
 Gets the git flow branch config.
 
-**Returns:** *Promise*<[*GitFlowBranchConfig*](api.gitflowbranchconfig.md)\>
+#### Returns
+
+`Promise`<[GitFlowBranchConfig](api.gitflowbranchconfig.md)\>
 
 ___
 
 ### list
 
-▸ **list**(): *Promise*<string[]\>
+▸ **list**(): `Promise`<string[]\>
 
 Lists all branches of the type '[type](api.gitflowbranch.md#type)'.
 
-**Returns:** *Promise*<string[]\>
+#### Returns
+
+`Promise`<string[]\>
 
 ___
 
 ### start
 
-▸ **start**(`name?`: *string*, `base?`: *string*): *Promise*<string\>
+▸ **start**(`name?`, `base?`): `Promise`<string\>
 
 Creates and starts a new branch of the type '[type](api.gitflowbranch.md#type)'.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`name?` | *string* | Name of the branch to be started.   |
-`base?` | *string* | Base of the branch should be started from.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | Name of the branch to be started. |
+| `base?` | `string` | Base of the branch should be started from. |
 
-**Returns:** *Promise*<string\>
+#### Returns
+
+`Promise`<string\>
 
 The git reference of the create branch.

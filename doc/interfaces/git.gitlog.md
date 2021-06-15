@@ -27,7 +27,7 @@ Represents the parsed properties of a conventional commit git log.
 
 ### body
 
-• `Optional` **body**: *string*
+• `Optional` **body**: `string`
 
 The body of the conventional commit message (long description).
 
@@ -35,7 +35,7 @@ ___
 
 ### footer
 
-• `Optional` **footer**: *string*
+• `Optional` **footer**: `string`
 
 The footer of the conventional commit message (containing references).
 
@@ -43,7 +43,7 @@ ___
 
 ### hash
 
-• **hash**: *string*
+• **hash**: `string`
 
 The hash of of the referenced commit.
 
@@ -51,7 +51,7 @@ ___
 
 ### header
 
-• **header**: *string*
+• **header**: `string`
 
 The whole conventional commit message.
 
@@ -59,7 +59,7 @@ ___
 
 ### mentions
 
-• `Optional` **mentions**: *string*
+• `Optional` **mentions**: `string`
 
 Mentioned contributer.
 
@@ -67,7 +67,7 @@ ___
 
 ### merge
 
-• `Optional` **merge**: *string*
+• `Optional` **merge**: `string`
 
 The merge text of the commit message.
 
@@ -75,7 +75,7 @@ ___
 
 ### notes
 
-• **notes**: [*GitNote*](git.gitnote.md)[]
+• **notes**: [GitNote](git.gitnote.md)[]
 
 Parsed footer notes (ex. BREAKING CHANGE)
 
@@ -83,7 +83,7 @@ ___
 
 ### references
 
-• `Optional` **references**: [*GitReference*](git.gitreference.md)[]
+• `Optional` **references**: [GitReference](git.gitreference.md)[]
 
 Parsed footer references (ex. closes #39)
 
@@ -91,7 +91,7 @@ ___
 
 ### revert
 
-• `Optional` **revert**: *string*
+• `Optional` **revert**: `string`
 
 States if the commit is a revert commit.
 
@@ -99,7 +99,7 @@ ___
 
 ### scope
 
-• `Optional` **scope**: *string*
+• `Optional` **scope**: `string`
 
 Conventional commit scope (group).
 
@@ -107,7 +107,7 @@ ___
 
 ### subject
 
-• **subject**: *string*
+• **subject**: `string`
 
 The conventional commit message without the type and scope.
 
@@ -115,6 +115,6 @@ ___
 
 ### type
 
-• **type**: *string*
+• **type**: `string`
 
 Conventional commit type.

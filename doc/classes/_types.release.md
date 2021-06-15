@@ -18,29 +18,29 @@
 
 ### constructor
 
-\+ **new Release**(`version`: *string*, `date`: *string* \| Date, `description?`: *string*): [*Release*](_types.release.md)
+• **new Release**(`version`, `date`, `description?`)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`version` | *string* |
-`date` | *string* \| Date |
-`description?` | *string* |
-
-**Returns:** [*Release*](_types.release.md)
+| Name | Type |
+| :------ | :------ |
+| `version` | `string` |
+| `date` | `string` \| `Date` |
+| `description?` | `string` |
 
 ## Methods
 
 ### addChange
 
-▸ **addChange**(`type`: [*ChangeType*](../modules/_types.md#changetype), `change`: *string* \| [*Change*](_types.change.md)): [*Release*](_types.release.md)
+▸ **addChange**(`type`, `change`): [Release](_types.release.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`type` | [*ChangeType*](../modules/_types.md#changetype) |
-`change` | *string* \| [*Change*](_types.change.md) |
+| Name | Type |
+| :------ | :------ |
+| `type` | [ChangeType](../modules/_types.md#changetype) |
+| `change` | `string` \| [Change](_types.change.md) |
 
-**Returns:** [*Release*](_types.release.md)
+#### Returns
+
+[Release](_types.release.md)

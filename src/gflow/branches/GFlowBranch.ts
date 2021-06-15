@@ -4,6 +4,7 @@ import { getLogger, Logger } from 'log4js';
 import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
 import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GitFlowSemVers } from '../../tools/GitFlowSemVers';
+import { ConfigDefaulter } from '../../configs/ConfigDefaulter';
 
 /**
  * This class represents an abstract GFlow branch with some basic functionality.
@@ -25,7 +26,7 @@ export class GFlowBranch implements GitFlowBranch {
    */
   constructor(gitFlowBranch: GitFlowBranch, options?: ProjectConfig) {
     this.gitFlowBranch = gitFlowBranch;
-    this.projectConfig = options;
+    this.projectConfig = ConfigDefaulter.ensureProjectConfigDefaults(options);
     this.type = this.gitFlowBranch.type;
     this.defaultBase = this.gitFlowBranch.defaultBase;
     this.logger = getLogger(`gitex-flow [${this.type}]`);

@@ -5,6 +5,7 @@ import { AvhGitFlow } from './avh/AvhGitFlow';
 import { GFlow } from './gflow/GFlow';
 import { Utils } from './tools/Utils';
 import { GFlowConfigLoader } from './tools/GFlowConfigLoader';
+import { ProjectChangelog } from './changelog/ProjectChangelog';
 
 const command = new Command('git flow');
 const gitFlow = new AvhGitFlow();
@@ -76,6 +77,15 @@ support.command('start <name> [base]').action(async (name: string, base?: string
 });
 support.command('finish [name]').action(async (name?: string) => {
   await Utils.exec(() => gFlow.support.finish(name));
+});
+
+// changelog commands
+const projectChangelog = new ProjectChangelog(gFlowConfig?.projectConfig);
+const changelog = command.command('changelog').action(async () => {
+  await Utils.exec(() => projectChangelog.show());
+});
+changelog.command('update [version] [name]').action(async (version?: string, name?: string) => {
+  await Utils.exec(() => projectChangelog.update(version, name));
 });
 
 command.parse(process.argv);

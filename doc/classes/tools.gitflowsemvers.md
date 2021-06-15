@@ -20,33 +20,33 @@ Representing an API for handling git flow SemVer.
 
 ### constructor
 
-\+ **new GitFlowSemVers**(`basePath?`: *string*): [*GitFlowSemVers*](tools.gitflowsemvers.md)
+• **new GitFlowSemVers**(`basePath?`)
 
 Initializes a new instance of this class.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`basePath?` | *string* | Base path of the project folder.    |
-
-**Returns:** [*GitFlowSemVers*](tools.gitflowsemvers.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `basePath?` | `string` | Base path of the project folder. |
 
 ## Methods
 
 ### calculateBranchVersion
 
-▸ **calculateBranchVersion**(`type`: [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype), `version?`: *string*): *Promise*<undefined \| string\>
+▸ **calculateBranchVersion**(`type`, `version?`): `Promise`<undefined \| string\>
 
 Calculates the version of the branch created from the current branch.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`type` | [*GitFlowBranchType*](../modules/api.md#gitflowbranchtype) | Type of the branch should be created.   |
-`version?` | *string* | A optional custom version to be used.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | [GitFlowBranchType](../modules/api.md#gitflowbranchtype) | Type of the branch should be created. |
+| `version?` | `string` | A optional custom version to be used. |
 
-**Returns:** *Promise*<undefined \| string\>
+#### Returns
+
+`Promise`<undefined \| string\>
 
 The calculated branch version.

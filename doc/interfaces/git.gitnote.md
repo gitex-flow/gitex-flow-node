@@ -17,7 +17,7 @@ Represents a git note.
 
 ### text
 
-• `Optional` **text**: *string*
+• `Optional` **text**: `string`
 
 The text of the note.
 
@@ -25,6 +25,6 @@ ___
 
 ### title
 
-• **title**: *string*
+• **title**: `string`
 
 The title of the note.

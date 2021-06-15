@@ -8,13 +8,13 @@ Configuration provider.
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Implemented by
 
-* [*AvhConfigProvider*](../classes/avh.avhconfigprovider.md)
+- [AvhConfigProvider](../classes/avh.avhconfigprovider.md)
 
 ## Table of contents
 
@@ -27,24 +27,28 @@ Name |
 
 ### get
 
-▸ **get**(): *Promise*<T\>
+▸ **get**(): `Promise`<T\>
 
 Gets the current configuration.
 
-**Returns:** *Promise*<T\>
+#### Returns
+
+`Promise`<T\>
 
 ___
 
 ### set
 
-▸ **set**(`config`: T): *Promise*<void\>
+▸ **set**(`config`): `Promise`<void\>
 
 Sets a new configuarion.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`config` | T | Configuration to be set.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config` | `T` | Configuration to be set. |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<void\>

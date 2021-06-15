@@ -14,13 +14,11 @@
 
 ### constructor
 
-\+ **new Change**(`title`: *string*, `description?`: *string*): [*Change*](_types.change.md)
+• **new Change**(`title`, `description?`)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`title` | *string* |
-`description?` | *string* |
-
-**Returns:** [*Change*](_types.change.md)
+| Name | Type |
+| :------ | :------ |
+| `title` | `string` |
+| `description?` | `string` |

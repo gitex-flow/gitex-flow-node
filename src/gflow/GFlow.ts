@@ -7,6 +7,7 @@ import { GFlowReleaseBranch } from './branches/GFlowReleaseBranch';
 import { GFlowHotFixBranch } from './branches/GFlowHotFixBranch';
 import { configure } from 'log4js';
 import { GFlowBranch } from './branches/GFlowBranch';
+import { ConfigDefaulter } from '../configs/ConfigDefaulter';
 
 /**
  * GitFlow wrapper extending functionality to a common git flow implementation.
@@ -29,7 +30,7 @@ export class GFlow implements GitFlow {
    * @param options - Options for configuring the GFlow.
    */
   constructor(gitFlow: GitFlow, options?: GFlowConfig) {
-    options = this.ensureDefaults(options);
+    options = ConfigDefaulter.ensureGFlowConfigDefaults(options);
 
     if (options.log4jsConfig) {
       configure(options.log4jsConfig);
@@ -62,21 +63,5 @@ export class GFlow implements GitFlow {
    */
   public async version(): Promise<string> {
     return await this.gitFlow.version();
-  }
-
-  private ensureDefaults(options?: GFlowConfig): GFlowConfig {
-    options = options ?? {};
-    if (!options.projectConfig) {
-      options.projectConfig = {
-        projectPath: process.cwd(),
-      };
-    }
-    if (!options.log4jsConfig) {
-      options.log4jsConfig = {
-        appenders: { console: { type: 'console' } },
-        categories: { default: { appenders: ['console'], level: 'info' } },
-      };
-    }
-    return options;
   }
 }

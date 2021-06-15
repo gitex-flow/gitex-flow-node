@@ -9,15 +9,13 @@ import { ProjectConfig } from '../configs/ProjectConfig';
 import { GitRepositoryContext } from '../git/GitRepositoryContext';
 import { ChangelogConfig } from '../configs/ChangelogConfig';
 import { ChangelogWriterFactory } from '../changelog/ChangelogWriterFactory';
+import { ConfigDefaulter } from '../configs/ConfigDefaulter';
 
 /**
  * Representing an API for handling git flow SemVer.
  */
 export class GitFlowNodeProject {
   private readonly logger = getLogger('GitFlowNodeProject');
-
-  public static readonly DefaultVersionFile = 'package.json';
-  public static readonly DefaultBumpVersionFiles = [GitFlowNodeProject.DefaultVersionFile, 'package-lock.json'];
 
   private options: ProjectConfig;
   private gitRepository: GitRepository;
@@ -28,12 +26,7 @@ export class GitFlowNodeProject {
    * @param options - Options of the git flow node project instance.
    */
   constructor(options?: ProjectConfig) {
-    if (!options) options = { projectPath: process.cwd() };
-    options.projectPath = options.projectPath ?? process.cwd();
-    this.options = options;
-    this.options.versionFile = GitFlowNodeProject.DefaultVersionFile;
-    this.options.bumpVersionFiles = options.bumpVersionFiles ?? GitFlowNodeProject.DefaultBumpVersionFiles;
-    this.options.changelog = Utils.deriveChangelogConfig(this.options);
+    this.options = ConfigDefaulter.ensureProjectConfigDefaults(options);
     this.gitRepository = new GitRepository(options);
   }
 
@@ -104,7 +97,6 @@ export class GitFlowNodeProject {
     const changelogWriter = ChangelogWriterFactory.create(changelogConfig);
     if (changelogWriter) {
       const logs = await this.gitRepository.getLogsSinceLastRelease();
-      version = version ?? (await this.getVersion());
       const context = await this.getContext(version, name);
       await changelogWriter.write(context, logs);
     }
@@ -162,16 +154,14 @@ export class GitFlowNodeProject {
     return packageJson.version;
   }
 
-  private async writeVersionToFile(fileName: string, version: string): Promise<void> {
-    const filePath = join(this.options.projectPath, fileName);
-    if (await pathExists(filePath)) {
-      const packageJson = await readJson(filePath);
-      packageJson.version = version;
-      await writeJsonFile(filePath, packageJson, { detectIndent: true });
-    }
-  }
-
-  private async getContext(version: string, name?: string): Promise<GitRepositoryContext> {
+  /**
+   * Gets an object representing the current context of the node project.
+   *
+   * @param version - A optional user defined version.
+   * @param name - A optional user defined release name.
+   * @returns An object with information about the node project.
+   */
+  public async getContext(version?: string, name?: string): Promise<GitRepositoryContext> {
     const versionFile = this.options.versionFile as string;
     const packageJson = await readJson(join(this.options.projectPath, versionFile));
     const repoUrl = packageJson?.repository?.url ? new URL(packageJson.repository.url) : undefined;
@@ -183,7 +173,7 @@ export class GitFlowNodeProject {
     const url = repoUrl ? `https://${repoUrl.host}${path}` : undefined;
 
     return {
-      version: version,
+      version: version ?? (await this.getVersion()),
       title: name,
       host: host,
       repoUrl: url,
@@ -191,5 +181,14 @@ export class GitFlowNodeProject {
       issue: 'issues',
       date: Utils.getCurrDate(),
     };
+  }
+
+  private async writeVersionToFile(fileName: string, version: string): Promise<void> {
+    const filePath = join(this.options.projectPath, fileName);
+    if (await pathExists(filePath)) {
+      const packageJson = await readJson(filePath);
+      packageJson.version = version;
+      await writeJsonFile(filePath, packageJson, { detectIndent: true });
+    }
   }
 }

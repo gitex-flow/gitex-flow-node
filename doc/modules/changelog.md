@@ -14,6 +14,7 @@
 - [ChangelogWriterFactory](../classes/changelog.changelogwriterfactory.md)
 - [ConventionalChangelogWriter](../classes/changelog.conventionalchangelogwriter.md)
 - [KeepAChangelogWriter](../classes/changelog.keepachangelogwriter.md)
+- [ProjectChangelog](../classes/changelog.projectchangelog.md)
 
 ### Interfaces
 
