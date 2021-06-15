@@ -55,6 +55,11 @@ export class ConventionalChangelogWriter extends ChangelogWriter {
    */
   protected async createLatestChangelogStream(context: GitRepositoryContext, logs: GitLog[]): Promise<Transform> {
     const present = this.options.conventionalChangelogPresent ?? 'angular';
+
+    // Workaround for issue https://github.com/conventional-changelog/conventional-changelog/issues/815
+    // Should be removed if bug will be fixed.
+    logs = this.cleanNotes(logs);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const config = (await conventionalChangelogPresetLoader(present)) as any;
     const commitStream = Readable.from(logs);
@@ -87,5 +92,12 @@ export class ConventionalChangelogWriter extends ChangelogWriter {
     return createReadStream(tmpChangelogFilePath).on('close', () => {
       removeSync(tmpChangelogFilePath);
     });
+  }
+
+  private cleanNotes(logs: GitLog[]): GitLog[] {
+    for (const log of logs) {
+      log.notes = log.notes.filter((v) => ['BREAKING CHANGE', 'BREAKING CHANGES'].includes(v.title));
+    }
+    return logs;
   }
 }
