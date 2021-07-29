@@ -1,13 +1,10 @@
-## 2.3.2 (2021-06-15)
+## 2.3.3 (2021-07-29)
 
 
 ### Bug Fixes
 
-* **changelog:** Added workaround to prevent security notes are recognized as breaking change ([18c2367](https://github.com/gitex-flow/gitex-flow-node/commits/18c236707243015674302a3f337f5627118da64f)), closes [#56](https://github.com/gitex-flow/gitex-flow-node/issues/56)
-* **changelog:** Removed the duplicate dot from latest changelog name ([66fd00f](https://github.com/gitex-flow/gitex-flow-node/commits/66fd00f983e736a9183a88f904e58baacc8208a5)), closes [#55](https://github.com/gitex-flow/gitex-flow-node/issues/55)
-* **config:** Fixed ignored option "versionFile" ([e719c40](https://github.com/gitex-flow/gitex-flow-node/commits/e719c40d125b67cd11a2ef9b2300da03a02652b0)), closes [#60](https://github.com/gitex-flow/gitex-flow-node/issues/60)
-* **gitex-flow:** Fixed that user changes in package*.json are not committed during version update ([73af2d5](https://github.com/gitex-flow/gitex-flow-node/commits/73af2d5d7b3f825df0b059e639c01c1a8345238b)), closes [#58](https://github.com/gitex-flow/gitex-flow-node/issues/58)
-* **project:** Updated minor versions of dependencies due to security issues ([b76dbbd](https://github.com/gitex-flow/gitex-flow-node/commits/b76dbbdf56ab44fdf39f873971247a8a830b0a0e)), closes [#57](https://github.com/gitex-flow/gitex-flow-node/issues/57)
+* **tools:** Fixed platform incompatibility of shell command execution ([a03a27e](https://github.com/gitex-flow/gitex-flow-node/commits/a03a27e8ad87f6dd5f87c3a1c06b7a3b384fb1ce)), closes [#65](https://github.com/gitex-flow/gitex-flow-node/issues/65)
+* **versioning:** Fixed problem with pre-release tags by ignoring them ([e3c56b9](https://github.com/gitex-flow/gitex-flow-node/commits/e3c56b9f4e4ad02e34b8256aa34efcffdf7d1237)), closes [#62](https://github.com/gitex-flow/gitex-flow-node/issues/62)
 
 
 
