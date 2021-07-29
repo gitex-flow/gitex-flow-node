@@ -47,11 +47,7 @@ export class GitFlowBashExecuter {
    * @returns The result of the executed command.
    */
   public static async execute(args: GitFlowCommandArgs): Promise<string> {
-    let cmd = '';
-    if (args.repositoryPath) {
-      cmd = `cd "${args.repositoryPath}" && `;
-    }
-    cmd += `${GitFlowBashExecuter.GitFlowCommand}`;
+    let cmd = `${GitFlowBashExecuter.GitFlowCommand}`;
     if (args.type) {
       cmd += ` ${args.type}`;
     }
@@ -68,18 +64,19 @@ export class GitFlowBashExecuter {
       cmd += ` "${args.args.join('" "')}"`;
     }
     GitFlowBashExecuter.logger.debug(`Executing '${cmd}'`);
-    return await GitFlowBashExecuter.execViaShell(cmd);
+    return await GitFlowBashExecuter.execViaShell(cmd, args.repositoryPath);
   }
 
   /**
    * Executes the command via command line.
    *
    * @param cmd - The command should be executed via command line.
+   * @param executionFolder - The base folder where the command should be started in.
    * @returns Standard output (stdout) of the started process.
    */
-  private static execViaShell(cmd: string): Promise<string> {
+  private static execViaShell(cmd: string, executionFolder?: string): Promise<string> {
     return new Promise((resolve, reject) => {
-      exec(cmd, (error, stdout, stderr) => {
+      exec(cmd, { cwd: executionFolder }, (error, stdout, stderr) => {
         if (error) {
           reject(error);
         } else if (stderr) {
