@@ -4,6 +4,7 @@ import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
 import { GitLog } from './GitLog';
 import { ProjectConfig } from '../configs';
 import { Utils } from '../tools';
+import { prerelease } from 'semver';
 
 /**
  * A simple API with basic functionality of a git repository.
@@ -126,8 +127,13 @@ export class GitRepository {
    */
   public async getLatestReleasedVersion(): Promise<string | undefined> {
     const repo = await this.createOrOpenRepo();
-    const tags = await repo.tags();
-    return tags?.latest;
+    const gitTags = await repo.tags();
+    // Filter all prerelease tags
+    const tags = gitTags.all.filter((tag) => {
+      const pre = prerelease(tag);
+      return !pre;
+    });
+    return tags.pop();
   }
 
   /**
