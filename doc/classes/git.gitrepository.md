@@ -20,6 +20,7 @@ A simple API with basic functionality of a git repository.
 
 - [checkout](git.gitrepository.md#checkout)
 - [commit](git.gitrepository.md#commit)
+- [createOrOpenRepo](git.gitrepository.md#createoropenrepo)
 - [ensure](git.gitrepository.md#ensure)
 - [ensureNoUnCommitedChanges](git.gitrepository.md#ensurenouncommitedchanges)
 - [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
@@ -90,6 +91,20 @@ Adds and commits the given file names to the current branch.
 `Promise`<string\>
 
 The hash of the commit.
+
+___
+
+### createOrOpenRepo
+
+▸ `Protected` **createOrOpenRepo**(): `Promise`<SimpleGit\>
+
+Creates or open the test git repository.
+
+#### Returns
+
+`Promise`<SimpleGit\>
+
+The instance ot the git repository.
 
 ___
 
