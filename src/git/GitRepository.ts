@@ -4,7 +4,7 @@ import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
 import { GitLog } from './GitLog';
 import { ProjectConfig } from '../configs';
 import { Utils } from '../tools';
-import { prerelease } from 'semver';
+import { prerelease, valid } from 'semver';
 
 /**
  * A simple API with basic functionality of a git repository.
@@ -128,11 +128,8 @@ export class GitRepository {
   public async getLatestReleasedVersion(): Promise<string | undefined> {
     const repo = await this.createOrOpenRepo();
     const gitTags = await repo.tags();
-    // Filter all prerelease tags
-    const tags = gitTags.all.filter((tag) => {
-      const pre = prerelease(tag);
-      return !pre;
-    });
+    // Filter all non-semver and prerelease-semver tags
+    const tags = gitTags.all.filter((tag) => valid(tag) && !prerelease(tag));
     return tags.pop();
   }
 
@@ -149,18 +146,12 @@ export class GitRepository {
     return gitLogs;
   }
 
-  private async getDiffLogs(): Promise<readonly DefaultLogFields[]> {
-    const repo = await this.createOrOpenRepo();
-    const latestVersion = await this.getLatestReleasedVersion();
-    const logs = await repo.log({
-      from: 'HEAD',
-      to: latestVersion,
-      symmetric: true,
-    });
-    return logs.all;
-  }
-
-  private async createOrOpenRepo(): Promise<Repository> {
+  /**
+   * Creates or open the test git repository.
+   *
+   * @returns The instance ot the git repository.
+   */
+  protected async createOrOpenRepo(): Promise<Repository> {
     let repo: Repository;
     const path = this.getRepoPath();
     const gitFolder = join(path, '.git');
@@ -172,5 +163,16 @@ export class GitRepository {
       await repo.init();
     }
     return repo;
+  }
+
+  private async getDiffLogs(): Promise<readonly DefaultLogFields[]> {
+    const repo = await this.createOrOpenRepo();
+    const latestVersion = await this.getLatestReleasedVersion();
+    const logs = await repo.log({
+      from: 'HEAD',
+      to: latestVersion,
+      symmetric: true,
+    });
+    return logs.all;
   }
 }

@@ -98,6 +98,26 @@ export class GitFlowTester {
   }
 
   /**
+   * Commits a given file to the test repository on the current branch.
+   *
+   * @param fileName - The file name to be commited.
+   * @param msg - The commit message.
+   */
+  public async commitTestFileToCurrentBranch(fileName: string, msg: string): Promise<void> {
+    await this.repo.commitTestFile(fileName, msg);
+  }
+
+  /**
+   * Added tag to the head of the current branch.
+   *
+   * @param name - The name of the tag.
+   * @returns The name of the tag being added.
+   */
+  public async addTagToCurrentBranch(name: string): Promise<void> {
+    await this.repo.addTag(name);
+  }
+
+  /**
    * Select the given git flow branch.
    *
    * @param type - The git flow branch type to be selected.

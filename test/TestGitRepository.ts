@@ -9,6 +9,18 @@ export class TestGitRepository extends GitRepository {
   private readonly fileFolderPath = resolve(join(__dirname, 'files'));
 
   /**
+   * Added tag to the head of the current branch.
+   *
+   * @param name - The name of the tag.
+   * @returns The name of the tag being added.
+   */
+  public async addTag(name: string): Promise<string> {
+    const repo = await this.createOrOpenRepo();
+    const tag = await repo.addTag(name);
+    return tag.name;
+  }
+
+  /**
    * Commits a given file (from folder 'files') to the test repo.
    *
    * @param fileName - Name of the file to be commited.
