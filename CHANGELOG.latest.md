@@ -1,10 +1,10 @@
-## 2.3.3 (2021-07-29)
+## 2.3.4 (2021-10-08)
 
 
 ### Bug Fixes
 
-* **tools:** Fixed platform incompatibility of shell command execution ([a03a27e](https://github.com/gitex-flow/gitex-flow-node/commits/a03a27e8ad87f6dd5f87c3a1c06b7a3b384fb1ce)), closes [#65](https://github.com/gitex-flow/gitex-flow-node/issues/65)
-* **versioning:** Fixed problem with pre-release tags by ignoring them ([e3c56b9](https://github.com/gitex-flow/gitex-flow-node/commits/e3c56b9f4e4ad02e34b8256aa34efcffdf7d1237)), closes [#62](https://github.com/gitex-flow/gitex-flow-node/issues/62)
+* **project:** Updated bugfix version of dependencies with security issues ([9ffa177](https://github.com/gitex-flow/gitex-flow-node/commits/9ffa17747836debd919736b357b810d36009c62e))
+* **versioning:** Fixed problem with calculation of upcoming versions with custom tags ([21895ab](https://github.com/gitex-flow/gitex-flow-node/commits/21895ab7fb55e54f10fae6671aa16ba732b18095)), closes [#66](https://github.com/gitex-flow/gitex-flow-node/issues/66)
 
 
 

@@ -363,6 +363,25 @@ describe('Test gFlow implementation', function () {
 
     await tester.dispose();
   });
+
+  it('[bugfix #66] should successfully calculate next version if non-semver tags exists', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+
+    const release1Branch = tester.selectBranch('release');
+    const release1BranchName = await release1Branch.start();
+    assert.equal(release1BranchName, 'release/1.0.0');
+    await release1Branch.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release1Branch.finish();
+
+    await tester.checkoutDevelopBranch();
+    await tester.commitTestFileToCurrentBranch('feature.txt', 'feat(scope): Added feature.txt');
+    await tester.addTagToCurrentBranch('custom_tag');
+
+    const hotfix = tester.selectBranch('hotfix');
+    const branchName = await hotfix.start();
+    assert.equal(branchName, 'hotfix/1.0.1');
+  });
 });
 
 function createGitFlow(config?: GFlowConfig): GitFlow {
