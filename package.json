@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",
@@ -71,11 +71,12 @@
     "conventional-changelog-writer": "^5.0.0",
     "conventional-commits-parser": "^3.2.1",
     "fs-extra": "^9.1.0",
+    "git-url-parse": "^11.6.0",
     "keep-a-changelog": "^0.10.4",
     "log4js": "^6.3.0",
     "path": "^0.12.7",
     "semver": "^7.3.5",
-    "simple-git": "^2.37.0",
+    "simple-git": "^2.48.0",
     "write-json-file": "^4.3.0"
   },
   "devDependencies": {
@@ -84,6 +85,7 @@
     "@types/conventional-changelog-writer": "^4.0.0",
     "@types/conventional-commits-parser": "^3.0.1",
     "@types/fs-extra": "^9.0.9",
+    "@types/git-url-parse": "^9.0.1",
     "@types/log4js": "^2.3.5",
     "@types/mocha": "^8.2.2",
     "@types/semver": "^7.3.4",

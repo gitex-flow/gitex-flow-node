@@ -20,7 +20,7 @@ Representing an API for handling git flow SemVer.
 
 ### constructor
 
-• **new GitFlowSemVers**(`basePath?`)
+• **new GitFlowSemVers**(`config`)
 
 Initializes a new instance of this class.
 
@@ -28,7 +28,7 @@ Initializes a new instance of this class.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `basePath?` | `string` | Base path of the project folder. |
+| `config` | [ProjectConfig](../interfaces/configs.projectconfig.md) | Base path of the project folder. |
 
 ## Methods
 

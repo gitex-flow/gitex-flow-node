@@ -3,7 +3,9 @@ import { GitFlowSemVers } from '../src/tools/GitFlowSemVers';
 
 describe('Test semantic versioning', function () {
   it('should exclusively allow semantic versions', async function () {
-    const semVer = new GitFlowSemVers();
+    const semVer = new GitFlowSemVers({
+      projectPath: process.cwd(),
+    });
     assert.isUndefined(await semVer.calculateBranchVersion('release', '#37'));
     assert.isUndefined(await semVer.calculateBranchVersion('release', '1.2'));
     assert.isUndefined(await semVer.calculateBranchVersion('release', '4,3'));

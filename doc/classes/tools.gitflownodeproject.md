@@ -21,6 +21,7 @@ Representing an API for handling git flow SemVer.
 
 - [checkoutBranch](tools.gitflownodeproject.md#checkoutbranch)
 - [commitChanges](tools.gitflownodeproject.md#commitchanges)
+- [getContext](tools.gitflownodeproject.md#getcontext)
 - [getCurrentBranch](tools.gitflownodeproject.md#getcurrentbranch)
 - [getVersion](tools.gitflownodeproject.md#getversion)
 - [popLatestStash](tools.gitflownodeproject.md#poplateststash)
@@ -95,6 +96,27 @@ The hash of the commit.
 
 ___
 
+### getContext
+
+▸ **getContext**(`version?`, `name?`): `Promise`<[GitRepositoryContext](../interfaces/git.gitrepositorycontext.md)\>
+
+Gets an object representing the current context of the node project.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `version?` | `string` | A optional user defined version. |
+| `name?` | `string` | A optional user defined release name. |
+
+#### Returns
+
+`Promise`<[GitRepositoryContext](../interfaces/git.gitrepositorycontext.md)\>
+
+An object with information about the node project.
+
+___
+
 ### getCurrentBranch
 
 ▸ **getCurrentBranch**(): `Promise`<string\>
@@ -111,13 +133,13 @@ ___
 
 ### getVersion
 
-▸ **getVersion**(): `Promise`<string\>
+▸ **getVersion**(): `Promise`<undefined \| string\>
 
 Gets the current version from the package.json.
 
 #### Returns
 
-`Promise`<string\>
+`Promise`<undefined \| string\>
 
 The version of the project.
 

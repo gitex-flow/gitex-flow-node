@@ -9,6 +9,7 @@ import { ProjectConfig } from '../configs/ProjectConfig';
 import { GitRepositoryContext } from '../git/GitRepositoryContext';
 import { ChangelogConfig } from '../configs/ChangelogConfig';
 import { ChangelogWriterFactory } from '../changelog/ChangelogWriterFactory';
+import gitUrlParse from 'git-url-parse';
 
 /**
  * Representing an API for handling git flow SemVer.
@@ -156,31 +157,36 @@ export class GitFlowNodeProject {
    *
    * @returns The version of the project.
    */
-  public async getVersion(): Promise<string> {
+  public async getVersion(): Promise<string | undefined> {
+    let version = undefined;
     const versionFile = this.options.versionFile as string;
-    const packageJson = await readJson(join(this.options.projectPath, versionFile));
-    return packageJson.version;
+    const versionFilePath = join(this.options.projectPath, versionFile);
+    if (await pathExists(versionFilePath)) {
+      const packageJson = await readJson(versionFilePath);
+      version = packageJson.version;
+    }
+    return version;
   }
 
-  private async writeVersionToFile(fileName: string, version: string): Promise<void> {
-    const filePath = join(this.options.projectPath, fileName);
-    if (await pathExists(filePath)) {
-      const packageJson = await readJson(filePath);
-      packageJson.version = version;
-      await writeJsonFile(filePath, packageJson, { detectIndent: true });
+  /**
+   * Gets an object representing the current context of the node project.
+   *
+   * @param version - A optional user defined version.
+   * @param name - A optional user defined release name.
+   * @returns An object with information about the node project.
+   */
+  public async getContext(version?: string, name?: string): Promise<GitRepositoryContext> {
+    let host: string | undefined = undefined;
+    let url: string | undefined = undefined;
+    const gitUrlConfig = await this.gitRepository.getConfig('remote.origin.url');
+    if (gitUrlConfig.value) {
+      const repoUrl = new URL(gitUrlParse(gitUrlConfig.value as string).toString('https'));
+      host = repoUrl.origin;
+      url = repoUrl?.href;
+      if (url?.endsWith('.git')) {
+        url = url.substring(0, url.length - 4);
+      }
     }
-  }
-
-  private async getContext(version: string, name?: string): Promise<GitRepositoryContext> {
-    const versionFile = this.options.versionFile as string;
-    const packageJson = await readJson(join(this.options.projectPath, versionFile));
-    const repoUrl = packageJson?.repository?.url ? new URL(packageJson.repository.url) : undefined;
-    const host = repoUrl ? `https://${repoUrl.host}` : undefined;
-    let path = repoUrl?.pathname;
-    if (path?.endsWith('.git')) {
-      path = path.substring(0, path.length - 4);
-    }
-    const url = repoUrl ? `https://${repoUrl.host}${path}` : undefined;
 
     return {
       version: version,
@@ -191,5 +197,14 @@ export class GitFlowNodeProject {
       issue: 'issues',
       date: Utils.getCurrDate(),
     };
+  }
+
+  private async writeVersionToFile(fileName: string, version: string): Promise<void> {
+    const filePath = join(this.options.projectPath, fileName);
+    if (await pathExists(filePath)) {
+      const packageJson = await readJson(filePath);
+      packageJson.version = version;
+      await writeJsonFile(filePath, packageJson, { detectIndent: true });
+    }
   }
 }
