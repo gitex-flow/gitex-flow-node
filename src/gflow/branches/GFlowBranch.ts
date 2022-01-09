@@ -15,7 +15,7 @@ export class GFlowBranch implements GitFlowBranch {
 
   private readonly gitFlowBranch: GitFlowBranch;
 
-  protected readonly projectConfig?: ProjectConfig;
+  protected readonly projectConfig: ProjectConfig;
   protected readonly logger: Logger;
 
   /**
@@ -97,7 +97,7 @@ export class GFlowBranch implements GitFlowBranch {
    * @returns The generated branch name.
    */
   public async generateBranchName(name?: string): Promise<string | undefined> {
-    const semVer = new GitFlowSemVers(this.projectConfig?.projectPath);
+    const semVer = new GitFlowSemVers(this.projectConfig);
     return semVer.calculateBranchVersion(this.type, name);
   }
 

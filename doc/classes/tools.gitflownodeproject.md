@@ -116,13 +116,13 @@ ___
 
 ### getVersion
 
-▸ **getVersion**(): `Promise`<string\>
+▸ **getVersion**(): `Promise`<undefined \| string\>
 
 Gets the current version from the package.json.
 
 #### Returns
 
-`Promise`<string\>
+`Promise`<undefined \| string\>
 
 The version of the project.
 

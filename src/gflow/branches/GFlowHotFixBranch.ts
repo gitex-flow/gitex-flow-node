@@ -48,23 +48,20 @@ export class GFlowHotFixBranch extends GFlowBranch {
    */
   public async finish(name?: string, msg?: string): Promise<void> {
     const project = new GitFlowNodeProject(this.projectConfig);
-    const version = await this.getVersion(project, name);
+    const version = await this.getVersion(name);
     const branchName = await this.generateBranchNameFromConfig(version);
     await project.checkoutBranch(branchName);
     if (this.projectConfig?.changelog) {
-      await project.updateChangelog(this.projectConfig.changelog);
+      await project.updateChangelog(this.projectConfig.changelog, version);
     }
     await project.commitChanges(false);
     await super.finish(version, msg ?? version);
   }
 
-  private async getVersion(project: GitFlowNodeProject, name?: string): Promise<string> {
+  private async getVersion(name?: string): Promise<string> {
     let version = name;
     if (!version) {
       const hotfixBranches = await this.list();
-      if (hotfixBranches.length == 0) {
-        version = await project.getVersion();
-      }
       // There is only one hotfix branch
       version = hotfixBranches[0];
     }

@@ -35,7 +35,7 @@ export class GFlowReleaseBranch extends GFlowBranch {
     const branchName = await super.start(version, base);
     await project.writeVersion(version);
     if (this.projectConfig?.changelog) {
-      await project.updateChangelog(this.projectConfig.changelog);
+      await project.updateChangelog(this.projectConfig.changelog, version);
     }
     await project.commitChanges();
     if (stashed) {
@@ -51,19 +51,15 @@ export class GFlowReleaseBranch extends GFlowBranch {
    * @param msg - Message to be set for finishing the branch.
    */
   public async finish(name?: string, msg?: string): Promise<void> {
-    const project = new GitFlowNodeProject(this.projectConfig);
-    const version = await this.getVersion(project, name);
+    const version = await this.getVersion(name);
     msg = msg ?? version;
     await super.finish(version, msg);
   }
 
-  private async getVersion(project: GitFlowNodeProject, name?: string): Promise<string> {
+  private async getVersion(name?: string): Promise<string> {
     let version = name;
     if (!version) {
       const releaseBranches = await this.list();
-      if (releaseBranches.length == 0) {
-        version = await project.getVersion();
-      }
       // There is only one release branch
       version = releaseBranches[0];
     }
