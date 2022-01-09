@@ -1,10 +1,9 @@
-## 2.3.4 (2021-10-08)
+## 2.3.5 (2022-01-09)
 
 
 ### Bug Fixes
 
-* **project:** Updated bugfix version of dependencies with security issues ([9ffa177](https://github.com/gitex-flow/gitex-flow-node/commits/9ffa17747836debd919736b357b810d36009c62e))
-* **versioning:** Fixed problem with calculation of upcoming versions with custom tags ([21895ab](https://github.com/gitex-flow/gitex-flow-node/commits/21895ab7fb55e54f10fae6671aa16ba732b18095)), closes [#66](https://github.com/gitex-flow/gitex-flow-node/issues/66)
+* **versioning:** Fixed error in versioning if no package.json exists ([cb5d103](https://github.com/gitex-flow/gitex-flow-node/commits/cb5d1034c614958edf0e6a362a893b48e677a223)), closes [#67](https://github.com/gitex-flow/gitex-flow-node/issues/67)
 
 
 
