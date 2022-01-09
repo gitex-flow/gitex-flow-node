@@ -2,20 +2,22 @@ import { GitFlowBranchType } from '../api/branches/GitFlowBranch';
 import { inc, valid, ReleaseType, clean } from 'semver';
 import { GitRepository } from '../git/GitRepository';
 import { GitLog } from '../git/GitLog';
+import { ProjectConfig } from '../configs/ProjectConfig';
+import { GitFlowNodeProject } from './GitFlowNodeProject';
 
 /**
  * Representing an API for handling git flow SemVer.
  */
 export class GitFlowSemVers {
-  private basePath: string;
+  private config: ProjectConfig;
 
   /**
    * Initializes a new instance of this class.
    *
-   * @param basePath - Base path of the project folder.
+   * @param config - Base path of the project folder.
    */
-  constructor(basePath?: string) {
-    this.basePath = basePath ?? process.cwd();
+  constructor(config: ProjectConfig) {
+    this.config = config;
   }
 
   /**
@@ -31,16 +33,18 @@ export class GitFlowSemVers {
       if (version) {
         version = valid(clean(version)) ?? undefined;
       } else {
-        const gitRepository = new GitRepository({
-          projectPath: this.basePath,
-        });
+        const gitRepository = new GitRepository(this.config);
         const latestVersion = await gitRepository.getLatestReleasedVersion();
         if (!latestVersion) {
-          version = '1.0.0';
+          const project = new GitFlowNodeProject(this.config);
+          version = await project.getVersion();
+          if (!version) {
+            version = '1.0.0';
+          }
         } else {
           let releaseType: ReleaseType = 'patch';
           if (type == 'release') {
-            if (await this.hasBreakingChanges()) {
+            if (await this.hasBreakingChanges(gitRepository)) {
               releaseType = 'major';
             } else {
               releaseType = 'minor';
@@ -53,10 +57,7 @@ export class GitFlowSemVers {
     return version;
   }
 
-  private async hasBreakingChanges(): Promise<boolean> {
-    const gitRepository = new GitRepository({
-      projectPath: this.basePath,
-    });
+  private async hasBreakingChanges(gitRepository: GitRepository): Promise<boolean> {
     const gitLogs = await gitRepository.getLogsSinceLastRelease();
     const hasBreakingChanges = gitLogs.some((log: GitLog) => log.notes.some((x) => x.title === 'BREAKING CHANGE'));
     return hasBreakingChanges;

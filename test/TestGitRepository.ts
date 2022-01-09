@@ -21,6 +21,14 @@ export class TestGitRepository extends GitRepository {
   }
 
   /**
+   * Add a dummy remote URL.
+   */
+  public async addDummyOrigin(): Promise<void> {
+    const repo = await this.createOrOpenRepo();
+    await repo.addRemote('origin', 'git+https://github.com/test-dummy/test.git');
+  }
+
+  /**
    * Commits a given file (from folder 'files') to the test repo.
    *
    * @param fileName - Name of the file to be commited.

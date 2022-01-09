@@ -79,7 +79,7 @@ ___
 
 ### projectConfig
 
-• `Protected` `Optional` `Readonly` **projectConfig**: [ProjectConfig](../interfaces/configs.projectconfig.md)
+• `Protected` `Readonly` **projectConfig**: [ProjectConfig](../interfaces/configs.projectconfig.md)
 
 ___
 

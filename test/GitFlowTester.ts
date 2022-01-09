@@ -36,6 +36,7 @@ export class GitFlowTester {
   public async init(): Promise<void> {
     await this.dispose();
     await GitFlowTester.ensureGitFlowRepo(this.gitFlow, this.repo);
+    await this.repo.addDummyOrigin();
   }
 
   /**

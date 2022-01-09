@@ -1,4 +1,4 @@
-import createRepository, { SimpleGit as Repository, StatusResult, DefaultLogFields } from 'simple-git';
+import createRepository, { SimpleGit as Repository, StatusResult, DefaultLogFields, ConfigGetResult } from 'simple-git';
 import { join } from 'path';
 import { pathExists, rmdir, emptyDir, ensureDir } from 'fs-extra';
 import { GitLog } from './GitLog';
@@ -65,6 +65,17 @@ export class GitRepository {
     const repo = await this.createOrOpenRepo();
     const status = await repo.status();
     return status;
+  }
+
+  /**
+   * Gets the git config values.
+   *
+   * @param configKey - The key of the config to read.
+   * @returns The config key-values.
+   */
+  public async getConfig(configKey: string): Promise<ConfigGetResult> {
+    const repo = await this.createOrOpenRepo();
+    return repo.getConfig(configKey);
   }
 
   /**

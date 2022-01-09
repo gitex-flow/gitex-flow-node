@@ -23,6 +23,7 @@ A simple API with basic functionality of a git repository.
 - [createOrOpenRepo](git.gitrepository.md#createoropenrepo)
 - [ensure](git.gitrepository.md#ensure)
 - [ensureNoUnCommitedChanges](git.gitrepository.md#ensurenouncommitedchanges)
+- [getConfig](git.gitrepository.md#getconfig)
 - [getLatestReleasedVersion](git.gitrepository.md#getlatestreleasedversion)
 - [getLogsSinceLastRelease](git.gitrepository.md#getlogssincelastrelease)
 - [getRepoPath](git.gitrepository.md#getrepopath)
@@ -130,6 +131,26 @@ Ensures there are no uncommited changes (staged and unstaged) in the local works
 #### Returns
 
 `Promise`<void\>
+
+___
+
+### getConfig
+
+▸ **getConfig**(`configKey`): `Promise`<ConfigGetResult\>
+
+Gets the git config values.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `configKey` | `string` | The key of the config to read. |
+
+#### Returns
+
+`Promise`<ConfigGetResult\>
+
+The config key-values.
 
 ___
 

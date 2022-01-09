@@ -14,7 +14,7 @@ export class GFlowBranch implements GitFlowBranch {
 
   private readonly gitFlowBranch: GitFlowBranch;
 
-  protected readonly projectConfig?: ProjectConfig;
+  protected readonly projectConfig: ProjectConfig;
   protected readonly logger: Logger;
 
   /**
@@ -25,7 +25,9 @@ export class GFlowBranch implements GitFlowBranch {
    */
   constructor(gitFlowBranch: GitFlowBranch, options?: ProjectConfig) {
     this.gitFlowBranch = gitFlowBranch;
-    this.projectConfig = options;
+    this.projectConfig = options ?? {
+      projectPath: process.cwd(),
+    };
     this.type = this.gitFlowBranch.type;
     this.defaultBase = this.gitFlowBranch.defaultBase;
     this.logger = getLogger(`gitex-flow [${this.type}]`);
@@ -96,7 +98,7 @@ export class GFlowBranch implements GitFlowBranch {
    * @returns The generated branch name.
    */
   public async generateBranchName(name?: string): Promise<string | undefined> {
-    const semVer = new GitFlowSemVers(this.projectConfig?.projectPath);
+    const semVer = new GitFlowSemVers(this.projectConfig);
     return semVer.calculateBranchVersion(this.type, name);
   }
 
