@@ -76,7 +76,7 @@
     "log4js": "^6.3.0",
     "path": "^0.12.7",
     "semver": "^7.3.5",
-    "simple-git": "^2.48.0",
+    "simple-git": "^3.3.0",
     "write-json-file": "^4.3.0"
   },
   "devDependencies": {
