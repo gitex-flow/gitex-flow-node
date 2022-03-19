@@ -6,10 +6,10 @@
 
 ### Interfaces
 
-- [ConfigProvider](../interfaces/api.configprovider.md)
-- [GitFlow](../interfaces/api.gitflow.md)
-- [GitFlowBranch](../interfaces/api.gitflowbranch.md)
-- [GitFlowBranchConfig](../interfaces/api.gitflowbranchconfig.md)
+- [ConfigProvider](../interfaces/api.ConfigProvider.md)
+- [GitFlow](../interfaces/api.GitFlow.md)
+- [GitFlowBranch](../interfaces/api.GitFlowBranch.md)
+- [GitFlowBranchConfig](../interfaces/api.GitFlowBranchConfig.md)
 
 ### Type aliases
 

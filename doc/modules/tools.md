@@ -6,7 +6,7 @@
 
 ### Classes
 
-- [GFlowConfigLoader](../classes/tools.gflowconfigloader.md)
-- [GitFlowNodeProject](../classes/tools.gitflownodeproject.md)
-- [GitFlowSemVers](../classes/tools.gitflowsemvers.md)
-- [Utils](../classes/tools.utils.md)
+- [GFlowConfigLoader](../classes/tools.GFlowConfigLoader.md)
+- [GitFlowNodeProject](../classes/tools.GitFlowNodeProject.md)
+- [GitFlowSemVers](../classes/tools.GitFlowSemVers.md)
+- [Utils](../classes/tools.Utils.md)

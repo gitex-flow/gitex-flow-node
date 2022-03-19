@@ -6,13 +6,13 @@
 
 ### Classes
 
-- [ConfigDefaulter](../classes/configs.configdefaulter.md)
+- [ConfigDefaulter](../classes/configs.ConfigDefaulter.md)
 
 ### Interfaces
 
-- [GFlowConfig](../interfaces/configs.gflowconfig.md)
-- [GitFlowConfig](../interfaces/configs.gitflowconfig.md)
-- [ProjectConfig](../interfaces/configs.projectconfig.md)
+- [GFlowConfig](../interfaces/configs.GFlowConfig.md)
+- [GitFlowConfig](../interfaces/configs.GitFlowConfig.md)
+- [ProjectConfig](../interfaces/configs.ProjectConfig.md)
 
 ### Type aliases
 
@@ -24,7 +24,7 @@
 
 ### ChangelogConfig
 
-Ƭ **ChangelogConfig**<T\>: `T` & { `type`: [ChangelogType](../enums/changelog.changelogtype.md) \| `string`  }
+Ƭ **ChangelogConfig**<`T`\>: `T` & { `type`: [`ChangelogType`](../enums/changelog.ChangelogType.md) \| `string`  }
 
 Configuration for the changelog creation.
 
@@ -32,7 +32,7 @@ Configuration for the changelog creation.
 
 | Name | Type |
 | :------ | :------ |
-| `T` | `T`: [ChangelogWriterOptions](../interfaces/changelog.changelogwriteroptions.md) |
+| `T` | extends [`ChangelogWriterOptions`](../interfaces/changelog.ChangelogWriterOptions.md) |
 
 ___
 

@@ -6,18 +6,18 @@
 
 ### Enumerations
 
-- [ChangelogType](../enums/changelog.changelogtype.md)
+- [ChangelogType](../enums/changelog.ChangelogType.md)
 
 ### Classes
 
-- [ChangelogWriter](../classes/changelog.changelogwriter.md)
-- [ChangelogWriterFactory](../classes/changelog.changelogwriterfactory.md)
-- [ConventionalChangelogWriter](../classes/changelog.conventionalchangelogwriter.md)
-- [KeepAChangelogWriter](../classes/changelog.keepachangelogwriter.md)
-- [ProjectChangelog](../classes/changelog.projectchangelog.md)
+- [ChangelogWriter](../classes/changelog.ChangelogWriter.md)
+- [ChangelogWriterFactory](../classes/changelog.ChangelogWriterFactory.md)
+- [ConventionalChangelogWriter](../classes/changelog.ConventionalChangelogWriter.md)
+- [KeepAChangelogWriter](../classes/changelog.KeepAChangelogWriter.md)
+- [ProjectChangelog](../classes/changelog.ProjectChangelog.md)
 
 ### Interfaces
 
-- [ChangelogWriterOptions](../interfaces/changelog.changelogwriteroptions.md)
-- [ConventionalChangelogWriterOptions](../interfaces/changelog.conventionalchangelogwriteroptions.md)
-- [KeepAChangelogWriterOptions](../interfaces/changelog.keepachangelogwriteroptions.md)
+- [ChangelogWriterOptions](../interfaces/changelog.ChangelogWriterOptions.md)
+- [ConventionalChangelogWriterOptions](../interfaces/changelog.ConventionalChangelogWriterOptions.md)
+- [KeepAChangelogWriterOptions](../interfaces/changelog.KeepAChangelogWriterOptions.md)
