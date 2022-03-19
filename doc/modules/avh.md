@@ -6,20 +6,20 @@
 
 ### Classes
 
-- [AvhBranchListParser](../classes/avh.avhbranchlistparser.md)
-- [AvhConfigProvider](../classes/avh.avhconfigprovider.md)
-- [AvhGitFlow](../classes/avh.avhgitflow.md)
-- [AvhGitFlowBranch](../classes/avh.avhgitflowbranch.md)
-- [BugfixGitFlowBranch](../classes/avh.bugfixgitflowbranch.md)
-- [FeatureGitFlowBranch](../classes/avh.featuregitflowbranch.md)
-- [GitFlowBashExecuter](../classes/avh.gitflowbashexecuter.md)
-- [HotfixGitFlowBranch](../classes/avh.hotfixgitflowbranch.md)
-- [ReleaseGitFlowBranch](../classes/avh.releasegitflowbranch.md)
-- [SupportGitFlowBranch](../classes/avh.supportgitflowbranch.md)
+- [AvhBranchListParser](../classes/avh.AvhBranchListParser.md)
+- [AvhConfigProvider](../classes/avh.AvhConfigProvider.md)
+- [AvhGitFlow](../classes/avh.AvhGitFlow.md)
+- [AvhGitFlowBranch](../classes/avh.AvhGitFlowBranch.md)
+- [BugfixGitFlowBranch](../classes/avh.BugfixGitFlowBranch.md)
+- [FeatureGitFlowBranch](../classes/avh.FeatureGitFlowBranch.md)
+- [GitFlowBashExecuter](../classes/avh.GitFlowBashExecuter.md)
+- [HotfixGitFlowBranch](../classes/avh.HotfixGitFlowBranch.md)
+- [ReleaseGitFlowBranch](../classes/avh.ReleaseGitFlowBranch.md)
+- [SupportGitFlowBranch](../classes/avh.SupportGitFlowBranch.md)
 
 ### Interfaces
 
-- [GitFlowCommandArgs](../interfaces/avh.gitflowcommandargs.md)
+- [GitFlowCommandArgs](../interfaces/avh.GitFlowCommandArgs.md)
 
 ### Type aliases
 

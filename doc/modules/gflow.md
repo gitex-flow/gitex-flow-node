@@ -6,7 +6,7 @@
 
 ### Classes
 
-- [GFlow](../classes/gflow.gflow-1.md)
-- [GFlowBranch](../classes/gflow.gflowbranch.md)
-- [GFlowHotFixBranch](../classes/gflow.gflowhotfixbranch.md)
-- [GFlowReleaseBranch](../classes/gflow.gflowreleasebranch.md)
+- [GFlow](../classes/gflow.GFlow.md)
+- [GFlowBranch](../classes/gflow.GFlowBranch.md)
+- [GFlowHotFixBranch](../classes/gflow.GFlowHotFixBranch.md)
+- [GFlowReleaseBranch](../classes/gflow.GFlowReleaseBranch.md)

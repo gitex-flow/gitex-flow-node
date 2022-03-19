@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",
@@ -73,10 +73,10 @@
     "fs-extra": "^9.1.0",
     "git-url-parse": "^11.6.0",
     "keep-a-changelog": "^0.10.4",
-    "log4js": "^6.3.0",
+    "log4js": "^6.4.3",
     "path": "^0.12.7",
     "semver": "^7.3.5",
-    "simple-git": "^2.48.0",
+    "simple-git": "^3.3.0",
     "write-json-file": "^4.3.0"
   },
   "devDependencies": {
@@ -97,12 +97,12 @@
     "eslint-plugin-jsdoc": "^32.3.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-tsdoc": "^0.2.11",
-    "mocha": "^8.3.2",
+    "mocha": "^9.2.2",
     "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
-    "typedoc": "^0.20.34",
-    "typedoc-plugin-external-module-map": "^1.2.1",
-    "typedoc-plugin-markdown": "^3.6.0",
-    "typescript": "^4.2.3"
+    "typedoc": "^0.22.13",
+    "typedoc-plugin-external-module-map": "^1.3.2",
+    "typedoc-plugin-markdown": "^3.11.14",
+    "typescript": "4.4"
   }
 }
