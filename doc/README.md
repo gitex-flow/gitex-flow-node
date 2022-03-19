@@ -6,7 +6,7 @@ gitex-flow
 
 ### Modules
 
-- [@types](modules/_types.md)
+- [@types](modules/types.md)
 - [api](modules/api.md)
 - [avh](modules/avh.md)
 - [changelog](modules/changelog.md)

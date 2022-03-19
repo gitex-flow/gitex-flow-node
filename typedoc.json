@@ -1,5 +1,6 @@
 {
   "entryPoints": ["./src"],
+  "entryPointStrategy": "expand",
   "readme": "none",
   "excludePrivate": true,
   "hideGenerator": true,
