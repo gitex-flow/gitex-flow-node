@@ -10,7 +10,7 @@
 - [Changelog](../classes/types.Changelog.md)
 - [Release](../classes/types.Release.md)
 
-### Type aliases
+### Type Aliases
 
 - [ChangeType](types.md#changetype)
 
@@ -18,7 +18,7 @@
 
 - [parser](types.md#parser)
 
-## Type aliases
+## Type Aliases
 
 ### ChangeType
 

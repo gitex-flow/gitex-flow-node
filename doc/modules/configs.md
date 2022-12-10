@@ -14,13 +14,13 @@
 - [GitFlowConfig](../interfaces/configs.GitFlowConfig.md)
 - [ProjectConfig](../interfaces/configs.ProjectConfig.md)
 
-### Type aliases
+### Type Aliases
 
 - [ChangelogConfig](configs.md#changelogconfig)
 - [ConventionalCommitConfig](configs.md#conventionalcommitconfig)
 - [Log4jsConfig](configs.md#log4jsconfig)
 
-## Type aliases
+## Type Aliases
 
 ### ChangelogConfig
 
