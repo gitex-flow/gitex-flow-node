@@ -11,12 +11,12 @@
 - [GitFlowBranch](../interfaces/api.GitFlowBranch.md)
 - [GitFlowBranchConfig](../interfaces/api.GitFlowBranchConfig.md)
 
-### Type aliases
+### Type Aliases
 
 - [GitFlowBaseBranchType](api.md#gitflowbasebranchtype)
 - [GitFlowBranchType](api.md#gitflowbranchtype)
 
-## Type aliases
+## Type Aliases
 
 ### GitFlowBaseBranchType
 

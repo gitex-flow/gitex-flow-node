@@ -21,11 +21,11 @@
 
 - [GitFlowCommandArgs](../interfaces/avh.GitFlowCommandArgs.md)
 
-### Type aliases
+### Type Aliases
 
 - [GitFlowAction](avh.md#gitflowaction)
 
-## Type aliases
+## Type Aliases
 
 ### GitFlowAction
 
