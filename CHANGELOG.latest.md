@@ -1,9 +1,10 @@
-## 2.3.9 (2023-07-29)
+## 2.3.10 (2023-07-29)
 
 
 ### Bug Fixes
 
-* **docu:** Separated automatically generated typedoc documentation from source code ([d8f00de](https://github.com/gitex-flow/gitex-flow-node/commits/d8f00dea9a460056a0852811410c2ecfa8e7c653)), closes [#78](https://github.com/gitex-flow/gitex-flow-node/issues/78)
+* **docu:** Refactored links to new api documention in README ([fdcace5](https://github.com/gitex-flow/gitex-flow-node/commits/fdcace522c39f2fef7be607a63a6d4320aab6e11))
+* **security:** Updated bugfix versions of dependencies ([7a07d39](https://github.com/gitex-flow/gitex-flow-node/commits/7a07d39c47612b94eb88425b91e31f922c013f6d))
 
 
 
