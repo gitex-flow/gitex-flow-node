@@ -1,6 +1,6 @@
 {
   "name": "gitex-flow",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "A git flow extension that provides some additional automation and feature improvements. The aim of the project is to offer a complete process chain in order to organize the releases of your projects as easily as possible. ",
   "main": "build/src/index.js",
   "typings": "build/src/index.d.ts",
@@ -101,8 +101,6 @@
     "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
     "typedoc": "^0.22.13",
-    "typedoc-plugin-external-module-map": "^1.3.2",
-    "typedoc-plugin-markdown": "^3.11.14",
     "typescript": "4.4"
   }
 }
