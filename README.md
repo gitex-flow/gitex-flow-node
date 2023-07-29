@@ -184,7 +184,7 @@ The following JSON shows the schema and the default values of the configuration:
 
 ```
 
-Further information on the [available configurations](doc/interfaces/gflow.gflowconfig.md) can be found in the API documentation.
+Further information on the [available configurations](https://gitex-flow.github.io/gitex-flow-node/interfaces/configs_GFlowConfig.GFlowConfig.html) can be found in the API documentation.
 
 For all options of the `conventionalCommit` block visit the project of the underlying [conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser#options).
 
@@ -245,11 +245,11 @@ All implementations of the changelog generator have the following common options
 
 Depending on the implementation there may be additional properties.
 
-| Type                    | Description                                                                                                                 | Options                                                                                              | Note      |
-| ----------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- | :-------- |
-| `None`                  | Deactivates the changelog generator.                                                                                        | -                                                                                                    |           |
-| `ConventionalChangelog` | Implementation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](doc/interfaces/changelog.conventionalchangelogwriteroptions.md) | `default` |
-| `KeepAChangelog`        | Implementation of the [keep-a-changelog](https://keepachangelog.com/en/1.0.0/) generator.                                   | [KeepAChangelogWriterOptions](doc/interfaces/changelog.keepachangelogwriteroptions.md)               |           |
+| Type                    | Description                                                                                                                 | Options                                                                                                                                                                     | Note      |
+| ----------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------- |
+| `None`                  | Deactivates the changelog generator.                                                                                        | -                                                                                                                                                                           |           |
+| `ConventionalChangelog` | Implementation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](https://gitex-flow.github.io/gitex-flow-node/interfaces/changelog_ConventionalChangelogWriter.ConventionalChangelogWriterOptions.html) | `default` |
+| `KeepAChangelog`        | Implementation of the [keep-a-changelog](https://keepachangelog.com/en/1.0.0/) generator.                                   | [KeepAChangelogWriterOptions](https://gitex-flow.github.io/gitex-flow-node/interfaces/changelog_KeepAChangelogWriter.KeepAChangelogWriterOptions.html)                      |           |
 
 ## Git flow branches
 
@@ -467,7 +467,7 @@ const gFlow = new GFlow(gitFlow, gFlowConfig);
 // ...
 ```
 
-The full API documentation can be found [here](doc/README.md).
+The full API documentation can be found [here](https://gitex-flow.github.io/gitex-flow-node/).
 
 # Troubleshooting
 
