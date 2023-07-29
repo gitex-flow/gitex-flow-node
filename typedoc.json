@@ -1,12 +1,11 @@
 {
+  "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["./src"],
   "entryPointStrategy": "expand",
   "readme": "none",
   "excludePrivate": true,
   "hideGenerator": true,
-  "theme": "markdown",
   "out": "./doc",
   "disableSources": true,
-  "external-modulemap": ".*/src/([^\\./]+)/",
   "exclude": ["**/*cli.ts", "**/*index.ts", "test/**/*"]
 }
