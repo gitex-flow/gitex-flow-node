@@ -20,12 +20,13 @@ It also represents a tool chain for a continuous release strategy that automates
   - [Configuation](#configuation)
   - [Conventional commits guideline](#conventional-commits-guideline)
   - [Changelog generator](#changelog-generator)
-  - [Git flow branches](#git-flow-branches)
+  - [Git flow branches and tags](#git-flow-branches-and-tags)
     - [Feature](#feature)
     - [Bugfix](#bugfix)
     - [Release](#release)
     - [Hotfix](#hotfix)
     - [Support](#support)
+    - [Prerelease](#prerelease)
 - [Developer documentation (API)](#developer-documentation-api)
 - [Troubleshooting](#troubleshooting)
 
@@ -57,7 +58,7 @@ In addition, using git flow covers some common requirements and allows other pro
 **gitex-flow** is fully compatible with **git flow**.
 This means that gitex-flow uses the same commands as git flow, but with additional functionality:
 
-1. Automatic calculation of versions for release and hotfix branches using [semantic versioning (SemVer)](https://semver.org/) and BREAKING CHANGE flag of [conventional commits](#conventional-commits-guideline).
+1. Automatic calculation of versions for (pre-)release and hotfix branches using [semantic versioning (SemVer)](https://semver.org/) and BREAKING CHANGE flag of [conventional commits](#conventional-commits-guideline).
 2. Automatic dumping of npm project versions (`package.json`, `package-lock.json`).
 3. Automatic creation of a changelog for each version by [conventional commits](#conventional-commits-guideline).
 
@@ -71,6 +72,11 @@ You can install them either as global or project reference.
 - [git](https://git-scm.com/downloads) is installed
 - [git-flow (AVH edition)](https://github.com/petervanderdoes/gitflow-avh) is installed
 - [node.js](https://nodejs.org/en/) is installed
+
+> **NOTICE:**
+>
+> The project [git-flow (AVH edition)](https://github.com/petervanderdoes/gitflow-avh) has been archived on Jun 19, 2023 and is no longer supported.
+> However, there is a follow-on project [git-flow (CJS edition)](https://github.com/CJ-Systems/gitflow-cjs) which is actively being developed and is 100% backward compatible.
 
 ## Installation
 
@@ -104,6 +110,8 @@ To integrate the gitex workflow into your project, add the following lines to th
     "bugfix:finish": "gitex-flow bugfix finish",
     "support:start": "gitex-flow support start",
     "support:finish": "gitex-flow support finish"
+    "prerelease:alpha": "gitex-flow prerelease alpha start",
+    "prerelease:beta": "gitex-flow prerelease beta start"
     ...
 }
 ```
@@ -251,10 +259,11 @@ Depending on the implementation there may be additional properties.
 | `ConventionalChangelog` | Implementation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](https://gitex-flow.github.io/gitex-flow-node/interfaces/changelog_ConventionalChangelogWriter.ConventionalChangelogWriterOptions.html) | `default` |
 | `KeepAChangelog`        | Implementation of the [keep-a-changelog](https://keepachangelog.com/en/1.0.0/) generator.                                   | [KeepAChangelogWriterOptions](https://gitex-flow.github.io/gitex-flow-node/interfaces/changelog_KeepAChangelogWriter.KeepAChangelogWriterOptions.html)                      |           |
 
-## Git flow branches
+## Git flow branches and tags
 
 Git flow offers five branches for different use cases.
 For some branch types several branches can be active at the same time (_features_, _bugfixes_, _support-branches_). For others (_release_, _hotfix_) only one.
+Furthermore, gitex-flow extends the classic git-flow branches with prerelease tags.
 
 ### Feature
 
@@ -387,7 +396,7 @@ Support branches are based on a released version to provide long term support of
 
 **Start support**
 
-As default the base of a new support branch is the `master` branch.
+By default, the base of a new support branch is the `master` branch.
 
 ```shell
 #> gitex-flow support start <name> [base]
@@ -402,6 +411,30 @@ The name does not need to be specified if the release branch has already been ch
 
 ```shell
 #> gitex-flow support finish [name]
+```
+
+### Prerelease
+
+There are two types of pre-releases: `alpha` and `beta` releases.
+
+1. An `alpha` release is an early version of a software during the initial development phase, often unstable and tested internally by developers. Gitex-flow enables the creation of alpha releases from the `develop` or a `feature` branch.
+
+2. A `beta` release is the phase following alpha, where the software has fewer bugs and is more stable. It's tested by a limited number of external users, known as beta testers, to gather feedback before the final release. Gitex-flow enables the creation of beta releases from the `release` or the `hotfix` branch.
+
+**List pre-released versions**
+
+```shell
+#> gitex-flow prerelease <alpha|beta>
+```
+
+**Create a pre-release**
+
+By default, the base of a new prerelease is the current branch.
+However, a branch can also be specified explicitly, e.g. `develop` or `hotfix/1.0.2`.
+If a prerelease is executed on a inappropriate branch, an error occurs.
+
+```shell
+#> gitex-flow prerelease <alpha|beta> start [base]
 ```
 
 # Developer documentation (API)

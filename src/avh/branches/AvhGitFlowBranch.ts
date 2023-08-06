@@ -38,15 +38,23 @@ export abstract class AvhGitFlowBranch implements GitFlowBranch {
   /**
    * {@inheritdoc}
    *
+   * @param withPrefix - Indicates if the entities should be listed with their prefix.
    * @returns The list of the currently opened branch.
    */
-  public async list(): Promise<string[]> {
+  public async list(withPrefix?: boolean): Promise<string[]> {
     const output = await GitFlowBashExecuter.execute({
       type: this.type,
       action: 'list',
       repositoryPath: this.repositoryPath,
     });
-    return AvhBranchListParser.parse(output);
+
+    const branches = await AvhBranchListParser.parse(output);
+    if (withPrefix) {
+      for (let i = 0; i < branches.length; i++) {
+        branches[i] = await this.getBranchNameFromConfig(branches[i]);
+      }
+    }
+    return branches;
   }
 
   /**

@@ -2,6 +2,7 @@ import { GitFlowBranch } from '../../api/branches/GitFlowBranch';
 import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
 import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GFlowBranch } from './GFlowBranch';
+
 /**
  * This class extending a hotfix branch with some helpful functionality.
  */

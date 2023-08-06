@@ -1,6 +1,5 @@
 import { resolve, join } from 'path';
 import { AvhGitFlow } from '../src/avh/AvhGitFlow';
-import { GitFlow } from '../src/api/GitFlow';
 import { GitFlowTester } from './GitFlowTester';
 import { GFlow } from '../src/gflow/GFlow';
 import { assert } from 'chai';
@@ -226,6 +225,101 @@ describe('Test gFlow implementation', function () {
     await tester.dispose();
   });
 
+  it('git flow prerelease 1.0.0-alpha.0 and 1.0.0-alpha.1 on develop', async function () {
+    const gFlow = createGitFlow();
+    const tester = new GitFlowTester(gFlow, testRepoPath);
+    await tester.init();
+
+    await gFlow.alpha.start('develop');
+    assert.deepStrictEqual(await gFlow.alpha.list(), ['1.0.0-alpha.0']);
+
+    const feature1 = tester.selectBranch('feature');
+    await feature1.start('#1');
+    await feature1.commit('feature.txt', 'feat(scope): Added feature.txt');
+    await feature1.finish();
+
+    await gFlow.alpha.start('develop');
+    assert.deepStrictEqual(await gFlow.alpha.list(), ['1.0.0-alpha.0', '1.0.0-alpha.1']);
+
+    await tester.dispose();
+  });
+
+  it('git flow prerelease 1.0.0-alpha.0 and 1.0.0-alpha.1 on a feature branch', async function () {
+    const gFlow = createGitFlow();
+    const tester = new GitFlowTester(gFlow, testRepoPath);
+    await tester.init();
+
+    const feature1 = tester.selectBranch('feature');
+    await feature1.start('#1');
+
+    await gFlow.alpha.start('feature/#1');
+    assert.deepStrictEqual(await gFlow.alpha.list(), ['1.0.0-alpha.0']);
+
+    await feature1.commit('feature.txt', 'feat(scope): Added feature.txt');
+
+    await gFlow.alpha.start('feature/#1');
+    assert.deepStrictEqual(await gFlow.alpha.list(), ['1.0.0-alpha.0', '1.0.0-alpha.1']);
+
+    await tester.dispose();
+  });
+
+  it('git flow prerelease 1.0.0-alpha.0 and 1.0.0-alpha.1 on a bugfix branch', async function () {
+    const gFlow = createGitFlow();
+    const tester = new GitFlowTester(gFlow, testRepoPath);
+    await tester.init();
+
+    const feature1 = tester.selectBranch('bugfix');
+    await feature1.start('#1');
+
+    await gFlow.alpha.start('bugfix/#1');
+    assert.deepStrictEqual(await gFlow.alpha.list(), ['1.0.0-alpha.0']);
+
+    await feature1.commit('feature.txt', 'feat(scope): Added feature.txt');
+
+    await gFlow.alpha.start('bugfix/#1');
+    assert.deepStrictEqual(await gFlow.alpha.list(), ['1.0.0-alpha.0', '1.0.0-alpha.1']);
+
+    await tester.dispose();
+  });
+
+  it('git flow prerelease 1.0.0-beta.0 and 1.0.0-beta.1 on a release branch', async function () {
+    const gFlow = createGitFlow();
+    const tester = new GitFlowTester(gFlow, testRepoPath);
+    await tester.init();
+
+    const release = tester.selectBranch('release');
+    await release.start();
+    await gFlow.beta.start('release/1.0.0');
+    assert.deepStrictEqual(await gFlow.beta.list(), ['1.0.0-beta.0']);
+    await release.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await gFlow.beta.start('release/1.0.0');
+    assert.deepStrictEqual(await gFlow.beta.list(), ['1.0.0-beta.0', '1.0.0-beta.1']);
+
+    await tester.dispose();
+  });
+
+  it('git flow prerelease 1.0.0-beta.0 and 1.0.0-beta.1 on a hotfix branch', async function () {
+    const gFlow = createGitFlow();
+    const tester = new GitFlowTester(gFlow, testRepoPath);
+    await tester.init();
+
+    const release = tester.selectBranch('release');
+    await release.start();
+    await release.commit('release_bugfix.txt', 'fix(scope): Added release_bugfix.txt');
+    await release.finish();
+
+    const hotfix = tester.selectBranch('hotfix');
+    await hotfix.start();
+    await gFlow.beta.start('hotfix/1.0.1');
+    assert.deepStrictEqual(await gFlow.beta.list(), ['1.0.1-beta.0']);
+    await hotfix.commit('hotfix_bugfix.txt', 'fix(scope): Added hotfix_bugfix.txt');
+    await gFlow.beta.start('hotfix/1.0.1');
+    assert.deepStrictEqual(await gFlow.beta.list(), ['1.0.1-beta.0', '1.0.1-beta.1']);
+    await hotfix.finish();
+
+    await tester.dispose();
+  });
+
   it('git flow integration run', async function () {
     const tester = new GitFlowTester(createGitFlow(), testRepoPath);
     await tester.init();
@@ -384,7 +478,7 @@ describe('Test gFlow implementation', function () {
   });
 });
 
-function createGitFlow(config?: GFlowConfig): GitFlow {
+function createGitFlow(config?: GFlowConfig): GFlow {
   const avhGitFlow = new AvhGitFlow(testRepoPath);
   config = config ?? {};
   config.projectConfig = config.projectConfig ?? {
