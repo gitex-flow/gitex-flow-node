@@ -382,6 +382,23 @@ describe('Test gFlow implementation', function () {
     const branchName = await hotfix.start();
     assert.equal(branchName, 'hotfix/1.0.1');
   });
+
+  it('[bugfix #79] should also generate changelog for version 1.0.0', async function () {
+    const tester = new GitFlowTester(createGitFlow(), testRepoPath);
+    await tester.init();
+
+    const feature1 = tester.selectBranch('feature');
+    await feature1.start('#1');
+    await feature1.commit('feature.txt', 'feat(scope): Added feature.txt');
+    await feature1.finish('#1');
+
+    const release = tester.selectBranch('release');
+    const branchName = await release.start('1.0.0');
+    assert.equal(branchName, 'release/1.0.0');
+    await assertChangelog('release_1.0.0_changelog.md');
+
+    await tester.dispose();
+  });
 });
 
 function createGitFlow(config?: GFlowConfig): GitFlow {

@@ -180,9 +180,9 @@ export class GitRepository {
     const repo = await this.createOrOpenRepo();
     const latestVersion = await this.getLatestReleasedVersion();
     const logs = await repo.log({
-      from: 'HEAD',
+      from: latestVersion ? 'HEAD' : undefined,
       to: latestVersion,
-      symmetric: true,
+      symmetric: latestVersion ? true : false,
     });
     return logs.all;
   }
