@@ -1,9 +1,10 @@
 import { GitFlowBranchType } from '../api/branches/GitFlowBranch';
-import { inc, valid, ReleaseType, clean } from 'semver';
+import { inc, valid, ReleaseType, clean, gt } from 'semver';
 import { GitRepository } from '../git/GitRepository';
 import { GitLog } from '../git/GitLog';
 import { ProjectConfig } from '../configs/ProjectConfig';
 import { GitFlowNodeProject } from './GitFlowNodeProject';
+import { GitFlowTagType } from '../api/tags/GitFlowTag';
 
 /**
  * Representing an API for handling git flow SemVer.
@@ -55,6 +56,30 @@ export class GitFlowSemVers {
       }
     }
     return version;
+  }
+
+  /**
+   * Calculates the next prerelease version tag for a given prerelease type.
+   *
+   * @param prereleaseType - The prerelease type.
+   * @param fromBranch - The branch the prerelease is started from.
+   * @returns The next prerelease version for a given type.
+   */
+  public async calculateNextPrereleaseVersion(
+    prereleaseType: GitFlowTagType,
+    fromBranch: GitFlowBranchType = 'release',
+  ): Promise<string | undefined> {
+    const gitRepository = new GitRepository(this.config);
+    const prereleaseVersion = await gitRepository.getLatestPrereleaseVersion(prereleaseType);
+    const latestReleasedVersion = await gitRepository.getLatestReleasedVersion();
+    let version;
+    if (prereleaseVersion && gt(prereleaseVersion, latestReleasedVersion ?? '0.0.0')) {
+      version = prereleaseVersion;
+    } else {
+      const nextReleaseVersion = await this.calculateBranchVersion(fromBranch);
+      version = `${nextReleaseVersion}-${prereleaseType}`;
+    }
+    return inc(version, 'prerelease') ?? undefined;
   }
 
   private async hasBreakingChanges(gitRepository: GitRepository): Promise<boolean> {

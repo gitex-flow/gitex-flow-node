@@ -9,6 +9,7 @@ import { ProjectConfig } from '../configs/ProjectConfig';
 import { GitRepositoryContext } from '../git/GitRepositoryContext';
 import { ChangelogConfig } from '../configs/ChangelogConfig';
 import { ChangelogWriterFactory } from '../changelog/ChangelogWriterFactory';
+import { ConfigDefaulter } from '../configs/ConfigDefaulter';
 import gitUrlParse from 'git-url-parse';
 
 /**
@@ -16,9 +17,6 @@ import gitUrlParse from 'git-url-parse';
  */
 export class GitFlowNodeProject {
   private readonly logger = getLogger('GitFlowNodeProject');
-
-  public static readonly DefaultVersionFile = 'package.json';
-  public static readonly DefaultBumpVersionFiles = [GitFlowNodeProject.DefaultVersionFile, 'package-lock.json'];
 
   private options: ProjectConfig;
   private gitRepository: GitRepository;
@@ -29,12 +27,7 @@ export class GitFlowNodeProject {
    * @param options - Options of the git flow node project instance.
    */
   constructor(options?: ProjectConfig) {
-    if (!options) options = { projectPath: process.cwd() };
-    options.projectPath = options.projectPath ?? process.cwd();
-    this.options = options;
-    this.options.versionFile = this.options.versionFile ?? GitFlowNodeProject.DefaultVersionFile;
-    this.options.bumpVersionFiles = options.bumpVersionFiles ?? GitFlowNodeProject.DefaultBumpVersionFiles;
-    this.options.changelog = Utils.deriveChangelogConfig(this.options);
+    this.options = ConfigDefaulter.ensureProjectConfigDefaults(options);
     this.gitRepository = new GitRepository(options);
   }
 
@@ -44,8 +37,11 @@ export class GitFlowNodeProject {
    * @param branchName - Name of the branch to be checked out.
    */
   public async checkoutBranch(branchName: string): Promise<void> {
-    await this.gitRepository.ensureNoUnCommitedChanges();
-    await this.gitRepository.checkout(branchName);
+    const currentBranch = await this.getCurrentBranch();
+    if (currentBranch != branchName) {
+      await this.gitRepository.ensureNoUnCommitedChanges();
+      await this.gitRepository.checkout(branchName);
+    }
   }
 
   /**
@@ -105,7 +101,6 @@ export class GitFlowNodeProject {
     const changelogWriter = ChangelogWriterFactory.create(changelogConfig);
     if (changelogWriter) {
       const logs = await this.gitRepository.getLogsSinceLastRelease();
-      version = version ?? (await this.getVersion());
       const context = await this.getContext(version, name);
       await changelogWriter.write(context, logs);
     }
@@ -189,7 +184,7 @@ export class GitFlowNodeProject {
     }
 
     return {
-      version: version,
+      version: version ?? (await this.getVersion()),
       title: name,
       host: host,
       repoUrl: url,

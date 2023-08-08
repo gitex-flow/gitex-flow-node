@@ -23,6 +23,7 @@
     "client",
     "api",
     "support",
-    "changelog"
+    "changelog",
+    "prerelease"
   ]
 }

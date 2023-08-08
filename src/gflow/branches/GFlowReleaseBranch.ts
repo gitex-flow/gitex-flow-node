@@ -2,7 +2,6 @@ import { GitFlowBranch } from '../../api/branches/GitFlowBranch';
 import { GitFlowNodeProject } from '../../tools/GitFlowNodeProject';
 import { ProjectConfig } from '../../configs/ProjectConfig';
 import { GFlowBranch } from './GFlowBranch';
-import { Utils } from '../../tools/Utils';
 
 /**
  * This class extending a release branch with some helpful functionality.
@@ -35,8 +34,9 @@ export class GFlowReleaseBranch extends GFlowBranch {
     const stashed = await super.stashChanges(project);
     const branchName = await super.start(version, base);
     await project.writeVersion(version);
-    const changelogConfig = Utils.deriveChangelogConfig(this.projectConfig);
-    await project.updateChangelog(changelogConfig, version);
+    if (this.projectConfig?.changelog) {
+      await project.updateChangelog(this.projectConfig.changelog, version);
+    }
     await project.commitChanges();
     if (stashed) {
       await this.popStashedChanges(project);
