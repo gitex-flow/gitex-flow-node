@@ -20,6 +20,7 @@ It also represents a tool chain for a continuous release strategy that automates
   - [Configuation](#configuation)
   - [Conventional commits guideline](#conventional-commits-guideline)
   - [Changelog generator](#changelog-generator)
+    - [Changelog commands](#changelog-commands)
   - [Git flow branches and tags](#git-flow-branches-and-tags)
     - [Feature](#feature)
     - [Bugfix](#bugfix)
@@ -258,6 +259,34 @@ Depending on the implementation there may be additional properties.
 | `None`                  | Deactivates the changelog generator.                                                                                        | -                                                                                                                                                                           |           |
 | `ConventionalChangelog` | Implementation of the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) generator. | [ConventionalChangelogWriterOptions](https://gitex-flow.github.io/gitex-flow-node/interfaces/changelog_ConventionalChangelogWriter.ConventionalChangelogWriterOptions.html) | `default` |
 | `KeepAChangelog`        | Implementation of the [keep-a-changelog](https://keepachangelog.com/en/1.0.0/) generator.                                   | [KeepAChangelogWriterOptions](https://gitex-flow.github.io/gitex-flow-node/interfaces/changelog_KeepAChangelogWriter.KeepAChangelogWriterOptions.html)                      |           |
+
+### Changelog commands
+
+To interact with the changelog generator, gitex-flow provides some commands.
+
+**Print the changelog**
+
+The following command prints the complete changelog as Markdown to the console.
+
+```shell
+#> gitex-flow changelog
+```
+
+**Print unreleased changes**
+
+The following command prints the unreleased changes to the console.
+
+```shell
+#> gitex-flow changelog unreleased
+```
+
+**Manually updating the changelog**
+
+The following command updates the changelog with a given version and name.
+
+```shell
+#> gitex-flow changelog update [version] [name]
+```
 
 ## Git flow branches and tags
 
