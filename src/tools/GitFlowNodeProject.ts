@@ -37,8 +37,11 @@ export class GitFlowNodeProject {
    * @param branchName - Name of the branch to be checked out.
    */
   public async checkoutBranch(branchName: string): Promise<void> {
-    await this.gitRepository.ensureNoUnCommitedChanges();
-    await this.gitRepository.checkout(branchName);
+    const currentBranch = await this.getCurrentBranch();
+    if (currentBranch != branchName) {
+      await this.gitRepository.ensureNoUnCommitedChanges();
+      await this.gitRepository.checkout(branchName);
+    }
   }
 
   /**

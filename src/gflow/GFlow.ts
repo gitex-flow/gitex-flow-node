@@ -8,6 +8,9 @@ import { GFlowHotFixBranch } from './branches/GFlowHotFixBranch';
 import { configure } from 'log4js';
 import { GFlowBranch } from './branches/GFlowBranch';
 import { ConfigDefaulter } from '../configs/ConfigDefaulter';
+import { GitFlowTag } from '../api/tags';
+import { GFlowAlphaReleaseTag } from './tags/GFlowAlphaReleaseTag';
+import { GFlowBetaReleaseTag } from './tags/GFlowBetaReleaseTag';
 
 /**
  * GitFlow wrapper extending functionality to a common git flow implementation.
@@ -18,6 +21,8 @@ export class GFlow implements GitFlow {
   public release: GitFlowBranch;
   public hotfix: GitFlowBranch;
   public support: GitFlowBranch;
+  public alpha: GitFlowTag;
+  public beta: GitFlowTag;
   public readonly config: ConfigProvider<GitFlowConfig>;
 
   protected readonly options: GFlowConfig;
@@ -43,6 +48,8 @@ export class GFlow implements GitFlow {
     this.release = new GFlowReleaseBranch(this.gitFlow.release, options.projectConfig);
     this.hotfix = new GFlowHotFixBranch(this.gitFlow.hotfix, options.projectConfig);
     this.support = new GFlowBranch(this.gitFlow.support, options.projectConfig);
+    this.alpha = new GFlowAlphaReleaseTag(this.feature, this.bugfix, options);
+    this.beta = new GFlowBetaReleaseTag(this.release, this.hotfix, options);
     this.config = this.gitFlow.config;
   }
 

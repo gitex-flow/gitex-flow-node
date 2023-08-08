@@ -44,10 +44,11 @@ export class GFlowBranch implements GitFlowBranch {
   /**
    * Lists all branches of the type '[[type]]'.
    *
+   * @param withPrefix - Indicates if the entities should be listed with their prefix.
    * @returns The list of branches.
    */
-  public async list(): Promise<string[]> {
-    return await this.gitFlowBranch.list();
+  public async list(withPrefix?: boolean): Promise<string[]> {
+    return await this.gitFlowBranch.list(withPrefix);
   }
 
   /**
@@ -60,8 +61,8 @@ export class GFlowBranch implements GitFlowBranch {
    */
   public async start(name?: string, base?: string): Promise<string> {
     const project = new GitFlowNodeProject(this.projectConfig);
-    this.logger.info(`Starting ${this.type} branch "${name}" based on "${base ?? this.defaultBase}"`);
     name = await this.generateBranchName(name);
+    this.logger.info(`Starting ${this.type} branch "${name}" based on "${base ?? this.defaultBase}"`);
     const stashed = await this.stashChanges(project);
     const branch = await this.gitFlowBranch.start(name, base);
     if (stashed) {

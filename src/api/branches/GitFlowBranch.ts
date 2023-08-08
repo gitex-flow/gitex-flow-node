@@ -1,4 +1,5 @@
 import { GitFlowBranchConfig } from '../GitFlowBranchConfig';
+import { GitFlowEntity } from '../GitFlowEntity';
 
 /**
  * Types of the git flow base branches.
@@ -13,12 +14,7 @@ export type GitFlowBranchType = 'feature' | 'release' | 'bugfix' | 'hotfix' | 's
 /**
  * This interface represents the basic functionality of a git flow branch.
  */
-export interface GitFlowBranch {
-  /**
-   * Specifies the git flow branch type.
-   */
-  readonly type: GitFlowBranchType;
-
+export interface GitFlowBranch extends GitFlowEntity<GitFlowBranchType> {
   /**
    * Default base of this branch.
    */
@@ -28,11 +24,6 @@ export interface GitFlowBranch {
    * Gets the git flow branch config.
    */
   getConfig(): Promise<GitFlowBranchConfig>;
-
-  /**
-   * Lists all branches of the type '[[type]]'.
-   */
-  list(): Promise<string[]>;
 
   /**
    * Creates and starts a new branch of the type '[[type]]'.

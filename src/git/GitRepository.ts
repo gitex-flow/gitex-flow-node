@@ -5,6 +5,7 @@ import { GitLog } from './GitLog';
 import { ProjectConfig } from '../configs';
 import { Utils } from '../tools';
 import { prerelease, valid } from 'semver';
+import { GitFlowTagType } from '../api/tags/GitFlowTag';
 
 /**
  * A simple API with basic functionality of a git repository.
@@ -145,6 +146,31 @@ export class GitRepository {
   }
 
   /**
+   * Returns the most recent prerelease of a given type (semantic version).
+   *
+   * @param prereleaseType - The type of the prerelease.
+   * @returns The version of the latest release.
+   */
+  public async getLatestPrereleaseVersion(prereleaseType: GitFlowTagType): Promise<string | undefined> {
+    const tags = await this.getLatestPrereleaseVersions(prereleaseType);
+    return tags.pop();
+  }
+
+  /**
+   * Returns all prereleases of a given type (semantic version).
+   *
+   * @param prereleaseType - The type of the prerelease.
+   * @returns The version of the latest release.
+   */
+  public async getLatestPrereleaseVersions(prereleaseType: GitFlowTagType): Promise<string[]> {
+    const repo = await this.createOrOpenRepo();
+    const gitTags = await repo.tags();
+    // Filter all non-semver and non-prerelease-semver tags
+    const tags = gitTags.all.filter((tag) => valid(tag) && prerelease(tag)?.[0] == prereleaseType);
+    return tags;
+  }
+
+  /**
    * Collects all commit messages since the last release.
    *
    * @returns The logs since the last release.
@@ -155,6 +181,18 @@ export class GitRepository {
     const gitLogs = await Utils.parseConventionalCommits(logMessages, this.config?.conventionalCommit);
     gitLogs.forEach((v, i) => (v.hash = logs[i].hash));
     return gitLogs;
+  }
+
+  /**
+   * Adds a tag to the head of the current branch.
+   *
+   * @param name - The name of the tag.
+   * @returns The name of the tag being added.
+   */
+  public async addTag(name: string): Promise<string> {
+    const repo = await this.createOrOpenRepo();
+    const tag = await repo.addTag(name);
+    return tag.name;
   }
 
   /**

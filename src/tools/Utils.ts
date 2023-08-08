@@ -1,11 +1,11 @@
 import { getLogger } from 'log4js';
-import { GitFlowBranch } from '../api/branches/GitFlowBranch';
 import { GFlow } from '../gflow/GFlow';
 import { Readable, Writable, Transform } from 'stream';
 import { ConventionalCommitConfig } from '../configs';
 import conventionalCommitsParser from 'conventional-commits-parser';
 import { GitLog } from '../git/GitLog';
 import { ConfigDefaulter } from '../configs/ConfigDefaulter';
+import { GitFlowEntity } from '../api/GitFlowEntity';
 
 /**
  * Provides some utility functions.
@@ -55,16 +55,17 @@ export class Utils {
   }
 
   /**
-   * Prints the branches to the console.
+   * Prints the branches or tags to the console.
    *
-   * @param gitFlowBranch - The branch type to be printed.
+   * @param gitFlowEntity - The git flow entity to be printed.
    */
-  public static async printBranches(gitFlowBranch: GitFlowBranch): Promise<void> {
-    const branches = await gitFlowBranch.list();
+  public static async print(gitFlowEntity: GitFlowEntity<unknown>): Promise<void> {
+    const branches = await gitFlowEntity.list();
+
     if (branches.length === 0) {
-      console.error(`There are no active ${gitFlowBranch.type} branches.`);
+      console.error(`There are no active ${gitFlowEntity.type} tags or branches.`);
     } else {
-      console.info(`Active ${gitFlowBranch.type} branches:`);
+      console.info(`Active ${gitFlowEntity.type} tags or branches:`);
       for (const branch of branches) {
         console.info(` - ${branch}`);
       }
