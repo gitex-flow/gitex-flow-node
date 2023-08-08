@@ -84,6 +84,9 @@ const projectChangelog = new ProjectChangelog(gFlowConfig?.projectConfig);
 const changelog = command.command('changelog').action(async () => {
   await Utils.exec(() => projectChangelog.show());
 });
+changelog.command('unreleased').action(async () => {
+  await Utils.exec(() => projectChangelog.showUnreleasedChanges());
+});
 changelog.command('update [version] [name]').action(async (version?: string, name?: string) => {
   await Utils.exec(() => projectChangelog.update(version, name));
 });

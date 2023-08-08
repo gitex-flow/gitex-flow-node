@@ -83,6 +83,18 @@ export abstract class ChangelogWriter {
   }
 
   /**
+   * Gets the unreleased changes as changelog.
+   *
+   * @param context - The context information of the git repository.
+   * @param logs - The conventional git logs since the last release.
+   * @returns A changelog with unreleased changes.
+   */
+  public async getUnreleasedChangelog(context: GitRepositoryContext, logs: GitLog[]): Promise<string> {
+    const stream = await this.createLatestChangelogStream(context, logs);
+    return Utils.convertStreamToString(stream);
+  }
+
+  /**
    * Derives the name of the seperated latest changelog from the main changelog name.
    *
    * @param changelogFileName - The name of the main changelog.

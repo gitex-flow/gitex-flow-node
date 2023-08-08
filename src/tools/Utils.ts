@@ -104,6 +104,25 @@ export class Utils {
   }
 
   /**
+   * Converts a stream to a string.
+   *
+   * @param stream - The stream to be converted.
+   * @returns The converted stream as a string.
+   */
+  public static async convertStreamToString(stream: Readable): Promise<string> {
+    return new Promise((resolve, reject) => {
+      let str = '';
+      stream.on('data', function (data) {
+        str += data.toString();
+      });
+      stream.on('end', function () {
+        resolve(str);
+      });
+      stream.on('error', reject);
+    });
+  }
+
+  /**
    * Parses conventional commit messages to a [[GitLog]] array.
    *
    * @param commitMessages - The commit messages.

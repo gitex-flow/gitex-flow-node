@@ -30,7 +30,24 @@ export class ProjectChangelog {
     const changelogConfig = this.options.changelog as ChangelogConfig<ChangelogWriterOptions>;
     const changelogPath = join(this.options.projectPath, changelogConfig.changelogFileName ?? 'CHANGELOG.md');
     const changelog = await readFile(changelogPath, 'utf8');
-    console.log(changelog);
+    console.info(changelog);
+  }
+
+  /**
+   * Prints the unreleased changes as a changelog to the console.
+   */
+  public async showUnreleasedChanges(): Promise<void> {
+    let unreleasedChangelog = 'No changes available.';
+    const changelogConfig = this.options.changelog as ChangelogConfig<ChangelogWriterOptions>;
+    const changelogWriter = ChangelogWriterFactory.create(changelogConfig);
+    if (changelogWriter) {
+      const gitRepository = new GitRepository(this.options);
+      const logs = await gitRepository.getLogsSinceLastRelease();
+      const project = new GitFlowNodeProject(this.options);
+      const context = await project.getContext('Unreleased Changes');
+      unreleasedChangelog = await changelogWriter.getUnreleasedChangelog(context, logs);
+    }
+    console.info(unreleasedChangelog);
   }
 
   /**
