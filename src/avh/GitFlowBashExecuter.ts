@@ -76,7 +76,7 @@ export class GitFlowBashExecuter {
    */
   private static execViaShell(cmd: string, executionFolder?: string): Promise<string> {
     return new Promise((resolve, reject) => {
-      exec(cmd, { cwd: executionFolder }, (error, stdout, stderr) => {
+      exec(cmd, { cwd: executionFolder, maxBuffer: Infinity }, (error, stdout, stderr) => {
         if (error) {
           reject(error);
         } else if (stderr) {
